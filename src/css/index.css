@@ -25,9 +25,12 @@
   width: 480px;
 }
 
+.back_arrow{
+  top: 10px;
+  font-size: 25px;
+}
 
-
-.login_head {
+.login_head>h1{
   font-size: 32px;
 }
 
@@ -47,10 +50,12 @@
   color: Grey;
 }
 
-.forgot_section {
+
+
+.forgot_text{
+  color: #8637F8;
   font-size: 16px;
   font-weight: 600;
-  color: #8637F8;
 }
 
 .login_btn {
@@ -91,6 +96,19 @@ header {
   background-color: #EFEFEF;
   color: #646464;
 }
+
+
+.otp_input_section>input{
+  width: 64px;
+  height: 64px;
+}
+
+input::-webkit-inner-spin-button{
+  display: none;
+}
+
+
+
 
 .options {
   width: 95px;
