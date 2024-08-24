@@ -1,19 +1,20 @@
+/* max height  */
 @media screen and (max-height:680px) {
-    .login_inner{
+    .login_inner {
         height: 90vh;
     }
 }
 
 
 @media screen and (max-height:600px) {
-    .login_inner{
+    .login_inner {
         height: 95vh;
     }
 }
 
 
 @media screen and (max-height:600px) {
-    .login_inner{
+    .login_inner {
         height: 600px;
         margin: 150px 0px 100px 0px;
     }
@@ -21,7 +22,7 @@
 
 
 @media screen and (max-height:570px) {
-    .login_inner{
+    .login_inner {
         height: 600px;
         margin: 250px 0px 150px 0px;
     }
@@ -29,37 +30,58 @@
 
 
 @media screen and (max-height:530px) {
-    .login_inner{
+    .login_inner {
         height: 600px;
         margin: 350px 0px 200px 0px;
     }
 }
 
 @media screen and (max-height:475px) {
-    .login_inner{
+    .login_inner {
         height: 600px;
         margin: 450px 0px 250px 0px;
     }
-} 
+}
 
 @media screen and (max-height:425px) {
-    .login_inner{
+    .login_inner {
         height: 600px;
         margin: 570px 0px 300px 0px;
     }
-} 
+}
 
 @media screen and (max-height:350px) {
-    .login_inner{
+    .login_inner {
         height: 600px;
         margin: 670px 0px 350px 0px;
     }
-} 
+}
 
 
 @media screen and (max-height:300px) {
-    .login_inner{
+    .login_inner {
         height: 600px;
         margin: 800px 0px 400px 0px;
     }
-} 
+}
+
+/* max height closed */
+
+
+
+
+@media screen and (min-width:2200px) {
+   .main_register{
+    height: 100vh;
+   }
+}
+
+/* max width */
+
+@media screen and (max-width:610px) {
+    .login_inner {
+        width: 95%;
+        padding: 0px 10px;
+    }
+
+}

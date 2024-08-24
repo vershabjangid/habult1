@@ -15,7 +15,7 @@
 
 .login_inner {
   width: 572px;
-  height: 80vh;
+  /* height: 80vh; */
   background-color: #ffff;
   border-radius: 12px;
   box-shadow: 0px 0px 25px 0px #8637F81A;
@@ -34,6 +34,9 @@
   font-size: 32px;
 }
 
+.all_Login_input{
+  margin-bottom: 16px;
+}
 .remember_me {
   margin-top: 16px;
 }
@@ -58,10 +61,31 @@
   font-weight: 600;
 }
 
-.login_btn {
-  background-color: #8637F8;
-  margin: 24px 0px;
-  padding: 16px, 32px, 16px, 32px;
+.main_register{
+  width: 100%;
+  background-color: #FCFAFF;
+}
+
+.register_inner{
+  width: 572px;
+  /* height: 80vh; */
+  background-color: #ffff;
+  border-radius: 12px;
+  box-shadow: 0px 0px 25px 0px #8637F81A;
+  margin: 50px 0px;
+}
+.join_as_inner{
+  background-color: #8637F808;
+  height: 62px;
+  border-radius: 6px;
+  margin-bottom: 25px;
+  color: #8637F8;
+  font-weight: bold;
+}
+
+.join_as_inner_investor{
+  height: 100%;
+  border-bottom: 5px solid #8637F8;
 }
 
 .main {
@@ -83,9 +107,9 @@ header {
   height: 48px;
   border-radius: 8px;
   border: 0;
-  margin-right: 15px;
   background-color: #8637F8;
   color: white;
+  margin: 25px 0px;
 }
 
 .signin_btn {

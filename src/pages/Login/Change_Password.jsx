@@ -26,8 +26,8 @@ export function Change_Password() {
                             }
                         >
                             <Form>
-                                <Field type="Password" className='w-100 py-2 px-2 rounded-1 border border-1 border-secondary mb-4' placeholder='New Password' name="New_Password" />
-                                <Field type="Password" className='w-100 py-2 px-2 rounded-1 border border-1 border-secondary' placeholder='Confirm Password' name="Confirm_Password" />
+                                <Field type="Password" className='all_Login_input w-100 py-2 px-2 rounded-1 border border-1 border-secondary' placeholder='New Password' name="New_Password" />
+                                <Field type="Password" className='all_Login_input w-100 py-2 px-2 rounded-1 border border-1 border-secondary' placeholder='Confirm Password' name="Confirm_Password" />
                                 <button className=' login_btn w-100 fs-4 rounded-3 border-0 text-white'>Confirm</button>
                             </Form>
                         </Formik>

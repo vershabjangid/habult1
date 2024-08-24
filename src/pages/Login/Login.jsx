@@ -22,8 +22,8 @@ export function Login() {
               }
             >
               <Form>
-                <Field type="number" className='w-100 py-2 px-2 rounded-1 border border-1 border-secondary  mb-4' placeholder='Phone Number' name="Mobile_No" />
-                <Field type="password" className='w-100 py-2 px-2 rounded-1 border border-1 border-secondary' placeholder='Password' name="Password" />
+                <Field type="number" className='all_Login_input w-100 py-2 px-2 rounded-1 border border-1 border-secondary ' placeholder='Phone Number' name="Mobile_No" />
+                <Field type="password" className='all_Login_input w-100 py-2 px-2 rounded-1 border border-1 border-secondary' placeholder='Password' name="Password" />
                 <div className='remember_me d-flex justify-content-between'>
                   <div className='remember_section d-flex align-items-center'>
                     <Field type="checkbox" name="Remember" />
@@ -38,7 +38,7 @@ export function Login() {
                 </div>
 
                 <button className=' login_btn w-100 fs-4 rounded-3 border-0 text-white'>Login</button>
-                <div className='text-center text-secondary'>Don’t have an account? <span className='text-black fw-bold'>SIGNUP</span></div>
+                <div className='text-center text-secondary'>Don’t have an account? <Link className='text-decoration-none' to={"/register"}><span className='text-black fw-bold'>SIGNUP</span></Link></div>
               </Form>
             </Formik>
           </section>
