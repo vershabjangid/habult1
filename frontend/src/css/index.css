@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Manrope", sans-serif;
+}
+
+
+:root {
+  --button-color-purple--: #8637F8;
+  --button-color-grey--: #646464;
+}
+
+.main_login {
+  width: 100%;
+  height: 100vh;
+  background-color: #FCFAFF;
+}
+
+.login_inner {
+  width: 572px;
+  /* height: 80vh; */
+  background-color: #ffff;
+  border-radius: 12px;
+  box-shadow: 0px 0px 25px 0px #8637F81A;
+}
+
+.main_login_content {
+  width: 480px;
+}
+
+.back_arrow {
+  top: 10px;
+  font-size: 25px;
+}
+
+.login_head>h1 {
+  font-size: 32px;
+}
+
+.all_Login_input {
+  margin-bottom: 16px;
+}
+
+.remember_me {
+  margin-top: 16px;
+}
+
+.remember_section>input {
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+  border-radius: 4px;
+}
+
+.remember_section {
+  font-size: 16px;
+  color: var(--button-color-grey--);
+}
+
+
+
+.forgot_text {
+  color: var(--button-color-purple--);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.main_register {
+  width: 100%;
+  background-color: #FCFAFF;
+}
+
+.register_inner {
+  width: 572px;
+  /* height: 80vh; */
+  background-color: #ffff;
+  border-radius: 12px;
+  box-shadow: 0px 0px 25px 0px #8637F81A;
+  margin: 50px 0px;
+}
+
+.join_as_inner {
+  background-color: #8637F808;
+  height: 62px;
+  border-radius: 6px;
+  margin-bottom: 25px;
+  color: var(--button-color-purple--);
+  font-weight: bold;
+}
+
+.join_as_inner_investor {
+  height: 100%;
+  border-bottom: 5px solid var(--button-color-purple--);
+}
+
+.main {
+  background: linear-gradient(#F9F5FF, #FFFFFF);
+  width: 100%;
+  padding-top: 30px !important;
+}
+
+header {
+  background-color: white;
+  width: 80%;
+  height: 90px;
+  border-radius: 12px;
+  box-shadow: 0px 0px 10px 0px #B2B3FF1A;
+  padding: 0px 64px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login_btn {
+  width: 117px;
+  height: 48px;
+  border-radius: 8px;
+  border: 0;
+  background-color: var(--button-color-purple--);
+  color: white;
+  margin: 25px 0px;
+}
+
+.signin_btn {
+  width: 117px;
+  height: 48px;
+  border-radius: 8px;
+  border: 0;
+  background-color: #EFEFEF;
+  color: var(--button-color-grey--);
+}
+
+.login_sign_in_btn_section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menubar {
+  display: none;
+}
+
+.otp_input_section>input {
+  width: 64px;
+  height: 64px;
+}
+
+input::-webkit-inner-spin-button {
+  display: none;
+}
+
+
+
+
+.options {
+  width: 95px;
+  height: 40px;
+  margin-right: 8px;
+  border-radius: 6px;
+  border: 0;
+  background-color: white;
+  font-size: 16px;
+  transition: 0.5;
+  color: #646464;
+}
+
+.options:hover {
+  color: var(--button-color-purple--);
+  background-color: #4143E30D;
+}
+
+
+
+
+.main_inner {
+  width: 100%;
+  margin: auto;
+  padding: 64px 0px 0px 0px;
+  padding: 0px 10px;
+}
+
+.left_writing_content {
+  width: 700px;
+}
+
+
+.landing_heading {
+  color: var(--Black, #000);
+  font-family: Manrope;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.landing_subheading {
+  width: 600px;
+  color: var(--Grey, #646464);
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+
+.banner_img {
+  width: 746.575px;
+  height: 436px;
+  flex-shrink: 0;
+}
+
+.become_an_investor {
+  border-radius: 8px;
+  background: var(--button-color-purple--);
+  color: white;
+  padding: 16px 32px;
+  border: 0;
+  margin: 8px;
+}
+
+.submit_pitch_deck {
+  border-radius: 8px;
+  background: #EFEFEF;
+  color: Grey;
+  padding: 16px 32px;
+  border: 0;
+  margin: 8px;
+}
+
+
+.counter_landing {
+  border-radius: 12px;
+  background: var(--White, #FFF);
+  box-shadow: 0px 0px 10px 0px rgba(0, 3, 254, 0.10);
+  width: 80%;
+  height: 99px;
+  margin: auto; 
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.counter_letters{
+  color: var(--button-color-purple--);
+}
