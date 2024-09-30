@@ -1,56 +1,90 @@
-import { Field, Form, Formik } from 'formik'
 import React from 'react'
-import logo from "../../images/mascot-logo-design_P1_900x420-removebg-preview.png"
+import { Logo } from '../../common/Logo'
 import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import { Field, Form, Formik } from 'formik'
+import { toast, ToastContainer } from 'react-toastify'
 export function Login() {
+    let notificationerr = (error) => toast.error(error)
 
-let navigate = useNavigate();
-  let loginavigate =()=>{
-    navigate("/home")
-  }
-
-
-  return (
-    <>
-      <section className='main_login d-flex justify-content-center align-items-center'>
-        <section className='login_inner  d-flex justify-content-center'>
-          <section className='main_login_content my-4'>
-            <div className='d-flex justify-content-center'>
-              <img src={logo} alt="" width={300} />
-            </div>
-            <section className='login_head text-center mb-5'><h1>LOGIN</h1></section>
-            <Formik
-              initialValues={
-                {
-                  Mobile_No: "",
-                  Password: "",
-                  Remember: false
+    let naviget = useNavigate();
+    let handlelogin = (value) => {
+        axios.post('http://localhost:5000/login', value)
+            .then((res) => {
+                console.log(res.data)
+                if (res.data.auth) {
+                    localStorage.setItem('userLogin',JSON.stringify(res.data.findlogin))
+                    localStorage.setItem('token',JSON.stringify(res.data.auth))
+                    naviget('/')
                 }
-              }
-            >
-              <Form>
-                <Field type="number" className='all_Login_input w-100 py-2 px-2 rounded-1 border border-1 border-secondary ' placeholder='Phone Number' name="Mobile_No" />
-                <Field type="password" className='all_Login_input w-100 py-2 px-2 rounded-1 border border-1 border-secondary' placeholder='Password' name="Password" />
-                <div className='remember_me d-flex justify-content-between'>
-                  <div className='remember_section d-flex align-items-center'>
-                    <Field type="checkbox" name="Remember" />
-                    Remember me
-                  </div>
 
-                  <div className='forgot_section'>
-                    <Link to={"/forgot-password"} className='text-decoration-none'>
-                      <p className='forgot_text'>Forgot Password?</p>
-                    </Link>
-                  </div>
-                </div>
+                else {
+                    notificationerr(res.data.Message)
+                }
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
+    return (
+        <>
+            <section className='login_main w-[100%] h-[100vh] p-[15px]  bg-[#FCFAFF] flex justify-center items-center'>
+                <section className='login_inner w-[572px] h-[658px] p-[35px] bg-white rounded-[12px]'>
+                    <Formik
+                        initialValues={{
+                            Email: "",
+                            Password: ""
+                        }}
 
-                <button className=' login_btn w-100 fs-4 rounded-3 border-0 text-white' onClick={loginavigate}>Login</button>
-                <div className='text-center text-secondary'>Don’t have an account? <Link className='text-decoration-none' to={"/register"}><span className='text-black fw-bold'>SIGNUP</span></Link></div>
-              </Form>
-            </Formik>
-          </section>
-        </section>
-      </section>
-    </>
-  )
+                        onSubmit={(values) => {
+                            handlelogin(values)
+                        }}
+                    >
+                        <Form>
+                            <div className='login_input_section h-[100%] '>
+                                <div className='logo_section w-[300px] m-auto flex justify-center'>
+                                    <Logo />
+                                </div>
+                                <div className='my-[30px]'>
+                                    <h1 className='text-center text-[32px] font-[500]'>LOGIN</h1>
+                                </div>
+
+
+                                <div className='my-[8px] text-black'>
+                                    <Field as="input" name="Email" type='email' className=' w-[100%] border-[1px] p-[10px]  rounded-[8px]' placeholder='Enter Email' />
+                                </div>
+
+                                <div className='mt-[25px] text-black'>
+                                    <Field as="input" name="Password" type='password' className=' w-[100%] border-[1px] p-[10px] pe-[55px]  rounded-[8px]' placeholder='Enter Password' />
+                                    <div></div>
+                                </div>
+
+
+                                <div className='my-3 flex justify-between items-center'>
+                                    <div className='flex items-center'>
+                                    </div>
+
+
+                                    <Link to={'/forgot-password'}>
+                                        <p className='text-[var(--button-color--)] text-[16px] font-[600]'>Forgot Password?</p>
+                                    </Link>
+                                </div>
+
+                                <div className='my-[8px] text-black'>
+                                    <button className='border-[1px] w-[100%] py-[16px] px-[32px] my-[20px] bg-[var(--button-color--)] rounded-[8px] text-[20px] text-white font-[500]'>Login</button>
+                                </div>
+
+                                <div className='my-[8px] text-black'>
+                                    <p className='text-[grey] text-center'>Don’t have an account? <Link to={'/register'}><span className='text-black font-[500]'>SIGNUP</span></Link></p>
+                                </div>
+                            </div>
+
+                        </Form>
+                    </Formik>
+
+                </section>
+            </section>
+            <ToastContainer />
+        </>
+    )
 }
