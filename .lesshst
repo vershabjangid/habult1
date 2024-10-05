@@ -1,0 +1,6 @@
+.less-history-file:
+.search
+"var/www/html;  # Update this to your actual document root
+".well-known/acme-challenge/ {
+"var/www/html;  # Ensure this matches your document root
+" {
