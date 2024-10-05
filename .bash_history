@@ -122,3 +122,19 @@ git clone https://github.com/vershabjangid/habult1.git
 C
 git clone git@github.com:vershabjangid/habult1.git
 yes
+git clone git@github.com:vershabjangid/habult1.git
+ssh-keygen -t ed25519 -C hubalt.in
+ssh-keygen -t ed25519 -C www.hubalt.in
+cat ~/.ssh/id_ed25519.pub
+git clone git@github.com:vershabjangid/habult1.git
+ls
+yarn built
+npm run build
+git init
+git remote add origin git@github.com:vershabjangid/habult1.git
+gid add .
+git add .
+git remote add origin https://github.com/vershabjangid/habult1.git
+git commit -m "ok"
+git status
+git push origin main
