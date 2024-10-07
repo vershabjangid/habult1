@@ -15,7 +15,7 @@ export function Login() {
                 if (res.data.auth) {
                     localStorage.setItem('userLogin',JSON.stringify(res.data.findlogin))
                     localStorage.setItem('token',JSON.stringify(res.data.auth))
-                    naviget('/')
+                    naviget('/startups')
                 }
 
                 else {

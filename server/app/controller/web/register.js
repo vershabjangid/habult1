@@ -2,6 +2,44 @@ const nodemailer = require("nodemailer");
 const Jwt = require('jsonwebtoken')
 const key = "gjj^&&%^**!%$3443024940@($*)@$*"
 const hubaltwebRegister = require("../../model/web/register")
+
+
+const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false, // true for port 465, false for other ports
+    auth: {
+        user: "jangidvershab23@gmail.com",
+        pass: "qoigtoidkoaipxgp",
+    },
+});
+
+
+exports.registerotp = async (req, res) => {
+
+    let data = {
+        Email: req.body.Email,
+        OTP: Math.floor(1000 + Math.random() * 8000)
+    }
+
+
+    const info = await transporter.sendMail({
+        from: '"Hubalt Ventures"', // sender address
+        to: `${data.Email}`, // list of receivers
+        subject: "your otp verification code", // Subject line
+        text: "565465", // plain text body
+        html: `<b>${data.OTP}</b>`, // html body
+    });
+
+    let newtoken;
+    let finaltoken = Jwt.sign({ newtoken }, key, { expiresIn: '300s' }, (err, token) => {
+        res.send({ data, token })
+    })
+
+}
+
+
+
 exports.registerdata = async (req, res) => {
     let data = {
         Email: req.body.Email,
@@ -11,7 +49,14 @@ exports.registerdata = async (req, res) => {
         Firm_name: req.body.Firm_name,
         Category: req.body.Category,
         Bio: req.body.Bio,
-        Active_Status : "pending"
+        Logo: req.body.Logo,
+        Goal: req.body.Goal,
+        Raised: req.body.Raised,
+        PreMoneyValuation: req.body.PreMoneyValuation,
+        Equity: req.body.Equity,
+        MinimumInvestment: req.body.MinimumInvestment,
+        Pan: req.body.Pan,
+        Active_Status: "pending"
     }
     let insertdata = await hubaltwebRegister(data)
 
@@ -42,31 +87,3 @@ exports.registerdata = async (req, res) => {
 }
 
 
-const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false, // true for port 465, false for other ports
-    auth: {
-        user: "jangidvershab23@gmail.com",
-        pass: "qoigtoidkoaipxgp",
-    },
-});
-
-
-exports.registerotp = async (req, res) => {
-
-    let data = {
-        Email: req.body.Email,
-        OTP: Math.floor(1000 + Math.random() * 8000)
-    }
-    console.log(data)
-    const info = await transporter.sendMail({
-        from: '"Hubalt Ventures" <jangidvershab23@gmail.com>', // sender address
-        to: `${data.Email}`, // list of receivers
-        subject: "your otp verification code", // Subject line
-        text: "565465", // plain text body
-        html: `<b>${data.OTP}</b>`, // html body
-    });
-
-    res.send(data)
-}

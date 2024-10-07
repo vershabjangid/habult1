@@ -9,6 +9,7 @@ export function Error() {
                 <Logo/>
                 </div>
                 <p className='text-[50px]'>Website in Maintainance</p>
+                <p className='text-[50px]'>that may take a several time</p>
             </section>
         </>
     )

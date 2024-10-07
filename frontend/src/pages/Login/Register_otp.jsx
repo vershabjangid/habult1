@@ -6,7 +6,7 @@ import axios from 'axios';
 
 export function Register_otp() {
     const [seconds, setseconds] = useState(60)
-
+    
     var timer
     useEffect(() => {
         timer = setInterval(() => {
@@ -17,42 +17,41 @@ export function Register_otp() {
         }, 1000)
         return () => clearInterval(timer)
     })
-
     
-
+    
+    
     let locate = useLocation();
     let data = locate.state;
-
-
+    console.log(data)
     let naviget = useNavigate();
-    const [otpdata, setotpdata] = useState(data.OTP)
-
-
-
-
-
-
+    const [otpdata, setotpdata] = useState(data.data.OTP)
+    
+    
+    
+    
+    
+    
     let register_form = (value) => {
         let allvalue = value;
         let concat = `${allvalue.value1}` + `${allvalue.value2}` + `${allvalue.value3}` + `${allvalue.value4}`
         if (concat == otpdata) {
-            localStorage.setItem("authenticate",JSON.stringify("success"))
+            localStorage.setItem("authenticate", JSON.stringify(data.token))
             naviget('/register-form')
         }
-        else{
+        else {
         }
-
+        
     }
-
-
+    
+    
     let resendotp = (value) => {
         setseconds(60)
         axios.post('http://localhost:5000/add-register-otp', value)
-            .then((res) => {
-                setotpdata(res.data.OTP)
-            })
+        .then((res) => {
+            setotpdata(res.data.OTP)
+        })
     }
-
+    
     return (
         <>
             <section className='login_main w-[100%] h-[100vh] p-[15px]  bg-[#FCFAFF] flex justify-center items-center'>
@@ -83,6 +82,7 @@ export function Register_otp() {
                                 <Field type='number' name="value3" className=' w-[65px] h-[65px] border-[1px] p-[10px]  rounded-[8px] text-center' maxLength={1} min={0} max={9} />
                                 <Field type='number' name="value4" className=' w-[65px] h-[65px] border-[1px] p-[10px]  rounded-[8px] text-center' maxLength={1} min={0} max={9} />
                             </div>
+
 
 
                             <div className='my-[8px] text-black'>

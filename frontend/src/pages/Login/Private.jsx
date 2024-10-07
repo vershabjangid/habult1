@@ -3,7 +3,7 @@ import { Navigate, Outlet } from 'react-router-dom'
 
 export function Private() {
     let local = JSON.parse(localStorage.getItem('authenticate'))
-    if(local == "success"){
+    if(local){
        return  <Outlet/>
     }
     else{
