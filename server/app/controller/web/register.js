@@ -56,7 +56,7 @@ exports.registerdata = async (req, res) => {
         Equity: req.body.Equity,
         MinimumInvestment: req.body.MinimumInvestment,
         Pan: req.body.Pan,
-        Active_Status: "pendin"
+        Active_Status: "pending"
     }
     let insertdata = await hubaltwebRegister(data)
 

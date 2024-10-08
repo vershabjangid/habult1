@@ -10,8 +10,6 @@ import * as Yup from 'yup';
 
 
 export function RegisterPage() {
-    let { user, loginWithRedirect } = useAuth0()
-
 
 
     let [joinstatus, setjoinstatus] = useState('investor');
