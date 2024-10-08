@@ -3,10 +3,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 // import { Forgot } from "./pages/login/Forgot";
 // import { OTP } from "./pages/login/OTP";
 // import { New_Password } from "./pages/login/New_Password";
-import { RegisterPage } from "./pages/login/RegisterPage";
-import { RegisterForm } from "./pages/login/RegisterForm";
-import { Register_otp } from "./pages/login/Register_otp";
-import { Private } from "./pages/login/Private";
+// import { RegisterPage } from "./pages/login/RegisterPage";
+// import { RegisterForm } from "./pages/login/RegisterForm";
+// import { Register_otp } from "./pages/login/Register_otp";
+// import { Private } from "./pages/login/Private";
 import { Landing } from "./pages/web/Landing";
 // import { Loginnew_Private } from "./pages/login/Loginnew_Private";
 import { About } from "./pages/web/About";
@@ -40,12 +40,12 @@ function App() {
           <Route element={<Loginnew_Private />}>
           <Route path="/new-password" element={<New_Password />} />
           </Route> */}
-
+{/* 
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/register-otp" element={<Register_otp />} />
           <Route element={<Private />}>
             <Route path="/register-form" element={<RegisterForm />} />
-          </Route>
+          </Route> */}
 
           {/* <Route path="*" element={<Error/>}/> */}
         </Routes>
