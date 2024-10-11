@@ -6,10 +6,10 @@ import { Privacy } from "./pages/web/Privacy";
 import { Disclaimer } from "./pages/web/Disclaimer";
 import { Faqpage } from "./pages/web/Faqpage";
 import { Error } from "./pages/Error";
-import { RegisterPage } from "../src/pages/login/RegisterPage";
-import { Register_otp } from "../src/pages/login/Register_otp";
-import { RegisterForm } from "../src/pages/login/RegisterForm";
-import { Private } from "../src/pages/login/Private";
+import { RegisterPage } from "./pages/web/RegisterPage";
+import { Register_otp } from "./pages/web/Register_otp";
+import { RegisterForm } from "./pages/web/RegisterForm";
+import { Private } from "./pages/web/Private";
 
 function App() {
   return (
