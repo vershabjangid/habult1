@@ -6,20 +6,21 @@ import about from '../../images/about_us.png'
 import dots from "../../images/Frame 6847.png"
 import { SiGoogleanalytics } from "react-icons/si";
 import { FaHandHoldingUsd } from 'react-icons/fa'
-import { FcDataProtection } from "react-icons/fc";
+import { FcDataProtection, FcStatistics } from "react-icons/fc";
 import { BiSupport } from "react-icons/bi";
 import our_services from "../../images/box-search 1.svg"
 import investor from '../../images/investor_img.png'
 import startup from '../../images/startup_our.png'
 import { Faq } from '../../common/Faq'
 import { FaPhone, FaXmark } from 'react-icons/fa6'
-import { MdOutlineLocalPostOffice } from 'react-icons/md'
+import { MdConnectWithoutContact, MdOutlineLocalPostOffice } from 'react-icons/md'
 import { IoLocationOutline } from 'react-icons/io5'
 import { Field, Form, Formik } from 'formik'
 import axios from 'axios'
 import { toast, ToastContainer } from 'react-toastify'
 import { Footer } from '../../common/Footer'
 import { useNavigate } from 'react-router-dom'
+import { IoMdSchool } from 'react-icons/io'
 
 
 export function Landing() {
@@ -65,9 +66,8 @@ export function Landing() {
                         <section className='landing_banner_section w-[90%] h-[100%] m-auto flex'>
                             <div className=' w-[50%] landing_banner_heading_section flex items-center'>
                                 <div className='w-[100%]'>
-                                    <h1 className='text-[40px] font-[600] leading-[45px] mb-5'>Become a Startup Investor <br className='extra_br' />
-                                        Invest in tomorrow</h1>
-                                    <p className='text-[20px] mb-5'>Hubalt Venture Private Limited helps investors to come together and back startups & entrepreneur.</p>
+                                    <h1 className='text-[40px] font-[600] leading-[45px] mb-5'>Startups- Educate-Connect-Invest-Update <br className='extra_br' /></h1>
+                                    <p className='text-[20px] mb-5'>We are a member only marketplace for Startup education, awareness and Investor community</p>
                                     <div className='landing_banner_btn w-[100%] flex'>
                                         <button className='bg-[#8637F8] me-1 text-white w-[50%] py-[16px] rounded-[8px]' onClick={loginnaviget}>
                                             Become an Investor
@@ -87,7 +87,7 @@ export function Landing() {
 
 
 
-                        <section className='landing_counter w-[80%] my-6 py-3 bg-white rounded-[8px] m-auto flex'>
+                        {/* <section className='landing_counter w-[80%] my-6 py-3 bg-white rounded-[8px] m-auto flex'>
                             <div className='w-[25%] text-center'>
                                 <h2 className='text-[30px] font-[700]'>100<span className='text-[#8637F8]'>M</span></h2>
                                 <p>Client Satisfcation</p>
@@ -107,7 +107,7 @@ export function Landing() {
                                 <h2 className='text-[30px] font-[700]'>100<span className='text-[#8637F8]'>M</span></h2>
                                 <p>Live Campaign</p>
                             </div>
-                        </section>
+                        </section> */}
                     </section>
 
                     <marquee behavior="smooth" className="w-[100%] h-[100px] bg-[#FBF8FF] mt-6 flex items-center">
@@ -117,7 +117,7 @@ export function Landing() {
                                 <div className='w-[30%] flex justify-center items-center'>
                                     <Logo />
                                 </div>
-                                <div className='w-[70%] text-[25px] font-[600] px-2'>Bansi It Solutions</div>
+                                <div className='w-[70%] text-[25px] font-[600] px-2'>Hubalt Ventures</div>
                             </span>
 
 
@@ -125,7 +125,7 @@ export function Landing() {
                                 <div className='w-[30%] flex justify-center items-center'>
                                     <Logo />
                                 </div>
-                                <div className='w-[70%] text-[25px] font-[600] px-2'>Bansi It Solutions</div>
+                                <div className='w-[70%] text-[25px] font-[600] px-2'>Hubalt Ventures</div>
                             </span>
 
 
@@ -133,7 +133,7 @@ export function Landing() {
                                 <div className='w-[30%] flex justify-center items-center'>
                                     <Logo />
                                 </div>
-                                <div className='w-[70%] text-[25px] font-[600] px-2'>Bansi It Solutions</div>
+                                <div className='w-[70%] text-[25px] font-[600] px-2'>Hubalt Ventures</div>
                             </span>
 
 
@@ -141,7 +141,7 @@ export function Landing() {
                                 <div className='w-[30%] flex justify-center items-center'>
                                     <Logo />
                                 </div>
-                                <div className='w-[70%] text-[25px] font-[600] px-2'>Bansi It Solutions</div>
+                                <div className='w-[70%] text-[25px] font-[600] px-2'>Hubalt Ventures</div>
                             </span>
                         </div>
 
@@ -160,7 +160,7 @@ export function Landing() {
                         <section className='w-[100%] h-[100%] flex justify-center items-center'>
                             <div className='w-[90%]'>
                                 <h2 className='text-[35px] font-[600]'>About Us</h2>
-                                <p className='my-2 text-[18px] about_us_content'>HubAlt,A digital marketplace strives to make the Startup investment space more inclusive by granting retail investors access to the opportunities that were previously available only to the wealthy 1%. At the same time, we want to make it hassle free for founders to raise funds from registered users. We are on a mission to transform the landscape of Startup investments in India We are a bridge between Investor and Investee. We believe that stability and growth can go hand in hand, and we are dedicated to helping you achieve both with our innovative approach by bringing promising Startup investment opportunities.</p>
+                                <p className='my-2 text-[18px] about_us_content'>HubAlt,A digital marketplace strives to make the Startup investment space more inclusive by granting retail investors access to the opportunities that were previously available only to the wealthy 1%. <br /><br /> At the same time, we want to make it hassle free for founders to raise funds from registered users. We are on a mission to transform the landscape of Startup investments in India We are a bridge between Investor and Investee. We believe that stability and growth can go hand in hand, and we are dedicated to helping you achieve both with our innovative approach by bringing promising Startup investment opportunities.</p>
                             </div>
                         </section>
                     </section>
@@ -170,10 +170,10 @@ export function Landing() {
                 <section className='why_choose_section w-[90%] h-[100vh] m-auto relative'>
 
                     <section className='w-[50%]  h-[100%] flex items-center justify-center absolute'>
-                        <div className='w-[80%] absolute'>
+                        <div className='w-[80%] h-[350px] absolute flex items-center'>
                             <div className='corner_cut w-[160px] h-[160px] absolute bg-[#ede2fc]'></div>
-                            <h2 className='text-[35px] font-[600]'>Why Choose Us ?</h2>
-                            <p className='my-2 text-[18px] about_us_content'>HubAlt,A digital marketplace strives to make the Startup investment space more inclusive by granting retail investors access to the opportunities that were previously available only to the wealthy 1%. At the same time, we want to make it hassle free for founders to raise funds from registered users. We are on a mission to transform the landscape of Startup investments in India We are a bridge between Investor and Investee. We believe that stability and growth can go hand in hand, and we are dedicated to helping you achieve both with our innovative approach by bringing promising Startup investment opportunities.</p>
+                            <h2 className='text-[45px] font-[600]'>Why Choose Us ?</h2>
+                            {/* <p className='my-2 text-[18px] about_us_content'>HubAlt,A digital marketplace strives to make the Startup investment space more inclusive by granting retail investors access to the opportunities that were previously available only to the wealthy 1%. At the same time, we want to make it hassle free for founders to raise funds from registered users. We are on a mission to transform the landscape of Startup investments in India We are a bridge between Investor and Investee. We believe that stability and growth can go hand in hand, and we are dedicated to helping you achieve both with our innovative approach by bringing promising Startup investment opportunities.</p> */}
                         </div>
                     </section>
 
@@ -186,24 +186,24 @@ export function Landing() {
                                     <div className='absolute rounded-[15px] w-[48%] h-[90%] bg-[white] bottom-0'>
                                         <div className='w-[100%] h-[45%] flex justify-center items-center'>
                                             <div className='icon_section w-[70px] h-[70px] bg-[#4143E30D] rounded-[10px] flex justify-center items-center'>
-                                                <SiGoogleanalytics className='text-[25px] text-[#8637F8]' />
+                                                <IoMdSchool className='text-[25px] text-[#8637F8]' />
                                             </div>
                                         </div>
                                         <div className='w-[100%] h-[55%]'>
                                             <h1 className='text-center mt-3 text-[20px] font-[500]'>
-                                                Bright Future of Indian Startup ecosystem
+                                                Startup Education &amp; Awareness Program
                                             </h1>
                                         </div>
                                     </div>
                                     <div className='absolute rounded-[15px] w-[48%] h-[90%] bg-[white] end-0'>
                                         <div className='w-[100%] h-[45%] flex justify-center items-center'>
                                             <div className='icon_section w-[70px] h-[70px] bg-[#4143E30D] rounded-[10px] flex justify-center items-center'>
-                                                <FaHandHoldingUsd className='text-[25px] text-[#8637F8]' />
+                                                <FcStatistics className='text-[25px] text-[#8637F8]' />
                                             </div>
                                         </div>
                                         <div className='w-[100%] h-[55%]'>
                                             <h1 className='text-center mt-3 text-[20px] font-[500]'>
-                                                Benefits of Startup Investing
+                                                Access to available Startups
                                             </h1>
                                         </div>
                                     </div>
@@ -213,12 +213,12 @@ export function Landing() {
                                     <div className='absolute rounded-[15px] w-[48%] h-[90%] bg-[white] bottom-0'>
                                         <div className='w-[100%] h-[45%] flex justify-center items-center'>
                                             <div className='icon_section w-[70px] h-[70px] bg-[#4143E30D] rounded-[10px] flex justify-center items-center'>
-                                                <FcDataProtection className='text-[25px] text-[#8637F8]' />
+                                                <MdConnectWithoutContact className='text-[25px] text-[#8637F8]' />
                                             </div>
                                         </div>
                                         <div className='w-[100%] h-[55%]'>
                                             <h1 className='text-center mt-3 text-[20px] font-[500]'>
-                                                Enhanced Investor Protection
+                                                Connect with Founders
                                             </h1>
                                         </div>
                                     </div>
@@ -230,7 +230,7 @@ export function Landing() {
                                         </div>
                                         <div className='w-[100%] h-[55%]'>
                                             <h1 className='text-center mt-3 text-[20px] font-[500]'>
-                                                HubAlt Solutions
+                                                Regular updates &amp; Support
                                             </h1>
                                         </div>
                                     </div>
@@ -240,7 +240,7 @@ export function Landing() {
                     </section>
                 </section>
 
-                <section className='why_choose_section_two hidden w-[100%] my-[25px]'>
+                {/* <section className='why_choose_section_two hidden w-[100%] my-[25px]'>
                     <section className='w-[100%] flex justify-evenly flex-wrap'>
                         <div className='w-[250px]  rounded-[12px] bg-white'>
                             <div className='w-[100%] p-3'>
@@ -306,10 +306,10 @@ export function Landing() {
                         <h2 className='text-[35px] font-[600]'>Why Choose Us ?</h2>
                         <p className='my-2 text-[18px] about_us_content'>HubAlt,A digital marketplace strives to make the Startup investment space more inclusive by granting retail investors access to the opportunities that were previously available only to the wealthy 1%. At the same time, we want to make it hassle free for founders to raise funds from registered users. We are on a mission to transform the landscape of Startup investments in India We are a bridge between Investor and Investee. We believe that stability and growth can go hand in hand, and we are dedicated to helping you achieve both with our innovative approach by bringing promising Startup investment opportunities.</p>
                     </section>
-                </section>
+                </section> */}
 
 
-                <section className='w-[90%] m-auto flex justify-center items-center'>
+                {/* <section className='w-[90%] m-auto flex justify-center items-center'>
                     <section className='w-[100%] mb-[50px]'>
                         <h2 className='text-[35px] font-[600] text-center'>Our Services</h2>
                         <div className='w-[100%] mt-4 flex justify-evenly  flex-wrap my-2'>
@@ -371,9 +371,9 @@ export function Landing() {
                             </div>
                         </div>
                     </section>
-                </section>
+                </section> */}
 
-                <section className='investor_or_startup_section w-[100%] my-[20px] bg-[#fbf7ff] flex justify-center py-[100px]'>
+                {/* <section className='investor_or_startup_section w-[100%] my-[20px] bg-[#fbf7ff] flex justify-center py-[100px]'>
                     <div className='w-[90%] bg-white investor_or_startup_section_inner'>
                         <div className='w-[100%] investor_section flex py-[30px] px-[25px]'>
                             <div className='w-[50%] flex justify-center items-center'>
@@ -409,12 +409,12 @@ export function Landing() {
                             </div>
                         </div>
                     </div>
-                </section>
+                </section>*/}
 
-                <Faq />
+                {/* <Faq /> */}
 
 
-                <section className=" w-[100%]">
+                {/* <section className=" w-[100%]">
                     <section className="contact_us_inner w-[90%] m-auto  flex items-center justify-center bg-[#eae3f6] py-[50px]">
                         <section className='contact_us_inner_section w-[90%] flex'>
                             <div className='contact_us_section1 w-[50%]'>
@@ -455,7 +455,7 @@ export function Landing() {
                             </div>
                         </section>
                     </section>
-                </section>
+                </section> */}
                 <Footer />
             </section>
             <ToastContainer />

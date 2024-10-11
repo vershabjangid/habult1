@@ -5,7 +5,7 @@ export function Faq() {
     let [faqid, setfaqid] = useState(0)
     let [faqdata, setfaqdata] = useState([])
     let getfaq = () => {
-        axios.get('http://localhost:5000/getfaq')
+        axios.get('http://147.79.71.69:5000/getfaq')
             .then((res) => {
                 setfaqdata(res.data)
                 setfaqid(res.data)

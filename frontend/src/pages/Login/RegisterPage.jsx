@@ -24,6 +24,7 @@ export function RegisterPage() {
         let data = {
             Join_as: joinstatus,
             Email: value.Email,
+            Phone: value.Phone,
         }
         axios.post('http://localhost:5000/add-register-otp', data)
             .then((res) => {
@@ -42,6 +43,7 @@ export function RegisterPage() {
                             initialValues={{
                                 Join_as: "",
                                 Email: "",
+                                Phone: "",
                             }}
 
                             validationSchema={validationschema}
@@ -67,6 +69,11 @@ export function RegisterPage() {
 
                                 <div className='my-[8px] text-black'>
                                     <Field type='email' className=' w-[100%] border-[1px] p-[10px]  rounded-[8px]' placeholder='Email' name='Email' />
+                                    <div className='requires_message'>
+                                        <ErrorMessage name='Email' className='' />
+                                    </div>
+
+                                    <Field type='number' className=' w-[100%] mt-3 border-[1px] p-[10px]  rounded-[8px]' placeholder='Phone Number' name='Phone' />
                                     <div className='requires_message'>
                                         <ErrorMessage name='Email' className='' />
                                     </div>

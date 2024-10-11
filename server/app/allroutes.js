@@ -1,17 +1,10 @@
-let express = require('express');
-const routes = require('./routes/web/register');
-const loginroutes = require('./routes/web/login');
-const faqroutes = require('./routes/admin/faq');
-const contactroute = require('./routes/admin/contact');
-const categoryroutes = require('./routes/admin/Category');
-const Adminroute = require('./routes/admin/AdminLogin');
+const express = require("express");
+const adminauth = require("./route/admin/AdminAuth");
+const webauthrouts = require("./route/web/Authwebroute");
 let allroutes = express.Router();
 
-allroutes.use(loginroutes)
-allroutes.use(routes)
-allroutes.use(faqroutes)
-allroutes.use(contactroute)
-allroutes.use(categoryroutes)
-allroutes.use(Adminroute)
+
+allroutes.use(adminauth)
+allroutes.use(webauthrouts)
 
 module.exports = allroutes

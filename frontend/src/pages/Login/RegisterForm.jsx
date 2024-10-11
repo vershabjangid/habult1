@@ -149,7 +149,7 @@ export function RegisterForm() {
                                 <div className='my-[8px] text-black w-[48%]'>
                                     <div className='mb-2'>
                                         <p className='font-[500] mb-2'>Goal <sup className='text-[red]'>*</sup> </p>
-                                        <Field type='text' name="Goal" className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' placeholder='Enter Goal' />
+                                        <Field type='number' name="Goal" className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' placeholder='Enter Goal' />
                                         <div className='requires_message'>
                                             <ErrorMessage name='Goal' className='' />
                                         </div>
@@ -159,7 +159,7 @@ export function RegisterForm() {
 
                                     <div className='my-[8px] text-black'>
                                         <p className='font-[500] mb-0'>Raised <sup className='text-[red]'>*</sup></p>
-                                        <Field as="input" name="Raised" className=' w-[100%] border-[1px] mt-[10px] p-[10px]  rounded-[8px]' placeholder='Enter Raised Value' />
+                                        <Field as="input" type="number" name="Raised" className=' w-[100%] border-[1px] mt-[10px] p-[10px]  rounded-[8px]' placeholder='Enter Raised Value' />
                                         <div className='requires_message'>
                                             <ErrorMessage name='Raised' />
                                         </div>
