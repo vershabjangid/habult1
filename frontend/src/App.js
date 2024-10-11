@@ -6,10 +6,10 @@ import { Privacy } from "./pages/web/Privacy";
 import { Disclaimer } from "./pages/web/Disclaimer";
 import { Faqpage } from "./pages/web/Faqpage";
 import { Error } from "./pages/Error";
-import { RegisterPage } from "./pages/login/RegisterPage";
-import { Register_otp } from "./pages/login/Register_otp";
-import { RegisterForm } from "./pages/login/RegisterForm";
-import { Private } from "./pages/login/Private";
+import { RegisterPage } from "../src/pages/login/RegisterPage";
+import { Register_otp } from "../src/pages/login/Register_otp";
+import { RegisterForm } from "../src/pages/login/RegisterForm";
+import { Private } from "../src/pages/login/Private";
 
 function App() {
   return (
@@ -27,7 +27,7 @@ function App() {
 
 
 
-           {/* <Route path="/startups" element={<Startups />} />
+          {/* <Route path="/startups" element={<Startups />} />
           <Route path="/login" element={<Login />} />
           <Route path="/forgot-password" element={<Forgot />} />
           <Route path="/otp-verification" element={<OTP />} />
@@ -35,13 +35,13 @@ function App() {
           <Route path="/new-password" element={<New_Password />} />
           </Route> */}
 
-          <Route element={<Private />}>
-          <Route path="/register" element={<RegisterPage/>} />
+          <Route path="/register" element={<RegisterPage />} />
           <Route path="/register-otp" element={<Register_otp />} />
+          <Route element={<Private />}>
             <Route path="/register-form" element={<RegisterForm />} />
           </Route>
 
-          <Route path="*" element={<Error/>}/>
+          <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>
     </>
