@@ -12,7 +12,7 @@ export function Forgot() {
     let notifyerror = (error) => toast.error(error)
 
     let emailverify = (value) => {
-        axios.post('http://localhost:5000/verify-email', value)
+        axios.post('http://147.79.71.69:5000/verify-email', value)
             .then((res) => {
                 if (res.data.Status === 0) {
                     notifyerror(res.data.Message)
@@ -20,7 +20,7 @@ export function Forgot() {
 
                 else {
                     notifysuccess("Email Verified Successfully")
-                    naviget('/otp-verification',{state : res.data})
+                    naviget('/otp-verification', { state: res.data })
                 }
             })
     }

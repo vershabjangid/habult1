@@ -12,11 +12,13 @@ import * as Yup from 'yup';
 export function RegisterPage() {
 
 
-    let [joinstatus, setjoinstatus] = useState('investor');
+    let [joinstatus, setjoinstatus] = useState('Member');
     let naviget = useNavigate();
 
     const validationschema = Yup.object().shape({
-        Email: Yup.string().required("Email Required")
+        Email: Yup.string().required("Email Required"),
+        Phone: Yup.string().required("Phone Required"),
+        ReferredBy: Yup.string().required("Referred By Required")
     })
 
 
@@ -25,12 +27,11 @@ export function RegisterPage() {
             Join_as: joinstatus,
             Email: value.Email,
             Phone: value.Phone,
+            ReferredBy: value.ReferredBy
         }
-        axios.post('http://localhost:5000/add-register-otp', data)
-            .then((res) => {
-                localStorage.setItem('registerdata', JSON.stringify(data))
-                naviget('/register-otp', { state: res.data })
-            })
+
+        localStorage.setItem('register-data', JSON.stringify(data))
+        naviget('/register-otp', { state: value })
     }
 
     return (
@@ -44,6 +45,7 @@ export function RegisterPage() {
                                 Join_as: "",
                                 Email: "",
                                 Phone: "",
+                                ReferredBy: ""
                             }}
 
                             validationSchema={validationschema}
@@ -62,20 +64,32 @@ export function RegisterPage() {
                                 <div className='w-[100%] h-[] my-[3px] text-black mb-8'>
                                     <p className='mb-1 text-[grey]'>Join as</p>
                                     <div className='w-[100%] h-[62px] bg-[#f9f4ff] rounded flex'>
-                                        <div onClick={() => setjoinstatus("investor")} className={joinstatus == "investor" ? ' w-[50%] border-b-[5px] border-[var(--button-color--)] text-[var(--button-color--)] flex items-center justify-center font-[500]' : ' w-[50%] text-[grey] flex items-center justify-center font-[500]'}>Investor</div>
+                                        <div onClick={() => setjoinstatus("Member")} className={joinstatus == "Member" ? ' w-[50%] border-b-[5px] border-[var(--button-color--)] text-[var(--button-color--)] flex items-center justify-center font-[500]' : ' w-[50%] text-[grey] flex items-center justify-center font-[500]'}>Member</div>
                                         <div onClick={() => setjoinstatus("startup")} className={joinstatus == "startup" ? ' w-[50%] border-b-[5px] border-[var(--button-color--)] text-[var(--button-color--)] flex items-center justify-center font-[500]' : ' w-[50%] text-[grey] flex items-center justify-center font-[500]'}>Startups</div>
                                     </div>
                                 </div>
 
                                 <div className='my-[8px] text-black'>
-                                    <Field type='email' className=' w-[100%] border-[1px] p-[10px]  rounded-[8px]' placeholder='Email' name='Email' />
+                                    <label className=''>Email</label>
+                                    <Field type='email' className=' w-[100%] my-1 border-[1px] p-[10px]  rounded-[8px]' placeholder='Email' name='Email' />
                                     <div className='requires_message'>
                                         <ErrorMessage name='Email' className='' />
                                     </div>
 
-                                    <Field type='number' className=' w-[100%] mt-3 border-[1px] p-[10px]  rounded-[8px]' placeholder='Phone Number' name='Phone' />
+
+                                    <label className=''>Phone</label>
+                                    <Field type='number' className=' w-[100%] my-1 border-[1px] p-[10px]  rounded-[8px]' placeholder='Phone Number' name='Phone' />
                                     <div className='requires_message'>
-                                        <ErrorMessage name='Email' className='' />
+                                        <ErrorMessage name='Phone' className='' />
+                                    </div>
+
+                                    <label className=''>Referred By</label>
+                                    <Field as="select" className=' w-[100%] my-1 border-[1px] p-[10px] rounded-[8px]' name='ReferredBy' >
+                                        <option value="1">dlksflsk</option>
+                                        <option value="1werwjrl">dlksflsk</option>
+                                    </Field>
+                                    <div className='requires_message'>
+                                        <ErrorMessage name='ReferredBy' className='' />
                                     </div>
                                 </div>
 
@@ -86,11 +100,11 @@ export function RegisterPage() {
                                     <button type='submit' className='border-[1px] w-[100%] py-[16px] px-[32px] my-[10px] bg-[var(--button-color--)] rounded-[8px] text-[20px] text-white font-[500]'>Next</button>
                                 </div>
 
-                                <div className='w-[100%] flex items-center justify-between my-3'>
+                                {/* <div className='w-[100%] flex items-center justify-between my-3'>
                                     <div className='w-[50%] border-b-[1px] border-[black]'></div>
                                     <p className='mx-5'>OR</p>
                                     <div className='w-[50%] border-b-[1px] border-[black]'></div>
-                                </div>
+                                </div> */}
 
                             </Form>
                         </Formik>

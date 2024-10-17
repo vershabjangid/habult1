@@ -31,7 +31,7 @@ export function About() {
                             <div className='about_heading text-center w-[100%] my-[60px]'>
                                 <h1 className='text-[40px] font-[600] leading-[45px] mb-5'>Our Founder</h1>
                                 <div className='w-[100%]  flex my-[100px] founder_cofounder'>
-                                    <div className='founder_section w-[50%] border-e-2 border-[red]  h-[400px] flex justify-center  items-center'>
+                                    <div className='founder_section w-[50%] border-e-2 border-[black]  h-[400px] flex justify-center  items-center'>
                                         <div className='text-center'>
                                             <FaUserSecret className='text-[50px] m-auto' />
                                             <h2 className='text-[25px] font-[700]'>Prakash Sharma</h2>

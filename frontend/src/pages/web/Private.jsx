@@ -3,10 +3,10 @@ import { Navigate, Outlet } from 'react-router-dom'
 
 export function Private() {
     let local = JSON.parse(localStorage.getItem('authenticate'))
-    if(local){
-       return  <Outlet/>
+    if (local != "" && local != undefined) {
+        return <Outlet />
     }
-    else{
+    else {
         return <Navigate to={"/"} />
     }
     return (

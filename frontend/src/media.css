@@ -1,5 +1,11 @@
+@media screen and (max-height : 523px) {
+    .registered_success_message{
+        height: 600px;
+    }
+}
+
 @media screen and (min-width:1600px) {
-    .main{
+    .main {
         width: 1600px;
         margin: auto;
     }
@@ -120,6 +126,17 @@
     .contact_us_inner {
         width: 97%;
     }
+
+
+
+    .termsmodalsection{
+        width: 95%;
+    }
+
+    .cross_btn_termsandcondition{
+        right: 2%;
+        top: 8px;
+    }
 }
 
 @media screen and (max-width : 991px) {
@@ -171,7 +188,26 @@
     .contact_us_input {
         width: 100%;
     }
+
 }
+
+
+
+@media screen and (max-width:690px) {
+    .registerforms {
+        flex-direction: column;
+        width: 100% !important;
+    }
+
+    .registerformsleft{
+        width: 100%;
+    }
+
+    .registerformsright{
+        width: 100%;
+    }
+}
+
 
 @media screen and (max-width:690px) {
     .contact_us_inner_section {
@@ -225,13 +261,13 @@
         height: 450px;
     }
 
-    .founder_section{
+    .founder_section {
         width: 100%;
         border: none;
     }
 
 
-    .cofounder_section{
+    .cofounder_section {
         width: 100%;
         border: none;
     }

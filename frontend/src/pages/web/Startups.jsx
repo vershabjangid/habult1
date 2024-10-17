@@ -1,8 +1,8 @@
 import React from 'react'
-import { Header } from '../../../common/Header'
-import { Footer } from '../../../common/Footer'
-import startupsbanner from '../../../images/image 13.png'
-import logo from '../../../images/download-removebg-preview.png'
+import { Header } from '../../common/Header'
+import { Footer } from '../../common/Footer'
+import startupsbanner from '../../images/image 13.png'
+import logo from '../../images/download-removebg-preview.png'
 import { FaShareNodes } from 'react-icons/fa6'
 export function Startups() {
   return (

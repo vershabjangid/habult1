@@ -9,7 +9,7 @@ export function Login() {
 
     let naviget = useNavigate();
     let handlelogin = (value) => {
-        axios.post('http://localhost:5000/login', value)
+        axios.post('http://147.79.71.69:5000/login', value)
             .then((res) => {
                 console.log(res.data)
                 if (res.data.auth) {
@@ -42,7 +42,7 @@ export function Login() {
                     >
                         <Form>
                             <div className='login_input_section h-[100%] '>
-                                <div className='logo_section w-[300px] m-auto flex justify-center'>
+                                <div className='logo_section w-[200px] m-auto flex justify-center'>
                                     <Logo />
                                 </div>
                                 <div className='my-[30px]'>

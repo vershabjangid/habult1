@@ -12,31 +12,34 @@ export function OTP() {
             if (seconds > 0) {
                 setseconds(seconds - 1)
             }
-            
+
         }, 1000)
         return () => clearInterval(timer)
     })
-    
-    
+
+
     let naviget = useNavigate()
-    
+
     let location = useLocation();
     let data = location.state
-    let [otpdata,setotpdata]=useState(data.OTP)
-    
+    let [otpdata, setotpdata] = useState(data.OTP)
+
     let verifyuser = (value) => {
         let allvalue = value;
         let concat = `${allvalue.value1}` + `${allvalue.value2}` + `${allvalue.value3}` + `${allvalue.value4}`
         if (otpdata == concat) {
             localStorage.setItem('userauthenticate', JSON.stringify("succeeded"))
-            naviget('/new-password',{state : data})
+            naviget('/new-password', { state: data })
         }
     }
 
     let resend = (value) => {
-        axios.post('http://localhost:5000/verify-email', value)
+        axios.post('http://147.79.71.69:5000/verify-email', value)
             .then((res) => {
                 setotpdata(res.data.OTP)
+            })
+            .catch((error) => {
+                console.log(error)
             })
     }
 
@@ -85,7 +88,7 @@ export function OTP() {
                                 <div className='text-center'><p className='font-[500]'>00:{seconds}</p></div>
                                 {
                                     seconds == 0 ? <div className='my-[8px] text-black'>
-                                        <p className='text-[grey] text-center'>Didn’t receive OTP? <span className='text-black font-[500]' onClick={()=>resend(data)}>RESEND</span></p>
+                                        <p className='text-[grey] text-center'>Didn’t receive OTP? <span className='text-black font-[500]' onClick={() => resend(data)}>RESEND</span></p>
                                     </div> : null
                                 }
                             </div>
