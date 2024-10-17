@@ -31,7 +31,7 @@ export function Register_otp() {
             Email: value
         }
 
-        axios.post('http://localhost:5000/register-otp', getotp)
+        axios.post('http://147.79.71.69:5000/register-otp', getotp)
             .then((res) => {
                 setotp(res.data.data.OTP)
                 settoken(res.data.Token)
