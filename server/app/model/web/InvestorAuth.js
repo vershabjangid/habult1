@@ -34,6 +34,10 @@ let investorregister = mongoose.Schema({
         type: String,
         required: true
     },
+    Logo: {
+        type: String,
+        required: true
+    },
     Pan: {
         type: String,
         required: true
@@ -43,10 +47,6 @@ let investorregister = mongoose.Schema({
         required: true
     },
     BankDocuments: {
-        type: String,
-        required: true
-    },
-    PackagePrice: {
         type: String,
         required: true
     },

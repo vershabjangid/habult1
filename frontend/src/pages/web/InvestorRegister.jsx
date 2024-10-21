@@ -30,10 +30,11 @@ export function InvestorRegister() {
             Startup_Sector: "",
             Address: "",
             Password: "",
+            Logo: "",
             Pan: "",
             AadharCard: "",
             BankDocuments: "",
-            Activestatus: "",
+            Activestatus: "pending",
             TermsAndConditions: "",
             ReferredBy: getlocaldata.ReferredBy,
         },
@@ -54,8 +55,15 @@ export function InvestorRegister() {
         }
     })
 
+
     let insertdata = (value) => {
-        naviget('/membership-plans', { state: value })
+        axios.post('http://localhost:5000/investor-register', toFormData(value))
+            .then((res) => {
+                naviget('/startup-success')
+            })
+            .catch((error) => {
+                console.log(error)
+            })
     }
 
     let [termsmodal, settermsmodal] = useState(false)

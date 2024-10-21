@@ -1,7 +1,7 @@
 const websiteregistermodel = require("../../model/web/Webauthmodel")
 const nodemailer = require("nodemailer");
 let jwt = require('jsonwebtoken');
-const investorregistermodel = require("../../model/web/Webauthmodel");
+const investorregistermodel = require("../../model/web/InvestorAuth");
 require('dotenv').config()
 let webkey = process.env.KEY
 let emailpass = process.env.EMAILPASS
@@ -98,6 +98,7 @@ exports.updateregister = async (req, res) => {
 
 exports.webinvestorregister = async (req, res) => {
 
+    console.log(req.body)
     if (req.body.TermsAndConditions == 'on') {
         var terms = {
             TermsAndConditions: true
@@ -117,12 +118,12 @@ exports.webinvestorregister = async (req, res) => {
         Startup_Sector: req.body.Startup_Sector,
         Address: req.body.Address,
         Password: req.body.Password,
-        Pan: req.body.Pan,
-        AadharCard: req.body.AadharCard,
-        BankDocuments: req.body.BankDocuments,
-        PackagePrice: req.body.PackagePrice,
+        Logo: req.files[0].filename,
+        Pan: req.files[1].filename,
+        AadharCard: req.files[2].filename,
+        BankDocuments: req.files[3].filename,
         Activestatus: req.body.Activestatus,
-        TermsAndConditions: terms,
+        TermsAndConditions: req.body.TermsAndConditions,
         ReferredBy: req.body.ReferredBy,
     }
 
