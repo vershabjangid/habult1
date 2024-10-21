@@ -26,7 +26,7 @@ export function Register_otp() {
     let [token, settoken] = useState();
 
     let otpdata = (value) => {
-        setseconds(60)
+        setseconds(10)
         let getotp = {
             Email: value
         }
@@ -56,15 +56,20 @@ export function Register_otp() {
     let naviget = useNavigate()
     localStorage.setItem("authenticate", JSON.stringify(null))
     let register_form = (value) => {
-        console.log(token)
         let allvalue = value;
         let concat = `${allvalue.value1}` + `${allvalue.value2}` + `${allvalue.value3}` + `${allvalue.value4}`
         if (concat == otp) {
             localStorage.setItem("authenticate", JSON.stringify(token))
-            naviget('/register-form')
+            let navigetdata = JSON.parse(localStorage.getItem("register-data"))
+            if (navigetdata.Join_as == "Member") {
+                naviget('/member-register')
+            }
+            else{
+                naviget('/register-form')
+            }
         }
         else {
-            
+
         }
 
     }
@@ -95,7 +100,7 @@ export function Register_otp() {
                             </div>
 
                             <div className='otp_input my-[8px] text-black flex justify-evenly'>
-                                <Field type='number' name="value1" className=' w-[65px] h-[65px] border-[1px] p-[10px]  rounded-[8px] text-center' maxLength={1} min={0} max={9} />
+                                <Field type='number' focus={true} name="value1" className=' w-[65px] h-[65px] border-[1px] p-[10px]  rounded-[8px] text-center' maxLength={1} min={0} max={9} />
                                 <Field type='number' name="value2" className=' w-[65px] h-[65px] border-[1px] p-[10px]  rounded-[8px] text-center' maxLength={1} min={0} max={9} />
                                 <Field type='number' name="value3" className=' w-[65px] h-[65px] border-[1px] p-[10px]  rounded-[8px] text-center' maxLength={1} min={0} max={9} />
                                 <Field type='number' name="value4" className=' w-[65px] h-[65px] border-[1px] p-[10px]  rounded-[8px] text-center' maxLength={1} min={0} max={9} />

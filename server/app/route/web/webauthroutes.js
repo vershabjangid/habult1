@@ -1,9 +1,10 @@
 let express = require('express');
-const { webregister, webregisterotp } = require('../../controller/web/Adminauthcontroller');
+const { webregister, webregisterotp, webinvestorregister, weblogin, forgotpassword, forgototp, updateregister } = require('../../controller/web/Adminauthcontroller');
 let webauthroutes = express.Router();
 let jwt = require('jsonwebtoken');
 const multer = require('multer');
-let path = require('path')
+let path = require('path');
+const { getstartups } = require('../../controller/web/GetallStartups');
 require('dotenv').config()
 let webkey = process.env.KEY
 let verifytoken = (req, res, next) => {
@@ -37,12 +38,22 @@ const storage = multer.diskStorage({
     }
 })
 
-const upload = multer({ storage: storage }).any('Logo', 'FounderImage', 'Incorporation_Certificate', 'Pitch_deck', 'Financials_Projection', 'Pan')
+const upload = multer({ storage: storage }).any('Logo', 'FounderImage', 'Incorporation_Certificate', 'Pitch_deck', 'Financials_Projection', 'Pan', 'AadharCard', 'BankDocuments')
 
 
 
 
 webauthroutes.post('/register', upload, verifytoken, webregister)
 webauthroutes.post('/register-otp', webregisterotp)
+webauthroutes.post('/investor-register', upload, webinvestorregister)
+webauthroutes.put('/update-register', upload, verifytoken, updateregister)
+
+
+webauthroutes.post('/login', weblogin)
+webauthroutes.post('/forgot-password', forgotpassword)
+webauthroutes.post('/forgot-password-otp', forgototp)
+
+
+webauthroutes.get('/all-startup', getstartups)
 
 module.exports = webauthroutes

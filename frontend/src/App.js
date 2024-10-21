@@ -17,6 +17,10 @@ import { OTP } from "./pages/web/OTP";
 import { Loginnew_Private } from "./pages/web/Loginnew_Private";
 import { New_Password } from "./pages/web/New_Password";
 import { StartupRegister } from "./pages/web/StartupRegister";
+import { InvestorRegister } from "./pages/web/InvestorRegister";
+import { Receipts } from "./pages/web/Receipts";
+import { LoginPrivate } from "./pages/web/LoginPrivate";
+import { StartupInfo } from "./pages/web/StartupInfo";
 
 function App() {
   return (
@@ -34,10 +38,18 @@ function App() {
 
 
 
-          <Route path="/startups" element={<Startups />} />
           <Route path="/login" element={<Login />} />
+          <Route element={<LoginPrivate />}>
+            <Route path="/startups" element={<Startups />} />
+            <Route path="/startups-info" element={<StartupInfo />} />
+          </Route>
+
+
+
           <Route path="/forgot-password" element={<Forgot />} />
           <Route path="/otp-verification" element={<OTP />} />
+
+
           <Route element={<Loginnew_Private />}>
             <Route path="/new-password" element={<New_Password />} />
           </Route>
@@ -46,7 +58,9 @@ function App() {
           <Route path="/register-otp" element={<Register_otp />} />
           <Route element={<Private />}>
             <Route path="/register-form" element={<RegisterForm />} />
+            <Route path="/member-register" element={<InvestorRegister />} />
             <Route path="/startup-success" element={<StartupRegister />} />
+            <Route path="/membership-plans" element={<Receipts />} />
           </Route>
 
           <Route path="*" element={<Error />} />

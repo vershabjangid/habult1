@@ -3,15 +3,25 @@ import { Logo } from '../../common/Logo'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Field, Form, Formik } from 'formik'
 import axios from 'axios'
+import { toast, ToastContainer } from 'react-toastify'
 
 export function New_Password() {
 
     let location = useLocation()
     let data = location.state;
-
+    console.log(data)
     let naviget = useNavigate()
+
+    let notifyerror = (error) => toast.error(error)
+
+
     let changepassword = (value) => {
-        axios.put('http://localhost:5000/newpassowrd',value)
+        console.log(value)
+        axios.put('http://localhost:5000/update-register', value, {
+            headers: {
+                authorization: JSON.parse(localStorage.getItem('newpasstoken'))
+            }
+        })
             .then((res) => {
                 if (res.data.Status == 1) {
                     naviget('/login')
@@ -26,7 +36,7 @@ export function New_Password() {
                 <Formik
 
                     initialValues={{
-                        Email: data.Email,
+                        Email: data,
                         Password: "",
                         Confirm_Password: "",
                     }}
@@ -34,6 +44,9 @@ export function New_Password() {
                     onSubmit={(value) => {
                         if (value.Confirm_Password == value.Password) {
                             changepassword(value)
+                        }
+                        else {
+                            notifyerror("Enter Same Password")
                         }
                     }}
                 >
@@ -67,6 +80,7 @@ export function New_Password() {
                     </Form>
                 </Formik>
             </section>
+            <ToastContainer />
         </>
     )
 }

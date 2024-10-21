@@ -5,7 +5,13 @@ import { FaXmark } from 'react-icons/fa6'
 import { Link, useNavigate } from 'react-router-dom'
 
 export function Header() {
+    let getlocal = JSON.parse(localStorage.getItem('token'))
     let [sidemenu, setsidemenu] = useState(false)
+
+    let logout = () => {
+        localStorage.setItem('token', JSON.stringify(''))
+        naviget('/')
+    }
 
     let naviget = useNavigate()
     let loginnaviget = () => {
@@ -23,22 +29,37 @@ export function Header() {
                 </div>
                 <div className='header_options_div h-[100%] flex justify-center items-center text-[#646464]'>
                     <ul className='w-[100%] flex justify-between'>
-                    <Link to={"/"}><li className='px-[8px] py-[8px]  transition-[1s] cursor-pointer font-[600] rounded-[6px] text-[15px] hover:bg-[#4143E30D] hover:text-[#8637F8]'>HOME</li></Link>
-                        <li className=' px-[8px] py-[8px] transition-[1s] cursor-pointer font-[600] rounded-[6px] text-[15px] hover:bg-[#4143E30D] hover:text-[#8637F8]'>INVEST</li>
-                        <li className='px-[8px] py-[8px]  transition-[1s] cursor-pointer font-[600] rounded-[6px] text-[15px] hover:bg-[#4143E30D] hover:text-[#8637F8]'>STARTUP</li>
+                        <Link to={"/"}><li className='px-[8px] py-[8px]  transition-[1s] cursor-pointer font-[600] rounded-[6px] text-[15px] hover:bg-[#4143E30D] hover:text-[#8637F8]'>HOME</li></Link>
+
+
+                        {
+                            getlocal == '' || getlocal == undefined || getlocal == null ?
+                                <li className=' px-[8px] py-[8px] transition-[1s] cursor-pointer font-[600] rounded-[6px] text-[15px] hover:bg-[#4143E30D] hover:text-[#8637F8]'>STARTUP</li>
+                                :
+                                <Link to={"/startups"}><li className='px-[8px] py-[8px]  transition-[1s] cursor-pointer font-[600] rounded-[6px] text-[15px] hover:bg-[#4143E30D] hover:text-[#8637F8]'>STARTUP</li></Link>
+                        }
                         <Link to={"/about"}><li className='px-[8px] py-[8px]  transition-[1s] cursor-pointer font-[600] rounded-[6px] text-[15px] hover:bg-[#4143E30D] hover:text-[#8637F8]'>ABOUT US</li></Link>
                         <li className='px-[8px] py-[8px]  transition-[1s] cursor-pointer font-[600] rounded-[6px] text-[15px] hover:bg-[#4143E30D] hover:text-[#8637F8]'>CONTACT</li>
                     </ul>
                 </div>
-                <div className='login_btn'>
-                    <button className='bg-[#8637F8] text-white px-5 py-2 rounded-[10px]' onClick={loginnaviget}>
-                        Login
-                    </button>
+                {
+                    getlocal == '' || getlocal == undefined || getlocal == null ?
+                        <div className='login_btn'>
+                            <button className='bg-[#8637F8] text-white px-5 py-2 rounded-[10px]' onClick={loginnaviget}>
+                                Login
+                            </button>
 
-                    <button className='bg-[grey] ms-2 text-white px-5 py-2 rounded-[10px]' onClick={registernaviget}>
-                        Signup
-                    </button>
-                </div>
+                            <button className='bg-[grey] ms-2 text-white px-5 py-2 rounded-[10px]' onClick={registernaviget}>
+                                Signup
+                            </button>
+                        </div> :
+                        <div className='login_btn'>
+                            <button className='bg-[#8637F8] text-white px-5 py-2 rounded-[10px]' onClick={logout}>
+                                Logout
+                            </button>
+                        </div>
+
+                }
                 <div className='menubar hidden'>
                     <FaBars className='text-[25px]' onClick={() => setsidemenu(true)} />
                 </div>
@@ -65,9 +86,16 @@ export function Header() {
                     CONTACT
                 </section>
 
-                <section className='py-5 text-[18px] font-[600] bg-purple-300 text-center'>
-                    INVEST
-                </section>
+                {
+                    getlocal == '' || getlocal == undefined || getlocal == null ?
+                        <section className='py-5 text-[18px] font-[600] bg-purple-300 text-center'>
+                            INVEST
+                        </section> :
+                        <section className='py-5 text-[18px] font-[600] bg-purple-300 text-center'>
+                            INVEST
+                        </section>
+
+                }
 
                 <section className='py-5 text-[18px] font-[600] bg-purple-300 text-center'>
                     STARTUP

@@ -9,17 +9,16 @@ export function Login() {
 
     let naviget = useNavigate();
     let handlelogin = (value) => {
-        axios.post('http://147.79.71.69:5000/login', value)
+        axios.post('http://localhost:5000/login', value)
             .then((res) => {
-                console.log(res.data)
-                if (res.data.auth) {
-                    localStorage.setItem('userLogin',JSON.stringify(res.data.findlogin))
-                    localStorage.setItem('token',JSON.stringify(res.data.auth))
+                if (res.data.getdata.length != 0) {
+                    localStorage.setItem('userLogin', JSON.stringify(res.data.getdata))
+                    localStorage.setItem('token', JSON.stringify(res.data.Token))
                     naviget('/startups')
                 }
 
                 else {
-                    notificationerr(res.data.Message)
+                    notificationerr("Incorrect Email or Password")
                 }
             })
             .catch((err) => {

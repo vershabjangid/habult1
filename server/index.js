@@ -10,16 +10,16 @@ let app = express();
 
 
 
+app.use('/uploads', express.static('uploads'))
 app.use(mongosanitize());
 app.use(xss());
 app.use(helmet())
 app.disable('x-powered-by');
 app.use(cors())
 app.use(express.json())
-app.use('/uploads',express.static('uploads'))
 app.use(allroutes)
 
 mongoose.connect('mongodb://127.0.0.1:27017/hubalt')
-.then(()=>{
-    app.listen('5000')
-})
+    .then(() => {
+        app.listen('5000')
+    })

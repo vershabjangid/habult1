@@ -22,21 +22,20 @@ export function OTP() {
 
     let location = useLocation();
     let data = location.state
-    let [otpdata, setotpdata] = useState(data.OTP)
+console.log(data)
+    let [otpdata, setotpdata] = useState('')
+    let [Email, setEmail] = useState('')
+    let [token, settoken] = useState('')
 
-    let verifyuser = (value) => {
-        let allvalue = value;
-        let concat = `${allvalue.value1}` + `${allvalue.value2}` + `${allvalue.value3}` + `${allvalue.value4}`
-        if (otpdata == concat) {
-            localStorage.setItem('userauthenticate', JSON.stringify("succeeded"))
-            naviget('/new-password', { state: data })
+    let generateotp = () => {
+        let otpdata = {
+            Email: data
         }
-    }
-
-    let resend = (value) => {
-        axios.post('http://147.79.71.69:5000/verify-email', value)
+        axios.post('http://localhost:5000/forgot-password-otp', otpdata)
             .then((res) => {
-                setotpdata(res.data.OTP)
+                setEmail(res.data.data.Email.Email)
+                setotpdata(res.data.data.OTP)
+                settoken(res.data.Token)
             })
             .catch((error) => {
                 console.log(error)
@@ -47,10 +46,25 @@ export function OTP() {
 
 
 
+    let verifyuser = (value) => {
+        let allvalue = value;
+        let concat = `${allvalue.value1}` + `${allvalue.value2}` + `${allvalue.value3}` + `${allvalue.value4}`
+        if (otpdata == concat) {
+            localStorage.setItem('userauthenticateemail', JSON.stringify(Email))
+            localStorage.setItem('userauthenticate', JSON.stringify("succeeded"))
+            localStorage.setItem('newpasstoken', JSON.stringify(token))
+            naviget('/new-password', { state: data })
+        }
+    }
+
+
+
+
+
 
     return (
         <>
-            <section className='login_main w-[100%] h-[100vh] p-[15px]  bg-[#FCFAFF] flex justify-center items-center'>
+            <section className='login_main w-[100%] h-[100vh] p-[15px]  bg-[#FCFAFF] flex justify-center items-center' onLoad={generateotp}>
                 <Formik
                     initialValues={{
                         value1: "",
@@ -88,7 +102,7 @@ export function OTP() {
                                 <div className='text-center'><p className='font-[500]'>00:{seconds}</p></div>
                                 {
                                     seconds == 0 ? <div className='my-[8px] text-black'>
-                                        <p className='text-[grey] text-center'>Didn’t receive OTP? <span className='text-black font-[500]' onClick={() => resend(data)}>RESEND</span></p>
+                                        {/* <p className='text-[grey] text-center'>Didn’t receive OTP? <span className='text-black font-[500]' onClick={() => resend(data)}>RESEND</span></p> */}
                                     </div> : null
                                 }
                             </div>

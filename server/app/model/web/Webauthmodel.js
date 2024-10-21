@@ -72,10 +72,6 @@ let registerschema = mongoose.Schema({
         type: String,
         required: true
     },
-    Pan: {
-        type: String,
-        required: true
-    },
     Description: {
         type: String,
         required: true
