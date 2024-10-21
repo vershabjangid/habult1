@@ -71,7 +71,7 @@ export function RegisterForm() {
     let insertdata = (value) => {
 
 
-        axios.post('http://localhost:5000/register', toFormData(value), {
+        axios.post('http://147.79.71.69:5000/register', toFormData(value), {
             headers: {
                 authorization: JSON.parse(localStorage.getItem('authenticate'))
             }

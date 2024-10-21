@@ -31,7 +31,7 @@ console.log(data)
         let otpdata = {
             Email: data
         }
-        axios.post('http://localhost:5000/forgot-password-otp', otpdata)
+        axios.post('http://147.79.71.69:5000/forgot-password-otp', otpdata)
             .then((res) => {
                 setEmail(res.data.data.Email.Email)
                 setotpdata(res.data.data.OTP)

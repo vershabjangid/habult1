@@ -29,7 +29,7 @@ export function Landing() {
     let notifyerror = (error) => toast.error(error)
 
     let contactinfo = (value) => {
-        axios.post('http://localhost:5000/contact', value)
+        axios.post('http://147.79.71.69:5000/contact', value)
             .then((res) => {
                 if (res.data.Status === "1") {
                     console.log(res)

@@ -9,7 +9,7 @@ export function Receipts() {
 
     const getsessionId = async () => {
         try {
-            let res = await axios.get('https://localhost:5000/payment')
+            let res = await axios.get('http://147.79.71.69:5000/payment')
 
             if (res.data && res.data.Payment_sessionId) {
                 console.log(res.data.Payment_sessionId)

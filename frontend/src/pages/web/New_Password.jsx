@@ -17,7 +17,7 @@ export function New_Password() {
 
     let changepassword = (value) => {
         console.log(value)
-        axios.put('http://localhost:5000/update-register', value, {
+        axios.put('http://147.79.71.69:5000/update-register', value, {
             headers: {
                 authorization: JSON.parse(localStorage.getItem('newpasstoken'))
             }

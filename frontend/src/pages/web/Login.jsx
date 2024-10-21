@@ -9,7 +9,7 @@ export function Login() {
 
     let naviget = useNavigate();
     let handlelogin = (value) => {
-        axios.post('http://localhost:5000/login', value)
+        axios.post('http://147.79.71.69:5000/login', value)
             .then((res) => {
                 if (res.data.getdata.length != 0) {
                     localStorage.setItem('userLogin', JSON.stringify(res.data.getdata))

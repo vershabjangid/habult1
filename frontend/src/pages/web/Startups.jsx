@@ -11,7 +11,7 @@ export function Startups() {
   let [startups, setstartups] = useState([])
   let [url, seturl] = useState('')
   let getdata = () => {
-    axios.get('http://localhost:5000/all-startup', {
+    axios.get('http://147.79.71.69:5000/all-startup', {
       headers: {
         authorization: JSON.parse(localStorage.getItem('token'))
       }

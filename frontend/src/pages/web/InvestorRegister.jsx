@@ -57,7 +57,7 @@ export function InvestorRegister() {
 
 
     let insertdata = (value) => {
-        axios.post('http://localhost:5000/investor-register', toFormData(value))
+        axios.post('http://147.79.71.69:5000/investor-register', toFormData(value))
             .then((res) => {
                 naviget('/startup-success')
             })

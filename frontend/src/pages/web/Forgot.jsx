@@ -12,7 +12,7 @@ export function Forgot() {
     let notifyerror = (error) => toast.error(error)
 
     let emailverify = (value) => {
-        axios.post('http://localhost:5000/forgot-password', value)
+        axios.post('http://147.79.71.69:5000/forgot-password', value)
             .then((res) => {
                 if (res.data.Status === 0) {
                     notifyerror(res.data.Message)
