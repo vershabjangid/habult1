@@ -12,26 +12,26 @@ import * as Yup from 'yup';
 export function RegisterPage() {
 
 
-    let [joinstatus, setjoinstatus] = useState('Member');
     let naviget = useNavigate();
 
     const validationschema = Yup.object().shape({
-        Email: Yup.string().required("Email Required"),
-        Phone: Yup.string().required("Phone Required"),
-        ReferredBy: Yup.string().required("Referred By Required")
+        FirstName: Yup.string().required("First Name Required"),
+        LastName: Yup.string().required("Last Name Required"),
+        Email: Yup.string().email("Invalid Email").required("Email Required"),
+        Phone: Yup.number().min(1000000000, 'Too Short!').max(9999999999, 'Too Long!').required("Phone Required"),
     })
 
 
     let insertdata = (value) => {
+        console.log(value)
         let data = {
-            Join_as: joinstatus,
+            FirstName: value.FirstName,
+            LastName: value.LastName,
             Email: value.Email,
-            Phone: value.Phone,
-            ReferredBy: value.ReferredBy
+            Phone: value.Phone
         }
 
-        localStorage.setItem('register-data', JSON.stringify(data))
-        naviget('/register-otp', { state: value })
+        naviget('/register2', { state: value })
     }
 
     return (
@@ -42,10 +42,10 @@ export function RegisterPage() {
                         <Formik
 
                             initialValues={{
-                                Join_as: "",
+                                FirstName: "",
+                                LastName: "",
                                 Email: "",
-                                Phone: "",
-                                ReferredBy: ""
+                                Phone: ""
                             }}
 
                             validationSchema={validationschema}
@@ -61,11 +61,21 @@ export function RegisterPage() {
                                     <h1 className='text-center text-[25px] font-[500]'>SIGNUP</h1>
                                 </div>
 
-                                <div className='w-[100%] h-[] my-[3px] text-black mb-8'>
-                                    <p className='mb-1 text-[grey]'>Join as</p>
-                                    <div className='w-[100%] h-[62px] bg-[#f9f4ff] rounded flex'>
-                                        <div onClick={() => setjoinstatus("Member")} className={joinstatus == "Member" ? ' w-[50%] border-b-[5px] border-[var(--button-color--)] text-[var(--button-color--)] flex items-center justify-center font-[500]' : ' w-[50%] text-[grey] flex items-center justify-center font-[500]'}>Member</div>
-                                        <div onClick={() => setjoinstatus("startup")} className={joinstatus == "startup" ? ' w-[50%] border-b-[5px] border-[var(--button-color--)] text-[var(--button-color--)] flex items-center justify-center font-[500]' : ' w-[50%] text-[grey] flex items-center justify-center font-[500]'}>Startups</div>
+                                <div className='flex'>
+                                    <div>
+                                        <label className=''>First Name</label>
+                                        <Field type='text' className=' w-[97%] my-1 border-[1px] p-[10px]  rounded-[8px]' placeholder='First Name' name='FirstName' />
+                                        <div className='requires_message'>
+                                            <ErrorMessage name='FirstName' className='' />
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <label className=''>Last Name</label>
+                                        <Field type='text' className='w-[97%] my-1 border-[1px] p-[10px]  rounded-[8px]' placeholder='Last Name' name='LastName' />
+                                        <div className='requires_message'>
+                                            <ErrorMessage name='LastName' className='' />
+                                        </div>
                                     </div>
                                 </div>
 
@@ -83,14 +93,6 @@ export function RegisterPage() {
                                         <ErrorMessage name='Phone' className='' />
                                     </div>
 
-                                    <label className=''>Referred By</label>
-                                    <Field as="select" className=' w-[100%] my-1 border-[1px] p-[10px] rounded-[8px]' name='ReferredBy' >
-                                        <option value="1">dlksflsk</option>
-                                        <option value="1werwjrl">dlksflsk</option>
-                                    </Field>
-                                    <div className='requires_message'>
-                                        <ErrorMessage name='ReferredBy' className='' />
-                                    </div>
                                 </div>
 
 

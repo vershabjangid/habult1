@@ -119,10 +119,11 @@ exports.webinvestorregister = async (req, res) => {
         Address: req.body.Address,
         Password: req.body.Password,
         Logo: req.files[0].filename,
-        Pan: req.files[1].filename,
+        Pan: req.files[1].filename, 
         AadharCard: req.files[2].filename,
         BankDocuments: req.files[3].filename,
         Activestatus: req.body.Activestatus,
+        All_Instructions: req.body.All_Instructions,
         TermsAndConditions: req.body.TermsAndConditions,
         ReferredBy: req.body.ReferredBy,
     }

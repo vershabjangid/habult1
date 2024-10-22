@@ -20,6 +20,9 @@ export function Register_otp() {
 
     let locatedata = useLocation()
     let data = locatedata.state;
+    console.log(data)
+
+
 
     let count = 0;
     let [otp, setotp] = useState();
@@ -43,29 +46,16 @@ export function Register_otp() {
     }
 
 
-    useEffect(() => {
-        if (count == 1) {
-            return;
-        }
-        else {
-            otpdata(data.Email)
-        }
-    }, [])
-
-
     let naviget = useNavigate()
-    localStorage.setItem("authenticate", JSON.stringify(null))
     let register_form = (value) => {
-        let allvalue = value;
-        let concat = `${allvalue.value1}` + `${allvalue.value2}` + `${allvalue.value3}` + `${allvalue.value4}`
-        if (concat == otp) {
+        console.log(value)
+        if (value.value1 == otp) {
             localStorage.setItem("authenticate", JSON.stringify(token))
-            let navigetdata = JSON.parse(localStorage.getItem("register-data"))
-            if (navigetdata.Join_as == "Member") {
-                naviget('/member-register')
+            if (data.Join_as == "Member") {
+                naviget('/member-register', { state: data })
             }
-            else{
-                naviget('/register-form')
+            else {
+                naviget('/register-form', { state: data })
             }
         }
         else {
@@ -77,13 +67,10 @@ export function Register_otp() {
 
     return (
         <>
-            <section className='login_main w-[100%] h-[100vh] p-[15px]  bg-[#FCFAFF] flex justify-center items-center'>
+            <section className='login_main w-[100%] h-[100vh] p-[15px]  bg-[#FCFAFF] flex justify-center items-center' onLoad={() => otpdata(data.Email)}>
                 <Formik
                     initialValues={{
                         value1: "",
-                        value2: "",
-                        value3: "",
-                        value4: ""
                     }}
 
                     onSubmit={(value) => {
@@ -100,10 +87,7 @@ export function Register_otp() {
                             </div>
 
                             <div className='otp_input my-[8px] text-black flex justify-evenly'>
-                                <Field type='number' focus={true} name="value1" className=' w-[65px] h-[65px] border-[1px] p-[10px]  rounded-[8px] text-center' maxLength={1} min={0} max={9} />
-                                <Field type='number' name="value2" className=' w-[65px] h-[65px] border-[1px] p-[10px]  rounded-[8px] text-center' maxLength={1} min={0} max={9} />
-                                <Field type='number' name="value3" className=' w-[65px] h-[65px] border-[1px] p-[10px]  rounded-[8px] text-center' maxLength={1} min={0} max={9} />
-                                <Field type='number' name="value4" className=' w-[65px] h-[65px] border-[1px] p-[10px]  rounded-[8px] text-center' maxLength={1} min={0} max={9} />
+                                <Field type='number' autoFocus name="value1" className=' w-[100%] h-[65px] border-[1px] p-[10px]  rounded-[8px] text-center' />
                             </div>
 
 

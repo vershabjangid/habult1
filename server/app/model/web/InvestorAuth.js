@@ -54,8 +54,12 @@ let investorregister = mongoose.Schema({
         type: String,
         required: true
     },
+    All_Instructions: {
+        type: Boolean,
+        required: true
+    },
     TermsAndConditions: {
-        type: String,
+        type: Boolean,
         required: true
     },
     ReferredBy: {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Logo } from '../../common/Logo'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import axios, { all, toFormData } from 'axios'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
@@ -14,9 +14,8 @@ export function RegisterForm() {
     let notificationsuccess = (success) => toast.success(success)
     let notificationerror = (error) => toast.error(error)
 
-
-    let getlocaldata = JSON.parse(localStorage.getItem('register-data'))
-
+    let location = useLocation();
+    let data = location.state
 
     let naviget = useNavigate()
     let [terms, setterms] = useState()
@@ -24,9 +23,9 @@ export function RegisterForm() {
 
     const formik = useFormik({
         initialValues: {
-            Join_as: getlocaldata.Join_as,
-            Email: getlocaldata.Email,
-            Phone: getlocaldata.Phone,
+            Join_as: data.Join_as,
+            Email: data.Email,
+            Phone: data.Phone,
             Company_Name: "",
             Startup_Sector: "",
             Short_Bio: "",
@@ -44,7 +43,7 @@ export function RegisterForm() {
             Description: "",
             Activestatus: "",
             TermsAndConditions: "",
-            ReferredBy: getlocaldata.ReferredBy,
+            ReferredBy: data.ReferredBy,
         },
         validationSchema: yup.object({
             Company_Name: yup.string().required("Company Name Required"),
@@ -125,9 +124,56 @@ export function RegisterForm() {
                     }
 
                     <div className='login_input_section h-[100%] '>
+
+
                         <div className='my-[10px]'>
-                            <h1 className='text-center text-[32px] font-[500]'>Startup Information</h1>
+                            <h1 className='text-center text-[32px] font-[500]'>Please enter your company details</h1>
                         </div>
+
+                        <div>
+                            <h2 className='text-[20px] font-[600]'>Your details</h2>
+                        </div>
+
+
+                        <div className='registerforms flex justify-between'>
+
+                            <div className='registerformsleft my-[8px] text-black w-[48%]'>
+                                <div className='mb-2'>
+                                    <p className='font-[500] mb-2'>First Name <sup className='text-[red]'>*</sup> </p>
+                                    <input type='text' name="Company_Name" className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' placeholder='First Name' disabled value={data.FirstName} />
+                                </div>
+
+                                <div className='mb-2'>
+                                    <p className='font-[500] mb-2'>Mobile.No <sup className='text-[red]'>*</sup> </p>
+                                    <input type='text' name="Company_Name" className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' placeholder='First Name' disabled value={data.Phone} />
+                                </div>
+
+                            </div>
+
+                            <div className='registerformsright my-[8px] text-black w-[48%]'>
+
+                                <div className='mb-2'>
+                                    <p className='font-[500] mb-2'>Last Name <sup className='text-[red]'>*</sup> </p>
+                                    <input type='text' name="Company_Name" className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' placeholder='First Name' disabled value={data.LastName} />
+                                </div>
+
+
+                                <div className='my-[8px] text-black'>
+                                    <p className='font-[500] mb-0'>Email <sup className='text-[red]'>*</sup></p>
+                                    <input type='text' className=' w-[100%] border-[1px] p-[10px] mt-[10px]  rounded-[8px]' disabled value={data.Email} />
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                        <div>
+                            <h2 className='text-[20px] font-[600] mt-4'>Your startup details</h2>
+                        </div>
+
+
+
                         <div className='registerforms flex justify-between'>
 
                             <div className='registerformsleft my-[8px] text-black w-[48%]'>
@@ -270,7 +316,7 @@ export function RegisterForm() {
                                     <div>{formik.errors.Equity}</div>
                                 </div>
 
-                               
+
                                 <div className='my-[8px] text-black'>
                                     <p className='font-[500] mb-0'>Description <sup className='text-[red]'>*</sup></p>
                                     <textarea className=' w-[100%] border-[1px] p-[10px] mt-[10px]  rounded-[8px]' placeholder='Enter Brief Description' onChange={(e) => formik.setFieldValue("Description", e.target.value)} name='Description' />
