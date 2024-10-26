@@ -9,9 +9,10 @@ import { useNavigate } from 'react-router-dom'
 export function Startups() {
 
   let [startups, setstartups] = useState([])
+  console.log(startups)
   let [url, seturl] = useState('')
   let getdata = () => {
-    axios.get('http://147.79.71.69:5000/all-startup', {
+    axios.get('http://localhost:5000/all-startup', {
       headers: {
         authorization: JSON.parse(localStorage.getItem('token'))
       }
@@ -31,7 +32,7 @@ export function Startups() {
 
   let briefinfo = (value) => {
     let newurl = url
-    naviget('/startups-info', { state: [value,newurl] })
+    naviget('/startups-info', { state: [value, newurl] })
   }
   return (
     <>
@@ -101,45 +102,51 @@ export function Startups() {
                 </div>
                 <div className='trending_startups_cards section flex justify-between flex-wrap'>
                   {
-                    startups.map((items, index) => {
-                      return (
-                        <>
-                          <section className='w-[410px]  rounded-[10px] bg-white my-5' onClick={() => briefinfo(items)}>
-                            <div className='w-[100%] h-[230px] rounded-[10px] relative'>
-                              <div className='w-[100%] h-[100%] absolute '>
-                                <img src={startupsbanner} alt="" className='absolute w-[100%] h-[100%] rounded-[10px] blur-[2px]' />
-                              </div>
-                              <div className='card_logo_section rounded w-[120px] h-[120px] bg-white absolute bottom-[-50px] left-[50%] translate-x-[-50%] flex items-center justify-center'>
-                                <img src={url + `${items.Logo}`} alt="image" className='w-[100%]' />
-                              </div>
-                            </div>
 
-                            <div className='flex justify-end px-5 pt-3 text-[20px]'>
-                              {/* <FaShareNodes /> */}
-                            </div>
-
-                            <div className='mt-[45px] text-center'>
-                              <h3 className='text-center text-[25px] font-[600] my-1'>{items.Company_Name}</h3>
-                              <p >{items.Short_Bio}</p>
-                            </div>
-
-                            <div className='my-2 flex justify-evenly w-[100%] py-3'>
-                              <div className='w-[45%] py-4 rounded-[15px] border-[1px] text-center font-[700] text-[18px]'>
-                                <p>Funding Ask</p>
-                                <p>₹ {items.Funding_Ask}</p>
+                    startups == undefined ?
+                      naviget('*')
+                      :
+                      startups.map((items, index) => {
+                        return (
+                          <>
+                            <section className='w-[410px]  rounded-[10px] bg-white my-5' onClick={() => briefinfo(items)}>
+                              <div className='w-[100%] h-[230px] rounded-[10px] relative'>
+                                <div className='w-[100%] h-[100%] absolute '>
+                                  <img src={startupsbanner} alt="" className='absolute w-[100%] h-[100%] rounded-[10px] blur-[2px]' />
+                                </div>
+                                <div className='card_logo_section rounded w-[120px] h-[120px] bg-white absolute bottom-[-50px] left-[50%] translate-x-[-50%] flex items-center justify-center'>
+                                  <img src={url + `${items.Logo}`} alt="image" className='w-[100%]' />
+                                </div>
                               </div>
 
-                              <div className='w-[45%] py-4 rounded-[15px] border-[1px] text-center font-[700] text-[18px] text-green-400'>
-                                <p>Equity</p>
-                                <p>{items.Equity}%</p>
+                              <div className='flex justify-end px-5 pt-3 text-[20px]'>
+                                {/* <FaShareNodes /> */}
                               </div>
-                            </div>
 
-                          </section>
+                              <div className='mt-[45px] text-center'>
+                                <h3 className='text-center text-[25px] font-[600] my-1'>{items.Company_Name}</h3>
+                                <p >{items.Short_Bio}</p>
+                              </div>
 
-                        </>
-                      )
-                    })
+                              <div className='my-2 flex justify-evenly w-[100%] py-3'>
+                                <div className='w-[45%] py-4 rounded-[15px] border-[1px] text-center font-[700] text-[18px]'>
+                                  <p>Funding Ask</p>
+                                  <p>₹ {items.Funding_Ask}</p>
+                                </div>
+
+                                <div className='w-[45%] py-4 rounded-[15px] border-[1px] text-center font-[700] text-[18px] text-green-400'>
+                                  <p>Equity</p>
+                                  <p>{items.Equity}%</p>
+                                </div>
+                              </div>
+
+                            </section>
+
+                          </>
+                        )
+                      })
+
+
                   }
                   <section className='w-[410px] opacity-0  rounded-[10px] bg-white border-[1px] border-[blue] my-5'>
                   </section>

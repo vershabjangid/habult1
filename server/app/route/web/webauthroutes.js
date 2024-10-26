@@ -1,5 +1,5 @@
 let express = require('express');
-const { webregister, webregisterotp, webinvestorregister, weblogin, forgotpassword, forgototp, updateregister } = require('../../controller/web/Adminauthcontroller');
+const { webregister, webregisterotp, webinvestorregister, weblogin, forgotpassword, forgototp, updateregister, webinvestorlogin, forgotinvestorpassword, updateinvestorregister } = require('../../controller/web/Adminauthcontroller');
 let webauthroutes = express.Router();
 let jwt = require('jsonwebtoken');
 const multer = require('multer');
@@ -47,13 +47,16 @@ webauthroutes.post('/register', upload, verifytoken, webregister)
 webauthroutes.post('/register-otp', webregisterotp)
 webauthroutes.post('/investor-register', upload, webinvestorregister)
 webauthroutes.put('/update-register', upload, verifytoken, updateregister)
+webauthroutes.put('/update-investor-register', upload, verifytoken, updateinvestorregister)
 
 
 webauthroutes.post('/login', weblogin)
 webauthroutes.post('/forgot-password', forgotpassword)
+webauthroutes.post('/forgot-investor-password', forgotinvestorpassword)
 webauthroutes.post('/forgot-password-otp', forgototp)
+webauthroutes.post('/get-investor', webinvestorlogin)
 
 
-webauthroutes.get('/all-startup', getstartups)
+webauthroutes.get('/all-startup', verifytoken, getstartups)
 
 module.exports = webauthroutes

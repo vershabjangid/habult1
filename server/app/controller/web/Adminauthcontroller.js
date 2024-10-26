@@ -7,8 +7,6 @@ let webkey = process.env.KEY
 let emailpass = process.env.EMAILPASS
 
 
-
-
 exports.webregister = async (req, res) => {
     if (req.body.TermsAndConditions == 'on') {
         var terms = {
@@ -98,35 +96,26 @@ exports.updateregister = async (req, res) => {
 
 exports.webinvestorregister = async (req, res) => {
 
-    console.log(req.body)
-    if (req.body.TermsAndConditions == 'on') {
-        var terms = {
-            TermsAndConditions: true
-        }
-    }
-    else {
-        var terms = {
-            TermsAndConditions: false
-        }
-    }
-
     let data = {
-        Join_as: req.body.Join_as,
-        Email: req.body.Email,
-        Phone: req.body.Phone,
-        Company_Name: req.body.Company_Name,
-        Startup_Sector: req.body.Startup_Sector,
+        AadharCard: req.files[1].filename,
+        AccountNumber: req.body.AccountNumber,
         Address: req.body.Address,
-        Password: req.body.Password,
-        Logo: req.files[0].filename,
-        Pan: req.files[1].filename, 
-        AadharCard: req.files[2].filename,
-        BankDocuments: req.files[3].filename,
-        Activestatus: req.body.Activestatus,
         All_Instructions: req.body.All_Instructions,
+        BankName: req.body.BankName,
+        BankProof: req.files[2].filename,
+        Company_Name: req.body.Company_Name,
+        Email: req.body.Email,
+        IFSC_Code: req.body.IFSC_Code,
+        Join_as: req.body.Join_as,
+        Pan: req.files[0].filename,
+        Password: req.body.Password,
+        Phone: req.body.Phone,
+        Activestatus: "Pending",
         TermsAndConditions: req.body.TermsAndConditions,
         ReferredBy: req.body.ReferredBy,
     }
+
+    console.log(req.body)
 
     let insertdata = await investorregistermodel(data)
     insertdata.save()
@@ -134,6 +123,35 @@ exports.webinvestorregister = async (req, res) => {
             res.send({
                 Status: 1,
                 Message: "Data Inserted Successfully"
+            })
+        })
+        .catch(async (error) => {
+            if (error.code == 11000) {
+                res.send({
+                    Status: 0,
+                    Message: "Data Already Exists"
+                })
+
+            }
+            else {
+                res.status(401).send({
+                    Status: 0,
+                    Message: "Data Missing"
+                })
+            }
+        })
+
+}
+
+
+
+
+exports.updateinvestorregister = async (req, res) => {
+    let updatedata = await investorregistermodel.updateOne({ Email: req.body.Email }, { Password: req.body.Password })
+        .then(() => {
+            res.send({
+                Status: 1,
+                Message: "Data Updated Successfully",
             })
         })
         .catch((error) => {
@@ -150,7 +168,28 @@ exports.webinvestorregister = async (req, res) => {
                 })
             }
         })
+}
 
+
+
+
+
+
+exports.webinvestorlogin = async (req, res) => {
+    console.log(req.body)
+    let data = {
+        Email: req.body.Email,
+        Password: req.body.Password
+    }
+    let getdata = await investorregistermodel.find(data)
+
+    let newtoken;
+    jwt.sign({ newtoken }, webkey, (err, value) => {
+        res.send({
+            getdata,
+            Token: value
+        })
+    })
 }
 
 
@@ -166,6 +205,7 @@ const transporter = nodemailer.createTransport({
 
 
 exports.webregisterotp = async (req, res) => {
+    console.log(req.body)
     let data = {
         Email: req.body.Email,
         OTP: Math.floor(1000 + Math.random() * 8000)
@@ -220,6 +260,24 @@ exports.forgotpassword = async (req, res) => {
     }
 
     let getdata = await websiteregistermodel.find(data)
+    if (getdata.length != 0) {
+        res.send(getdata[0].Email)
+    }
+    else {
+        res.send({
+            Status: 0,
+            Message: "No User Found"
+        })
+    }
+}
+
+
+exports.forgotinvestorpassword = async (req, res) => {
+    let data = {
+        Email: req.body.Email
+    }
+
+    let getdata = await investorregistermodel.find(data)
     if (getdata.length != 0) {
         res.send(getdata[0].Email)
     }

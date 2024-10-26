@@ -22,14 +22,15 @@ export function OTP() {
 
     let location = useLocation();
     let data = location.state
-console.log(data)
+    console.log(data)
+
     let [otpdata, setotpdata] = useState('')
     let [Email, setEmail] = useState('')
     let [token, settoken] = useState('')
 
     let generateotp = () => {
         let otpdata = {
-            Email: data
+            Email: data.Email
         }
         axios.post('http://147.79.71.69:5000/forgot-password-otp', otpdata)
             .then((res) => {

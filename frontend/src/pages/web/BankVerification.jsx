@@ -1,49 +1,64 @@
-import React, { useState } from 'react'
-import { Logo } from '../../common/Logo'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik'
-import * as Yup from "yup"
+import React from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import * as Yup from 'yup'
+import { Logo } from '../../common/Logo'
+import axios, { toFormData } from 'axios'
+import { toast, ToastContainer } from 'react-toastify'
+export function BankVerification() {
 
 
+    let notifyerror = (error) => toast.error(error)
 
-export function InvestorRegister2() {
-    let location = useLocation();
+    let location = useLocation()
     let data = location.state
+    console.log(data)
 
-    const formik = useFormik({
+    let formik = useFormik({
         initialValues: {
             Join_as: data.Join_as,
             FirstName: data.FirstName,
             LastName: data.LastName,
             Email: data.Email,
             Phone: data.Phone,
-            Pan: "",
-            Address: "",
-            AadharCard: "",
+            Pan: data.Pan,
+            Address: data.Address,
+            AadharCard: data.AadharCard,
             Password: data.Password,
             All_Instructions: data.All_Instructions,
             TermsAndConditions: data.TermsAndConditions,
-            Company_Name: "",
+            Company_Name: data.Company_Name,
+            BankName: "",
+            IFSC_Code: "",
+            AccountNumber: "",
+            BankProof: ""
         },
 
         validationSchema: Yup.object().shape({
-            Pan: Yup.mixed().required("Pan Card Required"),
-            Address: Yup.string().required("Address Required"),
-            AadharCard: Yup.mixed().required("Aadhar card Required"),
+            BankName: Yup.string().required("Bank Name required"),
+            IFSC_Code: Yup.string().required("IFSC Code  required"),
+            AccountNumber: Yup.number().required("Account Number required"),
+            BankProof: Yup.mixed().required("Bank Proof required")
         }),
 
         onSubmit: () => {
             insertdata(formik.values)
         }
+
     })
 
     let naviget = useNavigate()
     let insertdata = (value) => {
-        value.Company_Name = value.FirstName + " " + value.LastName
-        naviget('/bank-verification', { state: value })
+        axios.post('http://localhost:5000/investor-register', toFormData(value))
+            .then((res) => {
+                if (res.data.Status == 1) {
+                    naviget('/startup-success')
+                }
+                else {
+                    notifyerror(res.data.Message)
+                }
+            })
     }
-
-
     return (
         <>
             <section className='login_main w-[100%] p-[15px]  bg-[#FCFAFF] flex flex-col justify-center items-center'>
@@ -58,10 +73,12 @@ export function InvestorRegister2() {
                     </div>
                 </div>
 
-                <div className=' w-[872px] py-2 my-[10px] px-[35px] rounded-[12px] flex items-center'>
+                <div className=' w-[872px] py-2 my-[10px] px-[35px] rounded-[12px] flex items-center justify-between'>
                     <div className='flex justify-center items-center flex-col'>
                         <div className='bg-[#8637F8] text-white w-[30px] h-[30px] rounded-[50%] flex justify-center items-center'>1</div>
                         <p className='font-[500]'>Assessment</p>
+
+
                     </div>
                     <div className='w-[20%] border-b-[1px]'></div>
                     <div className='flex justify-center items-center flex-col mx-[10px]'>
@@ -70,14 +87,14 @@ export function InvestorRegister2() {
                     </div>
                     <div className='w-[20%] border-b-[1px]'></div>
                     <div className='flex justify-center items-center flex-col'>
-                        <div className='bg-[#8637F81A] text-[#8637F8] w-[30px] h-[30px] rounded-[50%] flex justify-center items-center'>3</div>
+                        <div className='bg-[#8637F8] text-white w-[30px] h-[30px] rounded-[50%] flex justify-center items-center'>3</div>
                         <p className='font-[500] text-center'>Bank Verification</p>
                     </div>
-                    <div className='w-[20%] border-b-[1px]'></div>
+                    {/* <div className='w-[20%] border-b-[1px]'></div>
                     <div className='flex justify-center items-center flex-col'>
                         <div className='bg-[#8637F81A] text-[#8637F8] w-[30px] h-[30px] rounded-[50%] flex justify-center items-center'>4</div>
                         <p className='font-[500]'>Payment</p>
-                    </div>
+                    </div> */}
                 </div>
 
 
@@ -89,7 +106,7 @@ export function InvestorRegister2() {
 
 
                         <div className='pb-[25px] px-[35px] mb-[12px] border-b-[1px] flex justify-center flex-col'>
-                            <h1 className=' text-[32px] font-[500]'>Fill all details to complete registration</h1>
+                            <h1 className=' text-[32px] font-[500]'>Fill all bank details to complete registration</h1>
                         </div>
 
 
@@ -108,51 +125,41 @@ export function InvestorRegister2() {
 
                         <div className='registerforms flex justify-between px-[35px]'>
                             <div className='registerformsleft my-[8px] text-black w-[48%]'>
-                                <div className='mb-2'>
-                                    <p className='font-[500] mb-2'>First Name <sup className='text-[red]'></sup> </p>
-                                    <input type='text' value={data.FirstName} disabled className=' w-[100%]  border-[1px] p-[10px] bg-[#fdc7fd]  rounded-[8px]' placeholder='Company Name' />
-                                </div>
-
-                                <div className='mb-2'>
-                                    <p className='font-[500] mb-2'>Email <sup className='text-[red]'></sup> </p>
-                                    <input type='email' value={data.Email} disabled className=' w-[100%]  border-[1px] p-[10px] bg-[#fdc7fd]  rounded-[8px]' placeholder='Company Name' />
-                                </div>
-
-
 
                                 <div className='my-[8px] text-black'>
-                                    <p className='font-[500] mb-0'>Aadhar Card <sup className='text-[red]'>*</sup></p>
-                                    <input type='file' className=' w-[100%] border-[1px] p-[10px] mt-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("AadharCard", e.target.files[0])} name='AadharCard' />
+                                    <p className='font-[500] mb-0'>Bank Name <sup className='text-[red]'>*</sup></p>
+                                    <input type='text' placeholder='Enter bank name' className=' w-[100%] border-[1px] p-[10px] mt-[10px]  rounded-[8px]' name='BankName' onChange={(e) => formik.setFieldValue("BankName", e.target.value)} />
                                 </div>
                                 <div className='requires_message'>
-                                    <div>{formik.errors.AadharCard}</div>
+                                    <div>{formik.errors.BankName}</div>
                                 </div>
                                 <div className='my-[8px] text-black'>
-                                    <p className='font-[500] mb-0'>Address <sup className='text-[red]'>*</sup></p>
-                                    <input type='text' className=' w-[100%] border-[1px] p-[10px] mt-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("Address", e.target.value)} name='Address' />
+                                    <p className='font-[500] mb-0'>IFSC Code  <sup className='text-[red]'>*</sup></p>
+                                    <input type='text' className=' uppercase w-[100%] border-[1px] p-[10px] mt-[10px]  rounded-[8px]' placeholder='Enter IFSC Code' onChange={(e) => formik.setFieldValue("IFSC_Code", e.target.value)} />
                                 </div>
                                 <div className='requires_message'>
-                                    <div>{formik.errors.Address}</div>
+                                    <div>{formik.errors.IFSC_Code}</div>
                                 </div>
                             </div>
 
                             <div className='registerformsright my-[8px] text-black w-[48%]'>
-                                <div className='mb-2'>
-                                    <p className='font-[500] mb-2'>Last Name <sup className='text-[red]'></sup> </p>
-                                    <input type='text' value={data.LastName} disabled className=' w-[100%]  border-[1px] p-[10px] bg-[#fdc7fd]  rounded-[8px]' placeholder='Company Name' />
-                                </div>
 
-                                <div className='mb-2'>
-                                    <p className='font-[500] mb-2'>Phone <sup className='text-[red]'></sup> </p>
-                                    <input type='text' value={data.Phone} disabled className=' w-[100%]  border-[1px] p-[10px] bg-[#fdc7fd]  rounded-[8px]' placeholder='Company Name' />
-                                </div>
-
-                                <div className='mb-2'>
-                                    <p className='font-[500] mb-2'>Pan <sup className='text-[red]'>*</sup> </p>
-                                    <input type='file' name="Pan" className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("Pan", e.target.files[0])} placeholder='Enter Pan' />
+                                <div className='my-[8px] text-black'>
+                                    <p className='font-[500] mb-0'>Account Number <sup className='text-[red]'>*</sup></p>
+                                    <input type='number' placeholder='Enter account number' className=' w-[100%] border-[1px] p-[10px] mt-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("AccountNumber", e.target.value)} />
                                 </div>
                                 <div className='requires_message'>
-                                    <div>{formik.errors.Pan}</div>
+                                    <div>{formik.errors.AccountNumber}</div>
+                                </div>
+
+
+
+                                <div className='mb-2'>
+                                    <p className='font-[500] mb-2'>Bank Proof ( Cheque / Passbook ) <sup className='text-[red]'>*</sup> </p>
+                                    <input type='file' className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("BankProof", e.target.files[0])} />
+                                </div>
+                                <div className='requires_message'>
+                                    <div>{formik.errors.BankProof}</div>
                                 </div>
 
 
@@ -172,8 +179,7 @@ export function InvestorRegister2() {
 
                 </form>
             </section>
-
+            <ToastContainer/>
         </>
     )
 }
-

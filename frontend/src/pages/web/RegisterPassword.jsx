@@ -9,7 +9,6 @@ export function RegisterPassword() {
 
     let location = useLocation();
     let logininfo = location.state
-    console.log(logininfo)
 
     const validationschema = Yup.object().shape({
         Join_as: Yup.string().required("Join as Required"),

@@ -83,7 +83,7 @@ console.log(data)
                     <div className='w-[20%] border-b-[1px]'></div>
                     <div className='flex justify-center items-center flex-col'>
                         <div className='bg-[#8637F81A] text-[#8637F8] w-[30px] h-[30px] rounded-[50%] flex justify-center items-center'>4</div>
-                        <p className='font-[500]'>Agreement</p>
+                        <p className='font-[500]'>Payment</p>
                     </div>
                 </div>
 

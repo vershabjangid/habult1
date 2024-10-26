@@ -1,31 +1,61 @@
 import React from 'react'
 import { Logo } from '../../common/Logo'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Field, Form, Formik } from 'formik';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 
 export function Forgot() {
+    let location = useLocation()
+    let data = location.state
 
     let naviget = useNavigate();
     let notifysuccess = (success) => toast.success(success)
     let notifyerror = (error) => toast.error(error)
 
-    let emailverify = (value) => {
-        axios.post('http://147.79.71.69:5000/forgot-password', value)
-            .then((res) => {
-                if (res.data.Status === 0) {
-                    notifyerror(res.data.Message)
-                }
 
-                else {
-                    notifysuccess("Email Verified Successfully")
-                    naviget('/otp-verification', { state: res.data })
-                }
-            })
+    let emailverify = (value) => {
+
+        if (data == "Member") {
+            axios.post('http://localhost:5000/forgot-investor-password', value)
+                .then((res) => {
+                    if (res.data.Status === 0) {
+                        notifyerror(res.data.Message)
+                    }
+
+                    else {
+                        notifysuccess("Email Verified Successfully")
+                        naviget('/otp-verification', {
+                            state: {
+                                Email: res.data,
+                                Join_as: data
+                            }
+                        })
+                    }
+                })
+        }
+        else {
+            axios.post('http://localhost:5000/forgot-password', value)
+                .then((res) => {
+                    if (res.data.Status === 0) {
+                        notifyerror(res.data.Message)
+                    }
+
+                    else {
+                        notifysuccess("Email Verified Successfully")
+                        naviget('/otp-verification', {
+                            state: {
+                                Email: res.data,
+                                Join_as: data
+                            }
+                        })
+                    }
+                })
+        }
     }
 
 
+    console.log(data)
     return (
         <>
             <section className='login_main w-[100%] h-[100vh] p-[15px]  bg-[#FCFAFF] flex justify-center items-center'>

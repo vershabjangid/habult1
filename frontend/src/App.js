@@ -18,11 +18,12 @@ import { Loginnew_Private } from "./pages/web/Loginnew_Private";
 import { New_Password } from "./pages/web/New_Password";
 import { StartupRegister } from "./pages/web/StartupRegister";
 import { InvestorRegister } from "./pages/web/InvestorRegister";
-import { Receipts } from "./pages/web/Receipts";
 import { LoginPrivate } from "./pages/web/LoginPrivate";
 import { StartupInfo } from "./pages/web/StartupInfo";
 import { RegisterPassword } from "./pages/web/RegisterPassword";
 import { InvestorRegister2 } from "./pages/web/InvestorRegister2";
+import { BankVerification } from "./pages/web/BankVerification";
+import { Payment } from "./pages/web/Payment";
 
 function App() {
   return (
@@ -64,7 +65,8 @@ function App() {
             <Route path="/member-register" element={<InvestorRegister />} />
             <Route path="/investor-2" element={<InvestorRegister2 />} />
             <Route path="/startup-success" element={<StartupRegister />} />
-            <Route path="/membership-plans" element={<Receipts />} />
+            <Route path="/membership-plans" element={<Payment />} />
+            <Route path="/bank-verification" element={<BankVerification />} />
           </Route>
 
           <Route path="*" element={<Error />} />
