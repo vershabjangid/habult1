@@ -22,7 +22,6 @@ export function OTP() {
 
     let location = useLocation();
     let data = location.state
-    console.log(data)
 
     let [otpdata, setotpdata] = useState('')
     let [Email, setEmail] = useState('')

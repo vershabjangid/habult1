@@ -9,8 +9,9 @@ import { useNavigate } from 'react-router-dom'
 export function Startups() {
 
   let [startups, setstartups] = useState([])
-  console.log(startups)
+  
   let [url, seturl] = useState('')
+  
   let getdata = () => {
     axios.get('http://localhost:5000/all-startup', {
       headers: {
@@ -125,18 +126,18 @@ export function Startups() {
 
                               <div className='mt-[45px] text-center'>
                                 <h3 className='text-center text-[25px] font-[600] my-1'>{items.Company_Name}</h3>
-                                <p >{items.Short_Bio}</p>
+                                <p >{items.Company_Description}</p>
                               </div>
 
                               <div className='my-2 flex justify-evenly w-[100%] py-3'>
                                 <div className='w-[45%] py-4 rounded-[15px] border-[1px] text-center font-[700] text-[18px]'>
                                   <p>Funding Ask</p>
-                                  <p>₹ {items.Funding_Ask}</p>
+                                  <p>{items.Funding_Ask}</p>
                                 </div>
 
                                 <div className='w-[45%] py-4 rounded-[15px] border-[1px] text-center font-[700] text-[18px] text-green-400'>
                                   <p>Equity</p>
-                                  <p>{items.Equity}%</p>
+                                  <p>{items.Equity_Dilution}%</p>
                                 </div>
                               </div>
 

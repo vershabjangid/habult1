@@ -32,7 +32,6 @@ export function Landing() {
         axios.post('http://147.79.71.69:5000/contact', value)
             .then((res) => {
                 if (res.data.Status === "1") {
-                    console.log(res)
                     notifysuccess(res.data.Message)
                 }
 

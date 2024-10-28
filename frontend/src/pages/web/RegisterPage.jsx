@@ -23,7 +23,7 @@ export function RegisterPage() {
 
 
     let insertdata = (value) => {
-        console.log(value)
+  
         let data = {
             FirstName: value.FirstName,
             LastName: value.LastName,

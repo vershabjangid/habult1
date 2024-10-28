@@ -18,7 +18,6 @@ export function RegisterPassword() {
     let naviget = useNavigate();
 
     let insertdata = (value) => {
-        console.log(value)
         let data = {
             FirstName: logininfo.FirstName,
             LastName: logininfo.LastName,

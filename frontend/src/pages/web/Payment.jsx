@@ -7,7 +7,6 @@ export function Payment() {
 
     let location = useLocation()
     let data = location.state
-    console.log(data)
 
     const getsessionId = async () => {
         try {

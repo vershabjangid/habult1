@@ -17,7 +17,7 @@ export function Forgot() {
     let emailverify = (value) => {
 
         if (data == "Member") {
-            axios.post('http://localhost:5000/forgot-investor-password', value)
+            axios.post('http://147.79.71.69:5000/forgot-investor-password', value)
                 .then((res) => {
                     if (res.data.Status === 0) {
                         notifyerror(res.data.Message)
@@ -35,7 +35,7 @@ export function Forgot() {
                 })
         }
         else {
-            axios.post('http://localhost:5000/forgot-password', value)
+            axios.post('http://147.79.71.69:5000/forgot-password', value)
                 .then((res) => {
                     if (res.data.Status === 0) {
                         notifyerror(res.data.Message)
@@ -55,7 +55,6 @@ export function Forgot() {
     }
 
 
-    console.log(data)
     return (
         <>
             <section className='login_main w-[100%] h-[100vh] p-[15px]  bg-[#FCFAFF] flex justify-center items-center'>

@@ -24,6 +24,7 @@ import { RegisterPassword } from "./pages/web/RegisterPassword";
 import { InvestorRegister2 } from "./pages/web/InvestorRegister2";
 import { BankVerification } from "./pages/web/BankVerification";
 import { Payment } from "./pages/web/Payment";
+import { RegisterForm2 } from "./pages/web/RegisterForm2";
 
 function App() {
   return (
@@ -62,6 +63,7 @@ function App() {
           <Route path="/register-otp" element={<Register_otp />} />
           <Route element={<Private />}>
             <Route path="/register-form" element={<RegisterForm />} />
+            <Route path="/create-startup-profile" element={<RegisterForm2 />} />
             <Route path="/member-register" element={<InvestorRegister />} />
             <Route path="/investor-2" element={<InvestorRegister2 />} />
             <Route path="/startup-success" element={<StartupRegister />} />

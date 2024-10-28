@@ -12,7 +12,6 @@ export function BankVerification() {
 
     let location = useLocation()
     let data = location.state
-    console.log(data)
 
     let formik = useFormik({
         initialValues: {
@@ -49,7 +48,7 @@ export function BankVerification() {
 
     let naviget = useNavigate()
     let insertdata = (value) => {
-        axios.post('http://localhost:5000/investor-register', toFormData(value))
+        axios.post('http://147.79.71.69:5000/investor-register', toFormData(value))
             .then((res) => {
                 if (res.data.Status == 1) {
                     naviget('/startup-success')
@@ -179,7 +178,7 @@ export function BankVerification() {
 
                 </form>
             </section>
-            <ToastContainer/>
+            <ToastContainer />
         </>
     )
 }

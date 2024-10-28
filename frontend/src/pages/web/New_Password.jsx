@@ -9,14 +9,12 @@ export function New_Password() {
 
     let location = useLocation()
     let data = location.state;
-    console.log(data.Join_as)
     let naviget = useNavigate()
 
     let notifyerror = (error) => toast.error(error)
     let changepassword = (value) => {
         if (data.Join_as == "Member") {
-            console.log(value)
-            axios.put('http://localhost:5000/update-investor-register', value, {
+            axios.put('http://147.79.71.69:5000/update-investor-register', value, {
                 headers: {
                     authorization: JSON.parse(localStorage.getItem('newpasstoken'))
                 }

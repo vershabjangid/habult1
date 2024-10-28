@@ -17,6 +17,7 @@ export function RegisterForm() {
     let location = useLocation();
     let data = location.state
 
+
     let naviget = useNavigate()
     let [terms, setterms] = useState()
 
@@ -26,41 +27,28 @@ export function RegisterForm() {
             Join_as: data.Join_as,
             Email: data.Email,
             Phone: data.Phone,
+            FirstName: data.FirstName,
+            LastName: data.LastName,
+            Password: data.Password,
             Company_Name: "",
-            Startup_Sector: "",
-            Short_Bio: "",
-            Password: "",
-            Logo: "",
-            FounderName: "",
-            FounderImage: "",
-            Incorporation_Certificate: "",
-            Pitch_deck: "",
-            Financials_Projection: "",
+            Industry: "",
+            LinkedinUrl: "",
+            Company_Pan: "",
+            Website: "",
             Funding_Ask: "",
-            Round: "",
-            PreMoneyValuation: "",
-            Equity: "",
-            Description: "",
-            Activestatus: "",
-            TermsAndConditions: "",
+            Stage: "",
+            Equity_Dilution: "",
             ReferredBy: data.ReferredBy,
         },
         validationSchema: yup.object({
             Company_Name: yup.string().required("Company Name Required"),
-            Startup_Sector: yup.string().required("Startup sector Required"),
-            Short_Bio: yup.string().required("Short Bio Required"),
-            Password: yup.string().required("Password Required"),
-            Logo: yup.mixed().required("Logo Required"),
-            FounderName: yup.string().required("Founder Name Required"),
-            FounderImage: yup.mixed().required("Founder Image Required"),
-            Incorporation_Certificate: yup.mixed().required("Incorporation Certificate Required"),
-            Pitch_deck: yup.mixed().required("Pitch deck Required"),
-            Financials_Projection: yup.mixed().required("Financials Projection Required"),
-            Funding_Ask: yup.string().required("Funding Ask Required"),
-            Round: yup.string().required("Round Required"),
-            PreMoneyValuation: yup.number().required("Pre Money Valuation Required"),
-            Equity: yup.number().required("Equity Required"),
-            Description: yup.string().required("Description Required"),
+            Industry: yup.string().required("Industry Required"),
+            LinkedinUrl: yup.string().url().required("Linkedin Url Required"),
+            Company_Pan: yup.mixed().required("Company Pancard Required"),
+            Website: yup.string().url().required("Website Required"),
+            Funding_Ask: yup.number().required("Funding Ask Required"),
+            Stage: yup.string().required("Stage Required"),
+            Equity_Dilution: yup.number().min(1).max(100, 'Out Of Range').required("Stage Required")
         }),
 
         onSubmit: () => {
@@ -68,27 +56,7 @@ export function RegisterForm() {
         }
     })
     let insertdata = (value) => {
-
-
-        axios.post('http://localhost:5000/register', toFormData(value), {
-            headers: {
-                authorization: JSON.parse(localStorage.getItem('authenticate'))
-            }
-        })
-            .then((res) => {
-                if (res.data.Status == 1) {
-                    naviget('/startup-success')
-                }
-                else {
-                    notificationerror(res.data.Message)
-                }
-            })
-            .catch((error) => {
-                console.log(error)
-            })
-
-
-        value.preventDefault()
+        naviget('/create-startup-profile', { state: value })
     }
 
     let [termsmodal, settermsmodal] = useState(false)
@@ -117,12 +85,12 @@ export function RegisterForm() {
                             <div className='registerformsleft my-[8px] text-black w-[48%]'>
                                 <div className='mb-2'>
                                     <p className='font-[500] mb-2'>First Name <sup className='text-[red]'>*</sup> </p>
-                                    <input type='text' name="Company_Name" className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' placeholder='First Name' disabled value={data.FirstName} />
+                                    <input type='text' className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' placeholder='First Name' disabled value={data.FirstName} />
                                 </div>
 
                                 <div className='mb-2'>
                                     <p className='font-[500] mb-2'>Mobile.No <sup className='text-[red]'>*</sup> </p>
-                                    <input type='text' name="Company_Name" className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' placeholder='First Name' disabled value={data.Phone} />
+                                    <input type='text' className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' placeholder='First Name' disabled value={data.Phone} />
                                 </div>
 
                             </div>
@@ -131,7 +99,7 @@ export function RegisterForm() {
 
                                 <div className='mb-2'>
                                     <p className='font-[500] mb-2'>Last Name <sup className='text-[red]'>*</sup> </p>
-                                    <input type='text' name="Company_Name" className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' placeholder='First Name' disabled value={data.LastName} />
+                                    <input type='text' className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' placeholder='First Name' disabled value={data.LastName} />
                                 </div>
 
 
@@ -166,18 +134,18 @@ export function RegisterForm() {
 
                                 <div className='mb-2'>
                                     <p className='font-[500] mb-2'>Linkedin Url <sup className='text-[red]'>*</sup> </p>
-                                    <input type='text' name="Linkedin" className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("Linkedin", e.target.value)} placeholder='Linkedin Url' />
+                                    <input type='url' name="LinkedinUrl" className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("LinkedinUrl", e.target.value)} placeholder='Linkedin Url' />
                                 </div>
                                 <div className='requires_message'>
-                                    <div>{formik.errors.Company_Name}</div>
+                                    <div>{formik.errors.LinkedinUrl}</div>
                                 </div>
 
                                 <div className='mb-2'>
                                     <p className='font-[500] mb-2'>Website <sup className='text-[red]'>*</sup> </p>
-                                    <input type='text' name="Website" className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("Website", e.target.value)} placeholder='Website' />
+                                    <input type='url' name="Website" className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("Website", e.target.value)} placeholder='Website' />
                                 </div>
                                 <div className='requires_message'>
-                                    <div>{formik.errors.Company_Name}</div>
+                                    <div>{formik.errors.Website}</div>
                                 </div>
 
 
@@ -191,25 +159,12 @@ export function RegisterForm() {
                                     </select>
                                 </div>
                                 <div className='requires_message'>
-                                    <div>{formik.errors.Startup_Sector}</div>
+                                    <div>{formik.errors.Stage}</div>
                                 </div>
 
 
 
 
-
-                                <div className='my-[8px] text-black'>
-                                    <p className='font-[500] mb-0'>Industry <sup className='text-[red]'>*</sup></p>
-                                    <select name="Industry" className=' w-[100%] border-[1px] mt-[10px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("Startup_Sector", e.target.value)}>
-                                        <option>Business Industry</option>
-                                        <option value={"Entertainment"}>Entertainment</option>
-                                        <option value={"IT Services"}>IT Services</option>
-                                        <option value={"Education"}>Education</option>
-                                    </select>
-                                </div>
-                                <div className='requires_message'>
-                                    <div>{formik.errors.Startup_Sector}</div>
-                                </div>
 
 
 
@@ -217,36 +172,10 @@ export function RegisterForm() {
 
 
                             <div className='registerformsleft my-[8px] text-black w-[48%]'>
-                                <div className='mb-2'>
-                                    <p className='font-[500] mb-2'>Company Pan Card <sup className='text-[red]'>*</sup> </p>
-                                    <input type='text' name="Pan" className='uppercase w-[100%]  border-[1px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("Pan", e.target.value)} placeholder='Company Pan Card' />
-                                </div>
-                                <div className='requires_message'>
-                                    <div>{formik.errors.Company_Name}</div>
-                                </div>
 
-                                <div className='mb-2'>
-                                    <p className='font-[500] mb-2'>Funding Ask  <sup className='text-[red]'>*</sup> </p>
-                                    <input type='number' name="Funding_Ask" className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("Funding_Ask", e.target.value)} placeholder='Equity Dilution' />
-                                </div>
-                                <div className='requires_message'>
-                                    <div>{formik.errors.Company_Name}</div>
-                                </div>
-
-                                <div className='mb-2'>
-                                    <p className='font-[500] mb-2'>Equity Dilution <sup className='text-[red]'>*</sup> </p>
-                                    <input type='number' name="Equity_Dilution" className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("Equity_Dilution", e.target.value)} placeholder='Equity Dilution' />
-                                </div>
-                                <div className='requires_message'>
-                                    <div>{formik.errors.Company_Name}</div>
-                                </div>
-
-
-
-
-                                <div className='my-[8px] text-black'>
+                                <div className=' text-black'>
                                     <p className='font-[500] mb-0'>Industry <sup className='text-[red]'>*</sup></p>
-                                    <select name="Industry" className=' w-[100%] border-[1px] mt-[10px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("Startup_Sector", e.target.value)}>
+                                    <select name="Industry" className=' w-[100%] border-[1px] mt-[10px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("Industry", e.target.value)}>
                                         <option>Business Industry</option>
                                         <option value={"Entertainment"}>Entertainment</option>
                                         <option value={"IT Services"}>IT Services</option>
@@ -254,7 +183,33 @@ export function RegisterForm() {
                                     </select>
                                 </div>
                                 <div className='requires_message'>
-                                    <div>{formik.errors.Startup_Sector}</div>
+                                    <div>{formik.errors.Industry}</div>
+                                </div>
+
+
+
+                                <div className='my-2'>
+                                    <p className='font-[500] mb-2'>Company Pan Card <sup className='text-[red]'>*</sup> </p>
+                                    <input type='file' name="Company_Pan" className='uppercase w-[100%]  border-[1px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("Company_Pan", e.target.files[0])} placeholder='Company Pan Card' />
+                                </div>
+                                <div className='requires_message'>
+                                    <div>{formik.errors.Company_Pan}</div>
+                                </div>
+
+                                <div className='mb-2'>
+                                    <p className='font-[500] mb-2'>Funding Ask  <sup className='text-[red]'>*</sup> </p>
+                                    <input type='number' name="Funding_Ask" className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("Funding_Ask", e.target.value)} placeholder='Funding Ask' />
+                                </div>
+                                <div className='requires_message'>
+                                    <div>{formik.errors.Funding_Ask}</div>
+                                </div>
+
+                                <div className='mb-2'>
+                                    <p className='font-[500] mb-2'>Equity in (%) <sup className='text-[red]'>*</sup> </p>
+                                    <input type='number' name="Equity_Dilution" className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("Equity_Dilution", e.target.value)} placeholder='Equity Dilution' />
+                                </div>
+                                <div className='requires_message'>
+                                    <div>{formik.errors.Equity_Dilution}</div>
                                 </div>
 
 
@@ -264,7 +219,7 @@ export function RegisterForm() {
 
 
                         <div className='my-[8px] text-black'>
-                            <div onClick={() => settermsmodal(true)} className='border-[1px] text-center w-[100%] py-[16px] px-[32px] my-[20px] bg-[var(--button-color--)] rounded-[8px] text-[20px] text-white font-[500]'>Next</div>
+                            <button type='submit' className='border-[1px] text-center w-[100%] py-[16px] px-[32px] my-[20px] bg-[var(--button-color--)] rounded-[8px] text-[20px] text-white font-[500]'>Next</button>
                         </div>
 
                         <div className='my-[8px] text-black'>

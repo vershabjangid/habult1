@@ -18,7 +18,7 @@ export function InvestorRegister() {
 
     let location = useLocation();
     let data = location.state
-console.log(data)
+
     let naviget = useNavigate()
 
 
@@ -42,7 +42,6 @@ console.log(data)
 
 
     let insertdata = (value) => {
-        console.log(value)
         if (value.TermsAndConditions == true && value.All_Instructions == true) {
             naviget("/investor-2", { state: value })
         }

@@ -20,7 +20,6 @@ export function Register_otp() {
 
     let locatedata = useLocation()
     let data = locatedata.state;
-    console.log(data)
 
 
 
@@ -48,7 +47,6 @@ export function Register_otp() {
 
     let naviget = useNavigate()
     let register_form = (value) => {
-        console.log(value)
         if (value.value1 == otp) {
             localStorage.setItem("authenticate", JSON.stringify(token))
             if (data.Join_as == "Member") {
