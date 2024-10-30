@@ -78,7 +78,7 @@ export function OTP() {
                     }}
                 >
                     <Form>
-                        <section className='login_inner w-[572px] h-[658px] p-[35px] bg-white rounded-[12px]'>
+                        <section className='login_inner_otp w-[572px] h-[658px] p-[35px] bg-white rounded-[12px]'>
                             <div className='login_input_section h-[100%] '>
                                 <div className='logo_section w-[300px] m-auto flex justify-center'>
                                     <Logo />

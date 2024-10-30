@@ -53,8 +53,7 @@ export function InvestorRegister() {
     return (
         <>
             <section className='login_main w-[100%] p-[15px]  bg-[#FCFAFF] flex flex-col justify-center items-center'>
-                <div className='login_inner w-[872px] py-2 my-[10px] px-[35px] rounded-[12px] bg-white flex items-center'>
-                    {/* <MdVerified className='text-[blue] text-[50px]' /> */}
+                <div className='login_inner_term w-[872px] py-2 my-[10px] px-[35px] rounded-[12px] bg-white flex items-center'>
                     <div className='w-[100px]'>
                         <Logo />
                     </div>
@@ -63,31 +62,32 @@ export function InvestorRegister() {
                         <p className='mx-2  text-[16px] font-[700]'>In 4 simple steps</p>
                     </div>
                 </div>
-
-                <div className=' w-[872px] py-2 my-[10px] px-[35px] rounded-[12px] flex items-center'>
+                <div className='login_inner_term w-[872px] py-2 my-[10px] px-[35px] rounded-[12px] flex items-center justify-between'>
                     <div className='flex justify-center items-center flex-col'>
                         <div className='bg-[#8637F8] text-white w-[30px] h-[30px] rounded-[50%] flex justify-center items-center'>1</div>
                         <p className='font-[500]'>Assessment</p>
+
+
                     </div>
                     <div className='w-[20%] border-b-[1px]'></div>
                     <div className='flex justify-center items-center flex-col mx-[10px]'>
-                        <div className='bg-[#8637F81A] text-[#8637F8] w-[30px] h-[30px] rounded-[50%] flex justify-center items-center'>2</div>
+                        <div className='bg-[#8637F8] text-white w-[30px] h-[30px] rounded-[50%] flex justify-center items-center'>2</div>
                         <p className='font-[500]'>KYC</p>
                     </div>
                     <div className='w-[20%] border-b-[1px]'></div>
                     <div className='flex justify-center items-center flex-col'>
-                        <div className='bg-[#8637F81A] text-[#8637F8] w-[30px] h-[30px] rounded-[50%] flex justify-center items-center'>3</div>
+                        <div className='bg-[#8637F8] text-white w-[30px] h-[30px] rounded-[50%] flex justify-center items-center'>3</div>
                         <p className='font-[500] text-center'>Bank Verification</p>
                     </div>
-                    <div className='w-[20%] border-b-[1px]'></div>
+                    {/* <div className='w-[20%] border-b-[1px]'></div>
                     <div className='flex justify-center items-center flex-col'>
                         <div className='bg-[#8637F81A] text-[#8637F8] w-[30px] h-[30px] rounded-[50%] flex justify-center items-center'>4</div>
                         <p className='font-[500]'>Payment</p>
-                    </div>
+                    </div> */}
                 </div>
 
 
-                <form className='login_inner w-[872px] py-[35px] bg-white rounded-[12px]' onSubmit={formik.handleSubmit} >
+                <form className='login_inner_term w-[872px] py-[35px] bg-white rounded-[12px]' onSubmit={formik.handleSubmit} >
 
 
 
@@ -124,7 +124,7 @@ export function InvestorRegister() {
                                 </li>
 
 
-                                <div className='flex items-center my-[30px] text-[blue] '><input onChange={(e) => formik.setFieldValue('TermsAndConditions', e.target.checked)} type="checkbox" className='w-[15px] h-[15px] border-[1px] border-[#8637F8] me-[5px]' />I hereby acknowledge and accept all &nbsp;"<Link to={"/terms"} className='underline decoration-solid'>terms and conditions outlined in the agreement.</Link>"</div>
+                                <p className='flex items-center my-[30px] text-[blue] '><input onChange={(e) => formik.setFieldValue('TermsAndConditions', e.target.checked)} type="checkbox" className='w-[15px] h-[15px] border-[1px] border-[#8637F8] me-[5px]' /> <div> hereby acknowledge and accept all &nbsp;<Link to={"/terms"} className='underline decoration-solid'>"terms and conditions outlined in the agreement."</Link></div> </p>
 
                             </ul>
                         </div>

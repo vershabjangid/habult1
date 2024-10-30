@@ -110,7 +110,7 @@ export function Startups() {
                       startups.map((items, index) => {
                         return (
                           <>
-                            <section className='w-[410px]  rounded-[10px] bg-white my-5' onClick={() => briefinfo(items)}>
+                            <section className='startupcard w-[410px] rounded-[10px] bg-white my-5 mx-2' onClick={() => briefinfo(items)}>
                               <div className='w-[100%] h-[230px] rounded-[10px] relative'>
                                 <div className='w-[100%] h-[100%] absolute '>
                                   <img src={startupsbanner} alt="" className='absolute w-[100%] h-[100%] rounded-[10px] blur-[2px]' />

@@ -69,7 +69,7 @@ export function Login() {
                         }}
                     >
                         <Form>
-                            <div className='login_input_section h-[100%] '>
+                            <div className='login_input_section w-[100%] h-[100%] '>
                                 <div className='logo_section w-[200px] m-auto flex justify-center'>
                                     <Logo />
                                 </div>
@@ -77,7 +77,7 @@ export function Login() {
                                     <h1 className='text-center text-[32px] font-[500]'>LOGIN</h1>
                                 </div>
 
-                                <div className='w-[100%] h-[] my-[3px] text-black mb-8'>
+                                <div className='w-[100%] my-[3px] text-black mb-8'>
                                     <p className='mb-1 text-[grey]'>Login as</p>
                                     <div className='w-[100%] h-[62px] bg-[#f9f4ff] rounded flex'>
                                         <div onClick={() => setjoinstatus("Member")} className={joinstatus == "Member" ? ' w-[50%] border-b-[5px] border-[var(--button-color--)] text-[var(--button-color--)] flex items-center justify-center font-[500]' : ' w-[50%] text-[grey] flex items-center justify-center font-[500]'}>Member</div>

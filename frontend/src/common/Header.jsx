@@ -28,7 +28,7 @@ export function Header() {
                     <Logo />
                 </div>
                 <div className='header_options_div h-[100%] flex justify-center items-center text-[#646464]'>
-                    <ul className='w-[100%] flex justify-between'>
+                    <ul className='w-[100%] flex justify-evenly'>
                         <Link to={"/"}><li className='px-[8px] py-[8px]  transition-[1s] cursor-pointer font-[600] rounded-[6px] text-[15px] hover:bg-[#4143E30D] hover:text-[#8637F8]'>HOME</li></Link>
 
 
@@ -39,7 +39,7 @@ export function Header() {
                                 <Link to={"/startups"}><li className='px-[8px] py-[8px]  transition-[1s] cursor-pointer font-[600] rounded-[6px] text-[15px] hover:bg-[#4143E30D] hover:text-[#8637F8]'>STARTUP</li></Link>
                         }
                         <Link to={"/about"}><li className='px-[8px] py-[8px]  transition-[1s] cursor-pointer font-[600] rounded-[6px] text-[15px] hover:bg-[#4143E30D] hover:text-[#8637F8]'>ABOUT US</li></Link>
-                        <li className='px-[8px] py-[8px]  transition-[1s] cursor-pointer font-[600] rounded-[6px] text-[15px] hover:bg-[#4143E30D] hover:text-[#8637F8]'>CONTACT</li>
+                        {/* <li className='px-[8px] py-[8px]  transition-[1s] cursor-pointer font-[600] rounded-[6px] text-[15px] hover:bg-[#4143E30D] hover:text-[#8637F8]'>CONTACT</li> */}
                     </ul>
                 </div>
                 {
@@ -66,7 +66,7 @@ export function Header() {
             </section>
 
 
-            <section className={sidemenu ? 'sidebar w-[100%] h-[100vh] bg-white fixed overflow-y-scroll z-50 left-[0%] top-0 ease-linear duration-500' : 'sidebar w-[100%] h-[100vh] bg-white fixed overflow-y-scroll z-50 left-[-100%] top-0 ease-linear duration-500'}>
+            <section className={sidemenu ? 'sidebar w-[100%] h-[100vh] bg-[white] fixed overflow-y-scroll z-50 left-[0%] top-0 ease-linear duration-500' : 'sidebar w-[100%] h-[100vh] bg-white fixed overflow-y-scroll z-50 left-[-100%] top-0 ease-linear duration-500'}>
                 <section className=' w-[100%] flex justify-between items-center mt-2'>
                     <div className='w-[70%] ps-2'>
                         <Logo />
@@ -74,45 +74,57 @@ export function Header() {
                     <div className='text-black text-[30px] w-[15%]'><FaXmark onClick={() => setsidemenu(false)} /></div>
                 </section>
 
-                <section className='py-5 text-[18px] font-[600] bg-purple-300 mt-5 text-center'>
-                    HOME
-                </section>
+                <Link to={"/"}>
+                    <section className='py-5 text-[18px] font-[600] mt-5 text-center'>
+                        HOME
+                    </section>
+                </Link>
 
-                <section className='py-5 text-[18px] font-[600] bg-purple-300 text-center'>
-                    ABOUT US
-                </section>
+                <Link to={"/about"}>
 
-                <section className='py-5 text-[18px] font-[600] bg-purple-300 text-center'>
+                    <section className='py-5 text-[18px] font-[600] text-center'>
+                        ABOUT US
+                    </section>
+                </Link>
+
+                {/* <section className='py-5 text-[18px] font-[600] bg-purple-300 text-center'>
                     CONTACT
-                </section>
+                </section> */}
 
                 {
                     getlocal == '' || getlocal == undefined || getlocal == null ?
-                        <section className='py-5 text-[18px] font-[600] bg-purple-300 text-center'>
-                            INVEST
-                        </section> :
-                        <section className='py-5 text-[18px] font-[600] bg-purple-300 text-center'>
-                            INVEST
-                        </section>
-
+                        <Link to={"/login"}>
+                            <section className='py-5 text-[18px] font-[600]  text-center'>
+                                STARTUP
+                            </section>
+                        </Link>
+                        :
+                        <Link to={"/startups"}>
+                            <section className='py-5 text-[18px] font-[600]  text-center'>
+                                STARTUP
+                            </section>
+                        </Link>
                 }
 
-                <section className='py-5 text-[18px] font-[600] bg-purple-300 text-center'>
-                    STARTUP
-                </section>
 
-                <section className='py-5 text-[18px] font-[600] bg-purple-300 text-center'>
-                    PRIVACY POLICY
-                </section>
+                <Link to={"/privacy"}>
+                    <section className='py-5 text-[18px] font-[600]  text-center'>
+                        PRIVACY POLICY
+                    </section>
+                </Link>
 
-                <section className='py-5 text-[18px] font-[600] bg-purple-300 text-center'>
-                    TERMS & CONDITIONS
-                </section>
+                <Link to={"/terms"}>
+                    <section className='py-5 text-[18px] font-[600]  text-center'>
+                        TERMS & CONDITIONS
+                    </section>
+                </Link>
 
-                <section className='py-5 text-[18px] font-[600] bg-purple-300 text-center'>
-                    DISCLAIMER
-                </section>
-            </section>
+                <Link to={"/disclaimer"}>
+                    <section className='py-5 text-[18px] font-[600]  text-center'>
+                        DISCLAIMER
+                    </section>
+                </Link>
+            </section >
 
         </>
     )

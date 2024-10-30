@@ -10,6 +10,17 @@
     box-shadow: 0px 0px 25px 0px #8637F81A;
 }
 
+.login_inner_otp {
+    box-shadow: 0px 0px 25px 0px #8637F81A;
+}
+
+.login_main_otp {
+    box-shadow: 0px 0px 25px 0px #8637F81A;
+}
+
+.login_inner_term{
+    box-shadow: 0px 0px 25px 0px #8637F81A;
+}
 input[type=number]::-webkit-inner-spin-button {
     display: none;
 }

@@ -48,7 +48,7 @@ export function BankVerification() {
 
     let naviget = useNavigate()
     let insertdata = (value) => {
-        axios.post('http://147.79.71.69:5000/investor-register', toFormData(value))
+        axios.post('http://localhost:5000/investor-register', toFormData(value))
             .then((res) => {
                 if (res.data.Status == 1) {
                     naviget('/startup-success')
@@ -61,7 +61,7 @@ export function BankVerification() {
     return (
         <>
             <section className='login_main w-[100%] p-[15px]  bg-[#FCFAFF] flex flex-col justify-center items-center'>
-                <div className='login_inner w-[872px] py-2 my-[10px] px-[35px] rounded-[12px] bg-white flex items-center'>
+                <div className='login_inner_term w-[872px] py-2 my-[10px] px-[35px] rounded-[12px] bg-white flex items-center'>
                     {/* <MdVerified className='text-[blue] text-[50px]' /> */}
                     <div className='w-[100px]'>
                         <Logo />
@@ -72,7 +72,7 @@ export function BankVerification() {
                     </div>
                 </div>
 
-                <div className=' w-[872px] py-2 my-[10px] px-[35px] rounded-[12px] flex items-center justify-between'>
+                <div className='login_inner_term w-[872px] py-2 my-[10px] px-[35px] rounded-[12px] flex items-center justify-between'>
                     <div className='flex justify-center items-center flex-col'>
                         <div className='bg-[#8637F8] text-white w-[30px] h-[30px] rounded-[50%] flex justify-center items-center'>1</div>
                         <p className='font-[500]'>Assessment</p>
@@ -97,7 +97,7 @@ export function BankVerification() {
                 </div>
 
 
-                <form className='login_inner w-[872px] py-[35px] bg-white rounded-[12px]' onSubmit={formik.handleSubmit} >
+                <form className='login_inner_term w-[872px] py-[35px] bg-white rounded-[12px]' onSubmit={formik.handleSubmit} >
 
 
 
@@ -167,7 +167,7 @@ export function BankVerification() {
 
 
 
-                        <div className='my-[8px] text-black px-[35px]'>
+                        <div className='button_section my-[8px] text-black px-[35px]'>
                             <button type='submit' className='border-[1px] text-center w-[100%] py-[16px] px-[32px] my-[20px] bg-[var(--button-color--)] rounded-[8px] text-[20px] text-white font-[500]'>Next</button>
                         </div>
 

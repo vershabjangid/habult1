@@ -1,9 +1,19 @@
+@media screen and (max-height : 658px) {
+    .login_main {
+        height: auto;
+    }
+}
+
+
 @media screen and (max-height : 523px) {
-    .registered_success_message{
+    .registered_success_message {
         height: 600px;
     }
 }
 
+
+
+/* max width  */
 @media screen and (min-width:1600px) {
     .main {
         width: 1600px;
@@ -11,6 +21,11 @@
     }
 }
 
+@media screen and (max-width:1420px) {
+    .startupcard{
+        width: 48%;
+    }
+}
 
 @media screen and (max-width:1300px) {
     .why_choose_four_secction_outer {
@@ -129,11 +144,11 @@
 
 
 
-    .termsmodalsection{
+    .termsmodalsection {
         width: 95%;
     }
 
-    .cross_btn_termsandcondition{
+    .cross_btn_termsandcondition {
         right: 2%;
         top: 8px;
     }
@@ -182,6 +197,43 @@
     }
 
 
+    .login_inner_term {
+        width: 100%;
+        padding: 5px;
+    }
+
+    .registerforms {
+        padding: 5px;
+    }
+
+    .button_section {
+        padding: 5px;
+    }
+
+}
+
+@media screen and (max-width : 890px) {
+    .startupcard{
+        width: 100%;
+        margin: 20px 0px 0px 0px;
+    }
+
+    .startup_info_inner{
+        flex-direction: column;
+    }
+
+    .startup_info_inner_left{
+        width: 100%;
+        border: 0;
+    }
+
+    .startup_info_inner_right{
+        width: 100%;
+    }
+
+    .startups_value{
+        width: 100%;
+    }
 }
 
 @media screen and (max-width:760px) {
@@ -199,11 +251,11 @@
         width: 100% !important;
     }
 
-    .registerformsleft{
+    .registerformsleft {
         width: 100%;
     }
 
-    .registerformsright{
+    .registerformsright {
         width: 100%;
     }
 }
@@ -219,6 +271,16 @@
     }
 
     .contact_us_section2 {
+        width: 100%;
+    }
+
+    .login_input_section {
+        margin: 0;
+    }
+}
+
+@media screen and (max-width:598px) {
+    .login_inner_otp {
         width: 100%;
     }
 }
@@ -281,5 +343,13 @@
     .landing_banner_btn>button {
         width: 100%;
         margin: 5px 0px;
+    }
+}
+
+
+@media screen and (max-width : 460px) {
+    .login_inner {
+        width: 100%;
+        padding: 15px;
     }
 }
