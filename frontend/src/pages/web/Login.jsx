@@ -31,7 +31,7 @@ export function Login() {
 
 
         else {
-            axios.post('http://localhost:5000/login', value)
+            axios.post('http://147.79.71.69:5000/login', value)
                 .then((res) => {
                     if (res.data.getdata.length != 0 && res.data.getdata.Activestatus != "Pending") {
                         localStorage.setItem('userLogin', JSON.stringify(res.data.getdata))
