@@ -8,19 +8,6 @@ let emailpass = process.env.EMAILPASS
 
 
 exports.webregister = async (req, res) => {
-    if (req.body.TermsAndConditions == 'on') {
-        var terms = {
-            TermsAndConditions: true
-        }
-    }
-    else {
-        var terms = {
-            TermsAndConditions: false
-        }
-    }
-
-    console.log(req.body)
-    console.log(req.files)
     let data = {
         Join_as: req.body.Join_as,
         Email: req.body.Email,
@@ -93,6 +80,42 @@ exports.webregister = async (req, res) => {
 
         })
 }
+
+
+
+exports.webregisterotp = async (req, res) => {
+    console.log(req.body)
+    let data = {
+        Email: req.body.Email,
+        OTP: Math.floor(1000 + Math.random() * 8000)
+    }
+
+    try {
+        const info = await transporter.sendMail({
+            from: 'hivexv', // sender address
+            to: `${data.Email}`, // list of receivers
+            subject: "Your Registration OTP", // Subject line
+            text: `hello user welcome to hivexv`, // plain text body
+            html: `${data.OTP}`, // html body
+        });
+
+        let newtoken;
+        jwt.sign({ newtoken }, webkey, (err, value) => {
+            res.send({
+                data,
+                Token: value
+            })
+        })
+    }
+    catch {
+        res.send({
+            Status: 0,
+            Message: "No Receiptment Found"
+        })
+    }
+}
+
+
 
 
 exports.updateregister = async (req, res) => {
@@ -229,37 +252,6 @@ const transporter = nodemailer.createTransport({
 });
 
 
-exports.webregisterotp = async (req, res) => {
-    console.log(req.body)
-    let data = {
-        Email: req.body.Email,
-        OTP: Math.floor(1000 + Math.random() * 8000)
-    }
-
-    try {
-        const info = await transporter.sendMail({
-            from: 'hivexv', // sender address
-            to: `${data.Email}`, // list of receivers
-            subject: "Your Registration OTP", // Subject line
-            text: `hello user welcome to hivexv`, // plain text body
-            html: `${data.OTP}`, // html body
-        });
-
-        let newtoken;
-        jwt.sign({ newtoken }, webkey, (err, value) => {
-            res.send({
-                data,
-                Token: value
-            })
-        })
-    }
-    catch {
-        res.send({
-            Status: 0,
-            Message: "No Receiptment Found"
-        })
-    }
-}
 
 
 exports.weblogin = async (req, res) => {

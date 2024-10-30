@@ -46,9 +46,16 @@ export function BankVerification() {
 
     })
 
+
     let naviget = useNavigate()
     let insertdata = (value) => {
-        axios.post('http://localhost:5000/investor-register', toFormData(value))
+        axios.post('http://localhost:5000/investor-register', {
+            data: toFormData(value), header: {
+                headers: {
+                    authorization: JSON.parse(localStorage.getItem('token'))
+                }
+            }
+        })
             .then((res) => {
                 if (res.data.Status == 1) {
                     naviget('/startup-success')
