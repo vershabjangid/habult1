@@ -9,20 +9,21 @@ import * as Yup from "yup"
 export function InvestorRegister2() {
     let location = useLocation();
     let data = location.state
+    console.log(data)
 
     const formik = useFormik({
         initialValues: {
-            Join_as: data.Join_as,
-            FirstName: data.FirstName,
-            LastName: data.LastName,
-            Email: data.Email,
-            Phone: data.Phone,
+            Join_as: data[0].Join_as,
+            FirstName: data[0].FirstName,
+            LastName: data[0].LastName,
+            Email: data[0].Email,
+            Phone: data[0].Phone,
             Pan: "",
             Address: "",
             AadharCard: "",
-            Password: data.Password,
-            All_Instructions: data.All_Instructions,
-            TermsAndConditions: data.TermsAndConditions,
+            Password: data[0].Password,
+            All_Instructions: data[0].All_Instructions,
+            TermsAndConditions: data[0].TermsAndConditions,
             Company_Name: "",
         },
 

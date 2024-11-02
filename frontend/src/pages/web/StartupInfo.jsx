@@ -23,7 +23,7 @@ export function StartupInfo() {
 
                 <div className='trending_startups_cards section flex justify-between flex-wrap'>
                   <section className='w-[100%]  rounded-[15px] bg-white my-5 px-4 py-2'>
-                    <div className='w-[100%] border-b-[1px] border-black flex justify-between items-center'>
+                    <div className='w-[100%] py-2 border-b-[1px] border-black flex justify-between items-center'>
                       <img src={data[1] + data[0].Logo} alt="" className='w-[80px] h-[80px] rounded' />
 
                       <div className='w-[calc(100%-100px)]'>
@@ -36,11 +36,11 @@ export function StartupInfo() {
                     <section className='startup_info_inner W-[100%]  py-3 my-3 flex justify-between'>
                       <div className='startup_info_inner_left w-[50%] border-e-[1px] border-e-black pe-[20px]'>
                         <div className='w-[100%] rounded flex justify-center items-center'>
-                          <iframe frameborder="0" allowFullScreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Credresolve Overview" width="100%" height="360px" src={data[0].Video_Link} id="widget2" data-gtm-yt-inspected-13="true"></iframe>
+                          <iframe frameborder="0" className='youtube' allowFullScreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Credresolve Overview" src={data[0].Video_Link} id="widget2" data-gtm-yt-inspected-13="true"></iframe>
                         </div>
                       </div>
                       {/* -------------------------------- */}
-                      <div className='startup_info_inner_right w-[50%] flex justify-center items-center flex-col'>
+                      <div className='startup_info_inner_right w-[50%] my-3 flex justify-center items-center flex-col'>
                         <div className='w-[90%] flex justify-between flex-wrap'>
                           <div className='startups_value w-[200px] text-[#4f4f4f] font-[600] my-1 text-[16px] rounded border-[1px]  p-2'> Funding Ask : <span className='text-black'>{data[0].Funding_Ask}</span></div>
                           <div className='startups_value w-[200px] text-[#4f4f4f] font-[600] my-1 text-[16px] rounded border-[1px]  p-2'>Equity : <span className='text-black'>{data[0].Equity_Dilution}%</span></div>
@@ -55,7 +55,7 @@ export function StartupInfo() {
                         <div className='w-[90%] flex justify-between'>
                         </div>
 
-                        <a href='' className='w-[90%] text-center bg-purple-600 py-2 text-[20px] text-white mt-[100px] rounded'>Invest Now</a>
+                        <a href='https://www.invstt.com/hivexv/Login' className='w-[90%] text-center bg-purple-600 py-2 text-[20px] text-white mt-[100px] rounded'>Invest Now</a>
 
                       </div>
 

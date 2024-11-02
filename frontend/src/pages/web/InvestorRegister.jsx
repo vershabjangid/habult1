@@ -24,12 +24,12 @@ export function InvestorRegister() {
 
     const formik = useFormik({
         initialValues: {
-            Email: data.Email,
-            FirstName: data.FirstName,
-            Join_as: data.Join_as,
-            LastName: data.LastName,
-            Password: data.Password,
-            Phone: data.Phone,
+            Email: data[0].Email,
+            FirstName: data[0].FirstName,
+            Join_as: data[0].Join_as,
+            LastName: data[0].LastName,
+            Password: data[0].Password,
+            Phone: data[0].Phone,
             All_Instructions: "",
             TermsAndConditions: "",
         },
@@ -43,7 +43,7 @@ export function InvestorRegister() {
 
     let insertdata = (value) => {
         if (value.TermsAndConditions == true && value.All_Instructions == true) {
-            naviget("/investor-2", { state: value })
+            naviget("/investor-2", { state: [value, data[1]] })
         }
         else {
             notificationerror("Accept all terms and conditions")

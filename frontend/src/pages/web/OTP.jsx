@@ -48,7 +48,7 @@ export function OTP() {
 
     let verifyuser = (value) => {
         let allvalue = value;
-        let concat = `${allvalue.value1}` + `${allvalue.value2}` + `${allvalue.value3}` + `${allvalue.value4}`
+        let concat = `${allvalue.value1}`;
         if (otpdata == concat) {
             localStorage.setItem('userauthenticateemail', JSON.stringify(Email))
             localStorage.setItem('userauthenticate', JSON.stringify("succeeded"))
@@ -67,10 +67,7 @@ export function OTP() {
             <section className='login_main w-[100%] h-[100vh] p-[15px]  bg-[#FCFAFF] flex justify-center items-center' onLoad={generateotp}>
                 <Formik
                     initialValues={{
-                        value1: "",
-                        value2: "",
-                        value3: "",
-                        value4: "",
+                        value1: ""
                     }}
 
                     onSubmit={(value) => {
@@ -88,10 +85,7 @@ export function OTP() {
                                 </div>
 
                                 <div className='otp_input my-[8px] text-black flex justify-evenly'>
-                                    <Field as="input" type='number' name="value1" className=' w-[65px] h-[65px] border-[1px] p-[10px]  rounded-[8px] text-center' maxLength={1} min={0} max={9} />
-                                    <Field as="input" type='number' name="value2" className=' w-[65px] h-[65px] border-[1px] p-[10px]  rounded-[8px] text-center' maxLength={1} min={0} max={9} />
-                                    <Field as="input" type='number' name="value3" className=' w-[65px] h-[65px] border-[1px] p-[10px]  rounded-[8px] text-center' maxLength={1} min={0} max={9} />
-                                    <Field as="input" type='number' name="value4" className=' w-[65px] h-[65px] border-[1px] p-[10px]  rounded-[8px] text-center' maxLength={1} min={0} max={9} />
+                                    <Field as="input" type='number' name="value1" className=' w-[100%] h-[65px] border-[1px] p-[10px]  rounded-[8px] text-center' />
                                 </div>
 
 

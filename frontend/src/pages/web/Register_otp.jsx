@@ -33,7 +33,7 @@ export function Register_otp() {
             Email: value
         }
 
-        axios.post('http://llocalhost:5000/register-otp', getotp)
+        axios.post('http://147.79.71.69:5000/register-otp', getotp)
             .then((res) => {
                 setotp(res.data.data.OTP)
                 settoken(res.data.Token)
@@ -50,7 +50,7 @@ export function Register_otp() {
         if (value.value1 == otp) {
             localStorage.setItem("authenticate", JSON.stringify(token))
             if (data.Join_as == "Member") {
-                naviget('/member-register', { state: data })
+                naviget('/member-register', { state: [data,token] })
             }
             else {
                 naviget('/register-form', { state: data })

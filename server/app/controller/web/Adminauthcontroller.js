@@ -96,7 +96,7 @@ exports.webregisterotp = async (req, res) => {
             to: `${data.Email}`, // list of receivers
             subject: "Your Registration OTP", // Subject line
             text: `hello user welcome to hivexv`, // plain text body
-            html: `${data.OTP}`, // html body
+            html: `${data.OTP}`, // html body   
         });
 
         let newtoken;

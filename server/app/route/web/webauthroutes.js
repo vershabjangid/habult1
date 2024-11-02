@@ -51,9 +51,9 @@ webauthroutes.put('/update-investor-register', upload, verifytoken, updateinvest
 
 
 webauthroutes.post('/login', weblogin)
+webauthroutes.post('/forgot-password-otp', forgototp)
 webauthroutes.post('/forgot-password', forgotpassword)
 webauthroutes.post('/forgot-investor-password', forgotinvestorpassword)
-webauthroutes.post('/forgot-password-otp', forgototp)
 webauthroutes.post('/get-investor', webinvestorlogin)
 
 
