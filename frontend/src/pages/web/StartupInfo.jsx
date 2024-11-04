@@ -198,6 +198,30 @@ export function StartupInfo() {
                     </section>
 
 
+                    <section className='W-[100%] py-3 my-3 flex justify-evenly'>
+                      <div className='w-[100%] flex justify-center items-center flex-col'>
+                        <div className='w-[90%] py-2'>
+                          <p className='font-[700] text-[30px]'>Market size</p>
+                        </div>
+
+                        <div className='w-[90%]'><h4 className='text-[20px] font-[500]'>{data[0].Solution}</h4></div>
+                      </div>
+
+                    </section>
+
+
+                    <section className='W-[100%] py-3 my-3 flex justify-evenly'>
+                      <div className='w-[100%] flex justify-center items-center flex-col'>
+                        <div className='w-[90%] py-2'>
+                          <p className='font-[700] text-[30px]'>Competitors</p>
+                        </div>
+
+                        <div className='w-[90%]'><h4 className='text-[20px] font-[500]'>{data[0].Solution}</h4></div>
+                      </div>
+
+                    </section>
+
+
                     <section className='my-5'>
                       <section className='W-[100%] py-3 my-3 flex justify-evenly flex-wrap'>
                         <div className='my-2'>
@@ -210,6 +234,24 @@ export function StartupInfo() {
 
                         <div className='my-2'>
                           <a href={data[1] + data[0].Incorporation_Certificate} download={data[1] + data[0].Incorporation_Certificate} className='bg-[#f2ebfd] w-[250px] p-4 rounded-[25px] font-[600] text-[black] text-[20px] flex justify-between items-center'>Incorporation Certificate
+                            <div>
+                              <FaDownload />
+                            </div>
+                          </a>
+                        </div>
+
+
+                        <div className='my-2'>
+                          <a href={data[1] + data[0].Incorporation_Certificate} download={data[1] + data[0].Incorporation_Certificate} className='bg-[#f2ebfd] w-[250px] p-4 rounded-[25px] font-[600] text-[black] text-[20px] flex justify-between items-center'>Financials
+                            <div>
+                              <FaDownload />
+                            </div>
+                          </a>
+                        </div>
+
+
+                        <div className='my-2'>
+                          <a href={data[1] + data[0].Incorporation_Certificate} download={data[1] + data[0].Incorporation_Certificate} className='bg-[#f2ebfd] w-[250px] p-4 rounded-[25px] font-[600] text-[black] text-[20px] flex justify-between items-center'>Others
                             <div>
                               <FaDownload />
                             </div>

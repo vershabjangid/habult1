@@ -25,6 +25,7 @@ import { InvestorRegister2 } from "./pages/web/InvestorRegister2";
 import { BankVerification } from "./pages/web/BankVerification";
 import { Payment } from "./pages/web/Payment";
 import { RegisterForm2 } from "./pages/web/RegisterForm2";
+import { Dashboard } from "./pages/web/Dashboard";
 
 function App() {
   return (
@@ -72,6 +73,7 @@ function App() {
           </Route>
 
           <Route path="*" element={<Error />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
     </>

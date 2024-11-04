@@ -107,3 +107,87 @@ input[type=number]::-webkit-inner-spin-button {
     margin: 0;
     padding: 0;
 }
+
+
+
+
+
+.sidebar_main{
+    border-radius: 0px 20px 20px 0px;
+    transition: 0.5s;
+}
+
+.sidebar_main:hover{
+    width: 270px;
+}
+
+.sidebar_option{
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+}
+
+.sidebar_main:hover .sidebar_option{
+    opacity: 1;
+    visibility: visible;
+    position: unset;
+}
+
+.side_options{
+    background-color: white;
+}
+
+.side_options:hover{
+    background-color: #c2f6c2;
+}
+
+
+.admin_login{
+    background-image: url("../src/images/backgroundlogin.jpg");
+    background-size: cover;
+    background-position: center;
+    filter: blur(3px);
+}
+
+
+.admin_inner_form{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    backdrop-filter: blur(20px);
+    color: white;
+    background-color: transparent;
+    border: 2px solid white;
+}
+
+.form_inputs>input{
+    border-bottom: 1px solid white;
+    border-radius: 5px;
+    }
+
+
+.form_inputs>input::placeholder{
+color: white;
+}
+
+.form_inputs_otp>input::-webkit-inner-spin-button{
+display: none;
+}
+
+.dashboard_main{
+    background-position: fixed;
+}
+
+.dashboard_inner{
+    border-radius: 20px 0px 0px 20px;
+    width: calc(100% - 140px);
+    transition: 0.5s;
+}
+
+.sidebar_main:hover ~ .dashboard_inner{
+    width: calc(100% - 310px);
+}
+
+.page_label{
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.332);
+}
