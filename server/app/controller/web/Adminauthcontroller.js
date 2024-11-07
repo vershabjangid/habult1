@@ -53,10 +53,13 @@ exports.webregister = async (req, res) => {
         Video_Link: req.body.Video_Link,
         Pitch_Deck: req.files[6].filename,
         Incorporation_Certificate: req.files[7].filename,
-        Financial_Projection: req.files[8].Financial_Projection,
+        Financial_Projection: req.files[8].filename,
         TermsAndConditions: req.body.TermsAndConditions,
         Activestatus: "ok",
     }
+
+    console.log(req.body)
+    console.log(req.files)
 
 
     let insertdata = await websiteregistermodel(data)
@@ -77,7 +80,8 @@ exports.webregister = async (req, res) => {
             else {
                 res.status(400).send({
                     Status: 0,
-                    Message: "Data Missing"
+                    Message: "Data Missing",
+                    error: error
                 })
             }
 

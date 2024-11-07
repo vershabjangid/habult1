@@ -56,14 +56,14 @@ let registerschema = mongoose.Schema({
         type: Number,
         required: true
     },
+    Company_Description : {
+         type: String,
+         required: true
+     },
     ReferredBy: {
         type: String,
     },
     Logo: {
-        type: String,
-        required: true
-    },
-    Company_Description: {
         type: String,
         required: true
     },
@@ -98,31 +98,6 @@ let registerschema = mongoose.Schema({
     TeamExperience2: {
         type: String,
         required: true
-    },
-    TeamProfile3: {
-        type: String,
-    },
-    TeamName3: {
-        type: String,
-    },
-    TeamDesignation3:
-    {
-        type: String,
-    },
-    TeamExperience3: {
-        type: String,
-    },
-    TeamProfile4: {
-        type: String,
-    },
-    TeamName4: {
-        type: String,
-    },
-    TeamDesignation4: {
-        type: String,
-    },
-    TeamExperience4: {
-        type: String,
     },
     Highlight1: {
         type: String,
@@ -173,30 +148,6 @@ let registerschema = mongoose.Schema({
     BackersExperience2: {
         type: String,
         required: true
-    },
-    BackersProfile3: {
-        type: String,
-    },
-    BackersName3: {
-        type: String,
-    },
-    BackersDesignation3: {
-        type: String,
-    },
-    BackersExperience3: {
-        type: String,
-    },
-    BackersProfile4: {
-        type: String,
-    },
-    BackersName4: {
-        type: String,
-    },
-    BackersDesignation4: {
-        type: String,
-    },
-    BackersExperience4: {
-        type: String,
     },
     Problem: {
         type: String,
