@@ -68,10 +68,13 @@ export function RegisterForm2() {
 
             Problem: "",
             Solution: "",
+            Market_Size: "",
+            Competition: "",
             Video_Link: "",
             Pitch_Deck: "",
             Incorporation_Certificate: "",
-            TermsAndConditions: ""
+            TermsAndConditions: "",
+            Financial_Projection: ""
         },
 
 
@@ -272,7 +275,7 @@ export function RegisterForm2() {
                                     <div className='flex justify-between W-[100%]'>
 
 
-                                    <div className='mb-3 w-[45%]'>
+                                        <div className='mb-3 w-[45%]'>
                                             <div className='h-[220px] relative'>
                                                 <button className='w-[200px] h-[200px] start-[50%] translate-x-[-50%] border-[1px] border-[#8637F8] text-[#8637F8] rounded-[50%] absolute flex justify-center items-center flex-col'><FaUser className='text-[25px]' />
                                                     <div className='text-[12px] mt-1'>
@@ -324,6 +327,21 @@ export function RegisterForm2() {
                                     <input type='text' name="Solution" className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("Solution", e.target.value)} placeholder='Solution in Brief' />
                                 </div>
 
+                                <div className='mb-2'>
+                                    <p className='font-[500] mb-2'>Market Size <sup className='text-[red]'>*</sup> </p>
+                                    <input type='text' name="Market_Size" className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("Market_Size", e.target.value)} placeholder='Market Size' />
+                                </div>
+                                <div className='requires_message'>
+                                    <div>{formik.errors.Video_Link}</div>
+                                </div>
+
+                                <div className='mb-2'>
+                                    <p className='font-[500] mb-2'>Competitor <sup className='text-[red]'>*</sup> </p>
+                                    <input type='text' name="Competition" className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("Competition", e.target.value)} placeholder='Competition' />
+                                </div>
+                                <div className='requires_message'>
+                                    <div>{formik.errors.Video_Link}</div>
+                                </div>
 
 
                                 <div className='mb-2'>
@@ -352,6 +370,15 @@ export function RegisterForm2() {
                                 <div className='requires_message'>
                                     <div>{formik.errors.LinkedinUrl}</div>
                                 </div>
+
+                                <div className='mb-2'>
+                                    <p className='font-[500] mb-2'>Financial Projection<sup className='text-[red]'>*</sup> </p>
+                                    <input type='file' name="Financial_Projection" className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("Financial_Projection", e.target.files[0])} placeholder='Video link' />
+                                </div>
+                                <div className='requires_message'>
+                                    <div>{formik.errors.LinkedinUrl}</div>
+                                </div>
+
 
                                 <div className='flex items-center my-[30px] text-[blue] '><input onChange={(e) => formik.setFieldValue('TermsAndConditions', e.target.checked)} type="checkbox" className='w-[15px] h-[15px] border-[1px] border-[#8637F8] me-[5px]' />I hereby acknowledge and accept all &nbsp;"<Link to={"/terms"} className='underline decoration-solid'>terms and conditions outlined in the agreement.</Link>"</div>
                             </div>

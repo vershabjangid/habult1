@@ -210,6 +210,18 @@ let registerschema = mongoose.Schema({
         type: String,
         required: true
     },
+    Market_Size: {
+        type: String,
+        required: true
+    },
+    Competition: {
+        type: String,
+        required: true
+    },
+    Financial_Projection: {
+        type: String,
+        required: true
+    },
     Pitch_Deck: {
         type: String,
         required: true

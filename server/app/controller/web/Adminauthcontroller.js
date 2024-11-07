@@ -48,9 +48,12 @@ exports.webregister = async (req, res) => {
         BackersExperience2: req.body.BackersExperience2,
         Problem: req.body.Problem,
         Solution: req.body.Solution,
+        Market_Size: req.body.Market_Size,
+        Competition: req.body.Competition,
         Video_Link: req.body.Video_Link,
         Pitch_Deck: req.files[6].filename,
         Incorporation_Certificate: req.files[7].filename,
+        Financial_Projection: req.files[8].Financial_Projection,
         TermsAndConditions: req.body.TermsAndConditions,
         Activestatus: "ok",
     }
