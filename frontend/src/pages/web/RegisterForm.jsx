@@ -16,6 +16,7 @@ export function RegisterForm() {
 
     let location = useLocation();
     let data = location.state
+    console.log(data)
 
 
     let naviget = useNavigate()

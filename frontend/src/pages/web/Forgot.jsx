@@ -8,6 +8,7 @@ import { toast, ToastContainer } from 'react-toastify';
 export function Forgot() {
     let location = useLocation()
     let data = location.state
+    console.log(data)
 
     let naviget = useNavigate();
     let notifysuccess = (success) => toast.success(success)

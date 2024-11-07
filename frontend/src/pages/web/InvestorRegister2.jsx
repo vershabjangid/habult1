@@ -9,7 +9,6 @@ import * as Yup from "yup"
 export function InvestorRegister2() {
     let location = useLocation();
     let data = location.state
-    console.log(data)
 
     const formik = useFormik({
         initialValues: {
@@ -113,12 +112,12 @@ export function InvestorRegister2() {
                             <div className='registerformsleft my-[8px] text-black w-[48%]'>
                                 <div className='mb-2'>
                                     <p className='font-[500] mb-2'>First Name <sup className='text-[red]'></sup> </p>
-                                    <input type='text' value={data.FirstName} disabled className=' w-[100%]  border-[1px] p-[10px] bg-[#fdc7fd]  rounded-[8px]' placeholder='Company Name' />
+                                    <input type='text' value={data[0].FirstName} disabled className=' w-[100%]  border-[1px] p-[10px] bg-[#fdc7fd]  rounded-[8px]' placeholder='Company Name' />
                                 </div>
 
                                 <div className='mb-2'>
                                     <p className='font-[500] mb-2'>Email <sup className='text-[red]'></sup> </p>
-                                    <input type='email' value={data.Email} disabled className=' w-[100%]  border-[1px] p-[10px] bg-[#fdc7fd]  rounded-[8px]' placeholder='Company Name' />
+                                    <input type='email' value={data[0].Email} disabled className=' w-[100%]  border-[1px] p-[10px] bg-[#fdc7fd]  rounded-[8px]' placeholder='Company Name' />
                                 </div>
 
 
@@ -142,12 +141,12 @@ export function InvestorRegister2() {
                             <div className='registerformsright my-[8px] text-black w-[48%]'>
                                 <div className='mb-2'>
                                     <p className='font-[500] mb-2'>Last Name <sup className='text-[red]'></sup> </p>
-                                    <input type='text' value={data.LastName} disabled className=' w-[100%]  border-[1px] p-[10px] bg-[#fdc7fd]  rounded-[8px]' placeholder='Company Name' />
+                                    <input type='text' value={data[0].LastName} disabled className=' w-[100%]  border-[1px] p-[10px] bg-[#fdc7fd]  rounded-[8px]' placeholder='Company Name' />
                                 </div>
 
                                 <div className='mb-2'>
                                     <p className='font-[500] mb-2'>Phone <sup className='text-[red]'></sup> </p>
-                                    <input type='text' value={data.Phone} disabled className=' w-[100%]  border-[1px] p-[10px] bg-[#fdc7fd]  rounded-[8px]' placeholder='Company Name' />
+                                    <input type='text' value={data[0].Phone} disabled className=' w-[100%]  border-[1px] p-[10px] bg-[#fdc7fd]  rounded-[8px]' placeholder='Company Name' />
                                 </div>
 
                                 <div className='mb-2'>

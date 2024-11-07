@@ -100,7 +100,7 @@ exports.webregisterotp = async (req, res) => {
         });
 
         let newtoken;
-        jwt.sign({ newtoken }, webkey, (err, value) => {
+        jwt.sign({ newtoken }, webkey, { expiresIn: '2h' }, (err, value) => {
             res.send({
                 data,
                 Token: value
@@ -232,7 +232,7 @@ exports.webinvestorlogin = async (req, res) => {
     let getdata = await investorregistermodel.find(data)
 
     let newtoken;
-    jwt.sign({ newtoken }, webkey, (err, value) => {
+    jwt.sign({ newtoken }, webkey, { expiresIn: '2h' }, (err, value) => {
         res.send({
             getdata,
             Token: value
@@ -262,7 +262,7 @@ exports.weblogin = async (req, res) => {
     let getdata = await websiteregistermodel.find(data)
 
     let newtoken;
-    jwt.sign({ newtoken }, webkey, (err, value) => {
+    jwt.sign({ newtoken }, webkey, { expiresIn: '2h' }, (err, value) => {
         res.send({
             getdata,
             Token: value
@@ -323,7 +323,7 @@ exports.forgototp = async (req, res) => {
         });
 
         let newtoken;
-        jwt.sign({ newtoken }, webkey, (err, value) => {
+        jwt.sign({ newtoken }, webkey, { expiresIn: '2h' }, (err, value) => {
             res.send({
                 data,
                 Token: value

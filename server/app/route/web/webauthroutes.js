@@ -43,10 +43,10 @@ const upload = multer({ storage: storage }).any('Logo', 'FounderImage', 'Incorpo
 
 
 
-webauthroutes.post('/register', upload, verifytoken, webregister)
 webauthroutes.post('/register-otp', webregisterotp)
-webauthroutes.post('/investor-register', upload, verifytoken, webinvestorregister)
 webauthroutes.put('/update-register', upload, verifytoken, updateregister)
+webauthroutes.post('/register', upload, verifytoken, webregister)
+webauthroutes.post('/investor-register', upload, verifytoken, webinvestorregister)
 webauthroutes.put('/update-investor-register', upload, verifytoken, updateinvestorregister)
 
 
