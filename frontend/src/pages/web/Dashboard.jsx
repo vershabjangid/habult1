@@ -15,7 +15,7 @@ export function Dashboard() {
 
 
     let insertdata = (value) => {
-        axios.post(`http://localhost:5000/Admin_Login`, value)
+        axios.post(`http://147.79.71.69:5000/Admin_Login`, value)
             .then((res) => {
                 console.log(res)
                 if (res.data.Status === 1) {

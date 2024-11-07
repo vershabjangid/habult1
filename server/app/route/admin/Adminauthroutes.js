@@ -2,6 +2,7 @@ let express = require('express')
 const { adminauth } = require('../../controller/admin/Adminauth')
 const { getmembers } = require('../../controller/admin/Admincontroller')
 let admin = express.Router()
+let jwt = require('jsonwebtoken')
 require('dotenv').config()
 let webkey = process.env.ADMINKEY
 let verifytoken = (req, res, next) => {
@@ -25,6 +26,6 @@ let verifytoken = (req, res, next) => {
 admin.post('/Admin_Login', adminauth)
 
 
-admin.get('/get-members', getmembers)
+admin.get('/get-members', verifytoken, getmembers)
 
 module.exports = admin

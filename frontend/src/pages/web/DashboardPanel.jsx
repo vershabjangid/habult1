@@ -11,7 +11,11 @@ export function DashboardPanel() {
     let [investors, setinvestors] = useState([])
     let [investorslength, setinvestorslength] = useState([])
     let getinvestors = () => {
-        axios.get('http://localhost:5000/get-members')
+        axios.get('http://localhost:5000/get-members', {
+            headers: {
+                Authorization: localStorage.getItem('admintoken')
+            }
+        })
             .then((res) => {
                 setinvestors(res.data.getdata)
                 setinvestorslength(res.data.getdata.length)
