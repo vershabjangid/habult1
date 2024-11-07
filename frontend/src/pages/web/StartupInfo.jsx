@@ -8,7 +8,7 @@ export function StartupInfo() {
 
   let location = useLocation()
   let data = location.state
-  console.log(data[0].Highlight4)
+  console.log(data[0])
   return (
     <>
       <section className='main'>
@@ -204,7 +204,7 @@ export function StartupInfo() {
                           <p className='font-[700] text-[30px]'>Market size</p>
                         </div>
 
-                        <div className='w-[90%]'><h4 className='text-[20px] font-[500]'>{data[0].Solution}</h4></div>
+                        <div className='w-[90%]'><h4 className='text-[20px] font-[500]'>{data[0].Market_Size}</h4></div>
                       </div>
 
                     </section>
@@ -216,7 +216,7 @@ export function StartupInfo() {
                           <p className='font-[700] text-[30px]'>Competitors</p>
                         </div>
 
-                        <div className='w-[90%]'><h4 className='text-[20px] font-[500]'>{data[0].Solution}</h4></div>
+                        <div className='w-[90%]'><h4 className='text-[20px] font-[500]'>{data[0].Competition}</h4></div>
                       </div>
 
                     </section>
@@ -242,7 +242,7 @@ export function StartupInfo() {
 
 
                         <div className='my-2'>
-                          <a href={data[1] + data[0].Incorporation_Certificate} download={data[1] + data[0].Incorporation_Certificate} className='bg-[#f2ebfd] w-[250px] p-4 rounded-[25px] font-[600] text-[black] text-[20px] flex justify-between items-center'>Financials
+                          <a href={data[1] + data[0].Financial_Projection} download={data[1] + data[0].Financial_Projection} className='bg-[#f2ebfd] w-[250px] p-4 rounded-[25px] font-[600] text-[black] text-[20px] flex justify-between items-center'>Financials and Projections
                             <div>
                               <FaDownload />
                             </div>
@@ -250,13 +250,13 @@ export function StartupInfo() {
                         </div>
 
 
-                        <div className='my-2'>
+                        {/* <div className='my-2'>
                           <a href={data[1] + data[0].Incorporation_Certificate} download={data[1] + data[0].Incorporation_Certificate} className='bg-[#f2ebfd] w-[250px] p-4 rounded-[25px] font-[600] text-[black] text-[20px] flex justify-between items-center'>Others
                             <div>
                               <FaDownload />
                             </div>
                           </a>
-                        </div>
+                        </div> */}
 
 
                       </section>

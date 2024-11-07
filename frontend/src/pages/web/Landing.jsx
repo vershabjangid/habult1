@@ -25,6 +25,7 @@ import { IoMdSchool } from 'react-icons/io'
 
 export function Landing() {
 
+
     let notifysuccess = (success) => toast.success(success)
     let notifyerror = (error) => toast.error(error)
 

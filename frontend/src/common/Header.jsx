@@ -34,9 +34,12 @@ export function Header() {
 
                         {
                             getlocal == '' || getlocal == undefined || getlocal == null ?
-                                <li className=' px-[8px] py-[8px] transition-[1s] cursor-pointer font-[600] rounded-[6px] text-[15px] hover:bg-[#4143E30D] hover:text-[#8637F8]'>STARTUP</li>
+                             
+                            <Link to={"/startups-ecosystem"}><li className='px-[8px] py-[8px]  transition-[1s] cursor-pointer font-[600] rounded-[6px] text-[15px] hover:bg-[#4143E30D] hover:text-[#8637F8]'>STARTUP</li></Link>
+
                                 :
                                 <Link to={"/startups"}><li className='px-[8px] py-[8px]  transition-[1s] cursor-pointer font-[600] rounded-[6px] text-[15px] hover:bg-[#4143E30D] hover:text-[#8637F8]'>STARTUP</li></Link>
+
                         }
                         <Link to={"/about"}><li className='px-[8px] py-[8px]  transition-[1s] cursor-pointer font-[600] rounded-[6px] text-[15px] hover:bg-[#4143E30D] hover:text-[#8637F8]'>ABOUT US</li></Link>
                         {/* <li className='px-[8px] py-[8px]  transition-[1s] cursor-pointer font-[600] rounded-[6px] text-[15px] hover:bg-[#4143E30D] hover:text-[#8637F8]'>CONTACT</li> */}

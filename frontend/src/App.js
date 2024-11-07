@@ -26,6 +26,7 @@ import { BankVerification } from "./pages/web/BankVerification";
 import { Payment } from "./pages/web/Payment";
 import { RegisterForm2 } from "./pages/web/RegisterForm2";
 import { Dashboard } from "./pages/web/Dashboard";
+import { Startupecosystem } from "./pages/web/Startupecosystem";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
           <Route path="/faq" element={<Faqpage />} />
 
 
+            <Route path="/startups-ecosystem" element={<Startupecosystem />} />
 
           <Route path="/login" element={<Login />} />
           <Route element={<LoginPrivate />}>
