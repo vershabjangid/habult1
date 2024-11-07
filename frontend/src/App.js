@@ -27,6 +27,7 @@ import { Payment } from "./pages/web/Payment";
 import { RegisterForm2 } from "./pages/web/RegisterForm2";
 import { Dashboard } from "./pages/web/Dashboard";
 import { Startupecosystem } from "./pages/web/Startupecosystem";
+import { DashboardPanel } from "./pages/web/DashboardPanel";
 
 function App() {
   return (
@@ -76,6 +77,7 @@ function App() {
 
           <Route path="*" element={<Error />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard-panel" element={<DashboardPanel />} />
         </Routes>
       </BrowserRouter>
     </>

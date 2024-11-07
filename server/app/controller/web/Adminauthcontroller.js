@@ -58,8 +58,6 @@ exports.webregister = async (req, res) => {
         Activestatus: "ok",
     }
 
-    console.log(req.body)
-    console.log(req.files)
 
 
     let insertdata = await websiteregistermodel(data)

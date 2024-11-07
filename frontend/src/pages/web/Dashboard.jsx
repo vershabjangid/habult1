@@ -3,31 +3,37 @@ import { Field, Form, Formik } from 'formik'
 import logo from '../../images/download-removebg-preview.png'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
 
 export function Dashboard() {
 
+    let naviget = useNavigate()
 
-    let naviget = useNavigate();
-    naviget('/dashboard')
+
+    let notifyerror = (error) => toast.error(error)
+
+
 
     let insertdata = (value) => {
-        axios.post(`http://localhost:5000/get-auth`, value)
+        axios.post(`http://localhost:5000/Admin_Login`, value)
             .then((res) => {
+                console.log(res)
                 if (res.data.Status === 1) {
-                    localStorage.setItem('admintoken', JSON.stringify(res.data.TokenVal))
+                    localStorage.setItem('admintoken', JSON.stringify(res.data.admintoken))
+                    naviget('/dashboard-panel')
                 }
                 else {
-                    console.log("sorry oops")
+                    notifyerror("Invalid Email or password")
                 }
             })
             .catch((error) => {
                 console.log(error)
             })
     }
-    
-  return (
-    <>
-       <section className='relative w-[100%] h-[100vh]'>
+
+    return (
+        <>
+            <section className='relative w-[100%] h-[100vh]'>
                 <section className='admin_login absolute  w-[100%] h-[100vh] '>
                 </section>
 
@@ -74,6 +80,7 @@ export function Dashboard() {
                     </div>
                 </div>
             </section>
-    </>
-  )
+            <ToastContainer />
+        </>
+    )
 }
