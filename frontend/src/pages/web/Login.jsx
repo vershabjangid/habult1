@@ -12,7 +12,7 @@ export function Login() {
 
     var handlelogin = (value) => {
         if (joinstatus == "Member") {
-            axios.post('http://147.79.71.69:5000/get-investor', value)
+            axios.post('https://www.hivexv.com/get-investor', value)
                 .then((res) => {
                     if (res.data.getdata.length != 0 && res.data.getdata[0].Activestatus != "Pending") {
                         localStorage.setItem('userLogin', JSON.stringify(res.data.getdata))

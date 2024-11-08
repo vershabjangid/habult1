@@ -9,6 +9,7 @@ export function DashboardPanel() {
 
 
     let [investors, setinvestors] = useState([])
+    let [investorspending, setinvestorspending] = useState([])
     let [investorslength, setinvestorslength] = useState([])
     let getinvestors = () => {
         axios.get('http://147.79.71.69:5000/get-members', {
@@ -17,8 +18,8 @@ export function DashboardPanel() {
             }
         })
             .then((res) => {
-                setinvestors(res.data.getdata)
-                setinvestorslength(res.data.getdata.length)
+                setinvestors(res.data.getdata.filter((items) => items.Activestatus == "ok"))
+                setinvestorspending(res.data.getdata.filter((items) => items.Activestatus == "pendin"))
             })
             .catch((error) => {
                 console.log(error)
@@ -28,7 +29,7 @@ export function DashboardPanel() {
 
 
     let [startups, setstartups] = useState([])
-    let [startupslength, setstartupslength] = useState([])
+    let [startupspending, setstartupspending] = useState([])
     let getstartups = () => {
         axios.get('http://147.79.71.69:5000/get-startups', {
             headers: {
@@ -36,8 +37,8 @@ export function DashboardPanel() {
             }
         })
             .then((res) => {
-                setstartups(res.data.getdata)
-                setstartupslength(res.data.getdata.length)
+                setstartups(res.data.getdata.filter((items) => items.Activestatus == "ok"))
+                setstartupspending(res.data.getdata.filter((items) => items.Activestatus == "pending"))
             })
             .catch((error) => {
                 console.log(error)
@@ -114,7 +115,7 @@ export function DashboardPanel() {
                                 <div className='w-[50px] h-[50px] rounded-[50%] border-[1px] bg-[#ccfecca9] flex justify-center items-center'><IoServerOutline className='text-[25px]' /></div>
                                 <div>
                                     <h2 className='text-[20px] font-[500] ms-3'>Services</h2>
-                                    <p className='ms-3'>Total Services : </p>
+                                    {/* <p className='ms-3'>Total Services : </p> */}
                                 </div>
 
                             </div>
@@ -134,7 +135,7 @@ export function DashboardPanel() {
                                 <div className='w-[50px] h-[50px] rounded-[50%] border-[1px] bg-[#ccfecca9] flex justify-center items-center'><FaPersonWalkingLuggage className='text-[25px]' /></div>
                                 <div>
                                     <h2 className='text-[20px] font-[500] ms-3'>New Member Requests</h2>
-                                    <p className='ms-3'>Total New Member Requests : {investorslength} </p>
+                                    {/* <p className='ms-3'>Total New Member Requests : {investorslength} </p> */}
                                 </div>
                             </div>
                             <div className='w-[100%] border-[1px] my-5 p-0 h-[400px] overflow-y-scroll'>
@@ -146,8 +147,17 @@ export function DashboardPanel() {
                                         <th className='py-2'>View Profile</th>
                                     </tr>
                                     {
-                                        investors.map((items, i) => {
-                                            if (items.Activestatus == "pending") {
+                                        investorspending.map((items, i) => {
+                                            console.log(items)
+                                            if (items == []) {
+                                                return (
+                                                    <>
+                                                        <div className=''>No Data Found</div>
+                                                    </>
+                                                )
+                                            }
+
+                                            else {
                                                 return (
                                                     <>
 
@@ -162,14 +172,6 @@ export function DashboardPanel() {
                                                             </td>
                                                         </tr>
 
-                                                    </>
-                                                )
-                                            }
-                                            else {
-                                                return (
-                                                    <>
-                                                        <tr className=''>
-                                                        </tr>
                                                     </>
                                                 )
                                             }
@@ -185,7 +187,7 @@ export function DashboardPanel() {
                                 <div className='w-[50px] h-[50px] rounded-[50%] border-[1px] bg-[#ccfecca9] flex justify-center items-center'><FaPersonWalkingLuggage className='text-[25px]' /></div>
                                 <div>
                                     <h2 className='text-[20px] font-[500] ms-3'>New Startups Requests</h2>
-                                    <p className='ms-3'>Total New Startups Requests : {investorslength} </p>
+                                    {/* <p className='ms-3'>Total New Startups Requests : {investorslength} </p> */}
                                 </div>
                             </div>
                             <div className='w-[100%] border-[1px] my-5 p-0 h-[400px] overflow-y-scroll'>
@@ -197,33 +199,24 @@ export function DashboardPanel() {
                                         <th className='py-2'>View Profile</th>
                                     </tr>
                                     {
-                                        startups.map((items, i) => {
-                                            if (items.Activestatus == "pending") {
-                                                return (
-                                                    <>
+                                        startupspending.map((items, i) => {
 
-                                                        <tr className=''>
-                                                            <td className='py-2 text-center'>{items.Company_Name}</td>
-                                                            <td className='py-2 text-center'>{items.Email}</td>
-                                                            <td className='py-2 text-center'> {items.Phone}</td>
-                                                            <td className='py-2 text-center'>
-                                                                <button className='p-2 bg-[green] rounded text-white'>
-                                                                    View Profile
-                                                                </button>
-                                                            </td>
-                                                        </tr>
+                                            return (
+                                                <>
 
-                                                    </>
-                                                )
-                                            }
-                                            else {
-                                                return (
-                                                    <>
-                                                        <tr className=''>
-                                                        </tr>
-                                                    </>
-                                                )
-                                            }
+                                                    <tr className=''>
+                                                        <td className='py-2 text-center'>{items.Company_Name}</td>
+                                                        <td className='py-2 text-center'>{items.Email}</td>
+                                                        <td className='py-2 text-center'> {items.Phone}</td>
+                                                        <td className='py-2 text-center'>
+                                                            <button className='p-2 bg-[green] rounded text-white'>
+                                                                View Profile
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+
+                                                </>
+                                            )
                                         })
                                     }
                                 </table>
@@ -240,7 +233,7 @@ export function DashboardPanel() {
                                 <div className='w-[50px] h-[50px] rounded-[50%] border-[1px] bg-[#ccfecca9] flex justify-center items-center'><FaPersonWalkingLuggage className='text-[25px]' /></div>
                                 <div>
                                     <h2 className='text-[20px] font-[500] ms-3'>Startups</h2>
-                                    <p className='ms-3'>Total Startups : {startupslength} </p>
+                                    {/* <p className='ms-3'>Total Startups : {startupslength} </p> */}
                                 </div>
                             </div>
                             <div className='w-[100%] border-[1px] my-5 p-0 h-[400px] overflow-y-scroll'>
@@ -253,27 +246,22 @@ export function DashboardPanel() {
                                     </tr>
                                     {
                                         startups.map((items, i) => {
-                                            if (items.Activestatus == "ok") {
-                                                return (
-                                                    <>
+                                            return (
+                                                <>
 
-                                                        <tr className=''>
-                                                            <td className='py-2 text-center'>{items.Company_Name}</td>
-                                                            <td className='py-2 text-center'>{items.Email}</td>
-                                                            <td className='py-2 text-center'> {items.Phone}</td>
-                                                            <td className='py-2 text-center'>
-                                                                <button className='p-2 bg-[green] rounded text-white'>
-                                                                    View Profile
-                                                                </button>
-                                                            </td>
-                                                        </tr>
+                                                    <tr className=''>
+                                                        <td className='py-2 text-center'>{items.Company_Name}</td>
+                                                        <td className='py-2 text-center'>{items.Email}</td>
+                                                        <td className='py-2 text-center'> {items.Phone}</td>
+                                                        <td className='py-2 text-center'>
+                                                            <button className='p-2 bg-[green] rounded text-white'>
+                                                                View Profile
+                                                            </button>
+                                                        </td>
+                                                    </tr>
 
-                                                    </>
-                                                )
-                                            }
-                                            else {
-                                                /////////////////
-                                            }
+                                                </>
+                                            )
                                         })
                                     }
                                 </table>
@@ -294,7 +282,7 @@ export function DashboardPanel() {
                                 <div className='w-[50px] h-[50px] rounded-[50%] border-[1px] bg-[#ccfecca9] flex justify-center items-center'><FaPersonWalkingLuggage className='text-[25px]' /></div>
                                 <div>
                                     <h2 className='text-[20px] font-[500] ms-3'>Members</h2>
-                                    <p className='ms-3'>Total Members : {investorslength} </p>
+                                    {/* <p className='ms-3'>Total Members : {investorslength} </p> */}
                                 </div>
                             </div>
                             <div className='w-[100%] border-[1px] my-5 p-0 h-[400px] overflow-y-scroll'>

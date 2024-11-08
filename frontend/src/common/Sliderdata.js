@@ -14,7 +14,7 @@ export let sidebardata = [
         id : 1,
         icon : <IoIosHome />,
         name : "Home",
-        path : "/dashboard"
+        path : "/dashboard-panel"
     },
 
     {
