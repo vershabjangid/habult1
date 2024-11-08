@@ -28,6 +28,8 @@ import { RegisterForm2 } from "./pages/web/RegisterForm2";
 import { Dashboard } from "./pages/web/Dashboard";
 import { Startupecosystem } from "./pages/web/Startupecosystem";
 import { DashboardPanel } from "./pages/web/DashboardPanel";
+import { Team } from "./pages/web/Team";
+import { ViewStartup_Profile } from "./pages/web/ViewStartup_Profile";
 
 function App() {
   return (
@@ -44,7 +46,7 @@ function App() {
           <Route path="/faq" element={<Faqpage />} />
 
 
-            <Route path="/startups-ecosystem" element={<Startupecosystem />} />
+          <Route path="/startups-ecosystem" element={<Startupecosystem />} />
 
           <Route path="/login" element={<Login />} />
           <Route element={<LoginPrivate />}>
@@ -78,6 +80,8 @@ function App() {
           <Route path="*" element={<Error />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard-panel" element={<DashboardPanel />} />
+          <Route path="/team" element={<Team />} />
+          <Route path="/view-startup-profile" element={<ViewStartup_Profile />} />
         </Routes>
       </BrowserRouter>
     </>

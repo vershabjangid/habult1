@@ -4,6 +4,7 @@ import { FaPersonWalkingLuggage } from 'react-icons/fa6'
 import { IoPerson, IoServerOutline } from 'react-icons/io5'
 import ReactECharts from "echarts-for-react";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export function DashboardPanel() {
 
@@ -19,7 +20,7 @@ export function DashboardPanel() {
         })
             .then((res) => {
                 setinvestors(res.data.getdata.filter((items) => items.Activestatus == "ok"))
-                setinvestorspending(res.data.getdata.filter((items) => items.Activestatus == "pendin"))
+                setinvestorspending(res.data.getdata.filter((items) => items.Activestatus == "pending"))
             })
             .catch((error) => {
                 console.log(error)
@@ -30,6 +31,7 @@ export function DashboardPanel() {
 
     let [startups, setstartups] = useState([])
     let [startupspending, setstartupspending] = useState([])
+    var [imgurl, setimgurl] = useState('')
     let getstartups = () => {
         axios.get('http://147.79.71.69:5000/get-startups', {
             headers: {
@@ -37,6 +39,7 @@ export function DashboardPanel() {
             }
         })
             .then((res) => {
+                setimgurl(res.data.imgurl)
                 setstartups(res.data.getdata.filter((items) => items.Activestatus == "ok"))
                 setstartupspending(res.data.getdata.filter((items) => items.Activestatus == "pending"))
             })
@@ -49,6 +52,19 @@ export function DashboardPanel() {
         getinvestors()
         getstartups()
     }, [])
+
+    let navigate = useNavigate()
+    let viewstartup = (value) => {
+        navigate('/view-startup-profile', {
+            state: {
+                data: value,
+                imgurl: imgurl
+            }
+        })
+    }
+
+    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    let monthsval = new Date().getMonth()
     return (
         <>
             <section className='dashboard_main w-[100%] h-[100vh] bg-[#ccfecc] flex justify-between '>
@@ -103,7 +119,7 @@ export function DashboardPanel() {
                                 </div>
                             </div>
                             <div className='w-[100%] border-[1px] my-5'>
-                                <Userschart />
+                                <Userschart value={investors} />
                             </div>
                         </section>
 
@@ -148,7 +164,6 @@ export function DashboardPanel() {
                                     </tr>
                                     {
                                         investorspending.map((items, i) => {
-                                            console.log(items)
                                             if (items == []) {
                                                 return (
                                                     <>
@@ -209,7 +224,7 @@ export function DashboardPanel() {
                                                         <td className='py-2 text-center'>{items.Email}</td>
                                                         <td className='py-2 text-center'> {items.Phone}</td>
                                                         <td className='py-2 text-center'>
-                                                            <button className='p-2 bg-[green] rounded text-white'>
+                                                            <button className='p-2 bg-[green] rounded text-white' onClick={() => viewstartup(items)}>
                                                                 View Profile
                                                             </button>
                                                         </td>
@@ -254,7 +269,7 @@ export function DashboardPanel() {
                                                         <td className='py-2 text-center'>{items.Email}</td>
                                                         <td className='py-2 text-center'> {items.Phone}</td>
                                                         <td className='py-2 text-center'>
-                                                            <button className='p-2 bg-[green] rounded text-white'>
+                                                            <button className='p-2 bg-[green] rounded text-white' onClick={() => viewstartup(items)}>
                                                                 View Profile
                                                             </button>
                                                         </td>
@@ -295,27 +310,22 @@ export function DashboardPanel() {
                                     </tr>
                                     {
                                         investors.map((items, i) => {
-                                            if (items.Activestatus == "ok") {
-                                                return (
-                                                    <>
+                                            return (
+                                                <>
 
-                                                        <tr className=''>
-                                                            <td className='py-2 text-center'>{items.Company_Name}</td>
-                                                            <td className='py-2 text-center'>{items.Email}</td>
-                                                            <td className='py-2 text-center'> {items.Phone}</td>
-                                                            <td className='py-2 text-center'>
-                                                                <button className='p-2 bg-[green] rounded text-white'>
-                                                                    View Profile
-                                                                </button>
-                                                            </td>
-                                                        </tr>
+                                                    <tr className=''>
+                                                        <td className='py-2 text-center'>{items.Company_Name}</td>
+                                                        <td className='py-2 text-center'>{items.Email}</td>
+                                                        <td className='py-2 text-center'> {items.Phone}</td>
+                                                        <td className='py-2 text-center'>
+                                                            <button className='p-2 bg-[green] rounded text-white'>
+                                                                View Profile
+                                                            </button>
+                                                        </td>
+                                                    </tr>
 
-                                                    </>
-                                                )
-                                            }
-                                            else {
-                                                /////////////////
-                                            }
+                                                </>
+                                            )
                                         })
                                     }
                                 </table>
@@ -345,7 +355,9 @@ export function DashboardPanel() {
 
 
 
-export function Userschart() {
+export function Userschart(value) {
+
+    console.log(value.value)
     let option = {
         xAxis: {
             type: 'category',
@@ -356,7 +368,7 @@ export function Userschart() {
         },
         series: [
             {
-                data: [0, 250],
+                data: [0, value.value.length],
                 type: 'line'
             }
         ]

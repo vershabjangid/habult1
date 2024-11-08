@@ -22,3 +22,13 @@ exports.getstartups = async (req, res) => {
     }
     )
 }
+
+
+
+exports.updatestartups = async (req, res) => {
+    console.log(req.body)
+    let update = await websiteregistermodel.updateOne({ _id: req.body._id }, { Activestatus: req.body.Activestatus })
+    res.send({
+        update
+    })
+}

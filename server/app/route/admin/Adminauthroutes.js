@@ -1,6 +1,6 @@
 let express = require('express')
 const { adminauth } = require('../../controller/admin/Adminauth')
-const { getmembers, getstartups } = require('../../controller/admin/Admincontroller')
+const { getmembers, getstartups, updatestartups } = require('../../controller/admin/Admincontroller')
 let admin = express.Router()
 
 
@@ -31,5 +31,5 @@ admin.post('/Admin_Login', adminauth)
 
 admin.get('/get-members', verifytoken, getmembers)
 admin.get('/get-startups', verifytoken, getstartups)
-
+admin.put('/update-startup', updatestartups)
 module.exports = admin
