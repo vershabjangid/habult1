@@ -55,7 +55,7 @@ exports.webregister = async (req, res) => {
         Incorporation_Certificate: req.files[7].filename,
         Financial_Projection: req.files[8].filename,
         TermsAndConditions: req.body.TermsAndConditions,
-        Activestatus: "ok",
+        Activestatus: "pending",
     }
 
 
@@ -163,7 +163,7 @@ exports.webinvestorregister = async (req, res) => {
         Pan: req.files[0].filename,
         Password: req.body.Password,
         Phone: req.body.Phone,
-        Activestatus: "ok",
+        Activestatus: "pending",
         TermsAndConditions: req.body.TermsAndConditions,
         ReferredBy: req.body.ReferredBy,
     }

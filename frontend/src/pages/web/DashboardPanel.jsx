@@ -25,8 +25,28 @@ export function DashboardPanel() {
             })
     }
 
+
+
+    let [startups, setstartups] = useState([])
+    let [startupslength, setstartupslength] = useState([])
+    let getstartups = () => {
+        axios.get('http://147.79.71.69:5000/get-startups', {
+            headers: {
+                authorization: JSON.parse(localStorage.getItem('admintoken'))
+            }
+        })
+            .then((res) => {
+                setstartups(res.data.getdata)
+                setstartupslength(res.data.getdata.length)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+
     useEffect(() => {
         getinvestors()
+        getstartups()
     }, [])
     return (
         <>
@@ -109,69 +129,162 @@ export function DashboardPanel() {
 
 
                     <section className='w-[100%] flex justify-between my-[40px] flex-wrap'>
-
-                        <section className='page_label p-[10px] rounded-[8px] w-[49%]'>
+                        <section className='page_label p-[10px] rounded-[8px] w-[49%] mt-[30px]'>
                             <div className='flex items-center'>
                                 <div className='w-[50px] h-[50px] rounded-[50%] border-[1px] bg-[#ccfecca9] flex justify-center items-center'><FaPersonWalkingLuggage className='text-[25px]' /></div>
                                 <div>
-                                    <h2 className='text-[20px] font-[500] ms-3'>New Requests</h2>
-                                    <p className='ms-3'>Total Requests 1 : </p>
+                                    <h2 className='text-[20px] font-[500] ms-3'>New Member Requests</h2>
+                                    <p className='ms-3'>Total New Member Requests : {investorslength} </p>
                                 </div>
                             </div>
                             <div className='w-[100%] border-[1px] my-5 p-0 h-[400px] overflow-y-scroll'>
-                                <div className='w-[98%] border-b-2 m-auto my-3 flex items-center justify-between p-3 rounded'>
-                                    <div className='flex items-center'>
-                                        <div className='w-[40px] h-[40px] rounded-[50%] border-[1px] border-[red]'>
-                                            {/* <img src={profile} className='w-100 h-[100%] rounded-[50%]' /> */}
-                                        </div>
+                                <table className='w-[100%]'>
+                                    <tr>
+                                        <th className='py-2'>Name</th>
+                                        <th className='py-2'>Email</th>
+                                        <th className='py-2'>Phone.no</th>
+                                        <th className='py-2'>View Profile</th>
+                                    </tr>
+                                    {
+                                        investors.map((items, i) => {
+                                            if (items.Activestatus == "pending") {
+                                                return (
+                                                    <>
 
-                                        <div className='mx-2'>
-                                            <p className='font-[bolder]'>name</p>
-                                        </div>
-                                    </div>
+                                                        <tr className=''>
+                                                            <td className='py-2 text-center'>{items.Company_Name}</td>
+                                                            <td className='py-2 text-center'>{items.Email}</td>
+                                                            <td className='py-2 text-center'> {items.Phone}</td>
+                                                            <td className='py-2 text-center'>
+                                                                <button className='p-2 bg-[green] rounded text-white'>
+                                                                    View Profile
+                                                                </button>
+                                                            </td>
+                                                        </tr>
 
+                                                    </>
+                                                )
+                                            }
+                                            else {
+                                                return (
+                                                    <>
+                                                        <tr className=''>
+                                                        </tr>
+                                                    </>
+                                                )
+                                            }
+                                        })
+                                    }
+                                </table>
 
-                                    <div className=''>
-                                        <button className='p-2 bg-[green] rounded text-white'>
-                                            View Profile
-                                        </button>
-                                    </div>
+                            </div>
+                        </section>
+
+                        <section className='page_label p-[10px] rounded-[8px] w-[49%] mt-[30px]'>
+                            <div className='flex items-center'>
+                                <div className='w-[50px] h-[50px] rounded-[50%] border-[1px] bg-[#ccfecca9] flex justify-center items-center'><FaPersonWalkingLuggage className='text-[25px]' /></div>
+                                <div>
+                                    <h2 className='text-[20px] font-[500] ms-3'>New Startups Requests</h2>
+                                    <p className='ms-3'>Total New Startups Requests : {investorslength} </p>
                                 </div>
+                            </div>
+                            <div className='w-[100%] border-[1px] my-5 p-0 h-[400px] overflow-y-scroll'>
+                                <table className='w-[100%]'>
+                                    <tr>
+                                        <th className='py-2'>Name</th>
+                                        <th className='py-2'>Email</th>
+                                        <th className='py-2'>Phone.no</th>
+                                        <th className='py-2'>View Profile</th>
+                                    </tr>
+                                    {
+                                        startups.map((items, i) => {
+                                            if (items.Activestatus == "pending") {
+                                                return (
+                                                    <>
+
+                                                        <tr className=''>
+                                                            <td className='py-2 text-center'>{items.Company_Name}</td>
+                                                            <td className='py-2 text-center'>{items.Email}</td>
+                                                            <td className='py-2 text-center'> {items.Phone}</td>
+                                                            <td className='py-2 text-center'>
+                                                                <button className='p-2 bg-[green] rounded text-white'>
+                                                                    View Profile
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+
+                                                    </>
+                                                )
+                                            }
+                                            else {
+                                                return (
+                                                    <>
+                                                        <tr className=''>
+                                                        </tr>
+                                                    </>
+                                                )
+                                            }
+                                        })
+                                    }
+                                </table>
 
                             </div>
                         </section>
 
 
-                        <section className='page_label p-[10px] rounded-[8px] w-[49%]'>
+
+
+
+                        <section className='page_label p-[10px] rounded-[8px] w-[49%] mt-[30px]'>
                             <div className='flex items-center'>
                                 <div className='w-[50px] h-[50px] rounded-[50%] border-[1px] bg-[#ccfecca9] flex justify-center items-center'><FaPersonWalkingLuggage className='text-[25px]' /></div>
                                 <div>
-                                    <h2 className='text-[20px] font-[500] ms-3'>Visitors</h2>
-                                    <p className='ms-3'>Total User 1 : </p>
+                                    <h2 className='text-[20px] font-[500] ms-3'>Startups</h2>
+                                    <p className='ms-3'>Total Startups : {startupslength} </p>
                                 </div>
                             </div>
                             <div className='w-[100%] border-[1px] my-5 p-0 h-[400px] overflow-y-scroll'>
-                                <div className='w-[98%] border-b-2 m-auto my-3 flex items-center justify-between p-3 rounded'>
-                                    <div className='flex items-center'>
-                                        <div className='w-[40px] h-[40px] rounded-[50%] border-[1px] border-[red]'>
-                                            {/* <img src={profile} className='w-100 h-[100%] rounded-[50%]' /> */}
-                                        </div>
+                                <table className='w-[100%]'>
+                                    <tr>
+                                        <th className='py-2'>Name</th>
+                                        <th className='py-2'>Email</th>
+                                        <th className='py-2'>Phone.no</th>
+                                        <th className='py-2'>View Profile</th>
+                                    </tr>
+                                    {
+                                        startups.map((items, i) => {
+                                            if (items.Activestatus == "ok") {
+                                                return (
+                                                    <>
 
-                                        <div className='mx-2'>
-                                            <p className='font-[bolder]'>name</p>
-                                        </div>
-                                    </div>
+                                                        <tr className=''>
+                                                            <td className='py-2 text-center'>{items.Company_Name}</td>
+                                                            <td className='py-2 text-center'>{items.Email}</td>
+                                                            <td className='py-2 text-center'> {items.Phone}</td>
+                                                            <td className='py-2 text-center'>
+                                                                <button className='p-2 bg-[green] rounded text-white'>
+                                                                    View Profile
+                                                                </button>
+                                                            </td>
+                                                        </tr>
 
-
-                                    <div className=''>
-                                        <button className='p-2 bg-[green] rounded text-white'>
-                                            View Profile
-                                        </button>
-                                    </div>
-                                </div>
+                                                    </>
+                                                )
+                                            }
+                                            else {
+                                                /////////////////
+                                            }
+                                        })
+                                    }
+                                </table>
 
                             </div>
                         </section>
+
+
+
+
+
 
 
 
@@ -194,22 +307,27 @@ export function DashboardPanel() {
                                     </tr>
                                     {
                                         investors.map((items, i) => {
-                                            return (
-                                                <>
+                                            if (items.Activestatus == "ok") {
+                                                return (
+                                                    <>
 
-                                                    <tr className=''>
-                                                        <td className='py-2 text-center'>{items.Company_Name}</td>
-                                                        <td className='py-2 text-center'>{items.Email}</td>
-                                                        <td className='py-2 text-center'> {items.Phone}</td>
-                                                        <td className='py-2 text-center'>
-                                                            <button className='p-2 bg-[green] rounded text-white'>
-                                                                View Profile
-                                                            </button>
-                                                        </td>
-                                                    </tr>
+                                                        <tr className=''>
+                                                            <td className='py-2 text-center'>{items.Company_Name}</td>
+                                                            <td className='py-2 text-center'>{items.Email}</td>
+                                                            <td className='py-2 text-center'> {items.Phone}</td>
+                                                            <td className='py-2 text-center'>
+                                                                <button className='p-2 bg-[green] rounded text-white'>
+                                                                    View Profile
+                                                                </button>
+                                                            </td>
+                                                        </tr>
 
-                                                </>
-                                            )
+                                                    </>
+                                                )
+                                            }
+                                            else {
+                                                /////////////////
+                                            }
                                         })
                                     }
                                 </table>
