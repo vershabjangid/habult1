@@ -1,16 +1,34 @@
 import React, { useState } from 'react'
 import { FaDownload, FaEarthAsia, FaLinkedin, FaPersonWalkingLuggage } from 'react-icons/fa6'
 import { Sidebar } from '../../common/Sidebar'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
+import axios from 'axios';
 
 export function ViewStartup_Profile() {
 
     let location = useLocation();
     let data = location.state
-console.log(data)
 
+
+    let naviget = useNavigate()
     let [acceptmodal, setacceptmodal] = useState(false)
     let [rejecttmodal, setrejecttmodal] = useState(false)
+
+    let updatestartups = (value) => {
+
+        let newdata = {
+            _id: data.data._id,
+            Activestatus: value
+        }
+        axios.put('http://147.79.71.69:5000/update-startup', newdata)
+            .then((res) => {
+                console.log(res.data)
+                naviget('/dashboard-panel')
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
     return (
         <>
 
@@ -21,7 +39,7 @@ console.log(data)
 
                         <div className='flex justify-evenly my-[15px]'>
                             <button className='bg-[red] w-[47%] text-[20px] py-[10px] rounded text-white' onClick={() => setacceptmodal(false)}>Cancel</button>
-                            <button className='bg-[green] w-[47%] text-[20px] py-[10px] rounded text-white'>Accept</button>
+                            <button className='bg-[green] w-[47%] text-[20px] py-[10px] rounded text-white' onClick={() => updatestartups("ok")}>Accept</button>
                         </div>
                     </section>
                 </section> : null
@@ -298,16 +316,16 @@ console.log(data)
                                     </div>
 
                                     <div className='my-2 w-[200px]'>
-                                       
+
                                     </div>
 
                                     <div className='my-2 w-[200px]'>
-                                       
+
                                     </div>
-                                    
+
 
                                     <div className='my-2 w-[2x0px]'>
-                                       
+
                                     </div>
                                 </div>
                             </section>
