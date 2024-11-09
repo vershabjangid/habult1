@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --button-color--: #8637F8;
+}
+
+.login_inner {
+    box-shadow: 0px 0px 25px 0px #8637F81A;
+}
+
+.login_inner_otp {
+    box-shadow: 0px 0px 25px 0px #8637F81A;
+}
+
+.login_main_otp {
+    box-shadow: 0px 0px 25px 0px #8637F81A;
+}
+
+.login_inner_term {
+    box-shadow: 0px 0px 25px 0px #8637F81A;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    display: none;
+}
+
+.requires_message {
+    color: red !important;
+}
+
+.header_options_div {
+    width: calc(70% - 150px);
+}
+
+.landing_counter {
+    box-shadow: 0px 0px 10px 0px #0003FE1A;
+}
+
+.header {
+    box-shadow: 0px 0px 10px 0px #B2B3FF1A;
+}
+
+.about_img_section>div {
+    top: 40%;
+}
+
+
+.corner_cut {
+    border-radius: 100px 0px 0px 0px;
+    top: -32%;
+    left: -10%;
+    z-index: -9;
+}
+
+.rounded_element {
+    border-radius: 100px 0px 0px 0px;
+    z-index: -9;
+}
+
+.our_services_cards {
+    box-shadow: 0px 13px 100px 0px #6666662a;
+}
+
+.faq_outer_section {
+    box-shadow: 0px 6px 16px 0px #4A3AFF;
+
+}
+
+.faq_outer_section_deactive_btn {
+    box-shadow: 0px 5px 16px 0px #080F340F;
+}
+
+.faq_outer_section_deactive {
+    background: #FFFFFF;
+    box-shadow: 0px 5px 16px 0px #080F340F;
+
+}
+
+.sidebar ::-webkit-scrollbar {
+    display: none;
+}
+
+.card_logo_section {
+    box-shadow: 0px 1px 20px 0px #0000001A;
+
+}
+
+.termsmodalsection::-webkit-scrollbar {
+    display: none;
+}
+
+.profile_icon::-webkit-file-upload-button {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.startup_info_inner_left{
+    padding: 0;
+}
+.youtube {
+    height: auto;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+
+.sidebar_main{
+    border-radius: 0px 20px 20px 0px;
+    transition: 0.5s;
+}
+
+.sidebar_main:hover{
+    width: 270px;
+}
+
+.sidebar_option{
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+}
+
+.sidebar_main:hover .sidebar_option{
+    opacity: 1;
+    visibility: visible;
+    position: unset;
+}
+
+.side_options{
+    background-color: white;
+}
+
+.side_options:hover{
+    background-color: #c2f6c2;
+}
+
+
+.admin_login{
+    background-image: url("../src/images/backgroundlogin.jpg");
+    background-size: cover;
+    background-position: center;
+    filter: blur(3px);
+}
+
+
+.admin_inner_form{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    backdrop-filter: blur(20px);
+    color: white;
+    background-color: transparent;
+    border: 2px solid white;
+}
+
+.form_inputs>input{
+    border-bottom: 1px solid white;
+    border-radius: 5px;
+    }
+
+
+.form_inputs>input::placeholder{
+color: white;
+}
+
+.form_inputs_otp>input::-webkit-inner-spin-button{
+display: none;
+}
+
+.dashboard_main{
+    background-position: fixed;
+}
+
+.dashboard_inner{
+    border-radius: 20px 0px 0px 20px;
+    width: calc(100% - 140px);
+    transition: 0.5s;
+}
+
+.sidebar_main:hover ~ .dashboard_inner{
+    width: calc(100% - 310px);
+}
+
+.page_label{
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.332);
+}
