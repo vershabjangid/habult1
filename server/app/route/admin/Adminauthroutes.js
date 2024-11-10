@@ -1,6 +1,6 @@
 let express = require('express')
 const { adminauth } = require('../../controller/admin/Adminauth')
-const { getmembers, getstartups, updatestartups, addindustry, viewindustry } = require('../../controller/admin/Admincontroller')
+const { getmembers, getstartups, updatestartups, addindustry, viewindustry, updateinvestors } = require('../../controller/admin/Admincontroller')
 let admin = express.Router()
 
 
@@ -32,6 +32,7 @@ admin.post('/Admin_Login', adminauth)
 admin.get('/get-members', verifytoken, getmembers)
 admin.get('/get-startups', verifytoken, getstartups)
 admin.put('/update-startup', updatestartups)
+admin.put('/update-investor', updateinvestors)
 admin.post('/add-industry', addindustry)
 admin.get('/view-industry', viewindustry)
 

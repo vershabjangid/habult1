@@ -12,6 +12,7 @@ export function DashboardPanel() {
     let [investors, setinvestors] = useState([])
     let [investorspending, setinvestorspending] = useState([])
     let [investorslength, setinvestorslength] = useState([])
+    let [investorrejected, setinvestorrejected] = useState([])
     let getinvestors = () => {
         axios.get('http://147.79.71.69:5000/get-members', {
             headers: {
@@ -19,8 +20,11 @@ export function DashboardPanel() {
             }
         })
             .then((res) => {
-                setinvestors(res.data.getdata.filter((items) => items.Activestatus == "ok"))
-                setinvestorspending(res.data.getdata.filter((items) => items.Activestatus == "pending"))
+
+                setinvestors(res.data.getdata.filter((items) => items.Activestatus.includes("ok")))
+                setinvestorspending(res.data.getdata.filter((items) => items.Activestatus.includes("pending")))
+                setinvestorrejected(res.data.getdata.filter((items) => items.Activestatus.includes("reject")))
+
             })
             .catch((error) => {
                 console.log(error)
@@ -34,7 +38,8 @@ export function DashboardPanel() {
     let [startupstrending, setstartupstrending] = useState([])
     let [startupsrejected, setstartupsrejected] = useState([])
 
-    console.log(startupspending)
+
+
     var [imgurl, setimgurl] = useState('')
     let getstartups = () => {
         axios.get('http://147.79.71.69:5000/get-startups', {
@@ -43,7 +48,6 @@ export function DashboardPanel() {
             }
         })
             .then((res) => {
-                console.log(res.data)
                 setimgurl(res.data.imgurl)
                 setstartups(res.data.getdata.filter((items) => items.Activestatus.includes("ok")))
                 setstartupspending(res.data.getdata.filter((items) => items.Activestatus.includes("pending")))
@@ -63,6 +67,15 @@ export function DashboardPanel() {
     let navigate = useNavigate()
     let viewstartup = (value) => {
         navigate('/view-startup-profile', {
+            state: {
+                data: value,
+                imgurl: imgurl
+            }
+        })
+    }
+
+    let viewmember = (value) => {
+        navigate('/view-member-profile', {
             state: {
                 data: value,
                 imgurl: imgurl
@@ -188,7 +201,7 @@ export function DashboardPanel() {
                                                             <td className='py-2 text-center'>{items.Email}</td>
                                                             <td className='py-2 text-center'> {items.Phone}</td>
                                                             <td className='py-2 text-center'>
-                                                                <button className='p-2 bg-[green] rounded text-white'>
+                                                                <button className='p-2 bg-[green] rounded text-white' onClick={() => viewmember(items)}>
                                                                     View Profile
                                                                 </button>
                                                             </td>
@@ -383,7 +396,7 @@ export function DashboardPanel() {
                         </section>
 
 
-                        
+
                         <section className='page_label p-[10px] rounded-[8px] w-[49%] mt-[30px]'>
                             <div className='flex items-center'>
                                 <div className='w-[50px] h-[50px] rounded-[50%] border-[1px] bg-[#ccfecca9] flex justify-center items-center'><FaPersonWalkingLuggage className='text-[25px]' /></div>
@@ -426,6 +439,46 @@ export function DashboardPanel() {
                         </section>
 
 
+                        <section className='page_label p-[10px] rounded-[8px] w-[49%] mt-[30px]'>
+                            <div className='flex items-center'>
+                                <div className='w-[50px] h-[50px] rounded-[50%] border-[1px] bg-[#ccfecca9] flex justify-center items-center'><FaPersonWalkingLuggage className='text-[25px]' /></div>
+                                <div>
+                                    <h2 className='text-[20px] font-[500] ms-3'>Investor Reject</h2>
+                                    {/* <p className='ms-3'>Total Members : {investorslength} </p> */}
+                                </div>
+                            </div>
+                            <div className='w-[100%] border-[1px] my-5 p-0 h-[400px] overflow-y-scroll'>
+                                <table className='w-[100%]'>
+                                    <tr>
+                                        <th className='py-2'>Name</th>
+                                        <th className='py-2'>Email</th>
+                                        <th className='py-2'>Phone.no</th>
+                                        <th className='py-2'>View Profile</th>
+                                    </tr>
+                                    {
+                                        investorrejected.map((items, i) => {
+                                            return (
+                                                <>
+
+                                                    <tr className=''>
+                                                        <td className='py-2 text-center'>{items.Company_Name}</td>
+                                                        <td className='py-2 text-center'>{items.Email}</td>
+                                                        <td className='py-2 text-center'> {items.Phone}</td>
+                                                        <td className='py-2 text-center'>
+                                                            <button className='p-2 bg-[green] rounded text-white' onClick={() => viewmember(items)}>
+                                                                View Profile
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+
+                                                </>
+                                            )
+                                        })
+                                    }
+                                </table>
+
+                            </div>
+                        </section>
 
 
                     </section>
@@ -449,7 +502,6 @@ export function DashboardPanel() {
 
 export function Userschart(value) {
 
-    console.log(value.value)
     let option = {
         xAxis: {
             type: 'category',

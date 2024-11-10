@@ -30,6 +30,7 @@ import { Startupecosystem } from "./pages/web/Startupecosystem";
 import { DashboardPanel } from "./pages/web/DashboardPanel";
 import { Team } from "./pages/web/Team";
 import { ViewStartup_Profile } from "./pages/web/ViewStartup_Profile";
+import { ViewMember_profile } from "./pages/web/ViewMember_profile";
 
 function App() {
   return (
@@ -82,6 +83,7 @@ function App() {
           <Route path="/dashboard-panel" element={<DashboardPanel />} />
           <Route path="/team" element={<Team />} />
           <Route path="/view-startup-profile" element={<ViewStartup_Profile />} />
+          <Route path="/view-member-profile" element={<ViewMember_profile />} />
         </Routes>
       </BrowserRouter>
     </>
