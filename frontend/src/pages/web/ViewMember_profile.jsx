@@ -85,22 +85,6 @@ export function ViewMember_profile() {
             }
 
 
-            {
-                trendingmodal ? <section className='w-[100%] h-[100vh] fixed flex justify-center items-center bg-[#00000064]'>
-                    <form onSubmit={formik.handleSubmit}>
-                        <section className='w-[600px] border-[3px] p-[5px] py-[20px] rounded-[15px] bg-[white]'>
-                            <h1 className='text-center text-[25px]'>Are you sure you want to make it trending</h1>
-
-                            <div className='flex justify-evenly my-[15px]'>
-                                <button className='bg-[red] w-[47%] text-[20px] py-[10px] rounded text-white' onClick={() => settrendingmodal(false)}>Cancel</button>
-                                <button type='submit' className='bg-[green] w-[47%] text-[20px] py-[10px] rounded text-white' onClick={() => formik.setFieldValue('Activestatus', "trending")}>Trending</button>
-                            </div>
-                        </section>
-                    </form>
-                </section> : null
-            }
-
-
 
             <section className='dashboard_main w-[100%] h-[100vh] bg-[#ccfecc] flex justify-between '>
                 <Sidebar />

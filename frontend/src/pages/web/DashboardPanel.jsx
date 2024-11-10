@@ -23,7 +23,7 @@ export function DashboardPanel() {
 
                 setinvestors(res.data.getdata.filter((items) => items.Activestatus.includes("ok")))
                 setinvestorspending(res.data.getdata.filter((items) => items.Activestatus.includes("pending")))
-                setinvestorrejected(res.data.getdata.filter((items) => items.Activestatus.includes("reject")))
+                setinvestorrejected(res.data.getdata.filter((items) => items.Activestatus.includes("trending")))
 
             })
             .catch((error) => {
@@ -338,7 +338,7 @@ export function DashboardPanel() {
                                                         <td className='py-2 text-center'>{items.Email}</td>
                                                         <td className='py-2 text-center'> {items.Phone}</td>
                                                         <td className='py-2 text-center'>
-                                                            <button className='p-2 bg-[green] rounded text-white'>
+                                                            <button className='p-2 bg-[green] rounded text-white' onClick={() => viewmember(items)}>
                                                                 View Profile
                                                             </button>
                                                         </td>
