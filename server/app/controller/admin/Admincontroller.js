@@ -28,7 +28,24 @@ exports.getstartups = async (req, res) => {
 exports.updatestartups = async (req, res) => {
     console.log(req.body)
     let update = await websiteregistermodel.updateOne({ _id: req.body._id }, { Activestatus: req.body.Activestatus })
-    res.send({
-        update
+    .then(() => {
+        res.send({
+            Status: 1,
+            Message: "Data Updated Successfully",
+        })
+    })
+    .catch((error) => {
+        if (error.code == 11000) {
+            res.send({
+                Status: 0,
+                Message: "Data Already Exists"
+            })
+        }
+        else {
+            res.status(400).send({
+                Status: 0,
+                Message: "Data Missing"
+            })
+        }
     })
 }

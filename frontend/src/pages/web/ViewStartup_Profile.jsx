@@ -13,16 +13,19 @@ export function ViewStartup_Profile() {
     let naviget = useNavigate()
     let [acceptmodal, setacceptmodal] = useState(false)
     let [rejecttmodal, setrejecttmodal] = useState(false)
+    let [trendingmodal, settrendingmodal] = useState(false)
+
 
     let updatestartups = (value) => {
 
+        console.log(value)
         let newdata = {
             _id: data.data._id,
-            Activestatus: value
+            Activestatus: value,
+            Message: value.Message
         }
         axios.put('http://147.79.71.69:5000/update-startup', newdata)
             .then((res) => {
-                console.log(res.data)
                 naviget('/dashboard-panel')
             })
             .catch((error) => {
@@ -54,11 +57,25 @@ export function ViewStartup_Profile() {
                             <div className='w-[95%]'>
                                 <p>Reason for rejection</p>
                             </div>
-                            <input type="text" className='border-[1px] border-black p-2 rounded my-[10px] w-[95%]' />
+                            <input type="text" className='border-[1px] border-black p-2 rounded my-[10px] w-[95%]' onChange={(e) => updatestartups('Message', e.target.value)} />
                         </div>
                         <div className='flex justify-evenly my-[15px]'>
                             <button className='bg-[red] w-[47%] text-[20px] py-[10px] rounded text-white' onClick={() => setrejecttmodal(false)}>Cancel</button>
-                            <button className='bg-[green] w-[47%] text-[20px] py-[10px] rounded text-white'>Reject</button>
+                            <button className='bg-[green] w-[47%] text-[20px] py-[10px] rounded text-white' onClick={() => updatestartups("reject")}>Reject</button>
+                        </div>
+                    </section>
+                </section> : null
+            }
+
+
+            {
+                trendingmodal ? <section className='w-[100%] h-[100vh] fixed flex justify-center items-center bg-[#00000064]'>
+                    <section className='w-[600px] border-[3px] p-[5px] py-[20px] rounded-[15px] bg-[white]'>
+                        <h1 className='text-center text-[25px]'>Are you sure you want to make it trending</h1>
+
+                        <div className='flex justify-evenly my-[15px]'>
+                            <button className='bg-[red] w-[47%] text-[20px] py-[10px] rounded text-white' onClick={() => settrendingmodal(false)}>Cancel</button>
+                            <button className='bg-[green] w-[47%] text-[20px] py-[10px] rounded text-white' onClick={() => updatestartups("trending")}>Trending</button>
                         </div>
                     </section>
                 </section> : null
@@ -340,6 +357,10 @@ export function ViewStartup_Profile() {
 
                                     <button className='m-2 bg-[green] py-[10px] px-[25px] rounded-[10px] text-[white] text-[20px] font-[500]' onClick={() => setacceptmodal(true)}>
                                         Accept
+                                    </button>
+
+                                    <button className='m-2 bg-[#1e4454] py-[10px] px-[25px] rounded-[10px] text-[white] text-[20px] font-[500]' onClick={() => settrendingmodal(true)}>
+                                        Trending
                                     </button>
 
 

@@ -40,7 +40,7 @@ export function DashboardPanel() {
         })
             .then((res) => {
                 setimgurl(res.data.imgurl)
-                setstartups(res.data.getdata.filter((items) => items.Activestatus == "ok"))
+                setstartups(res.data.getdata.filter((items) => items.Activestatus == "ok" || "trending"))
                 setstartupspending(res.data.getdata.filter((items) => items.Activestatus == "pending"))
             })
             .catch((error) => {

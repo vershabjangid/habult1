@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom'
 export function Startups() {
 
   let [startups, setstartups] = useState([])
+  let [startupstrending, setstartupstrending] = useState([])
 
   let [url, seturl] = useState('')
 
@@ -19,7 +20,8 @@ export function Startups() {
       }
     })
       .then((res) => {
-        setstartups(res.data.getdata)
+        setstartups(res.data.getdata.filter((items) => items.Activestatus == "ok" || "trending"))
+        setstartupstrending(res.data.getdata.filter((items) => items.Activestatus == "trending"))
         seturl(res.data.imgurl)
       })
   }
@@ -54,7 +56,7 @@ export function Startups() {
                     startups == undefined ?
                       naviget('*')
                       :
-                      startups.map((items, index) => {
+                      startupstrending.map((items, index) => {
                         return (
                           <>
                             <section className='startupcard w-[410px] rounded-[10px] bg-white my-5 mx-2' onClick={() => briefinfo(items)}>
