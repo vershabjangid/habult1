@@ -31,6 +31,10 @@ export function DashboardPanel() {
 
     let [startups, setstartups] = useState([])
     let [startupspending, setstartupspending] = useState([])
+    let [startupstrending, setstartupstrending] = useState([])
+    let [startupsrejected, setstartupsrejected] = useState([])
+
+    console.log(startupspending)
     var [imgurl, setimgurl] = useState('')
     let getstartups = () => {
         axios.get('http://147.79.71.69:5000/get-startups', {
@@ -39,9 +43,12 @@ export function DashboardPanel() {
             }
         })
             .then((res) => {
+                console.log(res.data)
                 setimgurl(res.data.imgurl)
-                setstartups(res.data.getdata.filter((items) => items.Activestatus == "ok" || "trending"))
-                setstartupspending(res.data.getdata.filter((items) => items.Activestatus == "pending"))
+                setstartups(res.data.getdata.filter((items) => items.Activestatus.includes("ok")))
+                setstartupspending(res.data.getdata.filter((items) => items.Activestatus.includes("pending")))
+                setstartupstrending(res.data.getdata.filter((items) => items.Activestatus.includes("trending")))
+                setstartupsrejected(res.data.getdata.filter((items) => items.Activestatus.includes("reject")))
             })
             .catch((error) => {
                 console.log(error)
@@ -215,7 +222,7 @@ export function DashboardPanel() {
                                     </tr>
                                     {
                                         startupspending.map((items, i) => {
-
+                                            console.log(items)
                                             return (
                                                 <>
 
@@ -319,6 +326,91 @@ export function DashboardPanel() {
                                                         <td className='py-2 text-center'> {items.Phone}</td>
                                                         <td className='py-2 text-center'>
                                                             <button className='p-2 bg-[green] rounded text-white'>
+                                                                View Profile
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+
+                                                </>
+                                            )
+                                        })
+                                    }
+                                </table>
+
+                            </div>
+                        </section>
+
+
+                        <section className='page_label p-[10px] rounded-[8px] w-[49%] mt-[30px]'>
+                            <div className='flex items-center'>
+                                <div className='w-[50px] h-[50px] rounded-[50%] border-[1px] bg-[#ccfecca9] flex justify-center items-center'><FaPersonWalkingLuggage className='text-[25px]' /></div>
+                                <div>
+                                    <h2 className='text-[20px] font-[500] ms-3'>Trending</h2>
+                                    {/* <p className='ms-3'>Total Members : {investorslength} </p> */}
+                                </div>
+                            </div>
+                            <div className='w-[100%] border-[1px] my-5 p-0 h-[400px] overflow-y-scroll'>
+                                <table className='w-[100%]'>
+                                    <tr>
+                                        <th className='py-2'>Name</th>
+                                        <th className='py-2'>Email</th>
+                                        <th className='py-2'>Phone.no</th>
+                                        <th className='py-2'>View Profile</th>
+                                    </tr>
+                                    {
+                                        startupstrending.map((items, i) => {
+                                            return (
+                                                <>
+
+                                                    <tr className=''>
+                                                        <td className='py-2 text-center'>{items.Company_Name}</td>
+                                                        <td className='py-2 text-center'>{items.Email}</td>
+                                                        <td className='py-2 text-center'> {items.Phone}</td>
+                                                        <td className='py-2 text-center'>
+                                                            <button className='p-2 bg-[green] rounded text-white' onClick={() => viewstartup(items)}>
+                                                                View Profile
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+
+                                                </>
+                                            )
+                                        })
+                                    }
+                                </table>
+
+                            </div>
+                        </section>
+
+
+                        
+                        <section className='page_label p-[10px] rounded-[8px] w-[49%] mt-[30px]'>
+                            <div className='flex items-center'>
+                                <div className='w-[50px] h-[50px] rounded-[50%] border-[1px] bg-[#ccfecca9] flex justify-center items-center'><FaPersonWalkingLuggage className='text-[25px]' /></div>
+                                <div>
+                                    <h2 className='text-[20px] font-[500] ms-3'>Reject</h2>
+                                    {/* <p className='ms-3'>Total Members : {investorslength} </p> */}
+                                </div>
+                            </div>
+                            <div className='w-[100%] border-[1px] my-5 p-0 h-[400px] overflow-y-scroll'>
+                                <table className='w-[100%]'>
+                                    <tr>
+                                        <th className='py-2'>Name</th>
+                                        <th className='py-2'>Email</th>
+                                        <th className='py-2'>Phone.no</th>
+                                        <th className='py-2'>View Profile</th>
+                                    </tr>
+                                    {
+                                        startupsrejected.map((items, i) => {
+                                            return (
+                                                <>
+
+                                                    <tr className=''>
+                                                        <td className='py-2 text-center'>{items.Company_Name}</td>
+                                                        <td className='py-2 text-center'>{items.Email}</td>
+                                                        <td className='py-2 text-center'> {items.Phone}</td>
+                                                        <td className='py-2 text-center'>
+                                                            <button className='p-2 bg-[green] rounded text-white' onClick={() => viewstartup(items)}>
                                                                 View Profile
                                                             </button>
                                                         </td>

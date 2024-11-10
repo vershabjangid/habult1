@@ -8,6 +8,7 @@ let emailpass = process.env.EMAILPASS
 
 
 exports.webregister = async (req, res) => {
+    console.log(req.files)
     let data = {
         Join_as: req.body.Join_as,
         Email: req.body.Email,
@@ -57,6 +58,7 @@ exports.webregister = async (req, res) => {
         TermsAndConditions: req.body.TermsAndConditions,
         Activestatus: "pending",
     }
+
 
 
 

@@ -85,7 +85,7 @@ export function RegisterForm2() {
     let insertdata = (value) => {
 
 
-        axios.post('http://147.79.71.69:5000/register', toFormData(value), {
+        axios.post('/register', toFormData(value), {
             headers: {
                 authorization: JSON.parse(localStorage.getItem('authenticate'))
             }
@@ -241,7 +241,7 @@ export function RegisterForm2() {
                                             <div>
                                                 <input type='text' name="TeamName1" className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("TeamName1", e.target.value)} placeholder='Full Name' />
                                                 <input type='text' name="TeamDesignation1" className=' w-[100%] my-2  border-[1px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("TeamDesignation1", e.target.value)} placeholder='Designation' />
-                                                <input type='text' name="TeamExperience1" className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("TeamExperience1", e.target.value)} placeholder='Experience' />
+                                                <input type='number' name="TeamExperience1" className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("TeamExperience1", e.target.value)} placeholder='Experience' />
                                             </div>
                                         </div>
 
@@ -258,7 +258,7 @@ export function RegisterForm2() {
                                             <div>
                                                 <input type='text' name="TeamName2" className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("TeamName2", e.target.value)} placeholder='Full Name' />
                                                 <input type='text' name="TeamDesignation2" className=' w-[100%] my-2  border-[1px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("TeamDesignation2", e.target.value)} placeholder='Designation' />
-                                                <input type='text' name="TeamExperience2" className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("TeamExperience2", e.target.value)} placeholder='Experience' />
+                                                <input type='number' name="TeamExperience2" className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("TeamExperience2", e.target.value)} placeholder='Experience' />
                                             </div>
                                         </div>
 
@@ -287,7 +287,7 @@ export function RegisterForm2() {
                                             <div>
                                                 <input type='text' name="BackersName2" className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("BackersName1", e.target.value)} placeholder='Full Name' />
                                                 <input type='text' name="BackersDesignation2" className=' w-[100%] my-2  border-[1px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("BackersDesignation1", e.target.value)} placeholder='Designation' />
-                                                <input type='text' name="BackersExperience2" className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("BackersExperience1", e.target.value)} placeholder='Experience' />
+                                                <input type='number' name="BackersExperience2" className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("BackersExperience1", e.target.value)} placeholder='Experience' />
                                             </div>
                                         </div>
 
@@ -304,7 +304,7 @@ export function RegisterForm2() {
                                             <div>
                                                 <input type='text' name="BackersName2" className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("BackersName2", e.target.value)} placeholder='Full Name' />
                                                 <input type='text' name="BackersDesignation2" className=' w-[100%] my-2  border-[1px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("BackersDesignation2", e.target.value)} placeholder='Designation' />
-                                                <input type='text' name="BackersExperience2" className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("BackersExperience2", e.target.value)} placeholder='Experience' />
+                                                <input type='number' name="BackersExperience2" className=' w-[100%]  border-[1px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("BackersExperience2", e.target.value)} placeholder='Experience' />
                                             </div>
                                         </div>
 

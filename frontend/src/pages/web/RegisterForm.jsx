@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { Logo } from '../../common/Logo'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import axios, { all, toFormData } from 'axios'
@@ -59,6 +59,23 @@ export function RegisterForm() {
     let insertdata = (value) => {
         naviget('/create-startup-profile', { state: value })
     }
+
+    
+  let [industry, setindustry] = useState([])
+  let getindustry = () => {
+    axios.get('http://localhost:5000/view-industry')
+      .then((res) => {
+        setindustry(res.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
+  useEffect(() => {
+    getindustry()
+  }, [])
+
 
     let [termsmodal, settermsmodal] = useState(false)
     return (
@@ -178,9 +195,20 @@ export function RegisterForm() {
                                     <p className='font-[500] mb-0'>Industry <sup className='text-[red]'>*</sup></p>
                                     <select name="Industry" className=' w-[100%] border-[1px] mt-[10px] p-[10px]  rounded-[8px]' onChange={(e) => formik.setFieldValue("Industry", e.target.value)}>
                                         <option>Business Industry</option>
-                                        <option value={"Entertainment"}>Entertainment</option>
-                                        <option value={"IT Services"}>IT Services</option>
-                                        <option value={"Education"}>Education</option>
+
+                                       
+{
+    industry.map((items,index)=>{
+return(
+    <>
+      <option value={items.Industry}>{items.Industry}</option>
+    </>
+)
+    })
+}
+
+
+                                       
                                     </select>
                                 </div>
                                 <div className='requires_message'>

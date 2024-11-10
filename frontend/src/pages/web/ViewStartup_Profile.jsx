@@ -3,6 +3,7 @@ import { FaDownload, FaEarthAsia, FaLinkedin, FaPersonWalkingLuggage } from 'rea
 import { Sidebar } from '../../common/Sidebar'
 import { useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios';
+import { useFormik } from 'formik';
 
 export function ViewStartup_Profile() {
 
@@ -15,16 +16,21 @@ export function ViewStartup_Profile() {
     let [rejecttmodal, setrejecttmodal] = useState(false)
     let [trendingmodal, settrendingmodal] = useState(false)
 
-
-    let updatestartups = (value) => {
-
-        console.log(value)
-        let newdata = {
+    var [rejectapplication, setrejectapplication] = useState('')
+    let formik = useFormik({
+        initialValues: {
             _id: data.data._id,
-            Activestatus: value,
-            Message: value.Message
-        }
-        axios.put('http://147.79.71.69:5000/update-startup', newdata)
+            Activestatus: "",
+            Message: "",
+            Email: data.data.Email
+        },
+
+        onSubmit: (() => {
+            updatestartups(formik.values)
+        })
+    })
+    let updatestartups = (value) => {
+        axios.put('http://147.79.71.69:5000/update-startup', value)
             .then((res) => {
                 naviget('/dashboard-panel')
             })
@@ -37,47 +43,53 @@ export function ViewStartup_Profile() {
 
             {
                 acceptmodal ? <section className='w-[100%] h-[100vh] fixed flex justify-center items-center bg-[#00000064]'>
-                    <section className='w-[600px] border-[3px] p-[5px] py-[20px] rounded-[15px] bg-[white]'>
-                        <h1 className='text-center text-[25px]'>Are you sure you want to accept</h1>
+                    <form onSubmit={formik.handleSubmit}>
+                        <section className='w-[600px] border-[3px] p-[5px] py-[20px] rounded-[15px] bg-[white]'>
+                            <h1 className='text-center text-[25px]'>Are you sure you want to accept</h1>
 
-                        <div className='flex justify-evenly my-[15px]'>
-                            <button className='bg-[red] w-[47%] text-[20px] py-[10px] rounded text-white' onClick={() => setacceptmodal(false)}>Cancel</button>
-                            <button className='bg-[green] w-[47%] text-[20px] py-[10px] rounded text-white' onClick={() => updatestartups("ok")}>Accept</button>
-                        </div>
-                    </section>
+                            <div className='flex justify-evenly my-[15px]'>
+                                <button className='bg-[red] w-[47%] text-[20px] py-[10px] rounded text-white' onClick={() => setacceptmodal(false)}>Cancel</button>
+                                <button type='submit' className='bg-[green] w-[47%] text-[20px] py-[10px] rounded text-white' onClick={() => formik.setFieldValue('Activestatus', "ok")}>Accept</button>
+                            </div>
+                        </section>
+                    </form>
                 </section> : null
             }
 
 
             {
                 rejecttmodal ? <section className='w-[100%] h-[100vh] fixed flex justify-center items-center bg-[#00000064]'>
-                    <section className='w-[600px] border-[3px] p-[5px] py-[20px] rounded-[15px] bg-[white]'>
-                        <h1 className='text-center text-[25px]'>Are you sure you want to Reject</h1>
-                        <div className='flex items-center justify-center flex-col my-[20px]'>
-                            <div className='w-[95%]'>
-                                <p>Reason for rejection</p>
+                    <form onSubmit={formik.handleSubmit}>
+                        <section className='w-[600px] border-[3px] p-[5px] py-[20px] rounded-[15px] bg-[white]'>
+                            <h1 className='text-center text-[25px]'>Are you sure you want to Reject</h1>
+                            <div className='flex items-center justify-center flex-col my-[20px]'>
+                                <div className='w-[95%]'>
+                                    <p>Reason for rejection</p>
+                                </div>
+                                <input type="text" name='Message' className='border-[1px] border-black p-2 rounded my-[10px] w-[95%] ' onChange={(e) => formik.setFieldValue('Message', e.target.value)} />
                             </div>
-                            <input type="text" className='border-[1px] border-black p-2 rounded my-[10px] w-[95%]' onChange={(e) => updatestartups('Message', e.target.value)} />
-                        </div>
-                        <div className='flex justify-evenly my-[15px]'>
-                            <button className='bg-[red] w-[47%] text-[20px] py-[10px] rounded text-white' onClick={() => setrejecttmodal(false)}>Cancel</button>
-                            <button className='bg-[green] w-[47%] text-[20px] py-[10px] rounded text-white' onClick={() => updatestartups("reject")}>Reject</button>
-                        </div>
-                    </section>
+                            <div className='flex justify-evenly my-[15px]'>
+                                <button className='bg-[red] w-[47%] text-[20px] py-[10px] rounded text-white' onClick={() => setrejecttmodal(false)}>Cancel</button>
+                                <button type='submit' className='bg-[green] w-[47%] text-[20px] py-[10px] rounded text-white' onClick={() => formik.setFieldValue('Activestatus', "reject")}>Reject</button>
+                            </div>
+                        </section>
+                    </form>
                 </section> : null
             }
 
 
             {
                 trendingmodal ? <section className='w-[100%] h-[100vh] fixed flex justify-center items-center bg-[#00000064]'>
-                    <section className='w-[600px] border-[3px] p-[5px] py-[20px] rounded-[15px] bg-[white]'>
-                        <h1 className='text-center text-[25px]'>Are you sure you want to make it trending</h1>
+                    <form onSubmit={formik.handleSubmit}>
+                        <section className='w-[600px] border-[3px] p-[5px] py-[20px] rounded-[15px] bg-[white]'>
+                            <h1 className='text-center text-[25px]'>Are you sure you want to make it trending</h1>
 
-                        <div className='flex justify-evenly my-[15px]'>
-                            <button className='bg-[red] w-[47%] text-[20px] py-[10px] rounded text-white' onClick={() => settrendingmodal(false)}>Cancel</button>
-                            <button className='bg-[green] w-[47%] text-[20px] py-[10px] rounded text-white' onClick={() => updatestartups("trending")}>Trending</button>
-                        </div>
-                    </section>
+                            <div className='flex justify-evenly my-[15px]'>
+                                <button className='bg-[red] w-[47%] text-[20px] py-[10px] rounded text-white' onClick={() => settrendingmodal(false)}>Cancel</button>
+                                <button type='submit' className='bg-[green] w-[47%] text-[20px] py-[10px] rounded text-white' onClick={() => formik.setFieldValue('Activestatus', "trending")}>Trending</button>
+                            </div>
+                        </section>
+                    </form>
                 </section> : null
             }
 
@@ -362,9 +374,6 @@ export function ViewStartup_Profile() {
                                     <button className='m-2 bg-[#1e4454] py-[10px] px-[25px] rounded-[10px] text-[white] text-[20px] font-[500]' onClick={() => settrendingmodal(true)}>
                                         Trending
                                     </button>
-
-
-
                                 </div>
                             </section>
                         </section>
