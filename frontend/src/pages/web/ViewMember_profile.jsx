@@ -211,9 +211,6 @@ export function ViewMember_profile() {
                                         Accept
                                     </button>
 
-                                    <button className='m-2 bg-[#1e4454] py-[10px] px-[25px] rounded-[10px] text-[white] text-[20px] font-[500]' onClick={() => settrendingmodal(true)}>
-                                        Trending
-                                    </button>
                                 </div>
                             </section>
                         </section>
