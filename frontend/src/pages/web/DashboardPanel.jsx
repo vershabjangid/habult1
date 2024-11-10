@@ -23,7 +23,7 @@ export function DashboardPanel() {
 
                 setinvestors(res.data.getdata.filter((items) => items.Activestatus.includes("ok")))
                 setinvestorspending(res.data.getdata.filter((items) => items.Activestatus.includes("pending")))
-                setinvestorrejected(res.data.getdata.filter((items) => items.Activestatus.includes("trending")))
+                setinvestorrejected(res.data.getdata.filter((items) => items.Activestatus.includes("reject")))
 
             })
             .catch((error) => {
