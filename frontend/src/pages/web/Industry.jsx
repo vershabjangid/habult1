@@ -90,14 +90,22 @@ export function Industry() {
 
 
     let removeindustry = (value) => {
-        console.log(value)
-        axios.delete('https://api.hivexv.com/delete-industry', value)
+        let data = {
+            _id: value
+        }
+
+        console.log(data)
+
+        axios.delete('https://api.hivexv.com/delete-industry', { data })
             .then((res) => {
                 console.log(res.data)
+                viewindustry()
             })
             .catch((error) => {
                 console.log(error)
             })
+
+        value.preventDefault()
     }
 
 
@@ -130,7 +138,7 @@ export function Industry() {
 
                             <div className='flex justify-evenly my-[15px]'>
                                 <button className='bg-[red] w-[47%] text-[20px] py-[10px] rounded text-white' onClick={() => setdeletemodal(false)}>Cancel</button>
-                                <button type='submit' className='bg-[green] w-[47%] text-[20px] py-[10px] rounded text-white' onClick={removeindustry(deletedata)}>Delete</button>
+                                <button type='submit' className='bg-[green] w-[47%] text-[20px] py-[10px] rounded text-white' onClick={() => removeindustry(deletedata)}>Delete</button>
                             </div>
                         </section>
                     </form>
@@ -193,7 +201,7 @@ export function Industry() {
                                                     <tr className='border-t-[1px] border-black'>
                                                         <td className=' text-center text-[#113c11] text-[15px] font-[500]'>{items.Industry}</td>
                                                         <td className=' text-center text-[#113c11] text-[15px] font-[500]'> <div className='w-[150px] mx-auto my-2 py-2 px-6 rounded-[15px] text-white bg-[green]' onClick={(() => setacceptmodal(true) || setacceptmodaldata(items))}>Edit</div></td>
-                                                        <td className=' text-center text-[#113c11] text-[15px] font-[500]'> <div className='w-[150px] mx-auto my-2 py-2 px-6 rounded-[15px] text-white bg-[#f34141]' onClick={(() => setdeletemodal(true) || setdeletedata(items._id))}>Delete</div></td>
+                                                        <td className=' text-center text-[#113c11] text-[15px] font-[500]'> <div className='w-[150px] mx-auto my-2 py-2 px-6 rounded-[15px] text-white bg-[#f34141]' onClick={(() => setdeletedata(items._id) || setdeletemodal(true))}>Delete</div></td>
                                                     </tr >
                                                 </>
                                             )

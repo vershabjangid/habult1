@@ -290,13 +290,13 @@ exports.updateindustry = async (req, res) => {
 
 exports.deleteindustry = async (req, res) => {
 
-
+    console.log(req.body)
     let updatedata = await IndustryModel.deleteOne({ _id: req.body._id })
         .then(() => {
             res.send(
                 {
                     Status: "1",
-                    Message: "Data Updated Successfully"
+                    Message: "Data Deleted Successfully"
                 }
             )
         })
