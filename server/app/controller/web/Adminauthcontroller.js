@@ -170,8 +170,6 @@ exports.webinvestorregister = async (req, res) => {
         ReferredBy: req.body.ReferredBy,
     }
 
-    console.log(req.body)
-
     let insertdata = await investorregistermodel(data)
     insertdata.save()
         .then(() => {
