@@ -63,7 +63,7 @@ export function RegisterForm() {
     
   let [industry, setindustry] = useState([])
   let getindustry = () => {
-    axios.get('http://localhost:5000/view-industry')
+    axios.get('https://api.hivexv.com/view-industry')
       .then((res) => {
         setindustry(res.data)
       })

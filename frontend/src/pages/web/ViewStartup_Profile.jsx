@@ -30,7 +30,7 @@ export function ViewStartup_Profile() {
         })
     })
     let updatestartups = (value) => {
-        axios.put('http://147.79.71.69:5000/update-startup', value)
+        axios.put('https://api.hivexv.com/update-startup', value)
             .then((res) => {
                 naviget('/dashboard-panel')
             })

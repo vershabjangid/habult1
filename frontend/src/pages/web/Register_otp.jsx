@@ -28,12 +28,12 @@ export function Register_otp() {
     let [token, settoken] = useState();
 
     let otpdata = (value) => {
-        setseconds(10)
+        setseconds(60)
         let getotp = {
             Email: value
         }
 
-        axios.post('http://147.79.71.69:5000/register-otp', getotp)
+        axios.post('https://api.hivexv.com/register-otp', getotp)
             .then((res) => {
                 setotp(res.data.data.OTP)
                 settoken(res.data.Token)

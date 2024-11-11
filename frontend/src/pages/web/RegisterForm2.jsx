@@ -85,7 +85,7 @@ export function RegisterForm2() {
     let insertdata = (value) => {
 
 
-        axios.post('/register', toFormData(value), {
+        axios.post('https://api.hivexv.com/register', toFormData(value), {
             headers: {
                 authorization: JSON.parse(localStorage.getItem('authenticate'))
             }

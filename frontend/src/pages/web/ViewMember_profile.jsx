@@ -35,7 +35,7 @@ export function ViewMember_profile() {
 
 
     let updatestartups = (value) => {
-        axios.put('http://147.79.71.69:5000/update-investor', value)
+        axios.put('https://api.hivexv.com/update-investor', value)
             .then((res) => {
                 naviget('/dashboard-panel')
             })

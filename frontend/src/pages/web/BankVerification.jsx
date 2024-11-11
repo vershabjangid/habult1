@@ -49,7 +49,7 @@ export function BankVerification() {
 
     let naviget = useNavigate()
     let insertdata = (value) => {
-        axios.post('http://147.79.71.69:5000/investor-register', toFormData(value), {
+        axios.post('https://api.hivexv.com/investor-register', toFormData(value), {
             headers: {
                 authorization: JSON.parse(localStorage.getItem('authenticate'))
             }

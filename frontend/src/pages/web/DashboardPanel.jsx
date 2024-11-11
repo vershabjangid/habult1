@@ -14,7 +14,7 @@ export function DashboardPanel() {
     let [investorslength, setinvestorslength] = useState([])
     let [investorrejected, setinvestorrejected] = useState([])
     let getinvestors = () => {
-        axios.get('http://147.79.71.69:5000/get-members', {
+        axios.get('https://api.hivexv.com/get-members', {
             headers: {
                 authorization: JSON.parse(localStorage.getItem('admintoken'))
             }
@@ -42,7 +42,7 @@ export function DashboardPanel() {
 
     var [imgurl, setimgurl] = useState('')
     let getstartups = () => {
-        axios.get('http://147.79.71.69:5000/get-startups', {
+        axios.get('https://api.hivexv.com/get-startups', {
             headers: {
                 authorization: JSON.parse(localStorage.getItem('admintoken'))
             }

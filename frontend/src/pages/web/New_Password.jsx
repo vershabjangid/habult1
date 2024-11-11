@@ -14,7 +14,7 @@ export function New_Password() {
     let notifyerror = (error) => toast.error(error)
     let changepassword = (value) => {
         if (data.Join_as == "Member") {
-            axios.put('http://147.79.71.69:5000/update-investor-register', value, {
+            axios.put('https://api.hivexv.com/update-investor-register', value, {
                 headers: {
                     authorization: JSON.parse(localStorage.getItem('newpasstoken'))
                 }
