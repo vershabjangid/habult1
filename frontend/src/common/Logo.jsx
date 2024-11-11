@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../images/download-removebg-preview.png'
+import logo from '../images/Hive_XV_Logo__1_-removebg-preview.png'
 
 export function Logo() {
     return (

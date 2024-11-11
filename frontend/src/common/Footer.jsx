@@ -1,6 +1,6 @@
 import React from 'react'
 import { BiCopyright } from 'react-icons/bi'
-import { Logo } from './Logo'
+import Logo from '../../src/images/Hive_XV_Logo-removebg-preview.png'
 import istart from '../images/nw6o7plxlj6ehfcwwddx.webp'
 import facebook from '../images/Link.png'
 import linkdin from '../images/Link_margin (1).png'
@@ -15,10 +15,13 @@ export function Footer() {
             <footer className='w-[100%] mt-[30px]  py-5 bg-[#e6d3ff]'>
                 <div className='flex justify-evenly px-5 my-[20px] flex-wrap'>
                     <div className='footer_logo_section w-[250px]  flex justify-center items-center'>
-                        <div className='w-[100%]'>
-                            <Logo />
+                        <div className='w-[100%] flex flex-col '>
+                            <div className=''>
+                            <div className='w-[150px]'>
+                                <img src={Logo} alt="" />
+                            </div>
 
-                            <div className='social_links_section my-3'>
+                            <div className='social_links_section my-3 mx-auto'>
                                 <p className='font-[600]'>SOCIAL MEDIA</p>
                                 <div className='social_links_section flex justify-between w-[50%]'>
                                     <img src={facebook} alt="" className='w-[30px]' />
@@ -28,14 +31,15 @@ export function Footer() {
                                     <a href="https://www.linkedin.com/company/hubalt/"><img src={linkdin} alt="" className='w-[40px]' /></a>
                                 </div>
                             </div>
+                            </div>
                         </div>
                     </div>
                     <div className='multiple_pages_links w-[250px] mx-[15px] flex justify-evenly items-center'>
                         <div className='flex justify-between w-[100%]'>
                             <ul>
-                            <Link to={"/"}><li>Home</li></Link>
-                            <Link to={"/about"}><li>About Us</li></Link>
-                            <Link to={"/faq"}><li>FAQ</li></Link>
+                                <Link to={"/"}><li>Home</li></Link>
+                                <Link to={"/about"}><li>About Us</li></Link>
+                                <Link to={"/faq"}><li>FAQ</li></Link>
                             </ul>
 
                             <ul>

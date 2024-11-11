@@ -12,7 +12,7 @@ export function Startups() {
   let [startupstrending, setstartupstrending] = useState([])
 
   let [url, seturl] = useState('')
-
+console.log(url)
   let getdata = () => {
     axios.get('https://api.hivexv.com/all-startup', {
       headers: {
@@ -20,6 +20,7 @@ export function Startups() {
       }
     })
       .then((res) => {
+        console.log(res.data)
         setstartups(res.data.getdata.filter((items) => items.Activestatus == "ok" || "trending"))
         setstartupstrending(res.data.getdata.filter((items) => items.Activestatus == "trending"))
         seturl(res.data.imgurl)
@@ -162,7 +163,6 @@ export function Startups() {
                       naviget('*')
                       :
                       startups.map((items, index) => {
-                        console.log(items)
                         return (
                           <>
                             {

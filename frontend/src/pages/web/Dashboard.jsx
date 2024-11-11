@@ -1,9 +1,9 @@
 import React from 'react'
 import { Field, Form, Formik } from 'formik'
-import logo from '../../images/download-removebg-preview.png'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
+import { Logo } from '../../common/Logo';
 
 export function Dashboard() {
 
@@ -40,10 +40,9 @@ export function Dashboard() {
                 <div className='admin_inner_form w-[500px] p-[30px] absolute  rounded-[12px] '>
                     <div className='w-100'>
                         <div className='flex justify-center my-3'>
-                            <img
-                                src={logo}
-                                className='w-[200px]'
-                            />
+                            <div className='w-[300px]'>
+                                <Logo />
+                            </div>
                         </div>
 
                         <div className=''>
