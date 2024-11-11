@@ -32,7 +32,7 @@ export function Startups() {
   console.log(industryfilter)
   let [choosecategory, setchoosecategory] = useState("All")
   let getindustry = () => {
-    axios.get('http://localhost:5000/view-industry')
+    axios.get('https://api.hivexv.com/view-industry')
       .then((res) => {
         setindustry(res.data)
       })
