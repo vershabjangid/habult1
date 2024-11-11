@@ -21,7 +21,7 @@ const transporter = nodemailer.createTransport({
 
 exports.getmembers = async (req, res) => {
     let getdata = await investorregistermodel.find()
-    let imgurl = "http://147.79.71.69:5000/uploads/"
+    let imgurl = "https://api.hivexv.com/uploads/"
     res.send({
         getdata,
         imgurl
@@ -33,7 +33,7 @@ exports.getmembers = async (req, res) => {
 
 exports.getstartups = async (req, res) => {
     let getdata = await websiteregistermodel.find()
-    let imgurl = "http://147.79.71.69:5000/uploads/"
+    let imgurl = "https://api.hivexv.com/uploads/"
     res.send({
         getdata,
         imgurl
