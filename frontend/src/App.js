@@ -31,6 +31,7 @@ import { DashboardPanel } from "./pages/web/DashboardPanel";
 import { Team } from "./pages/web/Team";
 import { ViewStartup_Profile } from "./pages/web/ViewStartup_Profile";
 import { ViewMember_profile } from "./pages/web/ViewMember_profile";
+import { Industry } from "./pages/web/Industry";
 
 function App() {
   return (
@@ -84,6 +85,7 @@ function App() {
           <Route path="/team" element={<Team />} />
           <Route path="/view-startup-profile" element={<ViewStartup_Profile />} />
           <Route path="/view-member-profile" element={<ViewMember_profile />} />
+          <Route path="/industry" element={<Industry />} />
         </Routes>
       </BrowserRouter>
     </>

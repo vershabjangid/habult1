@@ -53,7 +53,7 @@ exports.updatestartups = async (req, res) => {
     console.log(req.body)
     if (req.body.Activestatus == "reject") {
         try {
-            const info =  transporter.sendMail({
+            const info = transporter.sendMail({
                 from: 'hivexv', // sender address
                 to: `${data.Email}`, // list of receivers
                 subject: "forgot password OTP", // Subject line
@@ -62,26 +62,26 @@ exports.updatestartups = async (req, res) => {
             });
 
             let update = await websiteregistermodel.updateOne({ _id: req.body._id }, { Activestatus: req.body.Activestatus })
-            .then(() => {
-                res.send({
-                    Status: 1,
-                    Message: "Data Updated Successfully",
-                })
-            })
-            .catch((error) => {
-                if (error.code == 11000) {
+                .then(() => {
                     res.send({
-                        Status: 0,
-                        Message: "Data Already Exists"
+                        Status: 1,
+                        Message: "Data Updated Successfully",
                     })
-                }
-                else {
-                    res.status(400).send({
-                        Status: 0,
-                        Message: "Data Missing"
-                    })
-                }
-            })
+                })
+                .catch((error) => {
+                    if (error.code == 11000) {
+                        res.send({
+                            Status: 0,
+                            Message: "Data Already Exists"
+                        })
+                    }
+                    else {
+                        res.status(400).send({
+                            Status: 0,
+                            Message: "Data Missing"
+                        })
+                    }
+                })
         }
 
         catch {
@@ -135,7 +135,7 @@ exports.updateinvestors = async (req, res) => {
     console.log(req.body)
     if (req.body.Activestatus == "reject") {
         try {
-            const info =  transporter.sendMail({
+            const info = transporter.sendMail({
                 from: 'hivexv', // sender address
                 to: `${data.Email}`, // list of receivers
                 subject: "forgot password OTP", // Subject line
@@ -144,26 +144,26 @@ exports.updateinvestors = async (req, res) => {
             });
 
             let update = await investorregistermodel.updateOne({ _id: req.body._id }, { Activestatus: req.body.Activestatus })
-            .then(() => {
-                res.send({
-                    Status: 1,
-                    Message: "Data Updated Successfully",
-                })
-            })
-            .catch((error) => {
-                if (error.code == 11000) {
+                .then(() => {
                     res.send({
-                        Status: 0,
-                        Message: "Data Already Exists"
+                        Status: 1,
+                        Message: "Data Updated Successfully",
                     })
-                }
-                else {
-                    res.status(400).send({
-                        Status: 0,
-                        Message: "Data Missing"
-                    })
-                }
-            })
+                })
+                .catch((error) => {
+                    if (error.code == 11000) {
+                        res.send({
+                            Status: 0,
+                            Message: "Data Already Exists"
+                        })
+                    }
+                    else {
+                        res.status(400).send({
+                            Status: 0,
+                            Message: "Data Missing"
+                        })
+                    }
+                })
         }
 
         catch {
@@ -201,17 +201,6 @@ exports.updateinvestors = async (req, res) => {
             })
     }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -261,6 +250,40 @@ exports.viewindustry = async (req, res) => {
     res.send(
         viewdata
     )
+}
+
+
+
+exports.updateindustry = async (req, res) => {
+
+
+    let updatedata = await IndustryModel.updateOne({ _id: req.body._id }, { Industry: req.body.Industry })
+        .then(() => {
+            res.send(
+                {
+                    Status: "1",
+                    Message: "Data Updated Successfully"
+                }
+            )
+        })
+        .catch((error) => {
+            if (error.code == 11000) {
+                res.send(
+                    {
+                        Status: "0",
+                        Message: "Data Already Exists"
+                    }
+                )
+            }
+            else {
+                res.status(400).send(
+                    {
+                        Status: "0",
+                        Message: "Data Missing"
+                    }
+                )
+            }
+        })
 }
 
 

@@ -21,7 +21,7 @@ console.log(url)
     })
       .then((res) => {
         console.log(res.data)
-        setstartups(res.data.getdata.filter((items) => items.Activestatus == "ok" || "trending"))
+        setstartups(res.data.getdata.filter((items) => items.Activestatus.includes("ok") || items.Activestatus.includes("trending")))
         setstartupstrending(res.data.getdata.filter((items) => items.Activestatus == "trending"))
         seturl(res.data.imgurl)
       })
