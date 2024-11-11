@@ -12,20 +12,17 @@ export function Industry() {
     let [acceptmodal, setacceptmodal] = useState(false)
     let [acceptmodaldata, setacceptmodaldata] = useState([])
 
+    let [deletemodal, setdeletemodal] = useState(false)
+    let [deletedata, setdeletedata] = useState([])
+
 
     let formik = useFormik({
         initialValues: {
-            _id: acceptmodaldata._id,
-            Industry: acceptmodaldata.Industry || ""
+            Industry: ""
         },
 
         onSubmit: () => {
-            if (formik.values._id == "") {
-                insertindustry(formik.values)
-            }
-            else {
-                updateindustry(formik.values)
-            }
+            insertindustry(formik.values)
         }
     });
 
@@ -47,11 +44,18 @@ export function Industry() {
 
 
     let updateindustry = (value) => {
-        axios.put('https://api.hivexv.com/update-industry', value)
+        let data = {
+            _id: acceptmodaldata._id,
+            Industry: value.target.Industry.value
+        }
+
+        console.log(data)
+        axios.put('https://api.hivexv.com/update-industry', data)
             .then((res) => {
                 if (res.data.Status == 1) {
                     industrynotification(res.data.Message)
                     viewindustry()
+                    setacceptmodal(false)
                 }
                 else {
                     industrynotificationerror(res.data.Message)
@@ -60,6 +64,9 @@ export function Industry() {
             .catch((error) => {
                 console.log(error)
             })
+
+
+        value.preventDefault()
     }
 
 
@@ -81,20 +88,49 @@ export function Industry() {
 
 
 
+
+    let removeindustry = (value) => {
+        console.log(value)
+        axios.delete('https://api.hivexv.com/delete-industry', value)
+            .then((res) => {
+                console.log(res.data)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+
+
     return (
         <>
 
             {
                 acceptmodal ? <section className='w-[100%] h-[100vh] fixed flex justify-center items-center bg-[#00000064]'>
-                    <form onSubmit={formik.handleSubmit}>
+                    <form onSubmit={updateindustry}>
                         <section className='w-[600px] border-[3px] p-[5px] py-[20px] rounded-[15px] bg-[white]'>
                             <h1 className='text-center text-[25px]'>Update Industry</h1>
                             <div className='w-[100%] flex justify-center my-3'>
-                                <input type="text" className='border-[1px] border-black w-[95%] m-auto p-2 rounded-[15px]' onChange={(e) => formik.setFieldValue('Industry', e.target.value)} />
+                                <input type="text" defaultValue={acceptmodaldata.Industry} className='border-[1px] border-black w-[95%] m-auto p-2 rounded-[15px]' name='Industry' />
                             </div>
                             <div className='flex justify-evenly my-[15px]'>
                                 <button className='bg-[red] w-[47%] text-[20px] py-[10px] rounded text-white' onClick={() => setacceptmodal(false)}>Cancel</button>
                                 <button type='submit' className='bg-[green] w-[47%] text-[20px] py-[10px] rounded text-white'>Update</button>
+                            </div>
+                        </section>
+                    </form>
+                </section> : null
+            }
+
+
+            {
+                deletemodal ? <section className='w-[100%] h-[100vh] fixed flex justify-center items-center bg-[#00000064]'>
+                    <form onSubmit={updateindustry}>
+                        <section className='w-[600px] border-[3px] p-[5px] py-[20px] rounded-[15px] bg-[white]'>
+                            <h1 className='text-center text-[25px]'>Are you sure to want delete Industry</h1>
+
+                            <div className='flex justify-evenly my-[15px]'>
+                                <button className='bg-[red] w-[47%] text-[20px] py-[10px] rounded text-white' onClick={() => setdeletemodal(false)}>Cancel</button>
+                                <button type='submit' className='bg-[green] w-[47%] text-[20px] py-[10px] rounded text-white' onClick={removeindustry(deletedata)}>Delete</button>
                             </div>
                         </section>
                     </form>
@@ -156,8 +192,8 @@ export function Industry() {
                                                 <>
                                                     <tr className='border-t-[1px] border-black'>
                                                         <td className=' text-center text-[#113c11] text-[15px] font-[500]'>{items.Industry}</td>
-                                                        <td className=' text-center text-[#113c11] text-[15px] font-[500]'> <button className='w-[150px] mx-auto my-2 py-2 px-6 rounded-[15px] text-white bg-[green]' onClick={(() => setacceptmodal(true) || setacceptmodaldata(items))}>Edit</button></td>
-                                                        <td className=' text-center text-[#113c11] text-[15px] font-[500]'> <button className='w-[150px] mx-auto my-2 py-2 px-6 rounded-[15px] text-white bg-[#f34141]'>Delete</button></td>
+                                                        <td className=' text-center text-[#113c11] text-[15px] font-[500]'> <div className='w-[150px] mx-auto my-2 py-2 px-6 rounded-[15px] text-white bg-[green]' onClick={(() => setacceptmodal(true) || setacceptmodaldata(items))}>Edit</div></td>
+                                                        <td className=' text-center text-[#113c11] text-[15px] font-[500]'> <div className='w-[150px] mx-auto my-2 py-2 px-6 rounded-[15px] text-white bg-[#f34141]' onClick={(() => setdeletemodal(true) || setdeletedata(items._id))}>Delete</div></td>
                                                     </tr >
                                                 </>
                                             )

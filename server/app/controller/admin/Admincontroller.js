@@ -288,5 +288,29 @@ exports.updateindustry = async (req, res) => {
 
 
 
+exports.deleteindustry = async (req, res) => {
+
+
+    let updatedata = await IndustryModel.deleteOne({ _id: req.body._id })
+        .then(() => {
+            res.send(
+                {
+                    Status: "1",
+                    Message: "Data Updated Successfully"
+                }
+            )
+        })
+        .catch((error) =>
+            res.status(400).send(
+                {
+                    Status: "0",
+                    Message: "Data Missing"
+                }
+            )
+        )
+}
+
+
+
 
 
