@@ -328,7 +328,8 @@ exports.addteam = async (req, res) => {
         Bank_Name: req.body.Bank_Name,
         Account_Number: req.body.Account_Number,
         IFSC_Code: req.body.IFSC_Code,
-        Bank_Proof: req.files[2].filename
+        Bank_Proof: req.files[2].filename,
+        Reffered_Code: Math.floor(1000 + Math.random() * 8000)
     }
 
 
@@ -363,4 +364,8 @@ exports.addteam = async (req, res) => {
 }
 
 
+
+let viewteam = () => {
+
+}
 
