@@ -57,7 +57,7 @@ admin.put('/update-industry', updateindustry)
 admin.delete('/delete-industry', deleteindustry)
 
 
-admin.post('/add-team', addteam)
+admin.post('/add-team', upload, addteam)
 
 
 module.exports = admin
