@@ -23,7 +23,7 @@ export let sidebardata = [
         id : 2,
         icon :<IoPeopleSharp />,
         name : "Team",
-        path : "/team"
+        // path : "/team"
     },
 
     
