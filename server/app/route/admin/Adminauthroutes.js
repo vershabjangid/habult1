@@ -1,12 +1,13 @@
 let express = require('express')
+let path = require('path')
 const { adminauth } = require('../../controller/admin/Adminauth')
 const { getmembers, getstartups, updatestartups, addindustry, viewindustry, updateinvestors, updateindustry, deleteindustry, addteam } = require('../../controller/admin/Admincontroller')
 let admin = express.Router()
-
-
-let jwt = require('jsonwebtoken')
 const multer = require('multer')
+let jwt = require('jsonwebtoken')
 require('dotenv').config()
+
+
 let adminkey = process.env.ADMINKEY
 console.log(adminkey)
 let verifytoken = (req, res, next) => {

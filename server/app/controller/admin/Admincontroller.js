@@ -315,6 +315,7 @@ exports.deleteindustry = async (req, res) => {
 
 
 exports.addteam = async (req, res) => {
+    console.log(req.files)
     let data = {
         First_Name: req.body.First_Name,
         Last_Name: req.body.Last_Name,
@@ -330,7 +331,6 @@ exports.addteam = async (req, res) => {
         Bank_Proof: req.files[2].filename
     }
 
-    console.log(data)
 
     let insertdata = await addteammodel(data)
     insertdata.save()

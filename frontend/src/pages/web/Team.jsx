@@ -1,7 +1,7 @@
 import React from 'react'
 import { Sidebar } from '../../common/Sidebar'
 import { useFormik } from 'formik';
-import axios from 'axios';
+import axios, { toFormData } from 'axios';
 import { toast } from 'react-toastify';
 
 export function Team() {
@@ -32,7 +32,8 @@ export function Team() {
 
 
     let insertteam = (value) => {
-        axios.post('https://api.hivexv.com/add-team', value)
+        console.log(value)
+        axios.post('https://api.hivexv.com/add-team', toFormData(value))
             .then((res) => {
                 if (res.data.Status == 1) {
                     notifysuccess(res.data.Message)
@@ -91,7 +92,7 @@ export function Team() {
 
                                 <section>
                                     <h2 className='text-[#113c11] text-[20px] font-[500]'>Phone</h2>
-                                    <input type="text" className='border-[1px] border-black my-2 p-2 rounded-[10px] w-[100%] ' onChange={(e) => formik.setFieldValue('Email', e.target.value)} placeholder='Enter industry name' />
+                                    <input type="text" className='border-[1px] border-black my-2 p-2 rounded-[10px] w-[100%] ' onChange={(e) => formik.setFieldValue('Phone', e.target.value)} placeholder='Enter industry name' />
                                 </section>
 
 
@@ -103,12 +104,12 @@ export function Team() {
 
                                 <section>
                                     <h2 className='text-[#113c11] text-[20px] font-[500]'>Aadhar Card</h2>
-                                    <input type="file" className='border-[1px] border-black my-2 p-2 rounded-[10px] w-[100%] ' onChange={(e) => formik.setFieldValue('Aadhar_Card', e.target.files)} placeholder='Enter industry name' />
+                                    <input type="file" className='border-[1px] border-black my-2 p-2 rounded-[10px] w-[100%] ' onChange={(e) => formik.setFieldValue('Aadhar_Card', e.target.files[0])} placeholder='Enter industry name' />
                                 </section>
 
                                 <section>
                                     <h2 className='text-[#113c11] text-[20px] font-[500]'>Pan Card</h2>
-                                    <input type="file" className='border-[1px] border-black my-2 p-2 rounded-[10px] w-[100%] ' onChange={(e) => formik.setFieldValue('Pan_Card', e.target.files)} placeholder='Enter industry name' />
+                                    <input type="file" className='border-[1px] border-black my-2 p-2 rounded-[10px] w-[100%] ' onChange={(e) => formik.setFieldValue('Pan_Card', e.target.files[0])} placeholder='Enter industry name' />
                                 </section>
 
                                 <section>
@@ -133,7 +134,7 @@ export function Team() {
 
                                 <section>
                                     <h2 className='text-[#113c11] text-[20px] font-[500]'>Bank Proof</h2>
-                                    <input type="file" className='border-[1px] border-black my-2 p-2 rounded-[10px] w-[100%] ' onChange={(e) => formik.setFieldValue('Bank_Proof', e.target.files)} placeholder='Enter industry name' />
+                                    <input type="file" className='border-[1px] border-black my-2 p-2 rounded-[10px] w-[100%] ' onChange={(e) => formik.setFieldValue('Bank_Proof', e.target.files[0])} placeholder='Enter industry name' />
 
                                     <div className='flex justify-end my-[15px]'>
                                         <button type='submit' className='bg-[#113c11] text-[20px] py-2 px-10 rounded-[15px] text-white'>Save</button>
