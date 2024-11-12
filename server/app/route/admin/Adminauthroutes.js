@@ -5,6 +5,7 @@ let admin = express.Router()
 
 
 let jwt = require('jsonwebtoken')
+const multer = require('multer')
 require('dotenv').config()
 let adminkey = process.env.ADMINKEY
 console.log(adminkey)
@@ -24,6 +25,23 @@ let verifytoken = (req, res, next) => {
         res.send("please enter the token")
     }
 }
+
+
+
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads')
+    },
+    filename: function (req, file, cb) {
+        const uniquesuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+        const extension = path.extname(file.originalname)
+        const filename = 'file' + uniquesuffix + extension
+        cb(null, filename)
+    }
+})
+
+const upload = multer({ storage: storage }).any('Pan_Card', 'Aadhar_Card', 'BankDocuments')
 
 
 admin.post('/Admin_Login', adminauth)
