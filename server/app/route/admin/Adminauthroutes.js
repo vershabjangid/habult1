@@ -41,7 +41,7 @@ const storage = multer.diskStorage({
     }
 })
 
-const upload = multer({ storage: storage }).any('Pan_Card', 'Aadhar_Card', 'BankDocuments')
+const upload = multer({ storage: storage }).any('Pan_Card', 'Aadhar_Card', 'Bank_Proof')
 
 
 admin.post('/Admin_Login', adminauth)
