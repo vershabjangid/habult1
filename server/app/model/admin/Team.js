@@ -12,11 +12,13 @@ let addteamschema = mongoose.Schema({
     },
     Email: {
         type: String,
-        required: true
+        required: true,
+        unique : true
     },
     Phone: {
         type: Number,
-        required: true
+        required: true,
+        unique : true
     },
     Password: {
         type: String,
@@ -40,7 +42,8 @@ let addteamschema = mongoose.Schema({
     },
     Account_Number: {
         type: Number,
-        required: true
+        required: true,
+        unique: true
     },
     IFSC_Code: {
         type: String,

@@ -365,7 +365,12 @@ exports.addteam = async (req, res) => {
 
 
 
-let viewteam = () => {
-
+exports.viewteam = async (req,res) => {
+    let viewteam = await addteammodel.find()
+    let imgurl = "https://api.hivexv.com/uploads/"
+    res.send({
+        viewteam,
+        imgurl
+    })
 }
 
