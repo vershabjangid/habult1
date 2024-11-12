@@ -5,6 +5,8 @@ require('dotenv').config()
 let Email = process.env.EMAIL
 let Password = process.env.PASSWORD
 let Adminkey = process.env.ADMINKEY
+let Email2 = process.env.EMAIL2
+let Password2 = process.env.PASSWORD2
 
 exports.adminauth = (req, res) => {
     let data = {
@@ -12,7 +14,7 @@ exports.adminauth = (req, res) => {
         Password: req.body.Password,
     }
 
-    if (Email == data.Email && Password == data.Password) {
+    if (Email == data.Email && Password == data.Password || Email2 == data.Email && Password2 == data.Password) {
 
         let newtoken;
         jwt.sign({ newtoken }, Adminkey, { expiresIn: '1h' }, (err, value) => {
