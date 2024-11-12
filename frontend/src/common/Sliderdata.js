@@ -23,7 +23,7 @@ export let sidebardata = [
         id : 2,
         icon :<IoPeopleSharp />,
         name : "Team",
-        // path : "/team"
+        path : "/team"
     },
 
     
@@ -31,7 +31,7 @@ export let sidebardata = [
         id : 3,
         icon : <TbBuildingFactory />,
         name : "Industry",
-        path : "/industry"
+        // path : "/industry"
     },
 
     

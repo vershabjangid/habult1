@@ -3,6 +3,7 @@ let nodemailer = require('nodemailer')
 const IndustryModel = require("../../model/admin/IndustryModel")
 const investorregistermodel = require("../../model/web/InvestorAuth")
 const websiteregistermodel = require("../../model/web/Webauthmodel")
+const addteammodel = require('../../model/admin/Team')
 let emailpass = process.env.EMAILPASS
 
 
@@ -311,6 +312,55 @@ exports.deleteindustry = async (req, res) => {
 }
 
 
+
+
+exports.addteam = async (req, res) => {
+    let data = {
+        First_Name: req.body.First_Name,
+        Last_Name: req.body.Last_Name,
+        Email: req.body.Email,
+        Phone: req.body.Phone,
+        Password: req.body.Password,
+        Aadhar_Card: req.files[0].filename,
+        Pan_Card: req.files[1].filename,
+        Address: req.body.Address,
+        Bank_Name: req.body.Bank_Name,
+        Account_Number: req.body.Account_Number,
+        IFSC_Code: req.body.IFSC_Code,
+        Bank_Proof: req.files[2].filename
+    }
+
+    console.log(data)
+
+    let insertdata = await addteammodel(data)
+    insertdata.save()
+        .then(() => {
+            res.send(
+                {
+                    Status: "1",
+                    Message: "Data Inserted Successfully"
+                }
+            )
+        })
+        .catch((error) => {
+            if (error.code == 11000) {
+                res.send(
+                    {
+                        Status: "0",
+                        Message: "Data Already Exists"
+                    }
+                )
+            }
+            else {
+                res.status(400).send(
+                    {
+                        Status: "0",
+                        Message: "Data Missing"
+                    }
+                )
+            }
+        })
+}
 
 
 
