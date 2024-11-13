@@ -38,7 +38,7 @@ export function UpdateTeam() {
     let naviget = useNavigate()
     let updatetteam = (value) => {
         console.log(value)
-        axios.put('https://api.hivexv.com/delete-team', toFormData(value))
+        axios.put('https://api.hivexv.com/update-team', toFormData(value))
             .then((res) => {
                 if (res.data.Status == 1) {
                     naviget("/view-team")
