@@ -32,6 +32,11 @@ import { Team } from "./pages/web/Team";
 import { ViewStartup_Profile } from "./pages/web/ViewStartup_Profile";
 import { ViewMember_profile } from "./pages/web/ViewMember_profile";
 import { Industry } from "./pages/web/Industry";
+import { View_Team } from "./pages/web/View_Team";
+import { ViewTeaminfo } from "./pages/web/ViewTeaminfo";
+import { UpdateTeam } from "./pages/web/UpdateTeam";
+import { VIew_startup_requests } from "./pages/web/VIew_startup_requests";
+import { View_member_request } from "./pages/web/View_member_request";
 
 function App() {
   return (
@@ -83,7 +88,13 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard-panel" element={<DashboardPanel />} />
           <Route path="/team" element={<Team />} />
+          <Route path="/view-team" element={<View_Team />} />
+          <Route path="/view-team-info" element={<ViewTeaminfo />} />
+          <Route path="/update-team" element={<UpdateTeam />} />
+
           <Route path="/view-startup-profile" element={<ViewStartup_Profile />} />
+          <Route path="/startup-requests" element={<VIew_startup_requests />} />
+          <Route path="/member-requests" element={<View_member_request />} />
           <Route path="/view-member-profile" element={<ViewMember_profile />} />
           <Route path="/industry" element={<Industry />} />
         </Routes>

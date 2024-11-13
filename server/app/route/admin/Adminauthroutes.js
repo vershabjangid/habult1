@@ -1,7 +1,7 @@
 let express = require('express')
 let path = require('path')
 const { adminauth } = require('../../controller/admin/Adminauth')
-const { getmembers, getstartups, updatestartups, addindustry, viewindustry, updateinvestors, updateindustry, deleteindustry, addteam, viewteam } = require('../../controller/admin/Admincontroller')
+const { getmembers, getstartups, updatestartups, addindustry, viewindustry, updateinvestors, updateindustry, deleteindustry, addteam, viewteam, updateteam, deleteteam } = require('../../controller/admin/Admincontroller')
 let admin = express.Router()
 const multer = require('multer')
 let jwt = require('jsonwebtoken')
@@ -60,6 +60,7 @@ admin.delete('/delete-industry', deleteindustry)
 
 admin.post('/add-team', upload, addteam)
 admin.get('/view-team', viewteam)
-
+admin.put('/update-team', updateteam)
+admin.delete('/delete-team', deleteteam)
 
 module.exports = admin

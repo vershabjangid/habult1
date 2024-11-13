@@ -10,60 +10,94 @@ import { FaFileWaveform } from "react-icons/fa6";
 import { RiPagesLine } from "react-icons/ri";
 import { IoPeopleSharp } from "react-icons/io5";
 import { TbBuildingFactory } from "react-icons/tb";
+import { IoGitPullRequestSharp } from "react-icons/io5";
+
+
 
 export let sidebardata = [
     {
-        id : 1,
-        icon : <IoIosHome />,
-        name : "Home",
-        path : "/dashboard-panel"
+        id: 1,
+        icon: <IoIosHome />,
+        name: "Home",
+        path: "/dashboard-panel"
     },
 
     {
-        id : 2,
-        icon :<IoPeopleSharp />,
-        name : "Team",
-        path : "/team"
+        id: 2,
+        icon: <IoPeopleSharp />,
+        name: "Team",
+        path: "/team",
+        subcategory: [
+            {
+                id: 2,
+                icon: <IoPeopleSharp />,
+                name: "Add team",
+                path: "/team",
+            },
+            {
+                id: 2,
+                icon: <IoPeopleSharp />,
+                name: "View team",
+                path: "/view-team",
+            }
+        ]
+
     },
 
-    
-    {
-        id : 3,
-        icon : <TbBuildingFactory />,
-        name : "Industry",
-        // path : "/industry"
-    },
-
-    
-    {
-        id : 4,
-        icon : <FaQuestion />,
-        name : "Faq"
-    },
-
-    
-    {
-        id : 5,
-        icon : <BiSolidContact />,
-        name : "Contact Us"
-    },
-
-    
-    {
-        id : 6,
-        icon : <FaFileWaveform />,
-        name : "Forms"
-    },
 
     {
-        id : 7,
-        icon : <IoShareSocial />,
-        name : "Socials"
+        id: 3,
+        icon: <TbBuildingFactory />,
+        name: "Industry",
+        path: "/industry"
     },
 
+
     {
-        id : 8,
-        icon : <IoMdSettings />,
-        name : "Settings"
+        id: 4,
+        icon: <IoGitPullRequestSharp />,
+        name: "Requests",
+        path: "/request",
+        subcategory: [
+            {
+                id: 4,
+                icon: <IoPeopleSharp />,
+                name: "Member",
+                path: "/member-requests",
+            },
+
+            {
+                id: 4,
+                icon: <IoPeopleSharp />,
+                name: "Startup",
+                path: "/startup-requests",
+            }
+        ]
     },
+
+
+    // {
+    //     id: 5,
+    //     icon: <BiSolidContact />,
+    //     name: "Contact Us"
+    // },
+
+
+    // {
+    //     id: 6,
+    //     icon: <FaFileWaveform />,
+    //     name: "Forms"
+    // },
+
+    // {
+    //     id: 7,
+    //     icon: <IoShareSocial />,
+    //     name: "Socials"
+    // },
+
+    // {
+    //     id: 8,
+    //     icon: <IoMdSettings />,
+    //     name: "Settings"
+    // },
 ]

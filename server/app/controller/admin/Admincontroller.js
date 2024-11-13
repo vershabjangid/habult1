@@ -365,7 +365,7 @@ exports.addteam = async (req, res) => {
 
 
 
-exports.viewteam = async (req,res) => {
+exports.viewteam = async (req, res) => {
     let viewteam = await addteammodel.find()
     let imgurl = "https://api.hivexv.com/uploads/"
     res.send({
@@ -374,3 +374,72 @@ exports.viewteam = async (req,res) => {
     })
 }
 
+
+exports.updateteam = async (req, res) => {
+    let data = {
+        First_Name: req.body.First_Name,
+        Last_Name: req.body.Last_Name,
+        Email: req.body.Email,
+        Phone: req.body.Phone,
+        Password: req.body.Password,
+        Address: req.body.Address,
+        Bank_Name: req.body.Bank_Name,
+        Account_Number: req.body.Account_Number,
+        IFSC_Code: req.body.IFSC_Code,
+    }
+
+
+    let insertdata = await addteammodel.updateOne({ _id: req.body._id }, data)
+        .then(() => {
+            res.send(
+                {
+                    Status: "1",
+                    Message: "Data Updated Successfully"
+                }
+            )
+        })
+        .catch((error) => {
+            if (error.code == 11000) {
+                res.send(
+                    {
+                        Status: "0",
+                        Message: "Data Already Exists"
+                    }
+                )
+            }
+            else {
+                res.status(400).send(
+                    {
+                        Status: "0",
+                        Message: "Data Missing"
+                    }
+                )
+            }
+        })
+}
+
+
+
+
+
+exports.deleteteam = async (req, res) => {
+    console.log(req.body)
+    let deletedata = await addteammodel.deleteOne({ _id: req.body._id })
+        .then(() => {
+            res.send(
+                {
+                    Status: "1",
+                    Message: "Data Deleted Successfully"
+                }
+            )
+        })
+        .catch((error) => {
+
+            res.status(400).send(
+                {
+                    Status: "0",
+                    Message: "Data Missing"
+                }
+            )
+        })
+}

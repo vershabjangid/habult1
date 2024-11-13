@@ -133,12 +133,21 @@ input[type=number]::-webkit-inner-spin-button {
     position: unset;
 }
 
+
 .side_options{
     background-color: white;
 }
 
+
 .side_options:hover{
     background-color: #c2f6c2;
+}
+
+.side_options_inner{
+    visibility: hidden;
+}
+.sidebar_main:hover .side_options_inner{
+visibility: visible;
 }
 
 

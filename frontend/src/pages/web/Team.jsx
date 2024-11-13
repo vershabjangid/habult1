@@ -3,13 +3,18 @@ import { Sidebar } from '../../common/Sidebar'
 import { useFormik } from 'formik';
 import axios, { toFormData } from 'axios';
 import { toast } from 'react-toastify';
+import { useLocation } from 'react-router-dom';
 
 export function Team() {
 
     let notifysuccess = (success) => toast.success(success)
     let notifyerror = (error) => toast.error(error)
+    let location = useLocation()
+    let data = location.state
+    console.log(data)
 
-    let formik = useFormik({
+
+    var formik = useFormik({
         initialValues: {
             First_Name: "",
             Last_Name: "",
@@ -28,12 +33,12 @@ export function Team() {
         onSubmit: () => {
             insertteam(formik.values)
         }
-    });
+    })
 
 
     let insertteam = (value) => {
         console.log(value)
-        axios.post('https://api.hivexv.com/add-team', toFormData(value))
+        axios.post('https://hivexv.com/add-team', toFormData(value))
             .then((res) => {
                 if (res.data.Status == 1) {
                     notifysuccess(res.data.Message)
