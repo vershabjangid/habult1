@@ -23,7 +23,7 @@ export function ViewTeaminfo() {
         }
 
         console.log(data)
-        axios.delete('https://hivexv.com/delete-team', { data })
+        axios.delete('https://api.hivexv.com/delete-team', { data })
             .then((res) => {
                 console.log(res.data)
                 naviget('/view-team')

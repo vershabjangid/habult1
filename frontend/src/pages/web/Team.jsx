@@ -38,7 +38,7 @@ export function Team() {
 
     let insertteam = (value) => {
         console.log(value)
-        axios.post('https://hivexv.com/add-team', toFormData(value))
+        axios.post('https://api.hivexv.com/add-team', toFormData(value))
             .then((res) => {
                 if (res.data.Status == 1) {
                     notifysuccess(res.data.Message)

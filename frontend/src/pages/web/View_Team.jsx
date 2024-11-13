@@ -8,7 +8,7 @@ export function View_Team() {
     var [url, seturl] = useState([])
     console.log(url)
     let viewteam = () => {
-        axios.get('http://localhost:5000/view-team')
+        axios.get('https://api.hivexv.com/view-team')
             .then((res) => {
                 setteam(res.data.viewteam)
                 seturl(res.data.imgurl)
