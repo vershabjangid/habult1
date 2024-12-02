@@ -20,8 +20,10 @@ export function Header() {
             <Link to={"/about"}>
               <li className="options">About</li>
             </Link>
-            <li className="options">Contact</li>
-            <li className="options">FAQ's</li>
+            <Link to={"/Contact-Us"}>
+              <li className="options">Contact</li>
+            </Link>
+          
           </ul>
         </div>
 
