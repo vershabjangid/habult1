@@ -14,9 +14,9 @@ export function Header() {
 
         <div className="w-[30%] options_section">
           <ul className="flex justify-between items-center ">
-            <li className="options">
-              Home
-            </li>
+            <Link to={"/"}>
+              <li className="options">Home</li>
+            </Link>
             <Link to={"/about"}>
               <li className="options">About</li>
             </Link>

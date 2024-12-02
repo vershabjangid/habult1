@@ -4,6 +4,7 @@ import right_banner from "../../images/download.svg";
 import { FaChevronRight, FaIcons, FaPhone } from "react-icons/fa";
 import { FaLocationPin, FaMessage } from "react-icons/fa6";
 import { Footer } from "../../common/Footer";
+import faqbanner from "../../images/4021b783-d284-4e05-801a-18bb24ce521e.png";
 export function Landing() {
   return (
     <>
@@ -41,10 +42,10 @@ export function Landing() {
               </section>
             </section>
 
-            <section className="landing_section bg-[black] h-[100vh]">
-              <section className="landing_section w-[100%] h-[calc(100vh-110px)] flex">
-                <section className=" w-[50%] h-[100%] text-start text-white px-5 flex justify-center flex-col mt-2">
-                  <h1 className="landing_heading text-[50px] font-[500] my-5">
+            <section className="landing_section bg-[black] py-[40px]">
+              <section className="landing_section w-[90%] m-auto h-auto flex justify-center items-center">
+                <section className=" w-[50%] text-start text-white px-5 flex justify-center flex-col mt-2">
+                  <h1 className="landing_heading text-[50px] font-[500] my-5 bg-[#e02708] rounded-[10px] text-center">
                     About Us
                   </h1>
 
@@ -63,214 +64,194 @@ export function Landing() {
                   </p>
                 </section>
 
-                <section className="w-[50%] h-[100%] flex justify-center items-center">
+                <section className="w-[50%] flex justify-center items-center">
                   <img src={right_banner} alt="" />
                 </section>
               </section>
             </section>
 
-            <section className="landing_section bg-[white] h-[100vh]">
-              <section className="landing_section w-[100%] h-[calc(100vh-110px)] flex">
-                <section className=" w-[100%] h-[100%] text-start text-[black] px-5 flex justify-center flex-col mt-2">
-                  <h1 className="landing_heading text-[50px] text-center font-[500] mb-[50px] text-[#e02708]">
+            <section className="landing_section bg-[white]">
+              <section className="landing_section w-[100%] flex">
+                <section className=" w-[100%] text-start text-[black] px-5 flex justify-center flex-col mt-2">
+                  <h1 className="w-[400px] rounded-[10px] m-auto landing_heading text-[50px] text-center font-[500] my-[50px] bg-[black] text-[#e02708]">
                     Why Choose Us
                   </h1>
 
-                  <section className=" flex justify-between flex-wrap">
-                    <section className="why_choose_cards w-[350px] my-3 p-3 bg-[black] rounded-[10px] text-[white]">
-                      <div className="flex items-center mb-2">
-                        <div className="icon_section w-[50px] h-[50px] me-2 rounded flex justify-center items-center bg-[#e02708]">
-                          <FaIcons />
-                        </div>
-
-                        <div>
-                          <p className="text-[20px] font-[600]">Hello</p>
-                        </div>
+                  <section className="w-[90%] m-auto flex justify-between flex-wrap">
+                    <section className="why_choose_cards w-[48%] my-3 p-3 rounded-[10px] text-[black] flex justify-between">
+                      <div className="icon_section w-[100px] h-[100px] text-[25px] me-2 my-2 rounded-[50%] flex justify-center items-center bg-gradient-to-tr from-[#e02708] to-[white]">
+                        <FaIcons />
                       </div>
 
-                      <div className=" text-justify">
-                        <p>
-                          Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Libero ratione adipisci corrupti consequatur
-                          suscipit accusantium, laudantium labore illum ducimus,
-                          eligendi non, explicabo autem porro. Rem rerum dolor
-                          exercitationem molestiae obcaecati! Lorem ipsum dolor
-                          sit amet consectetur adipisicing elit. Explicabo vero,
-                          nesciunt voluptate, perferendis at incidunt illo
-                          molestiae in dicta quaerat fugit. Cumque reiciendis,
-                          aperiam laborum nam ipsam dolor alias modi!
-                        </p>
+                      <div className=" mb-2 w-[calc(100%-110px)]">
+                        <div className="">
+                          <p className="text-[30px] font-[600]">Hello</p>
+                        </div>
+                        <div className=" text-justify">
+                          <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Libero ratione adipisci corrupti consequatur
+                            suscipit accusantium, laudantium labore illum
+                            ducimus, eligendi non, explicabo autem porro. Rem...
+                          </p>
+                          <p className="my-3 underline">View More</p>
+                        </div>
                       </div>
                     </section>
 
-                    <section className="why_choose_cards w-[350px] my-3 p-3 bg-[black] rounded-[10px] text-[white]">
-                      <div className="flex items-center mb-2">
-                        <div className="icon_section w-[50px] h-[50px] me-2 rounded flex justify-center items-center bg-[#e02708]">
-                          <FaIcons />
-                        </div>
-
-                        <div>
-                          <p className="text-[20px] font-[600]">Hello</p>
-                        </div>
+                    <section className="why_choose_cards w-[48%] my-3 p-3 rounded-[10px] text-[black] flex justify-between">
+                      <div className="icon_section w-[100px] h-[100px] text-[25px] me-2 my-2 rounded-[50%] flex justify-center items-center bg-gradient-to-tr from-[#e02708] to-[white]">
+                        <FaIcons />
                       </div>
 
-                      <div className="text-justify">
-                        <p>
-                          Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Libero ratione adipisci corrupti consequatur
-                          suscipit accusantium, laudantium labore illum ducimus,
-                          eligendi non, explicabo autem porro. Rem rerum dolor
-                          exercitationem molestiae obcaecati! Lorem ipsum dolor
-                          sit amet consectetur adipisicing elit. Explicabo vero,
-                          nesciunt voluptate, perferendis at incidunt illo
-                          molestiae in dicta quaerat fugit. Cumque reiciendis,
-                          aperiam laborum nam ipsam dolor alias modi!
-                        </p>
+                      <div className=" mb-2 w-[calc(100%-110px)]">
+                        <div className="">
+                          <p className="text-[30px] font-[600]">Hello</p>
+                        </div>
+                        <div className=" text-justify">
+                          <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Libero ratione adipisci corrupti consequatur
+                            suscipit accusantium, laudantium labore illum
+                            ducimus, eligendi non, explicabo autem porro. Rem...
+                          </p>
+                          <p className="my-3 underline">View More</p>
+                        </div>
                       </div>
                     </section>
 
-                    <section className="why_choose_cards w-[350px] my-3 p-3 bg-[black] rounded-[10px] text-[white]">
-                      <div className="flex items-center mb-2">
-                        <div className="icon_section w-[50px] h-[50px] me-2 rounded flex justify-center items-center bg-[#e02708]">
-                          <FaIcons />
-                        </div>
-
-                        <div>
-                          <p className="text-[20px] font-[600]">Hello</p>
-                        </div>
+                    <section className="why_choose_cards w-[48%] my-3 p-3 rounded-[10px] text-[black] flex justify-between">
+                      <div className="icon_section w-[100px] h-[100px] text-[25px] me-2 my-2 rounded-[50%] flex justify-center items-center bg-gradient-to-tr from-[#e02708] to-[white]">
+                        <FaIcons />
                       </div>
 
-                      <div className="text-justify">
-                        <p>
-                          Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Libero ratione adipisci corrupti consequatur
-                          suscipit accusantium, laudantium labore illum ducimus,
-                          eligendi non, explicabo autem porro. Rem rerum dolor
-                          exercitationem molestiae obcaecati! Lorem ipsum dolor
-                          sit amet consectetur adipisicing elit. Explicabo vero,
-                          nesciunt voluptate, perferendis at incidunt illo
-                          molestiae in dicta quaerat fugit. Cumque reiciendis,
-                          aperiam laborum nam ipsam dolor alias modi!
-                        </p>
+                      <div className=" mb-2 w-[calc(100%-110px)]">
+                        <div className="">
+                          <p className="text-[30px] font-[600]">Hello</p>
+                        </div>
+                        <div className=" text-justify">
+                          <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Libero ratione adipisci corrupti consequatur
+                            suscipit accusantium, laudantium labore illum
+                            ducimus, eligendi non, explicabo autem porro. Rem...
+                          </p>
+                          <p className="my-3 underline">View More</p>
+                        </div>
                       </div>
                     </section>
 
-                    <section className="why_choose_cards w-[350px] my-3    p-3 bg-[black] rounded-[10px] text-[white]">
-                      <div className=" flex items-center mb-2">
-                        <div className="icon_section w-[50px] h-[50px] me-2 rounded flex justify-center items-center bg-[#e02708]">
-                          <FaIcons />
-                        </div>
-
-                        <div>
-                          <p className="text-[20px] font-[600]">Hello</p>
-                        </div>
+                    <section className="why_choose_cards w-[48%] my-3 p-3 rounded-[10px] text-[black] flex justify-between">
+                      <div className="icon_section w-[100px] h-[100px] text-[25px] me-2 my-2 rounded-[50%] flex justify-center items-center bg-gradient-to-tr from-[#e02708] to-[white]">
+                        <FaIcons />
                       </div>
 
-                      <div className="text-justify">
-                        <p>
-                          Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Libero ratione adipisci corrupti consequatur
-                          suscipit accusantium, laudantium labore illum ducimus,
-                          eligendi non, explicabo autem porro. Rem rerum dolor
-                          exercitationem molestiae obcaecati! Lorem ipsum dolor
-                          sit amet consectetur adipisicing elit. Explicabo vero,
-                          nesciunt voluptate, perferendis at incidunt illo
-                          molestiae in dicta quaerat fugit. Cumque reiciendis,
-                          aperiam laborum nam ipsam dolor alias modi!
-                        </p>
+                      <div className=" mb-2 w-[calc(100%-110px)]">
+                        <div className="">
+                          <p className="text-[30px] font-[600]">Hello</p>
+                        </div>
+                        <div className=" text-justify">
+                          <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Libero ratione adipisci corrupti consequatur
+                            suscipit accusantium, laudantium labore illum
+                            ducimus, eligendi non, explicabo autem porro. Rem...
+                          </p>
+                          <p className="my-3 underline">View More</p>
+                        </div>
                       </div>
                     </section>
-
-                    <section className="w-[350px] my-3  bg-[black] rounded-[10px] text-[white]"></section>
-                    <section className="w-[350px] my-3  bg-[black] rounded-[10px] text-[white]"></section>
-                    <section className="w-[350px] my-3  bg-[black] rounded-[10px] text-[white]"></section>
                   </section>
                 </section>
               </section>
             </section>
 
-            <section className="landing_section bg-[black] h-[100vh]">
-              <section className="landing_section w-[100%] h-[calc(100vh-110px)] flex">
-                <section className=" w-[100%] h-[100%] text-center text-white px-5 flex justify-center flex-col mt-2">
-                  <h1 className="landing_heading text-[50px] font-[500] my-5">
+            <section className="landing_section bg-[black]">
+              <section className="landing_section w-[100%] flex">
+                <section className=" w-[100%] h-[100%] text-center text-white p-5 flex justify-center flex-col mt-2">
+                  <h1 className="landing_heading w-[400px] rounded-[10px] m-auto bg-[#e02708] text-[50px] font-[500] my-5">
                     FAQ's
                   </h1>
 
-                  <section className="text-start text-[black]">
-                    <section className="w-[100%] bg-[white] p-4 font-[600] rounded-[10px] my-5">
-                      <div className="flex justify-between items-center">
-                        <p className="text-[20px]">
-                          1. sfsfddsfsdfsd sdfsfds sdfsdfsdfs sfdsfsfdsdf
-                          sdfsfdsdfs sdfsfsfdsdfs
-                        </p>
-                        <FaChevronRight />
-                      </div>
-                      <p className="font-[500] text-[16px]">answer</p>
+                  <section className="text-start text-[black] flex justify-between items-center">
+                    <section className="w-[49%] flex justify-center">
+                      <img src={faqbanner} alt="" className="w-[80%]" />
                     </section>
+                    <section className="w-[49%]">
+                      <section className="w-[90%] m-auto bg-[white] p-4 font-[600] rounded-[10px] my-5">
+                        <div className="flex justify-between items-center">
+                          <p className="text-[20px]">
+                            1. sfsfddsfsdfsd sdfsfds sdfsdfsdfs sfdsfsfdsdf
+                            sdfsfdsdfs sdfsfsfdsdfs
+                          </p>
+                          <FaChevronRight />
+                        </div>
+                        <p className="font-[500] text-[16px]">answer</p>
+                      </section>
 
-                    <section className="w-[100%] bg-[white] p-4 font-[600] rounded-[10px] my-5">
-                      <div className="flex justify-between items-center">
-                        <p className="text-[20px]">
-                          1. sfsfddsfsdfsd sdfsfds sdfsdfsdfs sfdsfsfdsdf
-                          sdfsfdsdfs sdfsfsfdsdfs
-                        </p>
-                        <FaChevronRight />
-                      </div>
-                      {/* <p className="font-[500] text-[16px]">answer</p> */}
-                    </section>
+                      <section className="w-[90%] m-auto bg-[white] p-4 font-[600] rounded-[10px] my-5">
+                        <div className="flex justify-between items-center">
+                          <p className="text-[20px]">
+                            1. sfsfddsfsdfsd sdfsfds sdfsdfsdfs sfdsfsfdsdf
+                            sdfsfdsdfs sdfsfsfdsdfs
+                          </p>
+                          <FaChevronRight />
+                        </div>
+                        {/* <p className="font-[500] text-[16px]">answer</p> */}
+                      </section>
 
-                    <section className="w-[100%] bg-[white] p-4 font-[600] rounded-[10px] my-5">
-                      <div className="flex justify-between items-center">
-                        <p className="text-[20px]">
-                          1. sfsfddsfsdfsd sdfsfds sdfsdfsdfs sfdsfsfdsdf
-                          sdfsfdsdfs sdfsfsfdsdfs
-                        </p>
-                        <FaChevronRight />
-                      </div>
-                      {/* <p className="font-[500] text-[16px]">answer</p> */}
-                    </section>
+                      <section className="w-[90%] m-auto bg-[white] p-4 font-[600] rounded-[10px] my-5">
+                        <div className="flex justify-between items-center">
+                          <p className="text-[20px]">
+                            1. sfsfddsfsdfsd sdfsfds sdfsdfsdfs sfdsfsfdsdf
+                            sdfsfdsdfs sdfsfsfdsdfs
+                          </p>
+                          <FaChevronRight />
+                        </div>
+                        {/* <p className="font-[500] text-[16px]">answer</p> */}
+                      </section>
 
-                    <section className="w-[100%] bg-[white] p-4 font-[600] rounded-[10px] my-5">
-                      <div className="flex justify-between items-center">
-                        <p className="text-[20px]">
-                          1. sfsfddsfsdfsd sdfsfds sdfsdfsdfs sfdsfsfdsdf
-                          sdfsfdsdfs sdfsfsfdsdfs
-                        </p>
-                        <FaChevronRight />
-                      </div>
-                      {/* <p className="font-[500] text-[16px]">answer</p> */}
-                    </section>
+                      <section className="w-[90%] m-auto bg-[white] p-4 font-[600] rounded-[10px] my-5">
+                        <div className="flex justify-between items-center">
+                          <p className="text-[20px]">
+                            1. sfsfddsfsdfsd sdfsfds sdfsdfsdfs sfdsfsfdsdf
+                            sdfsfdsdfs sdfsfsfdsdfs
+                          </p>
+                          <FaChevronRight />
+                        </div>
+                        {/* <p className="font-[500] text-[16px]">answer</p> */}
+                      </section>
 
-                    <section className="w-[100%] bg-[white] p-4 font-[600] rounded-[10px] my-5">
-                      <div className="flex justify-between items-center">
-                        <p className="text-[20px]">
-                          1. sfsfddsfsdfsd sdfsfds sdfsdfsdfs sfdsfsfdsdf
-                          sdfsfdsdfs sdfsfsfdsdfs
-                        </p>
-                        <FaChevronRight />
-                      </div>
-                      {/* <p className="font-[500] text-[16px]">answer</p> */}
+                      <section className="w-[90%] m-auto bg-[white] p-4 font-[600] rounded-[10px] my-5">
+                        <div className="flex justify-between items-center">
+                          <p className="text-[20px]">
+                            1. sfsfddsfsdfsd sdfsfds sdfsdfsdfs sfdsfsfdsdf
+                            sdfsfdsdfs sdfsfsfdsdfs
+                          </p>
+                          <FaChevronRight />
+                        </div>
+                        {/* <p className="font-[500] text-[16px]">answer</p> */}
+                      </section>
                     </section>
                   </section>
                 </section>
               </section>
 
-              <section className="landing_section bg-[white] h-[100vh]">
-                <section className="landing_section w-[100%] h-[calc(100vh-110px)] flex">
+              <section className="landing_section bg-[white]">
+                <section className="landing_section w-[100%] flex">
                   <section className=" w-[100%] h-[100%] text-start text-[black] px-5 flex justify-center flex-col mt-2">
                     <section className=" flex justify-between flex-wrap">
                       <section className=" w-[100%] my-[20px] p-3 py-[50px] bg-[black] rounded-[10px] text-[white]">
-                        <div className="flex items-center mb-2">
-                          <div className="icon_section w-[50px] h-[50px] me-2 rounded flex justify-center items-center bg-[#e02708]">
-                            <FaPhone className=" rotate-[90deg]" />
+                        <div className="ms-[65px] flex justify-center items-center mb-2">
+                          <div className="icon_section mb-10 w-[400px] me-2 rounded-[10px] bg-[#e02708]">
+                            <h1 className="landing_heading text-[50px] text-center font-[500] ms-3 text-[white]">
+                              Contact Us
+                            </h1>
                           </div>
-                          <h1 className="landing_heading text-[50px] text-center font-[500] ms-3 text-[#e02708]">
-                            Contact Us
-                          </h1>
                         </div>
 
-                        <div className="contact_inner w-[100%] flex justify-between">
-                          <div className="w-[50%] text-start">
+                        <div className="contact_inner w-[100%] flex justify-evenly">
+                          <div className="w-[47%] text-justify">
                             <p>
                               Lorem ipsum dolor sit amet consectetur adipisicing
                               elit. Libero ratione adipisci corrupti consequatur
@@ -300,8 +281,8 @@ export function Landing() {
                             </p>
                           </div>
 
-                          <div className="w-[50%] flex justify-center">
-                            <form className="w-[90%] text-start">
+                          <div className="w-[43%] flex justify-center">
+                            <form className="w-[100%] text-start">
                               <div className="w-[100%]">
                                 <label>Name</label>
                                 <input
