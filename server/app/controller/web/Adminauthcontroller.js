@@ -5,6 +5,19 @@ const investorregistermodel = require("../../model/web/InvestorAuth");
 require('dotenv').config()
 let webkey = process.env.KEY
 let emailpass = process.env.EMAILPASS
+const otpGenerator = require('otp-generator')
+
+
+const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false, // true for port 465, false for other ports
+    auth: {
+        user: "jangidvershab23@gmail.com",
+        pass: emailpass,
+    },
+});
+
 
 
 exports.webregister = async (req, res) => {
@@ -90,11 +103,16 @@ exports.webregister = async (req, res) => {
 
 
 
+function generateotp() {
+
+    let value = otpGenerator.generate(4, { upperCaseAlphabets: false, specialChars: false, lowerCaseAlphabets: false, digits: true });
+    return value
+}
+
 exports.webregisterotp = async (req, res) => {
-    console.log(req.body)
     let data = {
         Email: req.body.Email,
-        OTP: Math.floor(1000 + Math.random() * 8000)
+        OTP: generateotp(),
     }
 
     try {
@@ -121,7 +139,6 @@ exports.webregisterotp = async (req, res) => {
         })
     }
 }
-
 
 
 
@@ -245,16 +262,6 @@ exports.webinvestorlogin = async (req, res) => {
     })
 }
 
-
-const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false, // true for port 465, false for other ports
-    auth: {
-        user: "jangidvershab23@gmail.com",
-        pass: emailpass,
-    },
-});
 
 
 

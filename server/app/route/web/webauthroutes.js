@@ -1,5 +1,5 @@
 let express = require('express');
-const { webregister, webregisterotp, webinvestorregister, weblogin, forgotpassword, forgototp, updateregister, webinvestorlogin, forgotinvestorpassword, updateinvestorregister } = require('../../controller/web/Adminauthcontroller');
+const { webregister, webregisterotp, webinvestorregister, weblogin, forgotpassword, forgototp, updateregister, webinvestorlogin, forgotinvestorpassword, updateinvestorregister, verifyregisterotp } = require('../../controller/web/Adminauthcontroller');
 let webauthroutes = express.Router();
 let jwt = require('jsonwebtoken');
 const multer = require('multer');

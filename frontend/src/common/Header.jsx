@@ -23,14 +23,15 @@ export function Header() {
             <Link to={"/Contact-Us"}>
               <li className="options">Contact</li>
             </Link>
-          
           </ul>
         </div>
 
         <div className="buttons_sections">
-          <button className="bg-[black] text-[white] w-[100px] h-[40px] rounded-[10px]">
-            Login
-          </button>
+          <Link to={"/Login"}>
+            <button className="bg-[black] text-[white] w-[100px] h-[40px] rounded-[10px]">
+              Login
+            </button>
+          </Link>
           <button className="bg-[#e02708] text-[white] w-[100px] h-[40px] rounded-[10px] ms-2">
             Signup
           </button>
