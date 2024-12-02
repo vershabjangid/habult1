@@ -1,70 +1,32 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
-import { sidebardata } from './Sliderdata';
+import { sidedata } from "./Sidebardata";
+import { Link } from "react-router-dom";
 
 export function Sidebar() {
+  let sidebardata = sidedata;
+  console.log(sidebardata);
+  return (
+    <>
+      <section className="sidebar_dashboard w-[100px] h-[100vh] border-[1px] text-[white] border-[black] rounded-e-[35px] bg-[#e02708] overflow-y-scroll">
+        <section className=" flex justify-center items-center flex-col">
+          {sidebardata.map((items, index) => {
+            return (
+              <>
+                <Link to={items.Path} className="w-[100%]">
+                  <div className="sidebar_options w-[100%] flex justify-between items-center mt-[20px] py-[10px] text-[20px]">
+                    <div className="side_icons w-[100%] flex justify-center items-center">
+                      {items.icon}
+                    </div>
 
-    let data = sidebardata;
-    let [sidedataid, setsidedataid] = useState(null);
-    console.log(sidedataid)
-    let [sidedata, setsidedata] = useState(data)
-
-    return (
-        <>
-            <section className='sidebar_main w-[100px] h-[100vh] bg-white overflow-hidden'>
-                {/* <section className=''><Image src={logo} className='text-[30px] text-center mb-5 mt-[50px] px-5'/></section> */}
-
-
-                <section className=''>
-                    {
-                        sidedata.map((items, index) => {
-
-                            if (items.subcategory) {
-                                return (
-                                    <>
-
-                                        <div className=' text-[#113c11] my-2 '>
-                                            <div className=' flex justify-center w-[100%] text-[#113c11] py-4 my-2 ' onClick={() => setsidedataid(items.id)}>
-                                                <div className=' w-[30%]  text-[25px] flex justify-center'>{items.icon}</div>
-                                                <div className='sidebar_option w-[70%]  flex items-center  text-[18px]'>{items.name}</div>
-                                            </div>
-
-
-                                            {
-                                                sidedataid == items.id ? items.subcategory.map((items, index) => {
-                                                    return (
-                                                        <>
-                                                            <div className='side_options_inner text-center py-2 border'>
-                                                                <Link to={items.path}>
-                                                                    <div className=''>{items.name}</div>
-                                                                </Link>
-                                                            </div>
-                                                        </>
-                                                    )
-                                                }) : null
-                                            }
-                                        </div>
-
-                                    </>
-                                )
-                            }
-                            else {
-                                return (
-                                    <>
-                                        <Link to={`${items.path}`}>
-                                            <div className=' flex justify-center w-[100%] text-[#113c11] py-4 my-2 '>
-                                                <div className=' w-[30%]  text-[25px] flex justify-center'>{items.icon}</div>
-                                                <div className='sidebar_option w-[70%]  flex items-center  text-[18px]'>{items.name}</div>
-                                            </div>
-                                        </Link>
-                                    </>
-                                )
-                            }
-
-                        })
-                    }
-                </section>
-            </section>
-        </>
-    )
+                    <div className="side_options ms-3 w-[70%] absolute">
+                      {items.Name}
+                    </div>
+                  </div>
+                </Link>
+              </>
+            );
+          })}
+        </section>
+      </section>
+    </>
+  );
 }

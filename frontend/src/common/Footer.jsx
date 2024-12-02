@@ -1,65 +1,54 @@
-import React from 'react'
-import { BiCopyright } from 'react-icons/bi'
-import Logo from '../../src/images/Hive_XV_Logo-removebg-preview.png'
-import istart from '../images/nw6o7plxlj6ehfcwwddx.webp'
-import facebook from '../images/Link.png'
-import linkdin from '../images/Link_margin (1).png'
-import { FaYoutube } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
-
-
-
+import React from "react";
+import logo from "../images/Hive_XV_Logo-removebg-preview.94d6ce75b0bdc1a4b7bf.png";
+import { FaFacebook, FaLinkedin, FaYoutube } from "react-icons/fa";
+import istart from "../images/nw6o7plxlj6ehfcwwddx.9254a6f53866eeb97d19.webp";
 export function Footer() {
-    return (
-        <>
-            <footer className='w-[100%] mt-[30px]  py-5 bg-[#e6d3ff]'>
-                <div className='flex justify-evenly px-5 my-[20px] flex-wrap'>
-                    <div className='footer_logo_section w-[250px]  flex justify-center items-center'>
-                        <div className='w-[100%] flex flex-col '>
-                            <div className=''>
-                            <div className='w-[150px]'>
-                                <img src={Logo} alt="" />
-                            </div>
+  return (
+    <>
+      <section className="w-[100%] bg-[#212121] p-3 flex items-center justify-between flex-wrap text-white">
+        <div className="w-[250px] flex justify-center items-center m-auto flex-col">
+          <div className="w-[150px]">
+            <img src={logo} alt="" />
+          </div>
 
-                            <div className='social_links_section my-3 mx-auto'>
-                                <p className='font-[600]'>SOCIAL MEDIA</p>
-                                <div className='social_links_section flex justify-between w-[50%]'>
-                                    <img src={facebook} alt="" className='w-[30px]' />
-                                    <a href="https://www.youtube.com/@HubAltVenture"><div className='w-[30px] h-[30px] bg-white rounded-[50%] flex justify-center items-center'>
-                                        <FaYoutube className='text-[#8637F8]' /></div></a>
-                                    {/* <img src={facebook} alt="" className='w-[30px]' /> */}
-                                    <a href="https://www.linkedin.com/company/hubalt/"><img src={linkdin} alt="" className='w-[40px]' /></a>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className='multiple_pages_links w-[250px] mx-[15px] flex justify-evenly items-center'>
-                        <div className='flex justify-between w-[100%]'>
-                            <ul>
-                                <Link to={"/"}><li>Home</li></Link>
-                                <Link to={"/about"}><li>About Us</li></Link>
-                                <Link to={"/faq"}><li>FAQ</li></Link>
-                            </ul>
+          <div className="text-white text-center w-[50%]">
+            <p>Social Media</p>
 
-                            <ul>
-                                <Link to={"/privacy"}><li>Privacy Policy</li></Link>
-                                <Link to={"/terms"}> <li>Terms & Conditions</li></Link>
-                                <Link to={"/disclaimer"}><li>Disclaimer</li></Link>
-                            </ul></div>
-                    </div>
-                    <div className='istart_section w-[450px]  flex justify-center'>
-                        <div className='h-auto'>
-                            <img src={istart} alt="" className='w-[50%] h-[150px] m-auto' />
-                            <p className='font-[600] text-[14px]'>Registration ID NO :- 5F63239</p>
-                            <p className='font-[600] text-[14px]'>Approved by Department of IT and Communication Govt of Rajasthan</p>
-                        </div>
-                    </div>
-                </div>
-                <div className='w-[100%] border-t-[1px] border-[black] flex items-center justify-center'>
-                    <BiCopyright className='mx-2' />     <p className=''>All Rights Reserved by Hubalt Venture Private Limited</p>
-                </div>
-            </footer>
-        </>
-    )
+            <div className="flex justify-between mt-2">
+              <div className="w-[30px] h-[30px] rounded-[50%] text-[20px] flex justify-center items-center bg-[white] text-[#e02708]">
+                <FaFacebook />
+              </div>
+
+              <div className="w-[30px] h-[30px] rounded-[50%] text-[20px] flex justify-center items-center bg-[white] text-[#e02708]">
+                <FaLinkedin />
+              </div>
+
+              <div className="w-[30px] h-[30px] rounded-[50%] text-[20px] flex justify-center items-center bg-[white] text-[#e02708]">
+                <FaYoutube />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="m-auto">
+          <ul className="mt-5 leading-10">
+            <li>Home</li>
+            <li>About Us</li>
+            <li>FAQ</li>
+            <li>Privacy Policy</li>
+            <li>Terms & Conditions</li>
+            <li>Disclaimer</li>
+          </ul>
+        </div>
+
+        <div className="m-auto  flex justify-center items-center flex-col">
+          <img src={istart} alt="" />
+          <p>Registration ID NO :- 5F63239</p>
+          <p>
+            Approved by Department of IT and Communication Govt of Rajasthan
+          </p>
+        </div>
+      </section>
+    </>
+  );
 }
