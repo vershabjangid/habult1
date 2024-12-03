@@ -55,7 +55,7 @@ export function RegisterOtp() {
 
   let sendotp = (value) => {
     axios
-      .post("http://localhost:5000/verify-register", value)
+      .post("https://api.hivexv.com/verify-register", value)
       .then((res) => {
         if (res.data.Status === true) {
           localStorage.setItem("webtoken", JSON.stringify(res.data.Token));
