@@ -4,6 +4,7 @@ import logo from "../../../images/Hive_XV_Logo-removebg-preview.94d6ce75b0bdc1a4
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast, ToastContainer } from "react-toastify";
+import axios from "axios";
 export function Register2() {
   let [joinas, setjoinas] = useState("Member");
 
@@ -36,7 +37,15 @@ export function Register2() {
         notifyerror("Incorrect Password");
       } else {
         formik.values.Join_as = joinas;
-        naviget("/register-otp", { state: formik.values });
+        axios
+          .post("https://api.hivexv.com/register", formik.values)
+          .then((res) => {
+            if (res.data.Status === 1) {
+              naviget("/register-otp", { state: formik.values });
+            } else {
+              notifyerror(res.data.Message);
+            }
+          });
       }
     },
   });

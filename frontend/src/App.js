@@ -10,6 +10,9 @@ import { Login } from './pages/web/Login/Login';
 import { Register } from './pages/web/Login/Register';
 import { Register2 } from './pages/web/Login/Register2';
 import { RegisterOtp } from './pages/web/Login/RegisterOtp';
+import { MemberTerms } from './pages/web/Login/MemberTerms';
+import { MemberKyc } from './pages/web/Login/MemberKyc';
+import { MemberBankVerification } from './pages/web/Login/MemberBankVerification';
 
 function App() {
   return (
@@ -22,6 +25,9 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/register2' element={<Register2 />} />
           <Route path='/register-otp' element={<RegisterOtp />} />
+          <Route path='/member-terms' element={<MemberTerms />} />
+          <Route path='/member-kyc' element={<MemberKyc />} />
+          <Route path='/member-bank-verification' element={<MemberBankVerification />} />
 
           {/* website */}
           <Route path='/' element={<Landing />} />
