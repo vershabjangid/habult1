@@ -3,7 +3,7 @@ import logo from "../../../images/Hive_XV_Logo-removebg-preview.94d6ce75b0bdc1a4
 import { insert, useFormik } from "formik";
 import { toast, ToastContainer } from "react-toastify";
 import { FaFile } from "react-icons/fa";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import axios, { toFormData } from "axios";
 
@@ -11,9 +11,9 @@ export function MemberBankVerification() {
   let [aadharcard, setaadharcard] = useState("Upload Bank Documents");
 
   let file = ["application/pdf"];
+
   let location = useLocation();
   let data = location.state;
-  console.log(data);
 
   let formik = useFormik({
     initialValues: {
@@ -35,30 +35,30 @@ export function MemberBankVerification() {
         .test("fileFormat", "Unsupported file format", (value) =>
           value.type.includes(file)
         )
-        .required("Account Number is required"),
+        .required("Bank proof is required"),
     }),
 
     onSubmit: () => {
-        insertdata(formik.values)
+      insertdata(formik.values);
     },
   });
 
-  let notifysuccess = (success) => toast.success(success)
-  let notifyerror = (error) => toast.error(error)
+  let notifysuccess = (success) => toast.success(success);
+  let notifyerror = (error) => toast.error(error);
 
+  let naviget = useNavigate();
   let insertdata = (value) => {
     axios
-      .post("https://api.hivexv.com/add-investors", toFormData(value),{
-        headers : {
-            Authorization : JSON.parse(localStorage.getItem('webtoken'))
-        }
+      .post("https://api.hivexv.com/add-investors", toFormData(value), {
+        headers: {
+          Authorization: JSON.parse(localStorage.getItem("webtoken")),
+        },
       })
       .then((res) => {
         if (res.data.Status === 1) {
-            notifysuccess(res.data.Message)
-        }
-        else{
-            notifyerror(res.data.Message)
+          notifysuccess(res.data.Message);
+        } else {
+          notifyerror(res.data.Message);
         }
       });
   };
