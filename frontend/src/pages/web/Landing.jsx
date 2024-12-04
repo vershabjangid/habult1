@@ -11,7 +11,7 @@ export function Landing() {
     <>
       <section className="main w-[100%] bg-[#292828b4]">
         <section className="">
-          <section className="home_banner h-[100vh] bg-[#00000065] pt-3">
+          <section className="home_banner h-[100vh] bg-[#00000064] pt-3">
             <Header />
 
             <section className="landing_section w-[100%] h-[calc(100vh-110px)] flex mt-2">
