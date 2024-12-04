@@ -1,0 +1,89 @@
+@media screen and (min-width: 1700px) {
+  .main {
+    width: 1700px;
+    height: auto;
+    margin: auto;
+  }
+
+  .home_banner {
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 1310px) {
+  .landing_heading {
+    font-size: 40px;
+  }
+
+  .landing_subheading {
+    font-size: 25px;
+  }
+
+  .landing_btn {
+    width: 100%;
+    margin: 10px 0;
+    padding: 0px 10px;
+  }
+}
+
+@media screen and (max-width: 1105px) {
+  .home_banner {
+    height: auto;
+  }
+
+  .landing_section {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .landing_section > section {
+    width: 100%;
+    text-align: center;
+  }
+  .home_banner {
+    padding: 0 !important;
+    background-position: center;
+  }
+  header {
+    width: 100% !important;
+    border-radius: 0 !important;
+  }
+
+  .options_section {
+    display: none;
+  }
+
+  .buttons_sections {
+    display: none;
+  }
+
+  .menubar {
+    display: block;
+  }
+
+  .contact_inner{
+    flex-direction: column;
+  }
+
+  .contact_inner>div{
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 740px) {
+    .why_choose_cards{
+    width: 100%;
+    text-align: left;
+    }
+  }
+
+@media screen and (max-width: 620px) {
+  .landing_heading {
+    font-size: 30px;
+    font-weight: bolder;
+  }
+
+  .landing_subheading {
+    font-size: 20px;
+  }
+}
