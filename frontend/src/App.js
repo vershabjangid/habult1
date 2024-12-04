@@ -13,6 +13,7 @@ import { RegisterOtp } from './pages/web/Login/RegisterOtp';
 import { MemberTerms } from './pages/web/Login/MemberTerms';
 import { MemberKyc } from './pages/web/Login/MemberKyc';
 import { MemberBankVerification } from './pages/web/Login/MemberBankVerification';
+import { RegestConfirmed } from './pages/web/Login/RegestConfirmed';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path='/member-terms' element={<MemberTerms />} />
           <Route path='/member-kyc' element={<MemberKyc />} />
           <Route path='/member-bank-verification' element={<MemberBankVerification />} />
+          <Route path='/request-confirmed' element={<RegestConfirmed />} />
 
           {/* website */}
           <Route path='/' element={<Landing />} />
