@@ -11,6 +11,7 @@ let WEBTOKEN = process.env.WEBTOKEN
 
 
 let verifytoken = (req, res, next) => {
+    console.log(req.body)
     let token = req.headers['authorization']
     if (token) {
         jwt.verify(token, WEBTOKEN, (err, valid) => {
@@ -39,10 +40,10 @@ const storage = multer.diskStorage({
     }
 })
 
-const upload = multer({ storage: storage }).any('Company_Pan', 'Company_Logo', 'Team_Profile','Team_Profile1','Backers_Profile','Backers_Profile1','Financial_Projection','Pitch_Deck','Incorporation_Certificate')
+const upload = multer({ storage: storage }).any('Company_Pan', 'Company_Logo', 'Team_Profile', 'Team_Profile1', 'Backers_Profile', 'Backers_Profile1', 'Financial_Projection', 'Pitch_Deck', 'Incorporation_Certificate')
 
 
-startupsroute.post('/add-startups', upload,verifytoken, startupform);
+startupsroute.post('/add-startup', upload, verifytoken, startupform);
 
 
 module.exports = startupsroute
