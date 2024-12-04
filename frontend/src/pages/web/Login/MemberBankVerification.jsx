@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import logo from "../../../images/Hive_XV_Logo-removebg-preview.94d6ce75b0bdc1a4b7bf.png";
-import { insert, useFormik } from "formik";
+import { useFormik } from "formik";
 import { toast, ToastContainer } from "react-toastify";
 import { FaFile } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";

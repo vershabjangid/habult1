@@ -41,7 +41,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage }).any('Bank_Proof', 'PanCard', 'AadhaarCard')
 
 
-investorroutes.post('/add-investors', upload, verifytoken, investorform);
+investorroutes.post('/add-investors', upload, investorform);
 
 
 module.exports = investorroutes

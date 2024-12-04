@@ -80,7 +80,7 @@ export function RegisterOtp() {
   let resendotp = (value) => {
     setseconds(60);
     axios
-      .put("http://localhost:5000/resend-otp", { Email: value })
+      .put("https://api.hivexv.com/resend-otp", { Email: value })
       .then((res) => {
         if (res.data.Status === 1) {
           notifysuccess(res.data.Message);
