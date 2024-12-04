@@ -5,6 +5,7 @@ import { FaChevronRight, FaIcons, FaPhone } from "react-icons/fa";
 import { FaLocationPin, FaMessage } from "react-icons/fa6";
 import { Footer } from "../../common/Footer";
 import faqbanner from "../../images/4021b783-d284-4e05-801a-18bb24ce521e.png";
+import { Link } from "react-router-dom";
 export function Landing() {
   return (
     <>
@@ -32,11 +33,11 @@ export function Landing() {
 
                 <div className="my-3">
                   <button className="landing_btn w-[300px] h-[50px] bg-[#e02708] rounded-[10px]">
-                    Become an investor
+                  <Link to={"/register"}>Become an investor</Link>
                   </button>
 
                   <button className="landing_btn w-[300px] h-[50px] bg-[white] text-black rounded-[10px] ms-2">
-                    Submit Pitch Deck
+                    <Link to={"/register"}>Submit Pitch Deck</Link>
                   </button>
                 </div>
               </section>

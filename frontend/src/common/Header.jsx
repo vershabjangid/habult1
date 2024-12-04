@@ -29,11 +29,11 @@ export function Header() {
         <div className="buttons_sections">
           <Link to={"/Login"}>
             <button className="bg-[black] text-[white] w-[100px] h-[40px] rounded-[10px]">
-              Login
+              <Link to={"/login"}>Login</Link>
             </button>
           </Link>
           <button className="bg-[#e02708] text-[white] w-[100px] h-[40px] rounded-[10px] ms-2">
-            Signup
+            <Link to={"/register"}>Signup</Link>
           </button>
         </div>
 

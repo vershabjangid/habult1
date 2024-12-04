@@ -14,6 +14,8 @@ import { MemberTerms } from './pages/web/Login/MemberTerms';
 import { MemberKyc } from './pages/web/Login/MemberKyc';
 import { MemberBankVerification } from './pages/web/Login/MemberBankVerification';
 import { RegestConfirmed } from './pages/web/Login/RegestConfirmed';
+import { StartupForm } from './pages/web/Login/StartupForm';
+import { StartupLogin2 } from './pages/web/Login/StartupLogin2';
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
           <Route path='/member-terms' element={<MemberTerms />} />
           <Route path='/member-kyc' element={<MemberKyc />} />
           <Route path='/member-bank-verification' element={<MemberBankVerification />} />
+          <Route path='/startup-form' element={<StartupForm />} />
+          <Route path='/startup-form2' element={<StartupLogin2 />} />
           <Route path='/request-confirmed' element={<RegestConfirmed />} />
 
           {/* website */}

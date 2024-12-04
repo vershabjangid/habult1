@@ -87,5 +87,6 @@ code {
 .login_page{
   background: url('images/bou9.jpg');
   background-position: center;
+  background-attachment: fixed;
   background-size: cover;
 }

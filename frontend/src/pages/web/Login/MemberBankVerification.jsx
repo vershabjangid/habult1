@@ -56,6 +56,7 @@ export function MemberBankVerification() {
       })
       .then((res) => {
         if (res.data.Status === 1) {
+          naviget('/request-confirmed')
           notifysuccess(res.data.Message);
         } else {
           notifyerror(res.data.Message);
