@@ -4,159 +4,159 @@ let mongoose = require('mongoose')
 let startupformschema = mongoose.Schema({
     Company_Name: {
         type: String,
-        require: true,
+        required: true,
         unique: true
     },
     Company_Pan: {
         type: String,
-        require: true,
+        required: true,
     },
     Email: {
         type: String,
-        require: true,
+        required: true,
         unique: true
     },
     Funding_Ask: {
         type: Number,
-        require: true
+        required: true
     },
     Industry: {
         type: String,
-        require: true
+        required: true
     },
     Linkedin_Url: {
         type: String,
-        require: true
+        required: true
     },
     Stage: {
         type: String,
-        require: true
+        required: true
     },
     Website_Url: {
         type: String,
-        require: true
+        required: true
     },
     Equity: {
         type: Number,
-        require: true
+        required: true
     },
     Company_Logo: {
         type: String,
-        require: true
+        required: true
     },
     Company_Description: {
         type: String,
-        require: true
+        required: true
     },
     Highlights1: {
         type: String,
-        require: true
+        required: true
     },
     Highlights2: {
         type: String
     },
     Team_Profile: {
         type: String,
-        require: true
+        required: true
     },
     Team_Name: {
         type: String,
-        require: true
+        required: true
     },
     Team_Designation: {
         type: String,
-        require: true
+        required: true
     },
     Team_Experience: {
         type: Number,
-        require: true
+        required: true
     },
     Team_Profile1: {
         type: String,
-        require: true
+        required: true
     },
     Team_Name1: {
         type: String,
-        require: true
+        required: true
     },
     Team_Designation1: {
         type: String,
-        require: true
+        required: true
     },
     Team_Experience1: {
         type: Number,
-        require: true
+        required: true
     },
     Backers_Profile: {
         type: String,
-        require: true
+        required: true
     },
     Backers_Name: {
         type: String,
-        require: true
+        required: true
     },
     Backers_Designation: {
         type: String,
-        require: true
+        required: true
     },
     Backers_Experience: {
         type: Number,
-        require: true
+        required: true
     },
     Backers_Profile1: {
         type: String,
-        require: true
+        required: true
     },
     Backers_Name1: {
         type: String,
-        require: true
+        required: true
     },
     Backers_Designation1: {
         type: String,
-        require: true
+        required: true
     },
-    Backers_Experience1: {
-        type: Number,
-        require: true
-    },
-    Video_Link: {
-        type: String,
-        require: true
-    },
-    Competitor: {
-        type: String,
-        require: true
-    },
-    Market_Size: {
-        type: Number,
-        require: true
-    },
-    Solution: {
-        type: String,
-        require: true
-    },
-    Problem_Statement: {
-        type: String,
-        require: true
-    },
-    Financial_Projection: {
-        type: String,
-        require: true
-    },
-    Pitch_Deck: {
-        type: String,
-        require: true
-    },
+    // Backers_Experience1: {
+    //     type: Number,
+    //     required: true
+    // },
+    // Video_Link: {
+    //     type: String,
+    //     required: true
+    // },
+    // Competitor: {
+    //     type: String,
+    //     required: true
+    // },
+    // Market_Size: {
+    //     type: Number,
+    //     required: true
+    // },
+    // Solution: {
+    //     type: String,
+    //     required: true
+    // },
+    // Problem_Statement: {
+    //     type: String,
+    //     required: true
+    // },
+    // Financial_Projection: {
+    //     type: String,
+    //     required: true
+    // },
+    // Pitch_Deck: {
+    //     type: String,
+    //     required: true
+    // },
     Incorporation_Certificate: {
         type: String,
-        require: true
+        required: true
     },
-    Terms_Conditions: {
-        type: Boolean,
-        require: true
-    },
+    // Terms_Conditions: {
+    //     type: String,
+    //     required: true
+    // },
 })
 
 
-let startupformmodel = mongoose.model('Startup', startupformschema)
+let startupformmodel = mongoose.model('startups', startupformschema)
 module.exports = startupformmodel;

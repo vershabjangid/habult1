@@ -11,7 +11,6 @@ export function StartupLogin2() {
   let location = useLocation();
   let data = location.state;
 
-
   let notifyerror = (error) => toast.error(error);
 
   let file = ["application/pdf"];
@@ -32,22 +31,27 @@ export function StartupLogin2() {
       Company_Description: "",
       Highlights1: "",
       Highlights2: "",
+
       Team_Profile: "",
       Team_Name: "",
       Team_Designation: "",
       Team_Experience: "",
+
       Team_Profile1: "",
       Team_Name1: "",
       Team_Designation1: "",
       Team_Experience1: "",
+
       Backers_Profile: "",
       Backers_Name: "",
       Backers_Designation: "",
       Backers_Experience: "",
+
       Backers_Profile1: "",
       Backers_Name1: "",
       Backers_Designation1: "",
       Backers_Experience1: "",
+
       Video_Link: "",
       Competitor: "",
       Market_Size: "",
@@ -69,6 +73,14 @@ export function StartupLogin2() {
         "Company Description is required"
       ),
       Highlights1: Yup.string().required("Highlights is required"),
+      Backers_Profile: "",
+      Backers_Name: "",
+      Backers_Designation: "",
+      Backers_Experience: "",
+      Backers_Profile1: "",
+      Backers_Name1: "",
+      Backers_Designation1: "",
+      Backers_Experience1: "",
       Video_Link: Yup.string()
         .url("Invalid Url")
         .required("Video Link is required"),
@@ -94,20 +106,19 @@ export function StartupLogin2() {
     }),
 
     onSubmit: () => {
-    
-        insertdata(formik.values);
-        console.log(formik.values)
-      }
+      insertdata(formik.values);
+      console.log(formik.values);
+    },
   });
 
   let naviget = useNavigate();
 
   let insertdata = (value) => {
     axios
-      .post("https://api.hivexv.com/add-startup", toFormData(value),{
-        headers : {
-            Authorization : JSON.parse(localStorage.getItem('webtoken'))
-        }
+      .post("https://api.hivexv.com/add-startup", toFormData(value), {
+        headers: {
+          Authorization: JSON.parse(localStorage.getItem("webtoken")),
+        },
       })
       .then((res) => {
         if (res.data.Status === 1) {

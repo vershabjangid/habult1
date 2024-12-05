@@ -30,6 +30,7 @@ let verifytoken = (req, res, next) => {
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
+        console.log(req.body)
         cb(null, 'uploads')
     },
     filename: function (req, file, cb) {
@@ -43,7 +44,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage }).any('Company_Pan', 'Company_Logo', 'Team_Profile', 'Team_Profile1', 'Backers_Profile', 'Backers_Profile1', 'Financial_Projection', 'Pitch_Deck', 'Incorporation_Certificate')
 
 
-startupsroute.post('/add-startup', upload, verifytoken, startupform);
+startupsroute.post('/add-startup', upload, startupform);
 
 
 module.exports = startupsroute
