@@ -38,7 +38,7 @@ function App() {
           {/* website */}
           <Route path='/' element={<Landing />} />
           <Route path='/about' element={<AboutUs />} />
-          <Route path='/Contact-Us' element={<ContactUs />} />
+          <Route path='/contact-us' element={<ContactUs />} />
           {/* Dashboard */}
           <Route path='/dashboard-login' element={<DashboardLogin />} />
           <Route path='/dashboard' element={<Dashboard />} />

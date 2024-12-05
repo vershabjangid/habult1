@@ -20,7 +20,7 @@ export function Header() {
             <Link to={"/about"}>
               <li className="options">About</li>
             </Link>
-            <Link to={"/Contact-Us"}>
+            <Link to={"/contact-us"}>
               <li className="options">Contact</li>
             </Link>
           </ul>
@@ -55,37 +55,43 @@ export function Header() {
           </div>
 
           <div className="h-[100vh]">
-            <div className="flex justify-between items-center px-2">
-              <div className=" w-[100%] py-3">
-                <p>Home</p>
-              </div>
+            <Link to={"/"}>
+              <div className="flex justify-between items-center px-2">
+                <div className=" w-[100%] py-3">
+                  <p>Home</p>
+                </div>
 
-              <div className="">
-                <FaChevronRight />
+                <div className="">
+                  <FaChevronRight />
+                </div>
               </div>
-            </div>
+            </Link>
 
-            <div className="flex justify-between items-center px-2">
-              <div className=" w-[100%] py-3">
-                <p>About</p>
+            <Link to={"/about"}>
+              <div className="flex justify-between items-center px-2">
+                <div className=" w-[100%] py-3">
+                  <p>About</p>
+                </div>
+
+                <div className="">
+                  <FaChevronRight />
+                </div>
               </div>
+            </Link>
 
-              <div className="">
-                <FaChevronRight />
+            <Link to={"/contact-us"}>
+              <div className="flex justify-between items-center px-2">
+                <div className=" w-[100%] py-3">
+                  <p>Contact Us</p>
+                </div>
+
+                <div className="">
+                  <FaChevronRight />
+                </div>
               </div>
-            </div>
+            </Link>
 
-            <div className="flex justify-between items-center px-2">
-              <div className=" w-[100%] py-3">
-                <p>Contact Us</p>
-              </div>
-
-              <div className="">
-                <FaChevronRight />
-              </div>
-            </div>
-
-            <div className="flex justify-between items-center px-2">
+            {/* <div className="flex justify-between items-center px-2">
               <div className=" w-[100%] py-3">
                 <p>FAQ's</p>
               </div>
@@ -113,7 +119,7 @@ export function Header() {
               <div className="">
                 <FaChevronRight />
               </div>
-            </div>
+            </div> */}
           </div>
         </section>
       ) : null}
