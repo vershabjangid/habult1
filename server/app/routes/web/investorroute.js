@@ -42,7 +42,7 @@ const upload = multer({ storage: storage }).any('Bank_Proof', 'PanCard', 'Aadhaa
 
 
 investorroutes.post('/add-investors', upload, verifytoken, investorform);
-investorroutes.post('/view-investors', upload, viewinvestor);
+investorroutes.get('/view-investors', upload, viewinvestor);
 
 
 module.exports = investorroutes
