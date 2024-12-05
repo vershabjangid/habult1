@@ -60,7 +60,7 @@ exports.viewinvestor = async (req, res) => {
 
 exports.deleteform = async (req, res) => {
 
-    let deletedata = await investorformmodel.deleteOne({ Email: req.body.Email })
+    let deletedata = await investorformmodel.deleteOne(req.body)
         .then(() => {
             res.send({
                 Status: 1,
