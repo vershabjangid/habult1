@@ -45,3 +45,13 @@ exports.investorform = async (req, res) => {
             }
         })
 }
+
+
+exports.viewinvestor = async (req, res) => {
+    let viewdata = await investorformmodel.find()
+    let imgurl = "https://api.hivexv.com/uploads/"
+    res.send({
+        viewdata,
+        imgurl
+    })
+}

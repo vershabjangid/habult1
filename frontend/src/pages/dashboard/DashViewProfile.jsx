@@ -1,30 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { ToastContainer } from "react-toastify";
 import { Sidebar } from "../../common/Sidebar";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
-export function DashRequests() {
-  let [requests, setrequests] = useState([]);
-  let viewrequests = () => {
-    axios
-      .get("https://api.hivexv.com/view-register")
-      .then((res) => {
-        setrequests(res.data.filter((items) => items.Is_Verified === true));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  useState(() => {
-    viewrequests();
-  }, []);
-
-  let naviget = useNavigate();
-  let viewprofile = (value) => {
-    naviget("/view-profile");
-  };
+export function DashViewProfile() {
   return (
     <>
       <section className="main border-[1px] border-[black] bg-[black]">
@@ -33,7 +11,7 @@ export function DashRequests() {
 
           <section className="w-[90%] h-[100vh] rounded-s-[35px] flex items-center flex-col bg-[white] border-[1px] border-[white] overflow-y-scroll">
             <section className="page_label w-[90%] my-5 rounded-[10px] p-2 text-[#e02708] font-[600] text-[30px]">
-              <h1>Requests</h1>
+              <h1>View Profile</h1>
             </section>
 
             <section className="w-[90%]">
@@ -71,7 +49,7 @@ export function DashRequests() {
                         Delete
                       </th>
                     </tr>
-                    {requests.map((items, index) => {
+                    {/* {requests.map((items, index) => {
                       return (
                         <>
                           <tr className="border-t-[1px] border-black">
@@ -113,7 +91,7 @@ export function DashRequests() {
                           </tr>
                         </>
                       );
-                    })}
+                    })} */}
                   </table>
                 </div>
               </section>

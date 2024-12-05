@@ -1,5 +1,5 @@
 let express = require('express')
-const { investorform } = require('../../controller/web/Investor')
+const { investorform, viewinvestor } = require('../../controller/web/Investor')
 const multer = require('multer')
 let path = require('path')
 let investorroutes = express.Router()
@@ -41,7 +41,8 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage }).any('Bank_Proof', 'PanCard', 'AadhaarCard')
 
 
-investorroutes.post('/add-investors', upload,verifytoken, investorform);
+investorroutes.post('/add-investors', upload, verifytoken, investorform);
+investorroutes.post('/view-investors', upload, viewinvestor);
 
 
 module.exports = investorroutes

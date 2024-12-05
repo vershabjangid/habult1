@@ -21,6 +21,7 @@ import { UpdateDashIndustry } from './pages/dashboard/UpdateDashIndustry';
 import { DashFaq } from './pages/dashboard/DashFaq';
 import { UpdateDashFaq } from './pages/dashboard/UpdateDashFaq';
 import { DashRequests } from './pages/dashboard/DashRequests';
+import { DashViewProfile } from './pages/dashboard/DashViewProfile';
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
           <Route path='/faq' element={<DashFaq />} />
           <Route path='/update-faq' element={<UpdateDashFaq />} />
           <Route path='/requests' element={<DashRequests />} />
+          <Route path='/view-profile' element={<DashViewProfile />} />
         </Routes>
       </BrowserRouter>
     </>
