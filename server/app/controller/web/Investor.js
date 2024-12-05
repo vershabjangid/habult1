@@ -33,9 +33,6 @@ exports.investorform = async (req, res) => {
                     Status: 0,
                     Message: "Data Already Exists"
                 })
-                let fileunlink = fs.unlinkSync(`${dirpath}/${req.files[0].filename}`)
-                let fileunlink1 = fs.unlinkSync(`${dirpath}/${req.files[1].filename}`)
-                let fileunlink2 = fs.unlinkSync(`${dirpath}/${req.files[2].filename}`)
             }
             else {
                 res.send({
@@ -43,6 +40,9 @@ exports.investorform = async (req, res) => {
                     Message: "Data Missing"
                 })
             }
+            let fileunlink = fs.unlinkSync(`${dirpath}/${req.files[0].filename}`)
+            let fileunlink1 = fs.unlinkSync(`${dirpath}/${req.files[1].filename}`)
+            let fileunlink2 = fs.unlinkSync(`${dirpath}/${req.files[2].filename}`)
         })
 }
 
@@ -54,4 +54,26 @@ exports.viewinvestor = async (req, res) => {
         viewdata,
         imgurl
     })
+}
+
+
+
+exports.deleteform = async (req, res) => {
+
+    let deletedata = await investorformmodel.deleteOne({ Email: req.body.Email })
+        .then(() => {
+            res.send({
+                Status: 1,
+                Message: "Data Deleted Successfully"
+            })
+            let fileunlink = fs.unlinkSync(`${dirpath}/${req.files[0].filename}`)
+            let fileunlink1 = fs.unlinkSync(`${dirpath}/${req.files[1].filename}`)
+            let fileunlink2 = fs.unlinkSync(`${dirpath}/${req.files[2].filename}`)
+        })
+        .catch((error) => {
+            res.send({
+                Status: 0,
+                Message: "Data Missing"
+            })
+        })
 }

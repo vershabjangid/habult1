@@ -1,8 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import { Sidebar } from "../../common/Sidebar";
+import { useLocation } from "react-router-dom";
+import axios from "axios";
+import { FaDownload } from "react-icons/fa";
 
 export function DashViewProfile() {
+  let location = useLocation();
+  let data = location.state;
+
+  let [registerdata, setregisterdata] = useState([]);
+  let [imgurl, setimgurl] = useState("");
+  console.log(imgurl);
+
+  console.log(registerdata);
+  let viewdata = () => {
+    axios
+      .get("https://api.hivexv.com/view-investors")
+      .then((res) => {
+        setimgurl(res.data.imgurl);
+        setregisterdata(
+          res.data.viewdata.filter((items) => data.Email === items.Email)
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    viewdata();
+  }, [])
+
   return (
     <>
       <section className="main border-[1px] border-[black] bg-[black]">
@@ -14,88 +43,112 @@ export function DashViewProfile() {
               <h1>View Profile</h1>
             </section>
 
-            <section className="w-[90%]">
-              <section className="page_label w-[100%] my-5 rounded-[10px] p-2 text-[#e02708] font-[600] text-[20px]">
-                <div>
-                  <p>View Requests</p>
-                </div>
+            {registerdata.length === 0 ? (
+              <>
+              <div className="text-[30px]">No Data Found</div>
+              <div className="text-[30px]">User Doesn't Fill The Form</div>
+              </>
+            ) : (
+              <section className="w-[90%]">
+                <section className="page_label w-[100%] my-5 rounded-[10px] p-2 text-[#e02708] font-[600] text-[20px]">
+                  <div>
+                    <p>
+                      {data.FirstName} {data.LastName}'s Profile
+                    </p>
+                  </div>
 
-                <div className="w-[100%] my-5">
-                  <table className="w-[100%] border-[1px] border-black">
-                    <tr className="">
-                      <th className="text-[#113c11] text-[15px] font-[500]">
-                        {" "}
-                        Join as
-                      </th>
+                  <div className="my-3 border-[1px] border-[black] text-black text-[18px]">
+                    <div className="my-3">
+                      <p>
+                        Name : {data.FirstName} {data.LastName}
+                      </p>
+                    </div>
 
-                      <th className="text-[#113c11] text-[15px] font-[500]">
-                        {" "}
-                        Name
-                      </th>
-                      <th className="text-[#113c11] text-[15px] font-[500]">
-                        {" "}
-                        Email
-                      </th>
-                      <th className="text-[#113c11] text-[15px] font-[500]">
-                        {" "}
-                        Phone
-                      </th>
-                      <th className="text-[#113c11] text-[15px] font-[500]">
-                        {" "}
-                        View Profile
-                      </th>
-                      <th className="text-[#113c11] text-[15px] font-[500]">
-                        {" "}
-                        Delete
-                      </th>
-                    </tr>
-                    {/* {requests.map((items, index) => {
-                      return (
-                        <>
-                          <tr className="border-t-[1px] border-black">
-                            <td className=" text-center text-[#113c11] text-[15px] font-[500]">
-                              {items.Join_as}
-                            </td>
+                    <div className="my-3">
+                      <p>Email : {data.Email}</p>
+                    </div>
 
-                            <td className=" text-center text-[#113c11] text-[15px] font-[500]">
-                              {items.FirstName} {items.LastName}
-                            </td>
+                    <div className="my-3">
+                      <p>Phone : {data.Phone}</p>
+                    </div>
 
-                            <td className=" text-center text-[#113c11] text-[15px] font-[500]">
-                              {items.Email}
-                            </td>
-                            <td className=" text-center text-[#113c11] text-[15px] font-[500]">
-                              {items.Phone}
-                            </td>
+                    <div className="my-3">
+                      <p>Join as : {data.Join_as}</p>
+                    </div>
 
-                            <td className=" text-center text-[#113c11] text-[15px] font-[500]">
-                              {" "}
-                              <div
-                                className="w-[150px] mx-auto my-2 py-2 px-6 rounded-[15px] text-white bg-[green]"
-                                onClick={() => viewprofile(items)}
+                    {registerdata.map((items, index) => {
+                      if (registerdata.length === 0) {
+                        return (
+                          <>
+                            <div className="text-black text-center my-5">
+                              User Doesn't Fill form
+                            </div>
+                            ;
+                          </>
+                        );
+                      } else {
+                        return (
+                          <>
+                            <div className="my-3">
+                              <p>Address : {items.Address}</p>
+                            </div>
+
+                            <div className="my-5 text-[30px]">
+                              <p>Bank Information</p>
+                            </div>
+
+                            <div className="my-3">
+                              <p>Bank Name : {items.Bank_Name}</p>
+                            </div>
+
+                            <div className="my-3">
+                              <p>Account Number : {items.Account_Number}</p>
+                            </div>
+
+                            <div className="my-3">
+                              <p>IFSC Code : {items.IFSC_Code}</p>
+                            </div>
+
+                            <div className="my-5 text-[30px]">
+                              <p>Verification Documents</p>
+                            </div>
+
+                            <div className="w-[100%] text-white flex">
+                              <a
+                                href={imgurl + items.PanCard}
+                                download={imgurl + items.PanCard}
                               >
-                                View Profile
-                              </div>
-                            </td>
-                            <td className=" text-center text-[#113c11] text-[15px] font-[500]">
-                              {" "}
-                              <div
-                                className="w-[150px] mx-auto my-2 py-2 px-6 rounded-[15px] text-white bg-[#f34141]"
-                                // onClick={() =>
-                                //   setdeletedata(items) || setdeletemodal(true)
-                                // }
+                                <button className="bg-[#e02708] w-[150px] p-2 py-4 rounded-[10px] flex justify-between items-center">
+                                  Pan Card <FaDownload />
+                                </button>
+                              </a>
+
+                              <a
+                                href={imgurl + items.AadhaarCard}
+                                className="ms-2"
                               >
-                                Delete
-                              </div>
-                            </td>
-                          </tr>
-                        </>
-                      );
-                    })} */}
-                  </table>
-                </div>
+                                <button className="bg-[#e02708] w-[150px] p-2 py-4 rounded-[10px] flex justify-between items-center">
+                                  Aadhar Card <FaDownload />
+                                </button>
+                              </a>
+
+                              <a
+                                href={imgurl + items.Bank_Proof}
+                                className="ms-2"
+                              >
+                                <button className="bg-[#e02708] w-[150px] p-2 py-4 rounded-[10px] flex justify-between items-center">
+                                  Bank Proof <FaDownload />
+                                </button>
+                              </a>
+                            </div>
+                          </>
+                        );
+                      }
+                    })}
+                  </div>
+                </section>
               </section>
-            </section>
+            )}
           </section>
         </section>
       </section>
