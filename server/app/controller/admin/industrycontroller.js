@@ -66,7 +66,6 @@ exports.updateindustry = async (req, res) => {
 
 
 exports.deleteindustry = async (req, res) => {
-    console.log(req.body)
 
     let deleteone = await industrymodel.deleteOne({ _id: req.body._id })
         .then(() => {

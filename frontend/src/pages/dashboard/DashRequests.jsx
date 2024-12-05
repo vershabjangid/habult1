@@ -5,7 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export function DashRequests() {
-  let notifysuccess = (success) => toast.success(success);
+    let notifysuccess = (success) => toast.success(success) 
 
   let [requests, setrequests] = useState([]);
   let [data, setdata] = useState([]);
@@ -41,8 +41,12 @@ export function DashRequests() {
   let [deletedata, setdeletedata] = useState("");
 
   let deleteindustry = (value) => {
+    let data = {
+      _id: value._id,
+    };
+
     axios
-      .delete("https://api.hivexv.com/delete-investors", value)
+      .delete("https://api.hivexv.com/delete-investors", { data })
       .then((res) => {
         notifysuccess(res.data.Message);
         viewrequests();

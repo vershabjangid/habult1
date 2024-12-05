@@ -56,18 +56,15 @@ exports.viewinvestor = async (req, res) => {
     })
 }
 
-
-
 exports.deleteform = async (req, res) => {
 
-    let deletedata = await investorformmodel.deleteOne(req.body)
+    let deleteone = await industrymodel.deleteOne({ _id: req.body._id })
         .then(() => {
             res.send({
                 Status: 1,
-                Message: "Data Deleted Successfully",
-                body: req.body
+                Message: "Data Deleted Successfully"
             })
-            let fileunlink = fs.unlinkSync(`${dirpath}/${req.files[0].filename}`)
+            let fileunlink =     fs.unlinkSync(`${dirpath}/${req.files[0].filename}`)
             let fileunlink1 = fs.unlinkSync(`${dirpath}/${req.files[1].filename}`)
             let fileunlink2 = fs.unlinkSync(`${dirpath}/${req.files[2].filename}`)
         })
@@ -77,4 +74,5 @@ exports.deleteform = async (req, res) => {
                 Message: "Data Missing"
             })
         })
+
 }
