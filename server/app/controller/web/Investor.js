@@ -64,7 +64,8 @@ exports.deleteform = async (req, res) => {
         .then(() => {
             res.send({
                 Status: 1,
-                Message: "Data Deleted Successfully"
+                Message: "Data Deleted Successfully",
+                body: req.body
             })
             let fileunlink = fs.unlinkSync(`${dirpath}/${req.files[0].filename}`)
             let fileunlink1 = fs.unlinkSync(`${dirpath}/${req.files[1].filename}`)
