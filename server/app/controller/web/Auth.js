@@ -51,7 +51,8 @@ exports.register = async (req, res) => {
         Join_as: req.body.Join_as,
         Password: req.body.Join_as,
         ConfirmPassword: req.body.Join_as,
-        OTP_Value: Math.floor(1000 + Math.random() * 8000)
+        OTP_Value: Math.floor(1000 + Math.random() * 8000),
+        Is_Verified: false
     }
 
 
@@ -70,9 +71,9 @@ exports.register = async (req, res) => {
             if (error.code === 11000) {
                 res.send({
                     Status: 0,
-                    Message: "User Alredy Exists",   
+                    Message: "User Alredy Exists",
                 })
-                
+
             }
             else {
                 res.status(400).send({
@@ -95,6 +96,7 @@ exports.verifyotp = async (req, res) => {
 
 
     if (data.OTP == getdata.OTP_Value) {
+        let updatedata = await registermodel.updateOne({ Email: data.Email }, { Is_Verified: true })
         let newtoken;
         jwt.sign({ newtoken }, WEBTOKEN, { expiresIn: '1h' }, (error, value) => {
             res.send({
@@ -144,4 +146,11 @@ exports.resendotp = async (req, res) => {
                 })
             }
         })
+}
+
+
+
+exports.viewregister = async (req, res) => {
+    let viewdata = await registermodel.find()
+    res.send(viewdata)
 }

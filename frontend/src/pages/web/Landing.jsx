@@ -63,7 +63,7 @@ export function Landing() {
                     </h1>
                   </div>
 
-                  <h2 className=" text-[38px] text-justify leading-[50px] font-[500] my-5  rounded-[10px]">
+                  <h2 className=" text-[35px] leading-[50px] font-[500] my-5  rounded-[10px]">
                     Connecting Innovators with Investors for a Better Future
                   </h2>
 

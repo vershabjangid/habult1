@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export function Sidebar() {
   let sidebardata = sidedata;
-  console.log(sidebardata);
+  // console.log(sidebardata);
   return (
     <>
       <section className="sidebar_dashboard w-[100px] h-[100vh] border-[1px] text-[white] border-[black] rounded-e-[35px] bg-[#e02708] overflow-y-scroll">

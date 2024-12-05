@@ -40,12 +40,12 @@ export function ContactUs1() {
 
                     <p className="my-5 flex items-center">
                       <FaPhone className=" rotate-[90deg] me-3 text-[30px]" />{" "}
-                      <span>5665465465</span>
+                      <span>+91 8005960160</span>
                     </p>
 
                     <p className="my-5 flex items-center">
                       <FaMessage className=" me-3 text-[30px]" />{" "}
-                      <span>jangdivershab23@gmail.com</span>
+                      <span>info@hubalt.in</span>
                     </p>
 
                     <p className="my-5 flex items-center">

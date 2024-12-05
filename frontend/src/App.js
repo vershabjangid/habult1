@@ -16,6 +16,11 @@ import { MemberBankVerification } from './pages/web/Login/MemberBankVerification
 import { RegestConfirmed } from './pages/web/Login/RegestConfirmed';
 import { StartupForm } from './pages/web/Login/StartupForm';
 import { StartupLogin2 } from './pages/web/Login/StartupLogin2';
+import { DashIndustry } from './pages/dashboard/DashIndustry';
+import { UpdateDashIndustry } from './pages/dashboard/UpdateDashIndustry';
+import { DashFaq } from './pages/dashboard/DashFaq';
+import { UpdateDashFaq } from './pages/dashboard/UpdateDashFaq';
+import { DashRequests } from './pages/dashboard/DashRequests';
 
 function App() {
   return (
@@ -43,6 +48,11 @@ function App() {
           <Route path='/dashboard-login' element={<DashboardLogin />} />
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/home' element={<DashHome />} />
+          <Route path='/industry' element={<DashIndustry />} />
+          <Route path='/update-industry' element={<UpdateDashIndustry />} />
+          <Route path='/faq' element={<DashFaq />} />
+          <Route path='/update-faq' element={<UpdateDashFaq />} />
+          <Route path='/requests' element={<DashRequests />} />
         </Routes>
       </BrowserRouter>
     </>

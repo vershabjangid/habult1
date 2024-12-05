@@ -1,0 +1,107 @@
+import React from "react";
+import { ToastContainer } from "react-toastify";
+import { Sidebar } from "../../common/Sidebar";
+import { useFormik } from "formik";
+
+export function DashRequests() {
+  let formik = useFormik({});
+  return (
+    <>
+      <section className="main border-[1px] border-[black] bg-[black]">
+        <section className="dashboard_inner w-[100%] flex justify-between">
+          <Sidebar />
+
+          <section className="w-[90%] h-[100vh] rounded-s-[35px] flex items-center flex-col bg-[white] border-[1px] border-[white] overflow-y-scroll">
+            <section className="page_label w-[90%] my-5 rounded-[10px] p-2 text-[#e02708] font-[600] text-[30px]">
+              <h1>Requests</h1>
+            </section>
+
+            <section className="w-[90%]" onSubmit={formik.handleSubmit}>
+              <section className="page_label w-[100%] my-5 rounded-[10px] p-2 text-[#e02708] font-[600] text-[20px]">
+                <div>
+                  <p>View Requests</p>
+                </div>
+
+                <form className="w-[100%] my-5" onSubmit={formik.handleSubmit}>
+                  <table className="w-[100%] border-[1px] border-black">
+                    <tr className="">
+                      <th className="text-[#113c11] text-[15px] font-[500]">
+                        {" "}
+                        Join as
+                      </th>
+
+                      <th className="text-[#113c11] text-[15px] font-[500]">
+                        {" "}
+                        Name
+                      </th>
+                      <th className="text-[#113c11] text-[15px] font-[500]">
+                        {" "}
+                        Email
+                      </th>
+                      <th className="text-[#113c11] text-[15px] font-[500]">
+                        {" "}
+                        Phone
+                      </th>
+                      <th className="text-[#113c11] text-[15px] font-[500]">
+                        {" "}
+                        View Profile
+                      </th>
+                      <th className="text-[#113c11] text-[15px] font-[500]">
+                        {" "}
+                        Delete
+                      </th>
+                    </tr>
+                    {/* {getindustry.map((items) => { */}
+                    {/* return ( */}
+                    <>
+                      <tr className="border-t-[1px] border-black">
+                        <td className=" text-center text-[#113c11] text-[15px] font-[500]">
+                          {/* {items.Industry_Name} */}
+                        </td>
+
+                        <td className=" text-center text-[#113c11] text-[15px] font-[500]">
+                          {/* {items.Industry_Name} */}
+                        </td>
+
+                        <td className=" text-center text-[#113c11] text-[15px] font-[500]">
+                          {/* {items.Industry_Name} */}
+                        </td>
+                        <td className=" text-center text-[#113c11] text-[15px] font-[500]">
+                          {/* {items.Industry_Name} */}
+                        </td>
+
+                        <td className=" text-center text-[#113c11] text-[15px] font-[500]">
+                          {" "}
+                          <div
+                            className="w-[150px] mx-auto my-2 py-2 px-6 rounded-[15px] text-white bg-[green]"
+                            // onClick={() => updateindustry(items)}
+                          >
+                            Edit
+                          </div>
+                        </td>
+                        <td className=" text-center text-[#113c11] text-[15px] font-[500]">
+                          {" "}
+                          <div
+                            className="w-[150px] mx-auto my-2 py-2 px-6 rounded-[15px] text-white bg-[#f34141]"
+                            // onClick={() =>
+                            //   setdeletedata(items) || setdeletemodal(true)
+                            // }
+                          >
+                            Delete
+                          </div>
+                        </td>
+                      </tr>
+                    </>
+                    {/* ); */}
+                    {/* })} */}
+                  </table>
+                </form>
+              </section>
+            </section>
+          </section>
+        </section>
+      </section>
+      <ToastContainer />
+    </>
+  );
+}

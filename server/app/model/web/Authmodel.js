@@ -31,9 +31,13 @@ let registerschema = mongoose.Schema({
     OTP_Value: {
         type: Number,
         required: true
+    },
+    Is_Verified: {
+        type: Boolean,
+        required: true
     }
 })
 
 
-let registermodel = mongoose.model('new-user',registerschema)
+let registermodel = mongoose.model('new-user', registerschema)
 module.exports = registermodel
