@@ -1,5 +1,5 @@
 import React from 'react'
-import getintouch from "../images/get in touch.jpg";
+import getintouch from "../images/a-photo-of-a-rectangular-orange-sign-with-white-te-8Sgfm3S1SEiiBkPg_1njiA--Lwc6QryQgORPjy-IN3rjA (1).png";
 import { FaLocationPin, FaMessage } from "react-icons/fa6";
 import {FaPhone } from "react-icons/fa";
 export function GetInTouch() {

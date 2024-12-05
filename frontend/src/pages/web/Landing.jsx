@@ -1,10 +1,14 @@
 import React from "react";
 import { Header } from "../../common/Header";
-import right_banner from "../../images/BANNER__2_-removebg-preview.png";
+import right_banner from "../../images/banners.png";
 import about_Baner from "../../images/About-removebg-preview.png";
 import { FaChevronRight, FaIcons } from "react-icons/fa";
 import { Footer } from "../../common/Footer";
 import faqbanner from "../../images/4021b783-d284-4e05-801a-18bb24ce521e.png";
+import icon1 from "../../images/mm.png";
+import icon2 from "../../images/mmmm.png";
+import icon3 from "../../images/mmmm,.png";
+import icon4 from "../../images/mmmmmmm.png";
 import { Link } from "react-router-dom";
 import { ContactUs1 } from "../../common/ContactUs";
 export function Landing() {
@@ -21,10 +25,10 @@ export function Landing() {
               </section>
 
               <section className=" w-[50%] h-[100%] text-end text-white px-5 flex justify-center flex-col mt-2">
-                <h1 className="landing_heading text-[50px] font-[500] my-5">
+                <h1 className="landing_heading text-[50px] font-[500] my-2">
                   Bridging Vision and Opportunity
                 </h1>
-                <h2 className="landing_subheading text-[30px] font-[500] my-4">
+                <h2 className="landing_subheading text-[30px] font-[500] my-2">
                   Empowering startups to rise and investors to
                 </h2>
                 <p className="text-[18px] my-3">
@@ -57,7 +61,7 @@ export function Landing() {
                     </h1>
                   </div>
 
-                  <h2 className=" text-[40px] font-[500] my-5  rounded-[10px] text-center">
+                  <h2 className=" text-[38px] text-justify leading-[50px] font-[500] my-5  rounded-[10px]">
                     Connecting Innovators with Investors for a Better Future
                   </h2>
 
@@ -94,7 +98,7 @@ export function Landing() {
             <section className="landing_section bg-[white]">
               <section className="landing_section w-[100%] flex">
                 <section className=" w-[100%] text-start text-[black] px-5 flex justify-center flex-col mt-2">
-                  <h1 className="w-[400px] rounded-[10px] m-auto landing_heading text-[50px] text-center font-[500] my-[50px] bg-[#e02708] text-[white]">
+                  <h1 className="w-[400px] rounded-[10px] m-auto landing_heading text-[50px] text-center font-[500] my-[10px] bg-[#e02708] text-[white]">
                     Why Choose Us
                   </h1>
 
@@ -104,8 +108,8 @@ export function Landing() {
 
                   <section className="w-[90%] m-auto flex justify-between flex-wrap">
                     <section className="why_choose_cards w-[48%] my-3 p-3 rounded-[10px] text-[black] flex justify-between">
-                      <div className="icon_section w-[100px] h-[100px] text-[25px] me-2 my-2 rounded-[50%] flex justify-center items-center bg-gradient-to-tr from-[#e02708] to-[white]">
-                        <FaIcons />
+                      <div className="icon_section w-[100px] h-[100px] text-[25px] me-2 my-2 rounded-[50%] flex justify-center items-center">
+                        <img src={icon1} />
                       </div>
 
                       <div className=" mb-2 w-[calc(100%-110px)]">
@@ -128,8 +132,8 @@ export function Landing() {
                     </section>
 
                     <section className="why_choose_cards w-[48%] my-3 p-3 rounded-[10px] text-[black] flex justify-between">
-                      <div className="icon_section w-[100px] h-[100px] text-[25px] me-2 my-2 rounded-[50%] flex justify-center items-center bg-gradient-to-tr from-[#e02708] to-[white]">
-                        <FaIcons />
+                      <div className="icon_section w-[100px] h-[100px] text-[25px] me-2 my-2 rounded-[50%] flex justify-center items-center">
+                      <img src={icon2} className="w-[70%]" />
                       </div>
 
                       <div className=" mb-2 w-[calc(100%-110px)]">
@@ -152,8 +156,8 @@ export function Landing() {
                     </section>
 
                     <section className="why_choose_cards w-[48%] my-3 p-3 rounded-[10px] text-[black] flex justify-between">
-                      <div className="icon_section w-[100px] h-[100px] text-[25px] me-2 my-2 rounded-[50%] flex justify-center items-center bg-gradient-to-tr from-[#e02708] to-[white]">
-                        <FaIcons />
+                      <div className="icon_section w-[100px] h-[100px] text-[25px] me-2 my-2 rounded-[50%] flex justify-center items-center">
+                      <img src={icon3} />
                       </div>
 
                       <div className=" mb-2 w-[calc(100%-110px)]">
@@ -176,8 +180,8 @@ export function Landing() {
                     </section>
 
                     <section className="why_choose_cards w-[48%] my-3 p-3 rounded-[10px] text-[black] flex justify-between">
-                      <div className="icon_section w-[100px] h-[100px] text-[25px] me-2 my-2 rounded-[50%] flex justify-center items-center bg-gradient-to-tr from-[#e02708] to-[white]">
-                        <FaIcons />
+                      <div className="icon_section w-[100px] h-[100px] text-[25px] me-2 my-2 rounded-[50%] flex justify-center items-center">
+                        <img src={icon4} />
                       </div>
 
                       <div className=" mb-2 w-[calc(100%-110px)]">
@@ -202,14 +206,14 @@ export function Landing() {
               </section>
             </section>
 
-            <section className="landing_section bg-[black]">
-              <section className="landing_section w-[100%] flex">
-                <section className=" w-[100%] h-[100%] text-center text-white p-5 flex justify-center flex-col mt-2">
-                  <h1 className="landing_heading w-[400px] rounded-[10px] m-auto bg-[#e02708] text-[50px] font-[500] my-5">
+            <section className="landing_section bg-[white]">
+              {/* <section className="landing_section w-[100%] flex">
+                <section className=" w-[100%] h-[100%] text-center text-white flex justify-center flex-col mt-2"> */}
+                  {/* <h1 className="landing_heading w-[400px] rounded-[10px] m-auto bg-[#e02708] text-[50px] font-[500] my-5">
                     FAQ's
-                  </h1>
+                  </h1> */}
 
-                  <section className="text-start text-[black] flex justify-between items-center">
+                  {/* <section className="text-start text-[black] flex justify-between items-center">
                     <section className="w-[49%] flex justify-center">
                       <img src={faqbanner} alt="" className="w-[80%]" />
                     </section>
@@ -233,7 +237,7 @@ export function Landing() {
                           </p>
                           <FaChevronRight />
                         </div>
-                        {/* <p className="font-[500] text-[16px]">answer</p> */}
+                        <p className="font-[500] text-[16px]">answer</p>
                       </section>
 
                       <section className="w-[90%] m-auto bg-[white] p-4 font-[600] rounded-[10px] my-5">
@@ -244,7 +248,7 @@ export function Landing() {
                           </p>
                           <FaChevronRight />
                         </div>
-                        {/* <p className="font-[500] text-[16px]">answer</p> */}
+                        <p className="font-[500] text-[16px]">answer</p>
                       </section>
 
                       <section className="w-[90%] m-auto bg-[white] p-4 font-[600] rounded-[10px] my-5">
@@ -255,7 +259,7 @@ export function Landing() {
                           </p>
                           <FaChevronRight />
                         </div>
-                        {/* <p className="font-[500] text-[16px]">answer</p> */}
+                        <p className="font-[500] text-[16px]">answer</p>
                       </section>
 
                       <section className="w-[90%] m-auto bg-[white] p-4 font-[600] rounded-[10px] my-5">
@@ -266,14 +270,14 @@ export function Landing() {
                           </p>
                           <FaChevronRight />
                         </div>
-                        {/* <p className="font-[500] text-[16px]">answer</p> */}
+                        <p className="font-[500] text-[16px]">answer</p>
                       </section>
                     </section>
-                  </section>
-                </section>
-              </section>
+                  </section> */}
+                {/* </section>
+              </section> */}
 
-              <ContactUs1/>
+              <ContactUs1 />
               <Footer />
             </section>
           </section>

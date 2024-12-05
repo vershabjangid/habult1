@@ -1,13 +1,14 @@
 import React from "react";
 import { Header } from "../../common/Header";
-import right_banner from "../../images/About-removebg-preview.png";
+import right_banner from "../../images/a-black-background-with-the-text-about-us-written--58EEDF77TFuu6SSpNM1RMA-3NIl9TxiQOiqKYegQxu4ww (1).png";
 import ourmission from "../../images/an-illustration-of-a-lightbulb-with-the-word-missi-k1wfpXxwSfyTxmkd4GBK4Q-7j6IHlP4QOOXs3RnxhEQXQ-removebg-preview (1).png";
-import ourvision from "../../images/a-digital-illustration-of-a-light-bulb-with-the-wo-6NURYeT0Q1qom3sQ1sYqhw-DuiVXSFVQnuid6w8tBH3bg-removebg-preview (1).png";
+import ourvision from "../../images/an-illustration-of-a-light-bulb-with-the-word-visi-qC1h6cYlSY-mQUFbI_0xuQ-Aj5tVA1xQXSaJPqJNc6bZA (1).png";
 import hiring from "../../images/a-minimalistic-illustration-of-a-large-orange-rect-o8DWmbQrRH2K014EHAZuLg-nmofR7YrROStZTK9FymyDw-removebg-preview.png";
 import { FaLinkedin } from "react-icons/fa";
 import { Footer } from "../../common/Footer";
 import { IoPerson } from "react-icons/io5";
 import { GetInTouch } from "../../common/GetInTouch";
+import { Link } from "react-router-dom";
 export function AboutUs() {
   return (
     <>
@@ -36,13 +37,18 @@ export function AboutUs() {
                 </p>
 
                 <div className="my-3">
-                  <button className="landing_btn w-[300px] h-[50px] bg-[#e02708] rounded-[10px]">
-                    Become an investor
-                  </button>
+                  <Link to={"/login"}>
+                    <button className="landing_btn w-[300px] h-[50px] bg-[#e02708] rounded-[10px]">
+                      Become an investor
+                    </button>
+                  </Link>
 
-                  <button className="landing_btn w-[300px] h-[50px] bg-[white] text-black rounded-[10px] ms-2">
-                    Submit Pitch Deck
-                  </button>
+
+                  <Link to={"/register"}>
+                    <button className="landing_btn w-[300px] h-[50px] bg-[white] text-black rounded-[10px] ms-2">
+                      Submit Pitch Deck
+                    </button>
+                  </Link>
                 </div>
               </section>
             </section>
@@ -287,7 +293,7 @@ export function AboutUs() {
               </section>
             </section>
 
-           <GetInTouch/>
+            <GetInTouch />
             <Footer />
           </section>
         </section>

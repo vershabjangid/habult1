@@ -7,35 +7,34 @@ console.log(dirpath)
 
 
 exports.startupform = async (req, res) => {
-    console.log(req.body)
     console.log(req.files)
+    // console.log(req.body)
     let data = {
         Company_Name: req.body.Company_Name,
-        Company_Pan: req.body.Company_Pan,
+        Company_Pan: req.files[0].filename,
         Email: req.body.Email,
         Funding_Ask: req.body.Funding_Ask,
         Industry: req.body.Industry,
         Linkedin_Url: req.body.Linkedin_Url,
         Stage: req.body.Stage,
         Website_Url: req.body.Website_Url,
-        Equity: req.body.Equity,
-        Company_Logo: req.body.Company_Logo,
+        Equity: req.boreq.files[1].filename,
         Company_Description: req.body.Company_Description,
         Highlights1: req.body.Highlights1,
         Highlights2: req.body.Highlights2,
-        Team_Profile: req.body.Team_Profile,
+        Team_Profile: req.files[2].filename,
         Team_Name: req.body.Team_Name,
         Team_Designation: req.body.Team_Designation,
         Team_Experience: req.body.Team_Experience,
-        Team_Profile1: req.body.Team_Profile1,
+        Team_Profile1: req.files[3].filename,
         Team_Name1: req.body.Team_Name1,
         Team_Designation1: req.body.Team_Designation1,
         Team_Experience1: req.body.Team_Experience1,
-        Backers_Profile: req.body.Backers_Profile,
+        Backers_Profile: req.files[4].filename,
         Backers_Name: req.body.Backers_Name,
         Backers_Designation: req.body.Backers_Designation,
         Backers_Experience: req.body.Backers_Experience,
-        Backers_Profile1: req.body.Backers_Profile1,
+        Backers_Profile1: req.files[5].filename,
         Backers_Name1: req.body.Backers_Name1,
         Backers_Designation1: req.body.Backers_Designation1,
         Backers_Experience1: req.body.Backers_Experience1,
@@ -44,9 +43,9 @@ exports.startupform = async (req, res) => {
         Market_Size: req.body.Market_Size,
         Solution: req.body.Solution,
         Problem_Statement: req.body.Problem_Statement,
-        Financial_Projection: req.body.Financial_Projection,
-        Pitch_Deck: req.body.Pitch_Deck,
-        Incorporation_Certificate: req.body.Incorporation_Certificate,
+        Financial_Projection: req.files[8].filename,
+        Pitch_Deck: req.files[6].filename,
+        Incorporation_Certificate: req.files[7].filename,
         Terms_Conditions: req.body.Terms_Conditions
     }
 

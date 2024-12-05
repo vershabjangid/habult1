@@ -39,17 +39,17 @@ export function ContactUs1() {
                     </p>
 
                     <p className="my-5 flex items-center">
-                      <FaPhone className=" rotate-[90deg] me-2" />{" "}
+                      <FaPhone className=" rotate-[90deg] me-3 text-[30px]" />{" "}
                       <span>5665465465</span>
                     </p>
 
                     <p className="my-5 flex items-center">
-                      <FaMessage className=" me-2" />{" "}
+                      <FaMessage className=" me-3 text-[30px]" />{" "}
                       <span>jangdivershab23@gmail.com</span>
                     </p>
 
                     <p className="my-5 flex items-center">
-                      <FaLocationPin className=" me-2" />{" "}
+                      <FaLocationPin className=" me-3 text-[30px]" />{" "}
                       <span>istart nest jodhpur, rajasthan</span>
                     </p>
                   </div>
