@@ -42,7 +42,7 @@ export function DashRequests() {
 
   let deleteindustry = (value) => {
     let data = {
-      _id: value._id,
+      Email: value.Email,
     };
 
     axios
