@@ -8,7 +8,7 @@ export function GetInTouch() {
        <section className="landing_section text-[black] py-[40px]">
               <section className="landing_section w-[90%] m-auto h-auto flex justify-center ">
                 <section className="w-[50%] flex justify-center items-center">
-                  <img src={getintouch} alt="" className="" />
+                  <img src={getintouch} alt="" className="w-[70%]" />
                 </section>
                 <section className=" w-[50%] text-start px-5 flex flex-col mt-2">
                   <div className="flex justify-center">
