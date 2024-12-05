@@ -2,6 +2,7 @@ import React from "react";
 import logo from "../images/Hive_XV_Logo-removebg-preview.94d6ce75b0bdc1a4b7bf.png";
 import { FaFacebook, FaLinkedin, FaYoutube } from "react-icons/fa";
 import istart from "../images/nw6o7plxlj6ehfcwwddx.9254a6f53866eeb97d19.webp";
+import { Link } from "react-router-dom";
 export function Footer() {
   return (
     <>
@@ -32,9 +33,15 @@ export function Footer() {
 
         <div className="m-auto">
           <ul className="mt-5 leading-10">
-            <li>Home</li>
-            <li>About Us</li>
-            <li>FAQ</li>
+            <li>
+              <Link to={"/"}>Home</Link>
+            </li>
+            <li>
+              <Link to={"/about"}>About Us</Link>
+            </li>
+            <li>
+              <Link to={"/contact-us"}>Contact Us</Link>
+            </li>
             <li>Privacy Policy</li>
             <li>Terms & Conditions</li>
             <li>Disclaimer</li>

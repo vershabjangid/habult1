@@ -42,9 +42,7 @@ export function AboutUs() {
                       Become an investor
                     </button>
                   </Link>
-
-
-                  <Link to={"/register"}>
+                  <Link to={"/login"}>
                     <button className="landing_btn w-[300px] h-[50px] bg-[white] text-black rounded-[10px] ms-2">
                       Submit Pitch Deck
                     </button>

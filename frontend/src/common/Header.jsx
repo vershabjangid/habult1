@@ -29,12 +29,14 @@ export function Header() {
         <div className="buttons_sections">
           <Link to={"/Login"}>
             <button className="bg-[black] text-[white] w-[100px] h-[40px] rounded-[10px]">
-              <Link to={"/login"}>Login</Link>
+              Login
             </button>
           </Link>
-          <button className="bg-[#e02708] text-[white] w-[100px] h-[40px] rounded-[10px] ms-2">
-            <Link to={"/register"}>Signup</Link>
-          </button>
+          <Link to={"/register"}>
+            <button className="bg-[#e02708] text-[white] w-[100px] h-[40px] rounded-[10px] ms-2">
+              Signup
+            </button>
+          </Link>
         </div>
 
         <div className="menubar text-[20px]">
