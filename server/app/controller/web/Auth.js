@@ -154,3 +154,26 @@ exports.viewregister = async (req, res) => {
     let viewdata = await registermodel.find()
     res.send(viewdata)
 }
+
+
+
+
+
+
+exports.loginform = async (req, res) => {
+
+
+    let data = {
+        Email: req.body.Email,
+        Password: req.body.Password
+    }
+    let getdata = await registermodel.find(data)
+
+    let newtoken;
+    jwt.sign({ newtoken }, WEBTOKEN, { expiresIn: '2h' }, (err, value) => {
+        res.send({
+            getdata,
+            Token: value
+        })
+    })
+}

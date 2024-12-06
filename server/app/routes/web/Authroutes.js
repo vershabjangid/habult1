@@ -1,11 +1,12 @@
 let express = require('express');
-const { register, verifyotp, resendotp, viewregister } = require('../../controller/web/Auth');
+const { register, verifyotp, resendotp, viewregister, loginform } = require('../../controller/web/Auth');
 let authroutes = express.Router()
 
 
 authroutes.post('/register', register);
+authroutes.post('/login', loginform)
 authroutes.post('/verify-register', verifyotp);
-authroutes.put('/resend-otp', resendotp);   
+authroutes.put('/resend-otp', resendotp);
 
 
 authroutes.get('/view-register', viewregister)
