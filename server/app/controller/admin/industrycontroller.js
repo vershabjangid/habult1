@@ -64,6 +64,11 @@ exports.updateindustry = async (req, res) => {
 }
 
 
+exports.viewindustryweb = async (req, res) => {
+    let getdata = await industrymodel.find()
+    res.send(getdata)
+}
+
 
 exports.deleteindustry = async (req, res) => {
 

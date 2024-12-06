@@ -1,13 +1,14 @@
 import { useFormik } from "formik";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import logo from "../../../images/Hive_XV_Logo-removebg-preview.94d6ce75b0bdc1a4b7bf.png";
 import { FaFile } from "react-icons/fa";
 import * as Yup from "yup";
 import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export function StartupForm() {
-  let file = ["image/png"];
+  let file = ["application/pdf"];
 
   let naviget = useNavigate();
 
@@ -33,7 +34,7 @@ export function StartupForm() {
         .url("Invalid Url")
         .required("Linkedin url is required"),
       Company_Pan: Yup.mixed()
-        .test("fileFormat", "Unsupported file format", (value) =>
+        .test("fileFormat", "Pdf file format only", (value) =>
           value.type.includes(file)
         )
         .required("Company pan is required"),
@@ -42,7 +43,9 @@ export function StartupForm() {
         .required("Website url is required"),
       Funding_Ask: Yup.number().required("Funding Ask is required"),
       Stage: Yup.string().required("Stage is required"),
-      Equity: Yup.number().max(100,'Equity not allowed more than 100% ').required("Equity is required"),
+      Equity: Yup.number()
+        .max(100, "Equity not allowed more than 100% ")
+        .required("Equity is required"),
     }),
 
     onSubmit: () => {
@@ -51,6 +54,26 @@ export function StartupForm() {
   });
 
   let [pancard, setpancard] = useState("Upload Your Pan Card");
+
+  let [viewindustry, setviewindustry] = useState([]);
+  let viewdata = () => {
+    axios
+      .get("https://api.hivexv.com/view-web-industry", {
+        headers: {
+          Authorization: JSON.parse(localStorage.getItem("webtoken")),
+        },
+      })
+      .then((res) => {
+        setviewindustry(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    viewdata();
+  }, []);
   return (
     <>
       <section className="login_page w-[100%] py-3  px-2 flex justify-center items-center">
@@ -93,7 +116,6 @@ export function StartupForm() {
 
           <div className="flex items-center justify-center bg-[#ffffff] border-[3px] my-4 border-[#e02708] p-3 rounded-[10px]">
             <form className="w-[100%]" onSubmit={formik.handleSubmit}>
-                
               <div className="w-[100%]">
                 <div className=" border-b-[1px] flex justify-center py-4">
                   <div className="w-[90%]">
@@ -124,13 +146,22 @@ export function StartupForm() {
                 <div className=" border-b-[1px] flex justify-center py-4">
                   <div className="w-[90%]">
                     <label className="font-[600]">Industry </label>
-                    <input
+                    <select
                       type="text"
                       className="border-[1px] border-[black] w-[100%] p-2 rounded-[10px] my-2"
                       onChange={(e) =>
                         formik.setFieldValue("Industry", e.target.value)
                       }
-                    />
+                    >
+                      <option>Choose Your Industry</option>
+                      {viewindustry.map((items, index) => {
+                        return (
+                          <>
+                            <option value={items.Industry_Name}>{items.Industry_Name}</option>
+                          </>
+                        );
+                      })}
+                    </select>
                     <div className="text-[red] my-2">
                       {formik.errors.Industry}
                     </div>

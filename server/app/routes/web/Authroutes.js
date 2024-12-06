@@ -5,7 +5,7 @@ let authroutes = express.Router()
 
 authroutes.post('/register', register);
 authroutes.post('/verify-register', verifyotp);
-authroutes.put('/resend-otp', resendotp);
+authroutes.put('/resend-otp', resendotp);   
 
 
 authroutes.get('/view-register', viewregister)

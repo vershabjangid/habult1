@@ -4,7 +4,7 @@ const multer = require('multer')
 let path = require('path')
 let Extrafunctionality = express.Router()
 let jwt = require('jsonwebtoken')
-const { addindustry, viewindustry, updateindustry, deleteindustry } = require('../../controller/admin/industrycontroller')
+const { addindustry, viewindustry, updateindustry, deleteindustry, viewindustryweb } = require('../../controller/admin/industrycontroller')
 const { addfaq, viewfaq, updatefaq, deletefaq } = require('../../controller/admin/faqcontroller')
 require('dotenv').config()
 let WEBTOKEN = process.env.WEBTOKEN
@@ -52,6 +52,7 @@ const upload = multer({ storage: storage }).any('Bank_Proof', 'PanCard', 'Aadhaa
 // update all are work with token industry
 Extrafunctionality.post('/add-industry', addindustry)
 Extrafunctionality.get('/view-industry', viewindustry)
+Extrafunctionality.get('/view-web-industry',verifytoken, viewindustryweb)
 Extrafunctionality.put('/update-industry', updateindustry)
 Extrafunctionality.delete('/delete-industry', deleteindustry)
 
