@@ -167,7 +167,7 @@ exports.loginform = async (req, res) => {
     }
     let getdata = await registermodel.findOne({ Email: data.Email, Password: data.Password })
 
-    if (getdata.getdata != []) {
+    if (getdata != null) {
         let newtoken;
         jwt.sign({ newtoken }, WEBTOKEN, { expiresIn: '2h' }, (err, value) => {
             res.send({
