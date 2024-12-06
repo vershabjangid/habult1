@@ -52,7 +52,8 @@ exports.register = async (req, res) => {
         Join_as: req.body.Join_as,
         Password: req.body.Password,
         OTP_Value: Math.floor(1000 + Math.random() * 8000),
-        Is_Verified: false
+        Is_Verified: false,
+        All_Fields: req.body.All_Fields,
     }
 
 
@@ -196,7 +197,8 @@ exports.forgotpassword = async (req, res) => {
     if (getdata != null) {
 
         res.send({
-            Email: data.Email,
+            Status: 1,
+            Message: "Data Found Successfully"
         })
         let updatedata = await registermodel.updateOne({ Email: data.Email }, { OTP_Value: data.OTP_Value })
         email(data);
