@@ -195,12 +195,8 @@ exports.forgotpassword = async (req, res) => {
 
     if (getdata != null) {
 
-        let newtoken;
-        jwt.sign({ newtoken }, WEBTOKEN, { expiresIn: '2h' }, (err, value) => {
-            res.send({
-                Email: data.Email,
-                Token: value
-            })
+        res.send({
+            Email: data.Email,
         })
         let updatedata = await registermodel.updateOne({ Email: data.Email }, { OTP_Value: data.OTP_Value })
         email(data);
