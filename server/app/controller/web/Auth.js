@@ -161,19 +161,25 @@ exports.viewregister = async (req, res) => {
 
 
 exports.loginform = async (req, res) => {
-
-
     let data = {
         Email: req.body.Email,
         Password: req.body.Password
     }
-    let getdata = await registermodel.find(data)
+    let getdata = await registermodel.find({ Email: data.Email, Password: data.Password })
 
-    let newtoken;
-    jwt.sign({ newtoken }, WEBTOKEN, { expiresIn: '2h' }, (err, value) => {
-        res.send({
-            getdata,
-            Token: value
+    if (getdata != []) {
+        let newtoken;
+        jwt.sign({ newtoken }, WEBTOKEN, { expiresIn: '2h' }, (err, value) => {
+            res.send({
+                getdata,
+                Token: value
+            })
         })
-    })
+    }
+    else {
+        res.send({
+            Status: 0,
+            Message: "No User Found"
+        })
+    }
 }
