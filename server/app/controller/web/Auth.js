@@ -210,3 +210,39 @@ exports.forgotpassword = async (req, res) => {
         })
     }
 }
+
+
+
+
+
+
+exports.changepassword = async (req, res) => {
+
+    let data = {
+        Email: req.body.Email,
+        Password: req.body.Password,
+    }
+
+
+    let update = await registermodel.updateOne({ Email: req.body.Email }, data)
+        .then(() => {
+            res.send({
+                Status: 1,
+                Message: "Password Updated Successfully"
+            })
+        })
+        .catch((error) => {
+            if (error.code === 11000) {
+                res.send({
+                    Status: 0,
+                    Message: "User Alredy Exists"
+                })
+            }
+            else {
+                res.status(400).send({
+                    Status: 0,
+                    Message: "Data Missing"
+                })
+            }
+        })
+}

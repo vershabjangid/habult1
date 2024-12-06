@@ -24,6 +24,8 @@ import { DashRequests } from './pages/dashboard/DashRequests';
 import { DashViewProfile } from './pages/dashboard/DashViewProfile';
 import { ViewStartups } from './pages/web/ViewStartups';
 import { ForgotPassword } from './pages/web/Login/ForgotPassword';
+import { VerifyForgot } from './pages/web/Login/VerifyForgot';
+import { ChangePassword } from './pages/web/Login/ChangePassword';
 
 function App() {
   return (
@@ -34,6 +36,8 @@ function App() {
           {/* login */}
           <Route path='/login' element={<Login />} />
           <Route path='/forgot-password' element={<ForgotPassword />} />
+          <Route path='/otp-verification' element={<VerifyForgot />} />
+          <Route path='/change-password' element={<ChangePassword />} />
           <Route path='/register' element={<Register />} />
           <Route path='/register2' element={<Register2 />} />
           <Route path='/register-otp' element={<RegisterOtp />} />
