@@ -70,8 +70,8 @@ code {
   background-color: white;
   color: #e02708;
 }
-.side_options{
- z-index: -9999; 
+.side_options {
+  z-index: -9999;
 }
 .side_options {
   opacity: 0;
@@ -83,15 +83,22 @@ code {
   z-index: 9999;
 }
 
-
-.login_page{
-  background: url('images/bou9.jpg');
+.login_page {
+  background: url("images/bou9.jpg");
   background-position: center;
   background-attachment: fixed;
   background-size: cover;
 }
 
-
-.about_banner{
+.about_banner {
   filter: brightness(0);
+}
+
+.home_banner_2 {
+  background-image: url("images/freepik__candid-image-photography-natural-textures-highly-r__58848.jpeg");
+  background-size: cover;
+}
+
+.logo {
+  filter: brightness(1);
 }

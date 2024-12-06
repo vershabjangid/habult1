@@ -5,7 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export function DashRequests() {
-    let notifysuccess = (success) => toast.success(success) 
+  let notifysuccess = (success) => toast.success(success);
 
   let [requests, setrequests] = useState([]);
   let [data, setdata] = useState([]);
@@ -20,6 +20,8 @@ export function DashRequests() {
         console.log(error);
       });
   };
+
+  console.log(data);
 
   useState(() => {
     viewrequests();

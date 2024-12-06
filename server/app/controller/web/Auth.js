@@ -21,6 +21,7 @@ const transporter = nodemailer.createTransport({
 
 
 async function email(value) {
+    console.log(value)
 
     try {
         const info = await transporter.sendMail({
@@ -49,8 +50,7 @@ exports.register = async (req, res) => {
         Email: req.body.Email,
         Phone: req.body.Phone,
         Join_as: req.body.Join_as,
-        Password: req.body.Join_as,
-        ConfirmPassword: req.body.Join_as,
+        Password: req.body.Password,
         OTP_Value: Math.floor(1000 + Math.random() * 8000),
         Is_Verified: false
     }
@@ -175,6 +175,35 @@ exports.loginform = async (req, res) => {
                 Token: value
             })
         })
+    }
+    else {
+        res.send({
+            Status: 0,
+            Message: "No User Found"
+        })
+    }
+}
+
+
+
+exports.forgotpassword = async (req, res) => {
+    let data = {
+        Email: req.body.Email,
+        OTP_Value: Math.floor(1000 + Math.random() * 8000),
+    }
+    let getdata = await registermodel.findOne({ Email: data.Email })
+
+    if (getdata != null) {
+
+        let newtoken;
+        jwt.sign({ newtoken }, WEBTOKEN, { expiresIn: '2h' }, (err, value) => {
+            res.send({
+                Email: data.Email,
+                Token: value
+            })
+        })
+        let updatedata = await registermodel.updateOne({ Email: data.Email }, { OTP_Value: data.OTP_Value })
+        email(data);
     }
     else {
         res.send({

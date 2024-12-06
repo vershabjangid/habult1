@@ -22,6 +22,8 @@ import { DashFaq } from './pages/dashboard/DashFaq';
 import { UpdateDashFaq } from './pages/dashboard/UpdateDashFaq';
 import { DashRequests } from './pages/dashboard/DashRequests';
 import { DashViewProfile } from './pages/dashboard/DashViewProfile';
+import { ViewStartups } from './pages/web/ViewStartups';
+import { ForgotPassword } from './pages/web/Login/ForgotPassword';
 
 function App() {
   return (
@@ -31,6 +33,7 @@ function App() {
 
           {/* login */}
           <Route path='/login' element={<Login />} />
+          <Route path='/forgot-password' element={<ForgotPassword />} />
           <Route path='/register' element={<Register />} />
           <Route path='/register2' element={<Register2 />} />
           <Route path='/register-otp' element={<RegisterOtp />} />
@@ -55,6 +58,7 @@ function App() {
           <Route path='/update-faq' element={<UpdateDashFaq />} />
           <Route path='/requests' element={<DashRequests />} />
           <Route path='/view-profile' element={<DashViewProfile />} />
+          <Route path='/user-panel' element={<ViewStartups />} />
         </Routes>
       </BrowserRouter>
     </>

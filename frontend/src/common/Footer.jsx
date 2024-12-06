@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../images/Hive_XV_Logo-removebg-preview.94d6ce75b0bdc1a4b7bf.png";
+import logo from "../images/Hive XV (1080 x 1350 px) (1).png";
 import { FaFacebook, FaLinkedin, FaYoutube } from "react-icons/fa";
 import istart from "../images/nw6o7plxlj6ehfcwwddx.9254a6f53866eeb97d19.webp";
 import { Link } from "react-router-dom";
