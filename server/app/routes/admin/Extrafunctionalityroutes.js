@@ -52,7 +52,7 @@ const upload = multer({ storage: storage }).any('Bank_Proof', 'PanCard', 'Aadhaa
 // update all are work with token industry
 Extrafunctionality.post('/add-industry', addindustry)
 Extrafunctionality.get('/view-industry', viewindustry)
-Extrafunctionality.get('/view-web-industry',verifytoken, viewindustryweb)
+Extrafunctionality.get('/view-web-industry', verifytoken, viewindustryweb)
 Extrafunctionality.put('/update-industry', updateindustry)
 Extrafunctionality.delete('/delete-industry', deleteindustry)
 

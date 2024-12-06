@@ -65,22 +65,64 @@ export function StartupLogin2() {
 
     validationSchema: Yup.object().shape({
       Company_Logo: Yup.mixed()
-        .test("fileFormat", "Unsupported file format", (value) =>
+        .test("fileFormat", "png file format only", (value) =>
           value.type.includes(file1)
         )
         .required("Company Logo is required"),
       Company_Description: Yup.string().required(
         "Company Description is required"
       ),
+
       Highlights1: Yup.string().required("Highlights is required"),
-      Backers_Profile: "",
-      Backers_Name: "",
-      Backers_Designation: "",
-      Backers_Experience: "",
-      Backers_Profile1: "",
-      Backers_Name1: "",
-      Backers_Designation1: "",
-      Backers_Experience1: "",
+
+      Team_Profile: Yup.mixed()
+        .test("fileFormat", "png file format only", (value) =>
+          value.type.includes(file1)
+        )
+        .required("Team Profile is required"),
+
+      Team_Name: Yup.string().required("Team Name is required"),
+      Team_Designation: Yup.string().required("Team Designation is required"),
+      Team_Experience: Yup.number().required("Team Experience is required"),
+
+      Team_Profile1: Yup.mixed()
+        .test("fileFormat", "png file format only", (value) =>
+          value.type.includes(file1)
+        )
+        .required("Team Profile is required"),
+
+      Team_Name1: Yup.string().required("Team Name is required"),
+      Team_Designation1: Yup.string().required("Team Designation is required"),
+      Team_Experience1: Yup.number().required("Team Experience is required"),
+
+      Backers_Profile: Yup.mixed()
+        .test("fileFormat", "png file format only", (value) =>
+          value.type.includes(file1)
+        )
+        .required("Backers Profile is required"),
+
+      Backers_Name: Yup.string().required("Backers Name is required"),
+      Backers_Designation: Yup.string().required(
+        "Backers Designation is required"
+      ),
+      Backers_Experience: Yup.number().required(
+        "Backers Experience is required"
+      ),
+
+      Backers_Profile1: Yup.mixed()
+        .test("fileFormat", "png file format only", (value) =>
+          value.type.includes(file1)
+        )
+        .required("Backers Profile is required"),
+
+      Backers_Name1: Yup.string().required("Backers Name is required"),
+      Backers_Designation1: Yup.string().required(
+        "Backers Designation is required"
+      ),
+      Backers_Experience1: Yup.number().required(
+        "Backers Experience is required"
+      ),
+
       Video_Link: Yup.string()
         .url("Invalid Url")
         .required("Video Link is required"),
@@ -106,8 +148,11 @@ export function StartupLogin2() {
     }),
 
     onSubmit: () => {
-      insertdata(formik.values);
-      console.log(formik.values);
+      if (formik.values.Terms_Conditions === true) {
+        insertdata(formik.values);
+      } else {
+        notifyerror("Accept all terms and conditions")
+      }
     },
   });
 
@@ -302,19 +347,25 @@ export function StartupLogin2() {
                             </div>
                           </div>
                         </div>
+                        <div className="w-[100%] text-center my-1 text-[red]">
+                          {formik.errors.Team_Profile}
+                        </div>
                         <div className=" w-[100%] mt-4">
                           <input
                             type="text"
-                            className="border-[1px] border-[black] w-[100%] p-2 rounded-[10px] my-3"
+                            className="border-[1px] border-[black] w-[100%] p-2 rounded-[10px] mt-1"
                             placeholder="Enter Name"
                             onChange={(e) =>
                               formik.setFieldValue("Team_Name", e.target.value)
                             }
                           />
+                          <div className="w-[100%] my-1 mb-3 text-[red]">
+                            {formik.errors.Team_Name}
+                          </div>
 
                           <input
                             type="text"
-                            className="border-[1px] border-[black] w-[100%] p-2 rounded-[10px] mb-3"
+                            className="border-[1px] border-[black] w-[100%] p-2 rounded-[10px] "
                             placeholder="Designation"
                             onChange={(e) =>
                               formik.setFieldValue(
@@ -323,6 +374,9 @@ export function StartupLogin2() {
                               )
                             }
                           />
+                          <div className="w-[100%] my-1 mb-3 text-[red]">
+                            {formik.errors.Team_Designation}
+                          </div>
 
                           <input
                             type="number"
@@ -335,10 +389,9 @@ export function StartupLogin2() {
                               )
                             }
                           />
-                        </div>
-
-                        <div className="text-[red] my-2">
-                          {formik.errors.Team_Profile1}
+                          <div className="w-[100%] my-1 mb-3 text-[red]">
+                            {formik.errors.Team_Experience}
+                          </div>
                         </div>
                       </div>
 
@@ -363,19 +416,25 @@ export function StartupLogin2() {
                             </div>
                           </div>
                         </div>
+                        <div className="w-[100%] text-center my-1 text-[red]">
+                          {formik.errors.Team_Profile1}
+                        </div>
                         <div className=" w-[100%] mt-4">
                           <input
                             type="text"
-                            className="border-[1px] border-[black] w-[100%] p-2 rounded-[10px] my-3"
+                            className="border-[1px] border-[black] w-[100%] p-2 rounded-[10px] mt-1"
                             placeholder="Enter Name"
                             onChange={(e) =>
                               formik.setFieldValue("Team_Name1", e.target.value)
                             }
                           />
+                          <div className="w-[100%] my-1 mb-3 text-[red]">
+                            {formik.errors.Team_Name1}
+                          </div>
 
                           <input
                             type="text"
-                            className="border-[1px] border-[black] w-[100%] p-2 rounded-[10px] mb-3"
+                            className="border-[1px] border-[black] w-[100%] p-2 rounded-[10px] "
                             placeholder="Designation"
                             onChange={(e) =>
                               formik.setFieldValue(
@@ -384,6 +443,9 @@ export function StartupLogin2() {
                               )
                             }
                           />
+                          <div className="w-[100%] my-1 mb-3 text-[red]">
+                            {formik.errors.Team_Designation1}
+                          </div>
 
                           <input
                             type="number"
@@ -396,10 +458,9 @@ export function StartupLogin2() {
                               )
                             }
                           />
-                        </div>
-
-                        <div className="text-[red] my-2">
-                          {formik.errors.Team_Profile1}
+                          <div className="w-[100%] my-1 mb-3 text-[red]">
+                            {formik.errors.Team_Experience1}
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -433,10 +494,14 @@ export function StartupLogin2() {
                             </div>
                           </div>
                         </div>
-                        <div className=" w-[100%] mt-4">
+                        <div className="w-[100%] text-center my-1 text-[red]">
+                          {formik.errors.Backers_Profile}
+                        </div>
+
+                        <div className=" w-[100%] mt-1">
                           <input
                             type="text"
-                            className="border-[1px] border-[black] w-[100%] p-2 rounded-[10px] my-3"
+                            className="border-[1px] border-[black] w-[100%] p-2 rounded-[10px] mt-3"
                             placeholder="Name"
                             onChange={(e) =>
                               formik.setFieldValue(
@@ -445,10 +510,13 @@ export function StartupLogin2() {
                               )
                             }
                           />
+                          <div className="w-[100%] my-1 text-[red]">
+                            {formik.errors.Backers_Name}
+                          </div>
 
                           <input
                             type="text"
-                            className="border-[1px] border-[black] w-[100%] p-2 rounded-[10px] mb-3"
+                            className="border-[1px] border-[black] w-[100%] p-2 rounded-[10px] mt-3"
                             placeholder="Designation"
                             onChange={(e) =>
                               formik.setFieldValue(
@@ -457,10 +525,13 @@ export function StartupLogin2() {
                               )
                             }
                           />
+                          <div className="w-[100%]  my-1 text-[red]">
+                            {formik.errors.Backers_Designation}
+                          </div>
 
                           <input
                             type="number"
-                            className="border-[1px] border-[black] w-[100%] p-2 rounded-[10px]"
+                            className="border-[1px] border-[black] w-[100%] p-2 rounded-[10px] mt-3"
                             placeholder="Experience"
                             onChange={(e) =>
                               formik.setFieldValue(
@@ -471,8 +542,8 @@ export function StartupLogin2() {
                           />
                         </div>
 
-                        <div className="text-[red] my-2">
-                          {formik.errors.Backers_Profile1}
+                        <div className="text-[red] w-[100%] my-1">
+                          {formik.errors.Backers_Experience}
                         </div>
                       </div>
 
@@ -497,11 +568,16 @@ export function StartupLogin2() {
                             </div>
                           </div>
                         </div>
-                        <div className=" w-[100%] mt-4">
+
+                        <div className="w-[100%] text-center my-1 text-[red]">
+                          {formik.errors.Backers_Profile1}
+                        </div>
+
+                        <div className=" w-[100%] mt-1">
                           <input
                             type="text"
-                            className="border-[1px] border-[black] w-[100%] p-2 rounded-[10px] my-3"
-                            placeholder="Enter Name"
+                            className="border-[1px] border-[black] w-[100%] p-2 rounded-[10px] mt-3"
+                            placeholder="Name"
                             onChange={(e) =>
                               formik.setFieldValue(
                                 "Backers_Name1",
@@ -509,10 +585,13 @@ export function StartupLogin2() {
                               )
                             }
                           />
+                          <div className="w-[100%] my-1 text-[red]">
+                            {formik.errors.Backers_Name1}
+                          </div>
 
                           <input
                             type="text"
-                            className="border-[1px] border-[black] w-[100%] p-2 rounded-[10px] mb-3"
+                            className="border-[1px] border-[black] w-[100%] p-2 rounded-[10px] mt-3"
                             placeholder="Designation"
                             onChange={(e) =>
                               formik.setFieldValue(
@@ -521,10 +600,13 @@ export function StartupLogin2() {
                               )
                             }
                           />
+                          <div className="w-[100%]  my-1 text-[red]">
+                            {formik.errors.Backers_Designation1}
+                          </div>
 
                           <input
                             type="number"
-                            className="border-[1px] border-[black] w-[100%] p-2 rounded-[10px]"
+                            className="border-[1px] border-[black] w-[100%] p-2 rounded-[10px] mt-3"
                             placeholder="Experience"
                             onChange={(e) =>
                               formik.setFieldValue(
@@ -535,8 +617,8 @@ export function StartupLogin2() {
                           />
                         </div>
 
-                        <div className="text-[red] my-2">
-                          {formik.errors.Backers_Profile1}
+                        <div className="text-[red] w-[100%] my-1">
+                          {formik.errors.Backers_Experience1}
                         </div>
                       </div>
                     </div>
