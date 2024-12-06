@@ -165,7 +165,7 @@ exports.loginform = async (req, res) => {
         Email: req.body.Email,
         Password: req.body.Password
     }
-    let getdata = await registermodel.find({ Email: data.Email, Password: data.Password })
+    let getdata = await registermodel.findOne({ Email: data.Email, Password: data.Password })
 
     if (getdata.getdata != []) {
         let newtoken;
