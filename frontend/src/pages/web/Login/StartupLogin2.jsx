@@ -22,7 +22,6 @@ console.log(data)
       FirstName: data.FirstName,
       LastName: data.LastName,
       Phone: data.Phone,  
-      Status: data.Status,  
       Company_Name: data.Company_Name,
       Company_Pan: data.Company_Pan,
       Email: data.Email,

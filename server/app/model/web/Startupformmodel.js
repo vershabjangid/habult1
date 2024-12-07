@@ -15,10 +15,6 @@ let startupformschema = mongoose.Schema({
         required: true,
         unique: true
     },
-    Status: {
-        type: String,
-        required: true
-    },
     Company_Name: {
         type: String,
         required: true,
@@ -132,46 +128,46 @@ let startupformschema = mongoose.Schema({
         type: String,
         required: true
     },
-    // Backers_Experience1: {
-    //     type: Number,
-    //     required: true
-    // },
-    // Video_Link: {
-    //     type: String,
-    //     required: true
-    // },
-    // Competitor: {
-    //     type: String,
-    //     required: true
-    // },
-    // Market_Size: {
-    //     type: Number,
-    //     required: true
-    // },
-    // Solution: {
-    //     type: String,
-    //     required: true
-    // },
-    // Problem_Statement: {
-    //     type: String,
-    //     required: true
-    // },
-    // Financial_Projection: {
-    //     type: String,
-    //     required: true
-    // },
-    // Pitch_Deck: {
-    //     type: String,
-    //     required: true
-    // },
+    Backers_Experience1: {
+        type: Number,
+        required: true
+    },
+    Video_Link: {
+        type: String,
+        required: true
+    },
+    Competitor: {
+        type: String,
+        required: true
+    },
+    Market_Size: {
+        type: Number,
+        required: true
+    },
+    Solution: {
+        type: String,
+        required: true
+    },
+    Problem_Statement: {
+        type: String,
+        required: true
+    },
+    Financial_Projection: {
+        type: String,
+        required: true
+    },
+    Pitch_Deck: {
+        type: String,
+        required: true
+    },
     Incorporation_Certificate: {
         type: String,
         required: true
     },
-    // Terms_Conditions: {
-    //     type: String,
-    //     required: true
-    // },
+    Terms_Conditions: {
+        type: String,
+        required: true
+    },
 })
 
 
