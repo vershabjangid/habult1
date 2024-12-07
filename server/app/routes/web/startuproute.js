@@ -4,7 +4,7 @@ const multer = require('multer')
 let path = require('path')
 let startupsroute = express.Router()
 let jwt = require('jsonwebtoken')
-const { startupform } = require('../../controller/web/startup')
+const { startupform, viewstartups } = require('../../controller/web/startup')
 require('dotenv').config()
 let WEBTOKEN = process.env.WEBTOKEN
 
@@ -45,7 +45,7 @@ const upload = multer({ storage: storage }).any('Company_Pan', 'Company_Logo', '
 
 
 startupsroute.post('/add-startup', upload, startupform);
-startupsroute.get('/view-allstartups', upload, startupform);
+startupsroute.get('/view-allstartups', viewstartups);
 
 
 module.exports = startupsroute
