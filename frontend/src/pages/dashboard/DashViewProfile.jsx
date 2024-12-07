@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import { Sidebar } from "../../common/Sidebar";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FaDownload } from "react-icons/fa";
 
@@ -30,8 +30,19 @@ export function DashViewProfile() {
 
   useEffect(() => {
     viewdata();
-  }, [])
+  }, []);
 
+  let notifyerror = (error) => toast.error(error);
+  let naviget = useNavigate();
+  let updatestatus = (value) => {
+    axios.put("https://api.hivexv.com/update-status", value).then((res) => {
+      if (res.data.Status === 1) {
+        naviget("/requests");
+      } else {
+        notifyerror(res.data.Message);
+      }
+    });
+  };
   return (
     <>
       <section className="main border-[1px] border-[black] bg-[black]">
@@ -45,8 +56,8 @@ export function DashViewProfile() {
 
             {registerdata.length === 0 ? (
               <>
-              <div className="text-[30px]">No Data Found</div>
-              <div className="text-[30px]">User Doesn't Fill The Form</div>
+                <div className="text-[30px]">No Data Found</div>
+                <div className="text-[30px]">User Doesn't Fill The Form</div>
               </>
             ) : (
               <section className="w-[90%]">
@@ -140,6 +151,18 @@ export function DashViewProfile() {
                                   Bank Proof <FaDownload />
                                 </button>
                               </a>
+                            </div>
+                            <div className="my-5 w-[100%] text-start flex justify-end border-[1px] text-[white] text-[20px]">
+                              <button
+                                className="bg-[green] w-[150px] p-2 py-4 rounded-[10px]  items-center"
+                                onClick={() => updatestatus(items)}
+                              >
+                                Accept
+                              </button>
+
+                              <button className="bg-[red] w-[150px] p-2 py-4 rounded-[10px] ms-2 items-center">
+                                Reject
+                              </button>
                             </div>
                           </>
                         );

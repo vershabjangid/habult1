@@ -43,7 +43,6 @@ export function MemberBankVerification() {
     },
   });
 
-  let notifysuccess = (success) => toast.success(success);
   let notifyerror = (error) => toast.error(error);
 
   let naviget = useNavigate();

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { Sidebar } from "../../common/Sidebar";
 import axios from "axios";
@@ -21,9 +21,8 @@ export function DashRequests() {
       });
   };
 
-  console.log(data);
 
-  useState(() => {
+  useEffect(() => {
     viewrequests();
   }, []);
 
@@ -32,6 +31,10 @@ export function DashRequests() {
   };
   let filterdataunverified = (value) => {
     setrequests(data.filter((items) => items.Is_Verified === value));
+  };
+
+  let filterdataunfilled = (value) => {
+    setrequests(data.filter((items) => items.All_Fields === value));
   };
 
   let naviget = useNavigate();
@@ -102,6 +105,15 @@ export function DashRequests() {
                 <div className="w-[100%]">
                   <button
                     className="bg-[#e02708] py-2 px-3 rounded-[10px]"
+                    onClick={() => {
+                      filterdataunfilled(false);
+                    }}
+                  >
+                    Un-filled Forms
+                  </button>
+
+                  <button
+                    className="bg-[#e02708] ms-2 py-2 px-3 rounded-[10px]"
                     onClick={() => {
                       filterdataunverified(false);
                     }}

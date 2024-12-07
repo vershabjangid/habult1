@@ -256,6 +256,7 @@ exports.updateallfield = async (req, res) => {
     let data = {
         Email: req.body.Email,
         All_Fields: req.body.All_Fields,
+        Status: req.body.Status
     }
 
 

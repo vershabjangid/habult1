@@ -47,6 +47,7 @@ function App() {
           <Route path='/startup-form' element={<StartupForm />} />
           <Route path='/startup-form2' element={<StartupLogin2 />} />
           <Route path='/request-confirmed' element={<RegestConfirmed />} />
+          <Route path='/user-panel' element={<ViewStartups />} />
 
           {/* website */}
           <Route path='/' element={<Landing />} />
@@ -62,7 +63,6 @@ function App() {
           <Route path='/update-faq' element={<UpdateDashFaq />} />
           <Route path='/requests' element={<DashRequests />} />
           <Route path='/view-profile' element={<DashViewProfile />} />
-          <Route path='/user-panel' element={<ViewStartups />} />
         </Routes>
       </BrowserRouter>
     </>
