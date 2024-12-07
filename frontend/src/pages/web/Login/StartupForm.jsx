@@ -20,7 +20,7 @@ export function StartupForm() {
     initialValues: {
       FirstName: data.FirstName,
       LastName: data.LastName,
-      Phone: data.LastName,
+      Phone: data.Phone,
       Email: data.Email,
       Company_Name: "",
       Industry: "",
