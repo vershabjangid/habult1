@@ -35,7 +35,11 @@ export function DashViewProfile() {
   let notifyerror = (error) => toast.error(error);
   let naviget = useNavigate();
   let updatestatus = (value) => {
-    axios.put("https://api.hivexv.com/update-status", value).then((res) => {
+    let data = {
+      Email: value.Email,
+      Status: "Accept",
+    };
+    axios.put("https://api.hivexv.com/update-status", data).then((res) => {
       if (res.data.Status === 1) {
         naviget("/requests");
       } else {

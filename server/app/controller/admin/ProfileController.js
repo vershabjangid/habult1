@@ -1,3 +1,4 @@
+const registermodel = require("../../model/web/Authmodel")
 
 exports.updateprofilestatus = async (req, res) => {
 
