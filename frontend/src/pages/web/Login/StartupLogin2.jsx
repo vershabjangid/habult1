@@ -21,7 +21,7 @@ console.log(data)
     initialValues: {
       FirstName: data.FirstName,
       LastName: data.LastName,
-      Phone: data.LastName,
+      Phone: data.Phone,
       Company_Name: data.Company_Name,
       Company_Pan: data.Company_Pan,
       Email: data.Email,
