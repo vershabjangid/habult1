@@ -36,6 +36,10 @@ let registerschema = mongoose.Schema({
         type: Boolean,
         required: true
     },
+    All_Fields: {
+        type: Boolean,
+        required: true
+    },
     Status: {
         type: Boolean,
         required: true

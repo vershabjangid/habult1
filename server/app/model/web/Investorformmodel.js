@@ -35,10 +35,7 @@ let investorformschema = mongoose.Schema({
         type: String,
         required: true
     },
-    All_Fields: {
-        type: Boolean,
-        required: true
-    },
+   
 })
 
 
