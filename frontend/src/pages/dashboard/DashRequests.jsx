@@ -14,13 +14,16 @@ export function DashRequests() {
       .get("https://api.hivexv.com/view-register")
       .then((res) => {
         setdata(res.data);
-        setrequests(res.data.filter((items) => items.Is_Verified === true));
+        setrequests(
+          res.data.filter(
+            (items) => items.Is_Verified === true && items.All_Fields === true
+          )
+        );
       })
       .catch((error) => {
         console.log(error);
       });
   };
-
 
   useEffect(() => {
     viewrequests();
@@ -29,6 +32,14 @@ export function DashRequests() {
   let filterdata = (value) => {
     setrequests(data.filter((items) => items.Join_as.includes(value)));
   };
+  let filterdataverified = (value) => {
+    setrequests(
+      data.filter(
+        (items) => items.Is_Verified === value && items.All_Fields === value
+      )
+    );
+  };
+
   let filterdataunverified = (value) => {
     setrequests(data.filter((items) => items.Is_Verified === value));
   };
@@ -124,7 +135,7 @@ export function DashRequests() {
                   <button
                     className="bg-[#e02708] py-2 px-3 rounded-[10px] ms-2"
                     onClick={() => {
-                      filterdataunverified(true);
+                      filterdataverified(true);
                     }}
                   >
                     verified Users

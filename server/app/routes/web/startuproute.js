@@ -45,6 +45,7 @@ const upload = multer({ storage: storage }).any('Company_Pan', 'Company_Logo', '
 
 
 startupsroute.post('/add-startup', upload, startupform);
+startupsroute.post('/view-allstartups', upload, startupform);
 
 
 module.exports = startupsroute

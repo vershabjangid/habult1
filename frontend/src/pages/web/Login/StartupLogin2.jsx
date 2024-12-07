@@ -10,6 +10,7 @@ import axios, { toFormData } from "axios";
 export function StartupLogin2() {
   let location = useLocation();
   let data = location.state;
+console.log(data)
 
   let notifyerror = (error) => toast.error(error);
 
@@ -18,6 +19,9 @@ export function StartupLogin2() {
 
   let formik = useFormik({
     initialValues: {
+      FirstName: data.FirstName,
+      LastName: data.LastName,
+      Phone: data.LastName,
       Company_Name: data.Company_Name,
       Company_Pan: data.Company_Pan,
       Email: data.Email,

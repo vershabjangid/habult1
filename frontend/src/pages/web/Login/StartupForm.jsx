@@ -14,8 +14,13 @@ export function StartupForm() {
 
   let location = useLocation();
   let data = location.state;
+  console.log(data);
+
   let formik = useFormik({
     initialValues: {
+      FirstName: data.FirstName,
+      LastName: data.LastName,
+      Phone: data.LastName,
       Email: data.Email,
       Company_Name: "",
       Industry: "",
@@ -157,7 +162,9 @@ export function StartupForm() {
                       {viewindustry.map((items, index) => {
                         return (
                           <>
-                            <option value={items.Industry_Name}>{items.Industry_Name}</option>
+                            <option value={items.Industry_Name}>
+                              {items.Industry_Name}
+                            </option>
                           </>
                         );
                       })}
