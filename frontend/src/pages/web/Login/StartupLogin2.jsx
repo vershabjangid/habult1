@@ -151,7 +151,7 @@ export function StartupLogin2() {
       if (formik.values.Terms_Conditions === true) {
         insertdata(formik.values);
       } else {
-        notifyerror("Accept all terms and conditions")
+        notifyerror("Accept all terms and conditions");
       }
     },
   });
@@ -167,10 +167,29 @@ export function StartupLogin2() {
       })
       .then((res) => {
         if (res.data.Status === 1) {
+          updateallfilds(value);
+        } else {
+          notifyerror(res.data.Message);
+        }
+      });
+  };
+
+  let updateallfilds = (value) => {
+    let data = {
+      Email: value.Email,
+      All_Fields: true,
+    };
+    axios
+      .put("https://api.hivexv.com/change-all-field", data)
+      .then((res) => {
+        if (res.data.Status === 1) {
           naviget("/request-confirmed");
         } else {
           notifyerror(res.data.Message);
         }
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
 

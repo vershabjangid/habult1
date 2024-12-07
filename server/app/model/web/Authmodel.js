@@ -35,6 +35,10 @@ let registerschema = mongoose.Schema({
     Is_Verified: {
         type: Boolean,
         required: true
+    },
+    Status: {
+        type: Boolean,
+        required: true
     }
 })
 

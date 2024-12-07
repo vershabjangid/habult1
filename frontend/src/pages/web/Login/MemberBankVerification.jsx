@@ -25,6 +25,7 @@ export function MemberBankVerification() {
       Account_Number: "",
       IFSC_Code: "",
       Bank_Proof: "",
+      All_Fields: "",
     },
 
     validationSchema: Yup.object().shape({
@@ -56,11 +57,29 @@ export function MemberBankVerification() {
       })
       .then((res) => {
         if (res.data.Status === 1) {
-          naviget('/request-confirmed')
-          notifysuccess(res.data.Message);
+          updateallfilds(value);
         } else {
           notifyerror(res.data.Message);
         }
+      });
+  };
+
+  let updateallfilds = (value) => {
+    let data = {
+      Email: value.Email,
+      All_Fields: true,
+    };
+    axios
+      .put("https://api.hivexv.com/change-all-field", data)
+      .then((res) => {
+        if (res.data.Status === 1) {
+          naviget("/request-confirmed");
+        } else {
+          notifyerror(res.data.Message);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
   return (

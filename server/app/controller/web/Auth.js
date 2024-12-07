@@ -53,7 +53,8 @@ exports.register = async (req, res) => {
         Password: req.body.Password,
         OTP_Value: Math.floor(1000 + Math.random() * 8000),
         Is_Verified: false,
-        All_Fields: req.body.All_Fields,
+        All_Fields: false,
+        Status: false
     }
 
 
@@ -229,6 +230,40 @@ exports.changepassword = async (req, res) => {
             res.send({
                 Status: 1,
                 Message: "Password Updated Successfully"
+            })
+        })
+        .catch((error) => {
+            if (error.code === 11000) {
+                res.send({
+                    Status: 0,
+                    Message: "User Alredy Exists"
+                })
+            }
+            else {
+                res.status(400).send({
+                    Status: 0,
+                    Message: "Data Missing"
+                })
+            }
+        })
+}
+
+
+
+
+exports.updateallfield = async (req, res) => {
+
+    let data = {
+        Email: req.body.Email,
+        All_Fields: req.body.All_Fields,
+    }
+
+
+    let update = await registermodel.updateOne({ Email: req.body.Email }, data)
+        .then(() => {
+            res.send({
+                Status: 1,
+                Message: "Register Successfully"
             })
         })
         .catch((error) => {
