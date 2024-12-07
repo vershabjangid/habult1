@@ -28,7 +28,22 @@ export function DashViewProfile() {
       });
   };
 
+  let viewstartup = () => {
+    axios
+      .get("https://api.hivexv.com/view-adminstartup")
+      .then((res) => {
+        setimgurl(res.data.imgurl);
+        setregisterdata(
+          res.data.viewdata.filter((items) => data.Email === items.Email)
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   useEffect(() => {
+    viewstartup();
     viewdata();
   }, []);
 
@@ -63,7 +78,7 @@ export function DashViewProfile() {
                 <div className="text-[30px]">No Data Found</div>
                 <div className="text-[30px]">User Doesn't Fill The Form</div>
               </>
-            ) : (
+            ) : data.Join_as === "Member" ? (
               <section className="w-[90%]">
                 <section className="page_label w-[100%] my-5 rounded-[10px] p-2 text-[#e02708] font-[600] text-[20px]">
                   <div>
@@ -175,7 +190,7 @@ export function DashViewProfile() {
                   </div>
                 </section>
               </section>
-            )}
+            ) : null}
           </section>
         </section>
       </section>

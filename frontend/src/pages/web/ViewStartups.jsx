@@ -1,9 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Footer } from "../../common/Footer";
 import { Header } from "../../common/Header";
 import right_banner from "../../images/Hive XV (1080 x 1350 px) (1).png";
 import minimalist from "../../images/in-liquid-object-2.svg";
+import axios from "axios";
+import { FaRupeeSign } from "react-icons/fa";
 export function ViewStartups() {
+  let [getstartups, setgetstartups] = useState([]);
+  let [gettrendingstartups, setgettrendingstartups] = useState([]);
+  console.log(gettrendingstartups);
+  let [imgurl, setimgurl] = useState("");
+
+  let viewstartups = () => {
+    axios
+      .get("https://api.hivexv.com/view-allstartups", {
+        headers: {
+          Authorization: JSON.parse(localStorage.getItem("webtoken")),
+        },
+      })
+      .then((res) => {
+        setgetstartups(res.data.viewdata);
+        setgettrendingstartups(
+          res.data.viewdata.filter((items) => items.Status === "trending")
+        );
+        setimgurl(res.data.imgurl);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    viewstartups();
+  }, []);
   return (
     <>
       <section className="main w-[100%] bg-[#292828b4]">
@@ -35,149 +64,140 @@ export function ViewStartups() {
 
             <section className="landing_section bg-[white] w-[100%] flex">
               <section className=" w-[100%] h-[100%] text-start text-black px-5 flex justify-center flex-col mt-2">
+                {gettrendingstartups.length === 0 ? null : (
+                  <>
+                    <h1 className="landing_heading bg-[#e02708] text-white w-[500px] rounded-[10px] text-center text-[50px] font-[500] my-2">
+                      Trending Startups
+                    </h1>
+
+                    <section className="my-3 border-[1px] border-[black] flex justify-between items-center flex-wrap">
+                      {gettrendingstartups.map((items, index) => {
+                        return (
+                          <>
+                            <div className="my-3 border-[1px] border-[black] bg-[#3d3d3d] rounded-[10px] w-[450px]">
+                              <div className="w-[100%] overflow-hidden relative">
+                                <div className=" absolute right-[-75px] top-[-75px] z-10">
+                                  <img src={minimalist} alt="" />
+                                </div>
+
+                                <div className="m-3">
+                                  <div className="w-[150px] h-[150px] rounded-[10px]">
+                                    <img src={right_banner} alt="" />
+                                  </div>
+                                </div>
+
+                                <div className="m-3 mt-[60px] flex justify-between items-center">
+                                  <h2 className="text-[white] text-[35px] font-[700]">
+                                    FIRM NAME
+                                  </h2>
+
+                                  {/* <div className="text-[22px] text-[white] w-[30px] h-[30px] rounded-[50%] flex justify-center items-center">
+                       <FaShare />
+                     </div> */}
+                                </div>
+
+                                <div className=" mx-3 mt-[2px]">
+                                  <p className="text-[white] text-[18px]">
+                                    Lorem ipsum dolor sit amet consectetur
+                                    adipisicing elit. Aperiam sed at obcaecati,
+                                    aliquid corporis quidem. Nam eos sint
+                                    asperiores tenetur rerum et. Ipsa neque eius
+                                    deleniti impedit ipsum culpa cumque!
+                                  </p>
+                                </div>
+
+                                <div className="px-3 mt-[30px] flex justify-between my-5">
+                                  <div className="text-[white] w-[49%] py-2 rounded-[10px] border-[1px] text-[20px]">
+                                    <p className="text-center">Equity</p>
+                                    <p className="text-center mt-2">100%</p>
+                                  </div>
+
+                                  <div className="text-[white] w-[49%] py-2 rounded-[10px] border-[1px] text-[20px]">
+                                    <p className="text-center">Funding Ask</p>
+                                    <p className="text-center mt-2">100000</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </>
+                        );
+                      })}
+
+                      <div className="my-3  w-[450px]"></div>
+                      <div className="my-3  w-[450px]"></div>
+                      <div className="my-3  w-[450px]"></div>
+                    </section>
+                  </>
+                )}
+              </section>
+            </section>
+
+            <section className="landing_section bg-[white] w-[100%] flex">
+              <section className=" w-[100%] h-[100%] text-start text-black px-5 flex justify-center flex-col mt-2">
                 <h1 className="landing_heading bg-[#e02708] text-white w-[500px] rounded-[10px] text-center text-[50px] font-[500] my-2">
-                  Trending Startups
+                  All Startups
                 </h1>
 
                 <section className="my-3 border-[1px] border-[black] flex justify-between items-center flex-wrap">
-                  <div className="my-3 border-[1px] border-[black] bg-[#3d3d3d] rounded-[10px] w-[450px]">
-                    <div className="w-[100%] overflow-hidden relative">
-                      <div className=" absolute right-[-75px] top-[-75px] z-10">
-                        <img src={minimalist} alt="" />
-                      </div>
+                  {getstartups.map((items, index) => {
+                    return (
+                      <>
+                        <div className="my-3 border-[1px] border-[black] bg-[#3d3d3d] rounded-[10px] w-[450px]">
+                          <div className="w-[100%] overflow-hidden relative">
+                            <div className=" absolute right-[-75px] top-[-75px] z-10">
+                              <img src={minimalist} alt="" />
+                            </div>
 
-                      <div className="m-3">
-                        <div className="w-[150px] h-[150px] rounded-[10px]">
-                          <img src={right_banner} alt="" />
-                        </div>
-                      </div>
+                            <div className="m-3">
+                              <div className="w-[140px] h-[150px] rounded-[10px]">
+                                <img
+                                  src={imgurl + items.Company_Logo}
+                                  alt=""
+                                  className="w-[100%]"
+                                />
+                              </div>
+                            </div>
 
-                      <div className="m-3 mt-[60px] flex justify-between items-center">
-                        <h2 className="text-[white] text-[35px] font-[700]">
-                          FIRM NAME
-                        </h2>
+                            <div className="m-3 mt-[60px] flex justify-between items-center">
+                              <h2 className="text-[white] text-[35px] font-[700]">
+                                {items.Company_Name}
+                              </h2>
 
-                        {/* <div className="text-[22px] text-[white] w-[30px] h-[30px] rounded-[50%] flex justify-center items-center">
+                              {/* <div className="text-[22px] text-[white] w-[30px] h-[30px] rounded-[50%] flex justify-center items-center">
                           <FaShare />
                         </div> */}
-                      </div>
+                            </div>
 
-                      <div className=" mx-3 mt-[2px]">
-                        <p className="text-[white] text-[18px]">
-                          Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Aperiam sed at obcaecati, aliquid corporis
-                          quidem. Nam eos sint asperiores tenetur rerum et. Ipsa
-                          neque eius deleniti impedit ipsum culpa cumque!
-                        </p>
-                      </div>
+                            <div className=" mx-3 mt-[2px]">
+                              <p className="text-[white] text-[18px]">
+                                {items.Company_Description}
+                              </p>
+                            </div>
 
-                      <div className="px-3 mt-[30px] flex justify-between my-5">
-                        <div className="text-[white] w-[49%] py-2 rounded-[10px] border-[1px] text-[20px]">
-                          <p className="text-center">Equity</p>
-                          <p className="text-center mt-2">100%</p>
+                            <div className="px-3 mt-[30px] flex justify-between my-5">
+                              <div className="text-[white] w-[49%] py-2 rounded-[10px] border-[1px] text-[20px]">
+                                <p className="text-center">Equity</p>
+                                <p className="text-center mt-2">
+                                  {items.Equity}%
+                                </p>
+                              </div>
+
+                              <div className="text-[white] w-[49%] py-2 rounded-[10px] border-[1px] text-[20px]">
+                                <p className="text-center">Funding Ask</p>
+                                <p className="text-center mt-2 flex items-center justify-center">
+                                  <FaRupeeSign /> {items.Funding_Ask}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
                         </div>
+                      </>
+                    );
+                  })}
 
-                        <div className="text-[white] w-[49%] py-2 rounded-[10px] border-[1px] text-[20px]">
-                          <p className="text-center">Funding Ask</p>
-                          <p className="text-center mt-2">100000</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="my-3 border-[1px] border-[black] bg-[#3d3d3d] rounded-[10px] w-[450px]">
-                    <div className="w-[100%] overflow-hidden relative">
-                      <div className=" absolute right-[-75px] top-[-75px] z-10">
-                        <img src={minimalist} alt="" />
-                      </div>
-
-                      <div className="m-3">
-                        <div className="w-[150px] h-[150px] rounded-[10px]">
-                          <img src={right_banner} alt="" />
-                        </div>
-                      </div>
-
-                      <div className="m-3 mt-[60px] flex justify-between items-center">
-                        <h2 className="text-[white] text-[35px] font-[700]">
-                          FIRM NAME
-                        </h2>
-
-                        {/* <div className="text-[22px] text-[white] w-[30px] h-[30px] rounded-[50%] flex justify-center items-center">
-                          <FaShare />
-                        </div> */}
-                      </div>
-
-                      <div className=" mx-3 mt-[2px]">
-                        <p className="text-[white] text-[18px]">
-                          Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Aperiam sed at obcaecati, aliquid corporis
-                          quidem. Nam eos sint asperiores tenetur rerum et. Ipsa
-                          neque eius deleniti impedit ipsum culpa cumque!
-                        </p>
-                      </div>
-
-                      <div className="px-3 mt-[30px] flex justify-between my-5">
-                        <div className="text-[white] w-[49%] py-2 rounded-[10px] border-[1px] text-[20px]">
-                          <p className="text-center">Equity</p>
-                          <p className="text-center mt-2">100%</p>
-                        </div>
-
-                        <div className="text-[white] w-[49%] py-2 rounded-[10px] border-[1px] text-[20px]">
-                          <p className="text-center">Funding Ask</p>
-                          <p className="text-center mt-2">100000</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="my-3 border-[1px] border-[black] bg-[#3d3d3d] rounded-[10px] w-[450px]">
-                    <div className="w-[100%] overflow-hidden relative">
-                      <div className=" absolute right-[-75px] top-[-75px] z-10">
-                        <img src={minimalist} alt="" />
-                      </div>
-
-                      <div className="m-3">
-                        <div className="w-[150px] h-[150px] rounded-[10px]">
-                          <img src={right_banner} alt="" />
-                        </div>
-                      </div>
-
-                      <div className="m-3 mt-[60px] flex justify-between items-center">
-                        <h2 className="text-[white] text-[35px] font-[700]">
-                          FIRM NAME
-                        </h2>
-
-                        {/* <div className="text-[22px] text-[white] w-[30px] h-[30px] rounded-[50%] flex justify-center items-center">
-                          <FaShare />
-                        </div> */}
-                      </div>
-
-                      <div className=" mx-3 mt-[2px]">
-                        <p className="text-[white] text-[18px]">
-                          Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Aperiam sed at obcaecati, aliquid corporis
-                          quidem. Nam eos sint asperiores tenetur rerum et. Ipsa
-                          neque eius deleniti impedit ipsum culpa cumque!
-                        </p>
-                      </div>
-
-                      <div className="px-3 mt-[30px] flex justify-between my-5">
-                        <div className="text-[white] w-[49%] py-2 rounded-[10px] border-[1px] text-[20px]">
-                          <p className="text-center">Equity</p>
-                          <p className="text-center mt-2">100%</p>
-                        </div>
-
-                        <div className="text-[white] w-[49%] py-2 rounded-[10px] border-[1px] text-[20px]">
-                          <p className="text-center">Funding Ask</p>
-                          <p className="text-center mt-2">100000</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="my-3 border-[1px] border-[black] w-[450px]"></div>
-                  <div className="my-3 border-[1px] border-[black] w-[450px]"></div>
-                  <div className="my-3 border-[1px] border-[black] w-[450px]"></div>
+                  <div className="my-3 w-[450px]"></div>
+                  <div className="my-3 w-[450px]"></div>
+                  <div className="my-3 w-[450px]"></div>
                 </section>
               </section>
             </section>

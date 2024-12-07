@@ -13,7 +13,7 @@ exports.startupform = async (req, res) => {
         LastName: req.body.LastName,
         Phone: req.body.Phone,
         Status: false,
-        Company_Name: req.body.Email,
+        Company_Name: req.body.Company_Name,
         Company_Pan: req.files[0].filename,
         Email: req.body.Email,
         Funding_Ask: req.body.Funding_Ask,
