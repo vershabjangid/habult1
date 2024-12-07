@@ -15,6 +15,10 @@ let startupformschema = mongoose.Schema({
         required: true,
         unique: true
     },
+    Status: {
+        type: String,
+        required: true
+    },
     Company_Name: {
         type: String,
         required: true,

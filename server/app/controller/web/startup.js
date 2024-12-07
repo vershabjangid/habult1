@@ -11,7 +11,7 @@ exports.startupform = async (req, res) => {
     let data = {
         FirstName: req.body.FirstName,
         LastName: req.body.LastName,
-        Phone: req.body.LastName,
+        Phone: req.body.Phone,
         Status: false,
         Company_Name: req.body.Email,
         Company_Pan: req.files[0].filename,
