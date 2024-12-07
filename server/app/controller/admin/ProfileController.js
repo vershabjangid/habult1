@@ -1,18 +1,18 @@
 const registermodel = require("../../model/web/Authmodel")
 
 exports.updateprofilestatus = async (req, res) => {
-
+console.log(req.body)
     let data = {
         Email: req.body.Email,
         Status: req.body.Status
     }
 
 
-    let update = await registermodel.updateOne({ Email: req.body.Email }, data)
+    let update = await registermodel.updateOne({ Email: req.body.Email },{Status : req.body.Status})
         .then(() => {
             res.send({
                 Status: 1,
-                Message: "Register Successfully"
+                Message: "Data Updated Successfully"
             })
         })
         .catch((error) => {
