@@ -25,7 +25,6 @@ export function MemberBankVerification() {
       Account_Number: "",
       IFSC_Code: "",
       Bank_Proof: "",
-      All_Fields: "",
     },
 
     validationSchema: Yup.object().shape({
