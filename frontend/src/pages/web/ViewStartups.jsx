@@ -19,7 +19,11 @@ export function ViewStartups() {
         },
       })
       .then((res) => {
-        setgetstartups(res.data.viewdata);
+        setgetstartups(
+          res.data.viewdata.filter(
+            (items) => items.Status === "Accept" || items.Status === "trending"
+          )
+        );
         setgettrendingstartups(
           res.data.viewdata.filter((items) => items.Status === "trending")
         );
@@ -82,13 +86,16 @@ export function ViewStartups() {
 
                                 <div className="m-3">
                                   <div className="w-[150px] h-[150px] rounded-[10px]">
-                                    <img src={right_banner} alt="" />
+                                    <img
+                                      src={imgurl + items.Company_Logo}
+                                      alt=""
+                                    />
                                   </div>
                                 </div>
 
                                 <div className="m-3 mt-[60px] flex justify-between items-center">
                                   <h2 className="text-[white] text-[35px] font-[700]">
-                                    FIRM NAME
+                                    {items.Company_Name}
                                   </h2>
 
                                   {/* <div className="text-[22px] text-[white] w-[30px] h-[30px] rounded-[50%] flex justify-center items-center">
@@ -98,23 +105,23 @@ export function ViewStartups() {
 
                                 <div className=" mx-3 mt-[2px]">
                                   <p className="text-[white] text-[18px]">
-                                    Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Aperiam sed at obcaecati,
-                                    aliquid corporis quidem. Nam eos sint
-                                    asperiores tenetur rerum et. Ipsa neque eius
-                                    deleniti impedit ipsum culpa cumque!
+                                    {items.Company_Description}
                                   </p>
                                 </div>
 
                                 <div className="px-3 mt-[30px] flex justify-between my-5">
                                   <div className="text-[white] w-[49%] py-2 rounded-[10px] border-[1px] text-[20px]">
                                     <p className="text-center">Equity</p>
-                                    <p className="text-center mt-2">100%</p>
+                                    <p className="text-center mt-2">
+                                      {items.Equity}%
+                                    </p>
                                   </div>
 
                                   <div className="text-[white] w-[49%] py-2 rounded-[10px] border-[1px] text-[20px]">
-                                    <p className="text-center">Funding Ask</p>
-                                    <p className="text-center mt-2">100000</p>
+                                  <p className="text-center">Funding Ask</p>
+                                <p className="text-center mt-2 flex items-center justify-center">
+                                  <FaRupeeSign /> {items.Funding_Ask}
+                                </p>
                                   </div>
                                 </div>
                               </div>
