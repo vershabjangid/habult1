@@ -10,13 +10,9 @@ exports.viewadminstartup = async (req, res) => {
 }
 
 exports.updateadminstartups = async (req, res) => {
-    let data = {
-        Email: req.body.Email,
-        Status: req.body.Status
-    }
 
 
-    let updatedata = await startupformmodel.updateOne({ Email: req.body.Email }, data.Status)
+    let updatedata = await startupformmodel.updateOne({ Email: req.body.Email }, { Status: req.body.Status })
         .then(() => {
             if (updatedata.acknowledgement === 1) {
                 res.send({
