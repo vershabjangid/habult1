@@ -51,6 +51,7 @@ startupsroute.get('/view-allstartups', viewstartups);
 
 
 startupsroute.get('/view-adminstartup', viewadminstartup)
+startupsroute.put('/update-admin-startup', viewadminstartup)
 
 
 module.exports = startupsroute

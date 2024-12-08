@@ -8,3 +8,34 @@ exports.viewadminstartup = async (req, res) => {
         imgurl
     })
 }
+
+exports.updateadminstartups = async (req, res) => {
+    let data = {
+        Email: req.body.Email,
+        Status: req.body.Status
+    }
+
+
+    let updatedata = await startupformmodel.updateOne({ Email: data.Email }, { Status: data.Status })
+        .then(() => {
+            if (updatedata.acknowledgement === 1) {
+                res.send({
+                    Status: 1,
+                    Message: "Data Updated Successfully",
+                    updatedata
+                })
+            }
+            else {
+                res.send({
+                    Status: 0,
+                    Message: "Data Doesn,t Updated",
+                    updatedata
+                })
+            }
+        })
+        .catch((error) => {
+            res.send({
+                Error: error
+            })
+        })
+}
