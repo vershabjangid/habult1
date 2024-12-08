@@ -22,7 +22,7 @@ exports.updateadminstartups = async (req, res) => {
                 res.send({
                     Status: 1,
                     Message: "Data Updated Successfully",
-                    updatedata
+                    // updatedata
                 })
             }
             else {
