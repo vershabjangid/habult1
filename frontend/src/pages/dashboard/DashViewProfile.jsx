@@ -53,7 +53,7 @@ export function DashViewProfile() {
   let updatestatus = (value) => {
     let data = {
       Email: value.Email,
-      Status: "trending",
+      Status: "Accept",
     };
     axios.put("https://api.hivexv.com/update-status", data);
     axios.put("https://api.hivexv.com/update-startup-status", data)
