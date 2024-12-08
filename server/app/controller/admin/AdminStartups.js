@@ -30,8 +30,8 @@ exports.updateadminstartups = async (req, res) => {
             }
         })
         .catch((error) => {
-            res.send({
-                Error: error
-            })
+            res.send(
+                error
+            )
         })
 }
