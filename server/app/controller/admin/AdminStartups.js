@@ -10,28 +10,33 @@ exports.viewadminstartup = async (req, res) => {
 }
 
 exports.updateadminstartups = async (req, res) => {
+    console.log(req.body)
+    let data = {
+        Email: req.body.Email,
+        Status: req.body.Status
+    }
 
 
-    let updatedata = await startupformmodel.updateOne({ Email: req.body.Email }, { Status: req.body.Status })
+    let update = await startupformmodel.updateOne({ Email: req.body.Email }, { Status: req.body.Status })
         .then(() => {
-            if (updatedata.acknowledgement === 1) {
+            res.send({
+                Status: 1,
+                Message: "Data Updated Successfully"
+            })
+        })
+        .catch((error) => {
+            if (error.code === 11000) {
                 res.send({
-                    Status: 1,
-                    Message: "Data Updated Successfully",
-                    // updatedata
+                    Status: 0,
+                    Message: "User Alredy Exists"
                 })
             }
             else {
-                res.send({
+                res.status(400).send({
                     Status: 0,
-                    Message: "Data Doesn,t Updated",
-                    updatedata
+                    Message: "Data Missing"
                 })
             }
         })
-        .catch((error) => {
-            res.send(
-                error
-            )
-        })
+
 }
