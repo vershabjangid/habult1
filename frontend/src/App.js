@@ -26,6 +26,7 @@ import { ViewStartups } from './pages/web/ViewStartups';
 import { ForgotPassword } from './pages/web/Login/ForgotPassword';
 import { VerifyForgot } from './pages/web/Login/VerifyForgot';
 import { ChangePassword } from './pages/web/Login/ChangePassword';
+import { ViewProfileStartups } from './pages/web/ViewProfileStartups';
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
           <Route path='/startup-form2' element={<StartupLogin2 />} />
           <Route path='/request-confirmed' element={<RegestConfirmed />} />
           <Route path='/user-panel' element={<ViewStartups />} />
+          <Route path='/startup-profile' element={<ViewProfileStartups />} />
 
           {/* website */}
           <Route path='/' element={<Landing />} />

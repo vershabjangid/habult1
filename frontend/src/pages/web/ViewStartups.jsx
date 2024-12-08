@@ -5,6 +5,7 @@ import right_banner from "../../images/Hive XV (1080 x 1350 px) (1).png";
 import minimalist from "../../images/in-liquid-object-2.svg";
 import axios from "axios";
 import { FaRupeeSign } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 export function ViewStartups() {
   let [getstartups, setgetstartups] = useState([]);
   let [gettrendingstartups, setgettrendingstartups] = useState([]);
@@ -21,11 +22,11 @@ export function ViewStartups() {
       .then((res) => {
         setgetstartups(
           res.data.viewdata.filter(
-            (items) => items.Status === "Accept" || items.Status === "trending"
+            (items) => items.Status === "Accept" || items.Is_Trending === true
           )
         );
         setgettrendingstartups(
-          res.data.viewdata.filter((items) => items.Status === "trending")
+          res.data.viewdata.filter((items) => items.Is_Trending === true)
         );
         setimgurl(res.data.imgurl);
       })
@@ -37,6 +38,11 @@ export function ViewStartups() {
   useEffect(() => {
     viewstartups();
   }, []);
+
+  let naviget = useNavigate();
+  let viewstartupprofile = (value) => {
+    naviget("/startup-profile", { state: [value,imgurl] });
+  };
   return (
     <>
       <section className="main w-[100%] bg-[#292828b4]">
@@ -78,54 +84,58 @@ export function ViewStartups() {
                       {gettrendingstartups.map((items, index) => {
                         return (
                           <>
-                            <div className="my-3 border-[1px] border-[black] bg-[#3d3d3d] rounded-[10px] w-[450px]">
-                              <div className="w-[100%] overflow-hidden relative">
-                                <div className=" absolute right-[-75px] top-[-75px] z-10">
-                                  <img src={minimalist} alt="" />
-                                </div>
+                             <div
+                          className="my-3 border-[1px] border-[black] bg-[#3d3d3d] rounded-[10px] w-[450px]"
+                          onClick={() => viewstartupprofile(items)}
+                        >
+                          <div className="w-[100%] overflow-hidden relative">
+                            <div className=" absolute right-[-75px] top-[-75px] z-10">
+                              <img src={minimalist} alt="" />
+                            </div>
 
-                                <div className="m-3">
-                                  <div className="w-[150px] h-[150px] rounded-[10px]">
-                                    <img
-                                      src={imgurl + items.Company_Logo}
-                                      alt=""
-                                    />
-                                  </div>
-                                </div>
+                            <div className="m-3">
+                              <div className="w-[140px] h-[150px] rounded-[10px]">
+                                <img
+                                  src={imgurl + items.Company_Logo}
+                                  alt=""
+                                  className="w-[100%]"
+                                />
+                              </div>
+                            </div>
 
-                                <div className="m-3 mt-[60px] flex justify-between items-center">
-                                  <h2 className="text-[white] text-[35px] font-[700]">
-                                    {items.Company_Name}
-                                  </h2>
+                            <div className="m-3 mt-[60px] flex justify-between items-center">
+                              <h2 className="text-[white] text-[35px] font-[700]">
+                                {items.Company_Name}
+                              </h2>
 
-                                  {/* <div className="text-[22px] text-[white] w-[30px] h-[30px] rounded-[50%] flex justify-center items-center">
-                       <FaShare />
-                     </div> */}
-                                </div>
+                              {/* <div className="text-[22px] text-[white] w-[30px] h-[30px] rounded-[50%] flex justify-center items-center">
+                          <FaShare />
+                        </div> */}
+                            </div>
 
-                                <div className=" mx-3 mt-[2px]">
-                                  <p className="text-[white] text-[18px]">
-                                    {items.Company_Description}
-                                  </p>
-                                </div>
+                            <div className=" mx-3 mt-[2px]">
+                              <p className="text-[white] text-[18px]">
+                                {items.Company_Description}
+                              </p>
+                            </div>
 
-                                <div className="px-3 mt-[30px] flex justify-between my-5">
-                                  <div className="text-[white] w-[49%] py-2 rounded-[10px] border-[1px] text-[20px]">
-                                    <p className="text-center">Equity</p>
-                                    <p className="text-center mt-2">
-                                      {items.Equity}%
-                                    </p>
-                                  </div>
+                            <div className="px-3 mt-[30px] flex justify-between my-5">
+                              <div className="text-[white] w-[49%] py-2 rounded-[10px] border-[1px] text-[20px]">
+                                <p className="text-center">Equity</p>
+                                <p className="text-center mt-2">
+                                  {items.Equity}%
+                                </p>
+                              </div>
 
-                                  <div className="text-[white] w-[49%] py-2 rounded-[10px] border-[1px] text-[20px]">
-                                  <p className="text-center">Funding Ask</p>
+                              <div className="text-[white] w-[49%] py-2 rounded-[10px] border-[1px] text-[20px]">
+                                <p className="text-center">Funding Ask</p>
                                 <p className="text-center mt-2 flex items-center justify-center">
                                   <FaRupeeSign /> {items.Funding_Ask}
                                 </p>
-                                  </div>
-                                </div>
                               </div>
                             </div>
+                          </div>
+                        </div>
                           </>
                         );
                       })}
@@ -149,7 +159,10 @@ export function ViewStartups() {
                   {getstartups.map((items, index) => {
                     return (
                       <>
-                        <div className="my-3 border-[1px] border-[black] bg-[#3d3d3d] rounded-[10px] w-[450px]">
+                        <div
+                          className="my-3 border-[1px] border-[black] bg-[#3d3d3d] rounded-[10px] w-[450px]"
+                          onClick={() => viewstartupprofile(items)}
+                        >
                           <div className="w-[100%] overflow-hidden relative">
                             <div className=" absolute right-[-75px] top-[-75px] z-10">
                               <img src={minimalist} alt="" />

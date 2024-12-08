@@ -1,8 +1,51 @@
+import axios from "axios";
+import { useFormik } from "formik";
 import React from "react";
 import { FaPhone } from "react-icons/fa";
 import { FaLocationPin, FaMessage } from "react-icons/fa6";
-
+import { toast, ToastContainer } from "react-toastify";
+import * as Yup from "yup";
 export function ContactUs1() {
+  let formik = useFormik({
+    initialValues: {
+      Name: "",
+      Email: "",
+      Phone: "",
+      Message: "",
+    },
+
+    validationSchema: Yup.object().shape({
+      Name: Yup.string().required("Name is required"),
+      Email: Yup.string().email("Invalid Email").required("Name is required"),
+      Phone: Yup.number()
+        .max(9999999999, "Invalid Phone")
+        .required("Phone is required"),
+      Message: Yup.string().required("Message is required"),
+    }),
+
+    onSubmit: () => {
+      insertdata(formik.values);
+    },
+  });
+
+  let notifysuccess = (success) => toast.success(success);
+  let notifyerror = (error) => toast.error(error);
+
+  let insertdata = (value) => {
+    axios
+      .post("http://localhost:5000/Contact-Us", value)
+      .then((res) => {
+        if (res.data.Status === 1) {
+          notifysuccess(res.data.Message);
+        } else {
+          notifyerror(res.data.Message);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <>
       <section className="landing_section bg-[white]">
@@ -55,40 +98,60 @@ export function ContactUs1() {
                   </div>
 
                   <div className="w-[43%] flex justify-center">
-                    <form className="w-[100%] text-start">
+                    <form className="w-[100%] text-start" onSubmit={formik.handleSubmit}>
                       <div className="w-[100%]">
                         <label>Name</label>
                         <input
                           type="text"
-                          className="w-[100%] py-2 rounded-[10px] border-[1px] border-[black] p-2 my-2"
+                          className="w-[100%] py-2 rounded-[10px] border-[1px] border-[black] p-2 mt-2"
+                          onChange={(e) =>
+                            formik.setFieldValue("Name", e.target.value)
+                          }
                         />
+                        <div className="text-[red]">{formik.errors.Name}</div>
                       </div>
 
                       <div className="w-[100%]">
                         <label>Email</label>
                         <input
                           type="email"
-                          className="w-[100%] py-2 rounded-[10px] border-[1px] border-[black] p-2 my-2"
+                          className="w-[100%] py-2 rounded-[10px] border-[1px] border-[black] p-2 mt-2"
+                          onChange={(e) =>
+                            formik.setFieldValue("Email", e.target.value)
+                          }
                         />
+                        <div className="text-[red]">{formik.errors.Email}</div>
                       </div>
 
                       <div className="w-[100%]">
                         <label>Phone</label>
                         <input
-                          type="text"
-                          className="w-[100%] py-2 rounded-[10px] border-[1px] border-[black] p-2 my-2"
+                          type="number"
+                          className="w-[100%] py-2 rounded-[10px] border-[1px] border-[black] p-2 mt-2"
+                          onChange={(e) =>
+                            formik.setFieldValue("Phone", e.target.value)
+                          }
                         />
+                        <div className="text-[red]">{formik.errors.Phone}</div>
                       </div>
 
                       <div className="w-[100%]">
                         <label>Message</label>
                         <textarea
-                          type="text"
-                          className="w-[100%] h-[200px] py-2 rounded-[10px] border-[1px] border-[black] p-2 my-2"
+                          className="w-[100%] h-[200px] py-2 rounded-[10px] border-[1px] border-[black] p-2 mt-2"
+                          onChange={(e) =>
+                            formik.setFieldValue("Message", e.target.value)
+                          }
                         />
+                        <div className="text-[red]">
+                          {formik.errors.Message}
+                        </div>
                       </div>
 
-                      <button className="my-5 w-[100%] rounded-[10px] text-[white] py-3 bg-[#e02708]">
+                      <button
+                        type="submit"
+                        className="my-5 w-[100%] rounded-[10px] text-[white] py-3 bg-[#e02708]"
+                      >
                         Submit
                       </button>
                     </form>
@@ -99,6 +162,7 @@ export function ContactUs1() {
           </section>
         </section>
       </section>
+      <ToastContainer />
     </>
   );
 }

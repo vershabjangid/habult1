@@ -48,6 +48,10 @@ export function DashRequests() {
     setrequests(data.filter((items) => items.All_Fields === value));
   };
 
+  let filteraccepted = (value) => {
+    setrequests(data.filter((items) => items.Status === value));
+  };
+
   let naviget = useNavigate();
   let viewprofile = (value) => {
     naviget("/view-profile", { state: value });
@@ -114,6 +118,15 @@ export function DashRequests() {
             <section className="w-[90%]">
               <section className="page_label w-[100%] my-2 rounded-[10px] p-2 text-[white] font-[600] text-[18px] text-end">
                 <div className="w-[100%]">
+                  <button
+                    className="bg-[#e02708] py-2 px-3 me-2 rounded-[10px]"
+                    onClick={() => {
+                      filteraccepted("Accept");
+                    }}
+                  >
+                    Accepted
+                  </button>
+
                   <button
                     className="bg-[#e02708] py-2 px-3 rounded-[10px]"
                     onClick={() => {
