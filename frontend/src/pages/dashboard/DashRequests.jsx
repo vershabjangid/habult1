@@ -16,7 +16,10 @@ export function DashRequests() {
         setdata(res.data);
         setrequests(
           res.data.filter(
-            (items) => items.Is_Verified === true && items.All_Fields === true
+            (items) =>
+              items.Is_Verified === true &&
+              items.All_Fields === true &&
+              items.Status == "false"
           )
         );
       })
@@ -30,27 +33,38 @@ export function DashRequests() {
   }, []);
 
   let filterdata = (value) => {
-    setrequests(data.filter((items) => items.Join_as.includes(value)));
-  };
-  let filterdataverified = (value) => {
     setrequests(
       data.filter(
-        (items) => items.Is_Verified === value && items.All_Fields === value
+        (items) =>
+          items.Join_as === value &&
+          items.Is_Verified === true &&
+          items.All_Fields === true &&
+          items.Status === 'Accept'
       )
     );
   };
 
-  let filterdataunverified = (value) => {
-    setrequests(data.filter((items) => items.Is_Verified === value));
+  let filterunverified = (value) => {
+    setrequests(
+      data.filter(
+        (items) =>
+          (items.Is_Verified === false && items.All_Fields === false) ||
+          (items.Is_Verified === true && items.All_Fields === false)
+      )
+    );
   };
 
-  let filterdataunfilled = (value) => {
-    setrequests(data.filter((items) => items.All_Fields === value));
+
+  let filtertrending = (value) => {
+    setrequests(
+      data.filter(
+        (items) =>
+          (items.Status === value)
+      )
+    );
   };
 
-  let filteraccepted = (value) => {
-    setrequests(data.filter((items) => items.Status === value));
-  };
+  
 
   let naviget = useNavigate();
   let viewprofile = (value) => {
@@ -74,8 +88,6 @@ export function DashRequests() {
       .catch((error) => {
         console.log(error);
       });
-
-    // value.preventDefault()
   };
   return (
     <>
@@ -83,7 +95,7 @@ export function DashRequests() {
         <section className="w-[100%] h-[100vh] fixed flex justify-center items-center bg-[#00000064]">
           <section className="w-[600px] border-[3px] p-[5px] py-[20px] rounded-[15px] bg-[white]">
             <h1 className="text-center text-[25px]">
-              Are you sure to want delete Industry
+              Are you sure to want delete
             </h1>
 
             <div className="flex justify-evenly my-[15px]">
@@ -119,56 +131,39 @@ export function DashRequests() {
               <section className="page_label w-[100%] my-2 rounded-[10px] p-2 text-[white] font-[600] text-[18px] text-end">
                 <div className="w-[100%]">
                   <button
-                    className="bg-[#e02708] py-2 px-3 me-2 rounded-[10px]"
-                    onClick={() => {
-                      filteraccepted("Accept");
-                    }}
+                    className="bg-[#e02708] py-2 px-3 mx-2 rounded-[10px]"
+                    onClick={() => viewrequests()}
                   >
-                    Accepted
+                    New Requests
                   </button>
 
                   <button
-                    className="bg-[#e02708] py-2 px-3 rounded-[10px]"
-                    onClick={() => {
-                      filterdataunfilled(false);
-                    }}
-                  >
-                    Un-filled Forms
-                  </button>
-
-                  <button
-                    className="bg-[#e02708] ms-2 py-2 px-3 rounded-[10px]"
-                    onClick={() => {
-                      filterdataunverified(false);
-                    }}
-                  >
-                    Un-verified Users
-                  </button>
-
-                  <button
-                    className="bg-[#e02708] py-2 px-3 rounded-[10px] ms-2"
-                    onClick={() => {
-                      filterdataverified(true);
-                    }}
-                  >
-                    verified Users
-                  </button>
-
-                  <button
-                    className="bg-[#e02708] py-2 px-3 rounded-[10px] ms-2"
-                    onClick={() => {
-                      filterdata("Member");
-                    }}
+                    className="bg-[#e02708] py-2 px-3 mx-2 rounded-[10px]"
+                    onClick={() => filterdata("Member")}
                   >
                     Members
                   </button>
+
                   <button
-                    className="bg-[#e02708] py-2 px-3 rounded-[10px] ms-2"
-                    onClick={() => {
-                      filterdata("Startup");
-                    }}
+                    className="bg-[#e02708] py-2 px-3 mx-2 rounded-[10px]"
+                    onClick={() => filterdata("Startup")}
                   >
                     Startups
+                  </button>
+
+                  <button
+                    className="bg-[#e02708] py-2 px-3 mx-2 rounded-[10px]"
+                    onClick={() => filtertrending('trending')}
+                  >
+                    Trending
+                  </button>
+                  
+
+                  <button
+                    className="bg-[#e02708] py-2 px-3 mx-2 rounded-[10px]"
+                    onClick={() => filterunverified(false)}
+                  >
+                    Un-Verified
                   </button>
                 </div>
               </section>

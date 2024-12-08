@@ -183,7 +183,7 @@ export function DashViewProfile() {
                               </button>
 
                               <button className="bg-[red] w-[150px] p-2 py-4 rounded-[10px] ms-2 items-center">
-                                Reject
+                                Refresh
                               </button>
                             </div>
                           </>
@@ -515,7 +515,7 @@ export function DashViewProfile() {
                               </button>
 
                               <button className="bg-[red] w-[150px] p-2 py-4 rounded-[10px] ms-2 items-center">
-                                Reject
+                                Trending
                               </button>
                             </div>
                           </>

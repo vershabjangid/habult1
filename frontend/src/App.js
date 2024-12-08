@@ -27,6 +27,7 @@ import { ForgotPassword } from './pages/web/Login/ForgotPassword';
 import { VerifyForgot } from './pages/web/Login/VerifyForgot';
 import { ChangePassword } from './pages/web/Login/ChangePassword';
 import { ViewProfileStartups } from './pages/web/ViewProfileStartups';
+import { ForgotPrivate } from './pages/private/ForgotPrivate';
 
 function App() {
   return (
@@ -38,7 +39,9 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/forgot-password' element={<ForgotPassword />} />
           <Route path='/otp-verification' element={<VerifyForgot />} />
-          <Route path='/change-password' element={<ChangePassword />} />
+          <Route element={<ForgotPrivate />}>
+            <Route path='/change-password' element={<ChangePassword />} />
+          </Route>
           <Route path='/register' element={<Register />} />
           <Route path='/register2' element={<Register2 />} />
           <Route path='/register-otp' element={<RegisterOtp />} />
@@ -48,15 +51,15 @@ function App() {
           <Route path='/startup-form' element={<StartupForm />} />
           <Route path='/startup-form2' element={<StartupLogin2 />} />
           <Route path='/request-confirmed' element={<RegestConfirmed />} />
-          <Route path='/user-panel' element={<ViewStartups />} />
-          <Route path='/startup-profile' element={<ViewProfileStartups />} />
 
           {/* website */}
           <Route path='/' element={<Landing />} />
           <Route path='/about' element={<AboutUs />} />
           <Route path='/contact-us' element={<ContactUs />} />
+          <Route path='/user-panel' element={<ViewStartups />} />
+          <Route path='/startup-profile' element={<ViewProfileStartups />} />
           {/* Dashboard */}
-          <Route path='/dashboard-login' element={<DashboardLogin />} />
+          {/* <Route path='/dashboard-login' element={<DashboardLogin />} />
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/home' element={<DashHome />} />
           <Route path='/industry' element={<DashIndustry />} />
@@ -64,7 +67,7 @@ function App() {
           <Route path='/faq' element={<DashFaq />} />
           <Route path='/update-faq' element={<UpdateDashFaq />} />
           <Route path='/requests' element={<DashRequests />} />
-          <Route path='/view-profile' element={<DashViewProfile />} />
+          <Route path='/view-profile' element={<DashViewProfile />} /> */}
         </Routes>
       </BrowserRouter>
     </>

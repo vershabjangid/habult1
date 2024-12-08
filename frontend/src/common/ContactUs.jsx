@@ -33,7 +33,7 @@ export function ContactUs1() {
 
   let insertdata = (value) => {
     axios
-      .post("http://localhost:5000/Contact-Us", value)
+      .post("https://api.hivexv.com/Contact-Us", value)
       .then((res) => {
         if (res.data.Status === 1) {
           notifysuccess(res.data.Message);

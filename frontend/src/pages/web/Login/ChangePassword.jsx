@@ -30,7 +30,11 @@ export function ChangePassword() {
   let naviget = useNavigate();
   let updatepassword = (value) => {
     axios
-      .put("https://api.hivexv.com/change-password", value)
+      .put("https://api.hivexv.com/change-password", value,{
+        headers : {
+          Authorization : JSON.parse(localStorage.getItem('webtoken'))
+        }
+      })
       .then((res) => {
         if (res.data.Status === 1) {
           naviget("/");

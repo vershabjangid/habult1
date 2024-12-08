@@ -16,7 +16,7 @@ export function ViewStartups() {
     axios
       .get("https://api.hivexv.com/view-allstartups", {
         headers: {
-          Authorization: JSON.parse(localStorage.getItem("webtoken")),
+          Authorization: JSON.parse(localStorage.getItem("logintoken")),
         },
       })
       .then((res) => {
