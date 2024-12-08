@@ -54,6 +54,7 @@ exports.register = async (req, res) => {
         OTP_Value: Math.floor(1000 + Math.random() * 8000),
         Is_Verified: false,
         All_Fields: false,
+        Is_Trending: false,
         Status: false
     }
 
@@ -167,7 +168,7 @@ exports.loginform = async (req, res) => {
         Email: req.body.Email,
         Password: req.body.Password,
     }
-    let getdata = await registermodel.findOne({ Email: data.Email, Password: data.Password, All_Fields: true, Status: 'Accept',Status : 'trending' })
+    let getdata = await registermodel.findOne({ Email: data.Email, Password: data.Password, All_Fields: true, Status: 'Accept' })
 
     if (getdata != null) {
         let newtoken;
