@@ -165,9 +165,10 @@ exports.viewregister = async (req, res) => {
 exports.loginform = async (req, res) => {
     let data = {
         Email: req.body.Email,
-        Password: req.body.Password
+        Password: req.body.Password,
+        Status: 'Accept' || 'trending'
     }
-    let getdata = await registermodel.findOne({ Email: data.Email, Password: data.Password, All_Fields: true, Status: 'Accept' || 'trending' })
+    let getdata = await registermodel.findOne({ Email: data.Email, Password: data.Password, All_Fields: true, Status : data.Status })
 
     if (getdata != null) {
         let newtoken;
