@@ -8,7 +8,28 @@ const { addindustry, viewindustry, updateindustry, deleteindustry, viewindustryw
 const { addfaq, viewfaq, updatefaq, deletefaq } = require('../../controller/admin/faqcontroller')
 require('dotenv').config()
 let WEBTOKEN = process.env.WEBTOKEN
+let ADMINTOKEN = process.env.ADMINTOKEN
 
+
+
+
+
+let verifyadmintoken = (req, res, next) => {
+    let token = req.headers['authorization']
+    if (token) {
+        jwt.verify(token, ADMINTOKEN, (err, valid) => {
+            if (err) {
+                res.send("please enter the valid token")
+            }
+            else {
+                next();
+            }
+        })
+    }
+    else {
+        res.send("please enter the token")
+    }
+}
 
 
 
@@ -50,15 +71,15 @@ const upload = multer({ storage: storage }).any('Bank_Proof', 'PanCard', 'Aadhaa
 
 
 // update all are work with token industry
-Extrafunctionality.post('/add-industry', addindustry)
-Extrafunctionality.get('/view-industry', viewindustry)
+Extrafunctionality.post('/add-industry', verifyadmintoken, addindustry)
+Extrafunctionality.get('/view-industry', verifyadmintoken, viewindustry)
 Extrafunctionality.get('/view-web-industry', verifytoken, viewindustryweb)
-Extrafunctionality.put('/update-industry', updateindustry)
-Extrafunctionality.delete('/delete-industry', deleteindustry)
+Extrafunctionality.put('/update-industry', verifyadmintoken, updateindustry)
+Extrafunctionality.delete('/delete-industry', verifyadmintoken, deleteindustry)
 
 
-Extrafunctionality.post('/add-faq', addfaq)
+Extrafunctionality.post('/add-faq', verifyadmintoken, addfaq)
 Extrafunctionality.get('/view-faq', viewfaq)
-Extrafunctionality.put('/update-faq', updatefaq)
-Extrafunctionality.delete('/delete-faq', deletefaq)
+Extrafunctionality.put('/update-faq', verifyadmintoken, updatefaq)
+Extrafunctionality.delete('/delete-faq', verifyadmintoken, deletefaq)
 module.exports = Extrafunctionality;

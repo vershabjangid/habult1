@@ -64,7 +64,7 @@ function App() {
           </Route>
           {/* Dashboard */}
           <Route path='/dashboard-login' element={<DashboardLogin />} />
-          {/* <Route element={<DashPrivate />}> */}
+          <Route element={<DashPrivate />}>
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/home' element={<DashHome />} />
             <Route path='/industry' element={<DashIndustry />} />
@@ -73,7 +73,7 @@ function App() {
             <Route path='/update-faq' element={<UpdateDashFaq />} />
             <Route path='/requests' element={<DashRequests />} />
             <Route path='/view-profile' element={<DashViewProfile />} />
-          {/* </Route> */}
+          </Route>
         </Routes>
       </BrowserRouter>
     </>

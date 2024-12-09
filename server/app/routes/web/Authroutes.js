@@ -4,6 +4,7 @@ let authroutes = express.Router()
 let jwt = require('jsonwebtoken')
 require('dotenv').config()
 let WEBTOKEN = process.env.WEBTOKEN
+let ADMINTOKEN = process.env.ADMINTOKEN
 
 
 

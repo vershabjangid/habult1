@@ -21,9 +21,9 @@ export function DashboardLogin() {
   let notifyerror = (error) => toast.error(error);
 
   let insertdata = (value) => {
-    axios.post("http://localhost:5000/Admin_Login", value).then((res) => {
+    axios.post("http://localhost:5000/admin-login", value).then((res) => {
       if (res.data.Status === 1) {
-        localStorage.setItem("admintoken", JSON.stringify(res.data.admintoken));
+        localStorage.setItem("admintoken", JSON.stringify(res.data.Token));
         naviget("/dashboard");
       } else {
         notifyerror(res.data.Message);

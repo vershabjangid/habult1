@@ -20,21 +20,31 @@ export function DashIndustry() {
   let notifysuccess = (success) => toast.success(success);
 
   let insertindustry = (value) => {
-    axios.post("https://api.hivexv.com/add-industry", value).then((res) => {
-      if (res.data.Status === 1) {
-        notifysuccess(res.data.Message);
-        viewindustry();
-      } else {
-        notifyerror(res.data.Message);
-      }
-    });
+    axios
+      .post("https://api.hivexv.com/add-industry", value, {
+        headers: {
+          Authorization: JSON.parse(localStorage.getItem("admintoken")),
+        },
+      })
+      .then((res) => {
+        if (res.data.Status === 1) {
+          notifysuccess(res.data.Message);
+          viewindustry();
+        } else {
+          notifyerror(res.data.Message);
+        }
+      });
   };
 
   let [getindustry, setgetindustry] = useState([]);
 
   let viewindustry = () => {
     axios
-      .get("https://api.hivexv.com/view-industry")
+      .get("https://api.hivexv.com/view-industry", {
+        headers: {
+          Authorization: JSON.parse(localStorage.getItem("admintoken")),
+        },
+      })
       .then((res) => {
         setgetindustry(res.data);
       })
@@ -62,7 +72,15 @@ export function DashIndustry() {
     };
 
     axios
-      .delete("https://api.hivexv.com/delete-industry", { data })
+      .delete(
+        "https://api.hivexv.com/delete-industry",
+        { data },
+        {
+          headers: {
+            Authorization: JSON.parse(localStorage.getItem("admintoken")),
+          },
+        }
+      )
       .then((res) => {
         notifysuccess(res.data.Message);
         viewindustry();
