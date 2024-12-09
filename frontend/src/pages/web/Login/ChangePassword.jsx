@@ -32,7 +32,7 @@ export function ChangePassword() {
     axios
       .put("https://api.hivexv.com/change-password", value,{
         headers : {
-          Authorization : JSON.parse(localStorage.getItem('webtoken'))
+          Authorization : JSON.parse(localStorage.getItem('forgottoken'))
         }
       })
       .then((res) => {

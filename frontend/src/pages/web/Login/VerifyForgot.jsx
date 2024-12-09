@@ -41,7 +41,7 @@ export function VerifyForgot() {
       .post("https://api.hivexv.com/verify-register", value)
       .then((res) => {
         if (res.data.Status === true) {
-          localStorage.setItem("webtoken", JSON.stringify(res.data.Token));
+          localStorage.setItem("forgottoken", JSON.stringify(res.data.Token));
           naviget("/change-password", { state: { Email: data.Email } });
         } else {
           notifyerror(res.data.Message);

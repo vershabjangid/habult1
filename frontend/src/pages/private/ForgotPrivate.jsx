@@ -2,7 +2,7 @@ import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
 
 export function ForgotPrivate() {
-  let forgotprivate = JSON.parse(localStorage.getItem("webtoken"));
+  let forgotprivate = JSON.parse(localStorage.getItem("forgottoken"));
   console.log(forgotprivate);
   if (
     forgotprivate != "" &&
