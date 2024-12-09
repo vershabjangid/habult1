@@ -14,7 +14,7 @@ exports.dashlogin = (req, res) => {
         Password: req.body.Password
     }
 
-    if (data.Email === EMAIL1 && data.Password === PASSWORD1 || data.Email === EMAIL2 && data.Password === PASSWORD2) {
+    if (req.body.Email == EMAIL1 && data.Password == PASSWORD1 || data.Email == EMAIL2 && data.Password == PASSWORD2) {
         let newtoken;
         jwt.sign({ newtoken }, ADMINTOKEN, (error, value) => {
             res.send({
