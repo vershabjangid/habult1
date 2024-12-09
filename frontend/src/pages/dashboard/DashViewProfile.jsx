@@ -57,9 +57,8 @@ export function DashViewProfile() {
         Status: "Accept",
       };
       axios.put("https://api.hivexv.com/update-status", data);
-      axios.put("https://api.hivexv.com/update-startup-status", data);
       axios
-        .put("https://api.hivexv.com//update-investor-status", data)
+        .put("https://api.hivexv.com/update-investor-status", data)
         .then((res) => {
           if (res.data.Status === 1) {
             naviget("/requests");
