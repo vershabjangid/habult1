@@ -4,6 +4,7 @@ const multer = require('multer')
 let path = require('path')
 let investorroutes = express.Router()
 let jwt = require('jsonwebtoken')
+const { viewadmininvestor } = require('../../controller/admin/AdminInvestor')
 require('dotenv').config()
 let WEBTOKEN = process.env.WEBTOKEN
 
@@ -45,5 +46,7 @@ investorroutes.post('/add-investors', upload, verifytoken, investorform);
 investorroutes.get('/view-investors', upload, viewinvestor);
 investorroutes.delete('/delete-investors', upload, deleteform);
 
+
+investorroutes.get('/view-admininvestors', upload, viewadmininvestor);
 
 module.exports = investorroutes

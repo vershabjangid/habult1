@@ -9,6 +9,10 @@ exports.investorform = async (req, res) => {
     console.log(req.body)
     console.log(req.files)
     let data = {
+        FirstName: req.body.FirstName,
+        LastName: req.body.LastName,
+        Phone: req.body.Phone,
+        Status: false,
         AadhaarCard: req.files[0].filename,
         Address: req.body.Address,
         Email: req.body.Email,

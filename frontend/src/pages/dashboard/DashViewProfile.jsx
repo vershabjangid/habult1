@@ -17,7 +17,7 @@ export function DashViewProfile() {
 
   let viewdata = () => {
     axios
-      .get("https://api.hivexv.com/view-investors")
+      .get("https://api.hivexv.com/view-admininvestors")
       .then((res) => {
         setimgurl(res.data.imgurl);
         setregisterdata(

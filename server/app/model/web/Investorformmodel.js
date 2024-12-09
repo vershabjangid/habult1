@@ -2,6 +2,23 @@ let mongoose = require('mongoose')
 
 
 let investorformschema = mongoose.Schema({
+    FirstName: {
+        type: String,
+        required: true
+    },
+    LastName: {
+        type: String,
+        required: true
+    },
+    Phone: {
+        type: Number,
+        required: true,
+        unique: true
+    },
+    Status: {
+        type: String,
+        required: true
+    },
     AadhaarCard: {
         type: String,
         required: true

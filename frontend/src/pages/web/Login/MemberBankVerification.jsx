@@ -68,7 +68,11 @@ export function MemberBankVerification() {
       All_Fields: true,
     };
     axios
-      .put("https://api.hivexv.com/change-all-field", data)
+      .put("https://api.hivexv.com/change-all-field", data, {
+        headers: {
+          Authorization: JSON.parse(localStorage.getItem("webtoken")),
+        },
+      })
       .then((res) => {
         if (res.data.Status === 1) {
           naviget("/request-confirmed");
