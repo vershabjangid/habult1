@@ -28,6 +28,7 @@ import { VerifyForgot } from './pages/web/Login/VerifyForgot';
 import { ChangePassword } from './pages/web/Login/ChangePassword';
 import { ViewProfileStartups } from './pages/web/ViewProfileStartups';
 import { ForgotPrivate } from './pages/private/ForgotPrivate';
+import { WebPrivate } from './pages/private/WebPrivate';
 
 function App() {
   return (
@@ -56,10 +57,12 @@ function App() {
           <Route path='/' element={<Landing />} />
           <Route path='/about' element={<AboutUs />} />
           <Route path='/contact-us' element={<ContactUs />} />
-          <Route path='/user-panel' element={<ViewStartups />} />
-          <Route path='/startup-profile' element={<ViewProfileStartups />} />
+          <Route element={<WebPrivate />}>
+            <Route path='/user-panel' element={<ViewStartups />} />
+            <Route path='/startup-profile' element={<ViewProfileStartups />} />
+          </Route>
           {/* Dashboard */}
-          {/* <Route path='/dashboard-login' element={<DashboardLogin />} />
+          <Route path='/dashboard-login' element={<DashboardLogin />} />
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/home' element={<DashHome />} />
           <Route path='/industry' element={<DashIndustry />} />
@@ -67,7 +70,7 @@ function App() {
           <Route path='/faq' element={<DashFaq />} />
           <Route path='/update-faq' element={<UpdateDashFaq />} />
           <Route path='/requests' element={<DashRequests />} />
-          <Route path='/view-profile' element={<DashViewProfile />} /> */}
+          <Route path='/view-profile' element={<DashViewProfile />} />
         </Routes>
       </BrowserRouter>
     </>
