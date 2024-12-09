@@ -62,9 +62,8 @@ exports.viewinvestor = async (req, res) => {
 }
 
 exports.deleteform = async (req, res) => {
-    console.log(req.body)
 
-    let deleteone = await registermodel.deleteOne({ _id: req.body._id })
+    let deleteone = await registermodel.deleteOne({Email : req.body.Email})
         .then(() => {
             res.send({
                 Status: 1,
@@ -90,17 +89,17 @@ exports.deleteinvestorform = async (req, res) => {
     let fileunlink2 = fs.unlinkSync(`${dirpath}/${req.body.Bank_Proof}`)
 
     let deleteone = await investorformmodel.deleteOne({ _id: req.body._id })
-    .then(() => {
-        res.send({
-            Status: 1,
-            Message: "Data Deleted Successfully"
+        .then(() => {
+            res.send({
+                Status: 1,
+                Message: "Data Deleted Successfully"
+            })
         })
-    })
-    .catch((error) => {
-        res.send({
-            Status: 0,
-            Message: "Data Missing"
+        .catch((error) => {
+            res.send({
+                Status: 0,
+                Message: "Data Missing"
+            })
         })
-    })
-    
+
 }
