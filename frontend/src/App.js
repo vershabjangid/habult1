@@ -29,6 +29,7 @@ import { ChangePassword } from './pages/web/Login/ChangePassword';
 import { ViewProfileStartups } from './pages/web/ViewProfileStartups';
 import { ForgotPrivate } from './pages/private/ForgotPrivate';
 import { WebPrivate } from './pages/private/WebPrivate';
+import { DashPrivate } from './pages/private/DashPrivate';
 
 function App() {
   return (
@@ -63,14 +64,16 @@ function App() {
           </Route>
           {/* Dashboard */}
           <Route path='/dashboard-login' element={<DashboardLogin />} />
-          <Route path='/dashboard' element={<Dashboard />} />
-          <Route path='/home' element={<DashHome />} />
-          <Route path='/industry' element={<DashIndustry />} />
-          <Route path='/update-industry' element={<UpdateDashIndustry />} />
-          <Route path='/faq' element={<DashFaq />} />
-          <Route path='/update-faq' element={<UpdateDashFaq />} />
-          <Route path='/requests' element={<DashRequests />} />
-          <Route path='/view-profile' element={<DashViewProfile />} />
+          {/* <Route element={<DashPrivate />}> */}
+            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/home' element={<DashHome />} />
+            <Route path='/industry' element={<DashIndustry />} />
+            <Route path='/update-industry' element={<UpdateDashIndustry />} />
+            <Route path='/faq' element={<DashFaq />} />
+            <Route path='/update-faq' element={<UpdateDashFaq />} />
+            <Route path='/requests' element={<DashRequests />} />
+            <Route path='/view-profile' element={<DashViewProfile />} />
+          {/* </Route> */}
         </Routes>
       </BrowserRouter>
     </>

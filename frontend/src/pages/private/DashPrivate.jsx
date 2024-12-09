@@ -1,8 +1,8 @@
 import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
 
-export function WebPrivate() {
-  let forgotprivate = JSON.parse(localStorage.getItem("logintoken"));
+export function DashPrivate() {
+  let forgotprivate = JSON.parse(localStorage.getItem("admintoken"));
   console.log(forgotprivate);
   if (
     forgotprivate !== "" &&
@@ -11,6 +11,6 @@ export function WebPrivate() {
   ) {
     return <Outlet />;
   } else {
-    return <Navigate to={"/login"} />;
+    return <Navigate to={"/dashboard-login"} />;
   }
 }
