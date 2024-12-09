@@ -48,7 +48,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage }).any('Bank_Proof', 'PanCard', 'AadhaarCard')
 
 
-profileroutes.put('/update- status', updateprofilestatus)
+profileroutes.put('/update-status', updateprofilestatus)
 
 
 module.exports = profileroutes
