@@ -21,7 +21,7 @@ export function DashboardLogin() {
   let notifyerror = (error) => toast.error(error);
 
   let insertdata = (value) => {
-    axios.post("http://localhost:5000/admin-login", value).then((res) => {
+    axios.post("https://api.hivexv.com/admin-login", value).then((res) => {
       if (res.data.Status === 1) {
         localStorage.setItem("admintoken", JSON.stringify(res.data.Token));
         naviget("/dashboard");
