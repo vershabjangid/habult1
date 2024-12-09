@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { Sidebar } from "../../common/Sidebar";
-import axios from "axios";
+import axios, { toFormData } from "axios";
 import { useNavigate } from "react-router-dom";
 
 export function DashRequests() {
@@ -70,17 +70,18 @@ export function DashRequests() {
   let [deletemodal, setdeletemodal] = useState(false);
   let [deletedata, setdeletedata] = useState("");
 
-  let deleteindustry = (value) => {
+  let deleteinvestor = (value) => {
     let data = {
       _id: value._id,
     };
 
+    console.log(value)
+
     axios
-      .delete("https://api.hivexv.com/delete-investors", {
-        data,
+      .delete("http://localhost:5000/delete-investors",{data : value}, {
         headers: {
           Authorization: JSON.parse(localStorage.getItem("admintoken")),
-        },
+        }
       })
       .then((res) => {
         notifysuccess(res.data.Message);
@@ -109,7 +110,7 @@ export function DashRequests() {
               <button
                 className="bg-[green] w-[47%] text-[20px] py-[10px] rounded text-white"
                 onClick={() =>
-                  deleteindustry(deletedata) || setdeletemodal(false)
+                  deleteinvestor(deletedata) || setdeletemodal(false)
                 }
               >
                 Delete

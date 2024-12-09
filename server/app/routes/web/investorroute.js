@@ -1,5 +1,5 @@
 let express = require('express')
-const { investorform, viewinvestor, deleteform } = require('../../controller/web/Investor')
+const { investorform, viewinvestor, deleteform, deleteinvestorform } = require('../../controller/web/Investor')
 const multer = require('multer')
 let path = require('path')
 let investorroutes = express.Router()
@@ -64,6 +64,7 @@ const upload = multer({ storage: storage }).any('Bank_Proof', 'PanCard', 'Aadhaa
 investorroutes.post('/add-investors', upload, verifytoken, investorform);
 investorroutes.get('/view-investors', verifyadmintoken, upload, viewinvestor);
 investorroutes.delete('/delete-investors', upload, deleteform);
+investorroutes.delete('/delete-investors-profile', upload, deleteinvestorform);
 
 
 investorroutes.get('/view-admininvestors', upload, verifyadmintoken, viewadmininvestor);

@@ -1,6 +1,7 @@
 const investorformmodel = require("../../model/web/Investorformmodel")
 let fs = require('fs')
 let path = require('path')
+const registermodel = require("../../model/web/Authmodel")
 let dirpath = path.join(__dirname, '../../../uploads')
 console.log(dirpath)
 
@@ -61,16 +62,17 @@ exports.viewinvestor = async (req, res) => {
 }
 
 exports.deleteform = async (req, res) => {
+    console.log(req.body)
 
-    let deleteone = await industrymodel.deleteOne({ _id: req.body._id })
+    let deleteone = await registermodel.deleteOne({ _id: req.body._id })
         .then(() => {
             res.send({
                 Status: 1,
                 Message: "Data Deleted Successfully"
             })
-            let fileunlink = fs.unlinkSync(`${dirpath}/${req.files[0].filename}`)
-            let fileunlink1 = fs.unlinkSync(`${dirpath}/${req.files[1].filename}`)
-            let fileunlink2 = fs.unlinkSync(`${dirpath}/${req.files[2].filename}`)
+            // let fileunlink = fs.unlinkSync(`${dirpath}/${req.files[0].filename}`)
+            // let fileunlink1 = fs.unlinkSync(`${dirpath}/${req.files[1].filename}`)
+            // let fileunlink2 = fs.unlinkSync(`${dirpath}/${req.files[2].filename}`)
         })
         .catch((error) => {
             res.send({
@@ -79,4 +81,26 @@ exports.deleteform = async (req, res) => {
             })
         })
 
+}
+
+exports.deleteinvestorform = async (req, res) => {
+    console.log(req.body)
+    let fileunlink = fs.unlinkSync(`${dirpath}/${req.body.AadhaarCard}`)
+    let fileunlink1 = fs.unlinkSync(`${dirpath}/${req.body.PanCard}`)
+    let fileunlink2 = fs.unlinkSync(`${dirpath}/${req.body.Bank_Proof}`)
+
+    let deleteone = await investorformmodel.deleteOne({ _id: req.body._id })
+    .then(() => {
+        res.send({
+            Status: 1,
+            Message: "Data Deleted Successfully"
+        })
+    })
+    .catch((error) => {
+        res.send({
+            Status: 0,
+            Message: "Data Missing"
+        })
+    })
+    
 }

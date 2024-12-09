@@ -19,7 +19,7 @@ export function DashViewProfile() {
     axios
       .get("https://api.hivexv.com/view-admininvestors", {
         headers: {
-          Authorization: JSON.parse(localStorage.getItem("webtoken")),
+          Authorization: JSON.parse(localStorage.getItem("admintoken")),
         },
       })
       .then((res) => {
@@ -37,7 +37,7 @@ export function DashViewProfile() {
     axios
       .get("https://api.hivexv.com/view-adminstartup", {
         headers: {
-          Authorization: JSON.parse(localStorage.getItem("webtoken")),
+          Authorization: JSON.parse(localStorage.getItem("admintoken")),
         },
       })
       .then((res) => {
@@ -107,8 +107,71 @@ export function DashViewProfile() {
         });
     }
   };
+
+  let [deletemodal, setdeletemodal] = useState(false);
+  let [deletedata, setdeletedata] = useState("");
+
+  let notifysuccess = (success) => toast.success(success);
+
+  let deleteinvestor = (value) => {
+    console.log(value);
+
+    axios.delete(
+      "https://api.hivexv.com/delete-investors",
+      { data: value },
+      {
+        headers: {
+          Authorization: JSON.parse(localStorage.getItem("admintoken")),
+        },
+      }
+    )
+    axios
+      .delete(
+        "https://api.hivexv.com/delete-investors-profile",
+        { data: value },
+        {
+          headers: {
+            Authorization: JSON.parse(localStorage.getItem("admintoken")),
+          },
+        }
+      )
+      .then((res) => {
+        notifysuccess(res.data.Message);
+        naviget('/requests')
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <>
+      {deletemodal ? (
+        <section className="w-[100%] h-[100vh] fixed flex justify-center items-center bg-[#00000064]">
+          <section className="w-[600px] border-[3px] p-[5px] py-[20px] rounded-[15px] bg-[white]">
+            <h1 className="text-center text-[25px]">
+              Are you sure to want delete
+            </h1>
+
+            <div className="flex justify-evenly my-[15px]">
+              <button
+                className="bg-[red] w-[47%] text-[20px] py-[10px] rounded text-white"
+                onClick={() => setdeletemodal(false)}
+              >
+                Cancel
+              </button>
+              <button
+                className="bg-[green] w-[47%] text-[20px] py-[10px] rounded text-white"
+                onClick={() =>
+                  deleteinvestor(deletedata) || setdeletemodal(false)
+                }
+              >
+                Delete
+              </button>
+            </div>
+          </section>
+        </section>
+      ) : null}
+
       <section className="main border-[1px] border-[black] bg-[black]">
         <section className="dashboard_inner w-[100%] flex justify-between">
           <Sidebar />
@@ -224,8 +287,13 @@ export function DashViewProfile() {
                                 Accept
                               </button>
 
-                              <button className="bg-[red] w-[150px] p-2 py-4 rounded-[10px] ms-2 items-center">
-                                Refresh
+                              <button
+                                className="bg-[red] w-[150px] p-2 py-4 rounded-[10px] ms-2 items-center"
+                                onClick={() =>
+                                  setdeletedata(items) || setdeletemodal(true)
+                                }
+                              >
+                                Delete
                               </button>
                             </div>
                           </>
