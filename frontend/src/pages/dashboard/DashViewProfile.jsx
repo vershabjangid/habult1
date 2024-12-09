@@ -17,7 +17,11 @@ export function DashViewProfile() {
 
   let viewdata = () => {
     axios
-      .get("https://api.hivexv.com/view-admininvestors")
+      .get("https://api.hivexv.com/view-admininvestors", {
+        headers: {
+          Authorization: JSON.parse(localStorage.getItem("webtoken")),
+        },
+      })
       .then((res) => {
         setimgurl(res.data.imgurl);
         setregisterdata(
@@ -31,7 +35,11 @@ export function DashViewProfile() {
 
   let viewstartup = () => {
     axios
-      .get("https://api.hivexv.com/view-adminstartup")
+      .get("https://api.hivexv.com/view-adminstartup", {
+        headers: {
+          Authorization: JSON.parse(localStorage.getItem("webtoken")),
+        },
+      })
       .then((res) => {
         setimgurl(res.data.imgurl);
         setregisterdatastartpus(
@@ -56,9 +64,17 @@ export function DashViewProfile() {
         Email: value.Email,
         Status: "Accept",
       };
-      axios.put("https://api.hivexv.com/update-status", data);
+      axios.put("https://api.hivexv.com/update-status", data, {
+        headers: {
+          Authorization: JSON.parse(localStorage.getItem("admintoken")),
+        },
+      });
       axios
-        .put("https://api.hivexv.com/update-investor-status", data)
+        .put("https://api.hivexv.com/update-investor-status", data, {
+          headers: {
+            Authorization: JSON.parse(localStorage.getItem("admintoken")),
+          },
+        })
         .then((res) => {
           if (res.data.Status === 1) {
             naviget("/requests");
@@ -71,9 +87,17 @@ export function DashViewProfile() {
         Email: value.Email,
         Status: "Accept",
       };
-      axios.put("https://api.hivexv.com/update-status", data);
+      axios.put("https://api.hivexv.com/update-status", data, {
+        headers: {
+          Authorization: JSON.parse(localStorage.getItem("admintoken")),
+        },
+      });
       axios
-        .put("https://api.hivexv.com/update-startup-status", data)
+        .put("https://api.hivexv.com/update-startup-status", data, {
+          headers: {
+            Authorization: JSON.parse(localStorage.getItem("admintoken")),
+          },
+        })
         .then((res) => {
           if (res.data.Status === 1) {
             naviget("/requests");

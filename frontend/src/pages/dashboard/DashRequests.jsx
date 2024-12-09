@@ -11,7 +11,11 @@ export function DashRequests() {
   let [data, setdata] = useState([]);
   let viewrequests = () => {
     axios
-      .get("https://api.hivexv.com/view-register")
+      .get("https://api.hivexv.com/view-register", {
+        headers: {
+          Authorization: JSON.parse(localStorage.getItem("admintoken")),
+        },
+      })
       .then((res) => {
         setdata(res.data);
         setrequests(
@@ -39,7 +43,7 @@ export function DashRequests() {
           items.Join_as === value &&
           items.Is_Verified === true &&
           items.All_Fields === true &&
-          items.Status === 'Accept'
+          items.Status === "Accept"
       )
     );
   };
@@ -54,17 +58,9 @@ export function DashRequests() {
     );
   };
 
-
   let filtertrending = (value) => {
-    setrequests(
-      data.filter(
-        (items) =>
-          (items.Status === value)
-      )
-    );
+    setrequests(data.filter((items) => items.Status === value));
   };
-
-  
 
   let naviget = useNavigate();
   let viewprofile = (value) => {
@@ -80,7 +76,12 @@ export function DashRequests() {
     };
 
     axios
-      .delete("https://api.hivexv.com/delete-investors", { data })
+      .delete("https://api.hivexv.com/delete-investors", {
+        data,
+        headers: {
+          Authorization: JSON.parse(localStorage.getItem("admintoken")),
+        },
+      })
       .then((res) => {
         notifysuccess(res.data.Message);
         viewrequests();
@@ -153,11 +154,10 @@ export function DashRequests() {
 
                   <button
                     className="bg-[#e02708] py-2 px-3 mx-2 rounded-[10px]"
-                    onClick={() => filtertrending('trending')}
+                    onClick={() => filtertrending("trending")}
                   >
                     Trending
                   </button>
-                  
 
                   <button
                     className="bg-[#e02708] py-2 px-3 mx-2 rounded-[10px]"

@@ -8,7 +8,7 @@ const { addindustry, viewindustry, updateindustry, deleteindustry, viewindustryw
 const { addfaq, viewfaq, updatefaq, deletefaq } = require('../../controller/admin/faqcontroller')
 const { updateprofilestatus } = require('../../controller/admin/ProfileController')
 require('dotenv').config()
-let WEBTOKEN = process.env.WEBTOKEN
+let ADMINTOKEN = process.env.ADMINTOKEN
 
 
 
@@ -17,7 +17,7 @@ let WEBTOKEN = process.env.WEBTOKEN
 let verifytoken = (req, res, next) => {
     let token = req.headers['authorization']
     if (token) {
-        jwt.verify(token, WEBTOKEN, (err, valid) => {
+        jwt.verify(token, ADMINTOKEN, (err, valid) => {
             if (err) {
                 res.send("please enter the valid token")
             }
@@ -48,7 +48,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage }).any('Bank_Proof', 'PanCard', 'AadhaarCard')
 
 
-profileroutes.put('/update-status', updateprofilestatus)
+profileroutes.put('/update-status',verifytoken, updateprofilestatus)
 
 
 module.exports = profileroutes
