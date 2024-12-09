@@ -17,6 +17,9 @@ export function MemberBankVerification() {
 
   let formik = useFormik({
     initialValues: {
+      FirstName: data.FirstName,
+      LastName: data.LastName,
+      Phone: data.Phone,  
       AadhaarCard: data.AadhaarCard,
       Address: data.Address,
       Email: data.Email,

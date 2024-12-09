@@ -13,6 +13,9 @@ export function MemberTerms() {
   let formik = useFormik({
     initialValues: {
       Email: data.Email,
+      FirstName: data.FirstName,
+      LastName: data.LastName,
+      Phone: data.Phone,
       All_Instructions: "",
       TermsAndConditions: "",
     },

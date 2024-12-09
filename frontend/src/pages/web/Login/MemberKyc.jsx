@@ -15,6 +15,9 @@ export function MemberKyc() {
   let formik = useFormik({
     initialValues: {
       Email: data.Email,
+      FirstName: data.FirstName,
+      LastName: data.LastName,
+      Phone: data.Phone,  
       AadhaarCard: "",
       PanCard: "",
       Address: "",

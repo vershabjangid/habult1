@@ -51,19 +51,38 @@ export function DashViewProfile() {
   let notifyerror = (error) => toast.error(error);
   let naviget = useNavigate();
   let updatestatus = (value) => {
-    let data = {
-      Email: value.Email,
-      Status: "Accept",
-    };
-    axios.put("https://api.hivexv.com/update-status", data);
-    axios.put("https://api.hivexv.com/update-startup-status", data)
-      .then((res) => {
-        if (res.data.Status === 1) {
-          naviget("/requests");
-        } else {
-          notifyerror(res.data.Message);
-        }
-      });
+    if (data.Join_as === "Member") {
+      let data = {
+        Email: value.Email,
+        Status: "Accept",
+      };
+      axios.put("https://api.hivexv.com/update-status", data);
+      axios.put("https://api.hivexv.com/update-startup-status", data);
+      axios
+        .put("https://api.hivexv.com//update-investor-status", data)
+        .then((res) => {
+          if (res.data.Status === 1) {
+            naviget("/requests");
+          } else {
+            notifyerror(res.data.Message);
+          }
+        });
+    } else {
+      let data = {
+        Email: value.Email,
+        Status: "Accept",
+      };
+      axios.put("https://api.hivexv.com/update-status", data);
+      axios
+        .put("https://api.hivexv.com/update-startup-status", data)
+        .then((res) => {
+          if (res.data.Status === 1) {
+            naviget("/requests");
+          } else {
+            notifyerror(res.data.Message);
+          }
+        });
+    }
   };
   return (
     <>
