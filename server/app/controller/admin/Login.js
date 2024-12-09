@@ -28,7 +28,9 @@ exports.dashlogin = (req, res) => {
         res.send({
             Status: 0,
             Message: "Incorrect Email Or Password",
-            EMAIL1
+            EMAIL1: {
+                email: EMAIL1
+            }
         })
     }
 }
