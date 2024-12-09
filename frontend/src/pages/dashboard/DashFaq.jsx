@@ -22,7 +22,11 @@ export function DashFaq() {
 
   let insertfaq = (value) => {
     axios
-      .post("https://api.hivexv.com/add-faq", value)
+      .post("https://api.hivexv.com/add-faq", value, {
+        headers: {
+          Authorization: JSON.parse(localStorage.getItem("admintoken")),
+        },
+      })
       .then((res) => {
         if (res.data.Status === 1) {
           viewfaq();
@@ -40,7 +44,11 @@ export function DashFaq() {
 
   let viewfaq = () => {
     axios
-      .get("https://api.hivexv.com/view-faq")
+      .get("https://api.hivexv.com/view-faq", {
+        headers: {
+          Authorization: JSON.parse(localStorage.getItem("admintoken")),
+        },
+      })
       .then((res) => {
         setfaq(res.data);
       })
@@ -67,7 +75,12 @@ export function DashFaq() {
     };
 
     axios
-      .delete("https://api.hivexv.com/delete-faq", { data })
+      .delete("https://api.hivexv.com/delete-faq", {
+        data,
+        headers: {
+          Authorization: JSON.parse(localStorage.getItem("admintoken")),
+        },
+      })
       .then((res) => {
         notifysuccess(res.data.Message);
         viewfaq();

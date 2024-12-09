@@ -26,7 +26,11 @@ export function UpdateDashIndustry() {
 
   let updatedata = (value) => {
     axios
-      .put("https://api.hivexv.com/update-industry", value)
+      .put("https://api.hivexv.com/update-industry", value, {
+        headers: {
+          Authorization: JSON.parse(localStorage.getItem("admintoken")),
+        },
+      })
       .then((res) => {
         if (res.data.Status === 1) {
           notifysuccess(res.data.Message);

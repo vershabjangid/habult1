@@ -72,15 +72,12 @@ export function DashIndustry() {
     };
 
     axios
-      .delete(
-        "https://api.hivexv.com/delete-industry",
-        { data },
-        {
-          headers: {
-            Authorization: JSON.parse(localStorage.getItem("admintoken")),
-          },
-        }
-      )
+      .delete("https://api.hivexv.com/delete-industry", {
+        data,
+        headers: {
+          Authorization: JSON.parse(localStorage.getItem("admintoken")),
+        },
+      })
       .then((res) => {
         notifysuccess(res.data.Message);
         viewindustry();

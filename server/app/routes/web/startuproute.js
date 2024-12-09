@@ -8,7 +8,7 @@ const { startupform, viewstartups } = require('../../controller/web/startup')
 const { viewadminstartup, updateadminstartups } = require('../../controller/admin/AdminStartups')
 require('dotenv').config()
 let WEBTOKEN = process.env.WEBTOKEN
-
+let ADMINTOKEN = process.env.ADMINTOKEN
 
 
 let verifytoken = (req, res, next) => {
@@ -28,6 +28,26 @@ let verifytoken = (req, res, next) => {
         res.send("please enter the token")
     }
 }
+
+
+
+let verifyadmintoken = (req, res, next) => {
+    let token = req.headers['authorization']
+    if (token) {
+        jwt.verify(token, ADMINTOKEN, (err, valid) => {
+            if (err) {
+                res.send("please enter the valid token")
+            }
+            else {
+                next();
+            }
+        })
+    }
+    else {
+        res.send("please enter the token")
+    }
+}
+
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -51,8 +71,8 @@ startupsroute.get('/view-allstartups',verifytoken, viewstartups);
 
 
 
-startupsroute.get('/view-adminstartup', viewadminstartup)
-startupsroute.put('/update-startup-status', updateadminstartups)
+startupsroute.get('/view-adminstartup',verifyadmintoken, viewadminstartup)
+startupsroute.put('/update-startup-status',verifyadmintoken, updateadminstartups)
 
 
 module.exports = startupsroute

@@ -7,7 +7,7 @@ let jwt = require('jsonwebtoken')
 const { viewadmininvestor, updateadmininvestors } = require('../../controller/admin/AdminInvestor')
 require('dotenv').config()
 let WEBTOKEN = process.env.WEBTOKEN
-
+let ADMINTOKEN = process.env.ADMINTOKEN
 
 
 let verifytoken = (req, res, next) => {
@@ -27,6 +27,25 @@ let verifytoken = (req, res, next) => {
     }
 }
 
+
+let verifyadmintoken = (req, res, next) => {
+    let token = req.headers['authorization']
+    if (token) {
+        jwt.verify(token, ADMINTOKEN, (err, valid) => {
+            if (err) {
+                res.send("please enter the valid token")
+            }
+            else {
+                next();
+            }
+        })
+    }
+    else {
+        res.send("please enter the token")
+    }
+}
+
+
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'uploads')
@@ -43,11 +62,11 @@ const upload = multer({ storage: storage }).any('Bank_Proof', 'PanCard', 'Aadhaa
 
 
 investorroutes.post('/add-investors', upload, verifytoken, investorform);
-investorroutes.get('/view-investors', upload, viewinvestor);
+investorroutes.get('/view-investors', verifyadmintoken, upload, viewinvestor);
 investorroutes.delete('/delete-investors', upload, deleteform);
 
 
-investorroutes.get('/view-admininvestors', upload, viewadmininvestor);
-investorroutes.put('/update-investor-status', upload, updateadmininvestors);
+investorroutes.get('/view-admininvestors', upload, verifyadmintoken, viewadmininvestor);
+investorroutes.put('/update-investor-status', verifyadmintoken, upload, updateadmininvestors);
 
 module.exports = investorroutes
