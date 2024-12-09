@@ -30,7 +30,7 @@ authroutes.post('/register', register);
 authroutes.post('/login', loginform)
 authroutes.post('/forgot-password', forgotpassword)
 authroutes.put('/change-password', verifytoken, changepassword)
-authroutes.post('/verify-register',verifytoken, verifyotp);
+authroutes.post('/verify-register', verifyotp);
 authroutes.put('/change-all-field', updateallfield);
 authroutes.put('/resend-otp', resendotp);
 
