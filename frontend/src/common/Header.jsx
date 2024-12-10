@@ -6,9 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 export function Header() {
   let [sidebar, setsidebar] = useState(false);
 
-  let [logintoken, setlogintoken] = useState(
-    JSON.parse(localStorage.getItem("logintoken"))
-  );
+  let logintoken = JSON.parse(localStorage.getItem("logintoken"));
 
   let naviget = useNavigate();
   let deletelocal = (value) => {
@@ -72,18 +70,21 @@ export function Header() {
       </header>
 
       {sidebar ? (
-        <section className="sidebar w-[100%] bg-[white] fixed top-0 text-[#e02708] overflow-y-scroll">
+        <section className="sidebar w-[100%]  bg-[white] fixed z-50 top-0 text-[#e02708]">
           <div className="flex justify-between items-center px-2">
             <div>
               <img src={logo} alt="" className="w-[200px]" />
             </div>
 
             <div className="">
-              <FaXmark onClick={() => setsidebar(!sidebar)} />
+              <FaXmark
+                className="text-[30px]"
+                onClick={() => setsidebar(!sidebar)}
+              />
             </div>
           </div>
 
-          <div className="h-[100vh]">
+          <div className="h-[100vh] overflow-y-scroll">
             <Link to={"/"}>
               <div className="flex justify-between items-center px-2">
                 <div className=" w-[100%] py-3">
@@ -91,7 +92,7 @@ export function Header() {
                 </div>
 
                 <div className="">
-                  <FaChevronRight />
+                  <FaChevronRight className="text-[25px]" />
                 </div>
               </div>
             </Link>
@@ -103,7 +104,7 @@ export function Header() {
                 </div>
 
                 <div className="">
-                  <FaChevronRight />
+                  <FaChevronRight className="text-[25px]" />
                 </div>
               </div>
             </Link>
@@ -115,40 +116,58 @@ export function Header() {
                 </div>
 
                 <div className="">
-                  <FaChevronRight />
+                  <FaChevronRight className="text-[25px]" />
                 </div>
               </div>
             </Link>
 
-            {/* <div className="flex justify-between items-center px-2">
-              <div className=" w-[100%] py-3">
-                <p>FAQ's</p>
-              </div>
+            <Link to={"/user-panel"}>
+              <div className="flex justify-between items-center px-2">
+                <div className=" w-[100%] py-3">
+                  <p>Startups</p>
+                </div>
 
-              <div className="">
-                <FaChevronRight />
+                <div className="">
+                  <FaChevronRight className="text-[25px]" />
+                </div>
               </div>
-            </div>
+            </Link>
 
-            <div className="flex justify-between items-center px-2">
-              <div className=" w-[100%] py-3">
-                <p>Privacy Policy</p>
-              </div>
+            <Link to={"/privacy-policy"}>
+              <div className="flex justify-between items-center px-2">
+                <div className=" w-[100%] py-3">
+                  <p>Privacy Policy</p>
+                </div>
 
-              <div className="">
-                <FaChevronRight />
+                <div className="">
+                  <FaChevronRight className="text-[25px]" />
+                </div>
               </div>
-            </div>
+            </Link>
 
-            <div className="flex justify-between items-center px-2">
-              <div className=" w-[100%] py-3">
-                <p>Terms & Conditions</p>
-              </div>
+            <Link to={"/terms-condition"}>
+              <div className="flex justify-between items-center px-2">
+                <div className=" w-[100%] py-3">
+                  <p>Terms & Conditions</p>
+                </div>
 
-              <div className="">
-                <FaChevronRight />
+                <div className="">
+                  <FaChevronRight className="text-[25px]" />
+                </div>
               </div>
-            </div> */}
+            </Link>
+
+            <Link to={"/disclaimer"}>
+              <div className="flex justify-between items-center px-2">
+                <div className=" w-[100%] py-3">
+                  <p>Disclaimer</p>
+                </div>
+
+                <div className="">
+                  <FaChevronRight className="text-[25px]" />
+                </div>
+              </div>
+            </Link>
           </div>
         </section>
       ) : null}

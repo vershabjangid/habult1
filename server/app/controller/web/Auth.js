@@ -283,3 +283,22 @@ exports.updateallfield = async (req, res) => {
             }
         })
 }
+
+
+exports.deleteform = async (req, res) => {
+
+    let deleteone = await registermodel.deleteOne({Email : req.body.Email})
+        .then(() => {
+            res.send({
+                Status: 1,
+                Message: "Data Deleted Successfully"
+            })
+        })
+        .catch((error) => {
+            res.send({
+                Status: 0,
+                Message: "Data Missing"
+            })
+        })
+
+}

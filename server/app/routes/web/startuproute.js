@@ -59,20 +59,21 @@ const storage = multer.diskStorage({
         const extension = path.extname(file.originalname)
         const filename = 'file' + uniquesuffix + extension
         cb(null, filename)
-        
+
     }
 })
 
 const upload = multer({ storage: storage }).any('Company_Pan', 'Company_Logo', 'Team_Profile', 'Team_Profile1', 'Backers_Profile', 'Backers_Profile1', 'Financial_Projection', 'Pitch_Deck', 'Incorporation_Certificate')
 
 
-startupsroute.post('/add-startup', upload,verifytoken, startupform);
-startupsroute.get('/view-allstartups',verifytoken, viewstartups);
+startupsroute.post('/add-startup', upload, verifytoken, startupform);
+startupsroute.get('/view-allstartups', verifytoken, viewstartups);
 
 
 
-startupsroute.get('/view-adminstartup',verifyadmintoken, viewadminstartup)
-startupsroute.put('/update-startup-status',verifyadmintoken, updateadminstartups)
+startupsroute.get('/view-adminstartup', verifyadmintoken, viewadminstartup)
+startupsroute.delete('/delete-startup', verifyadmintoken, viewadminstartup)
+startupsroute.put('/update-startup-status', verifyadmintoken, updateadminstartups)
 
 
 module.exports = startupsroute

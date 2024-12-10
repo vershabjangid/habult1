@@ -5,7 +5,7 @@ import { FaPhone } from "react-icons/fa";
 export function GetInTouch() {
   return (
     <>
-      <section className="landing_section text-[black] py-[40px]">
+      <section className="landing_section text-[black] bg-[white] py-[40px]">
         <section className="landing_section w-[90%] m-auto h-auto flex justify-center ">
           <section className="w-[50%] flex justify-center items-center">
             <img src={getintouch} alt="" className="w-[100%]" />

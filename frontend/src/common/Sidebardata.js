@@ -1,4 +1,4 @@
-import { FaHome, FaIndustry, FaQuestion } from "react-icons/fa";
+import { FaIndustry, FaQuestion, FaUser } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa6";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
 
@@ -8,11 +8,11 @@ export let sidedata = [
         Path: "/dashboard",
         icon: <MdOutlineSpaceDashboard />
     },
-    {
-        Name: "Home",
-        Path: "/home",
-        icon: <FaHome />
-    },
+    // {
+    //     Name: "Home",
+    //     Path: "/home",
+    //     icon: <FaHome />
+    // },
     {
         Name: "Industry",
         Path: "/industry",
@@ -26,5 +26,10 @@ export let sidedata = [
         Name: "Requests",
         Path: "/requests",
         icon: <FaPlus />
+    },
+    {
+        Name: "Team",
+        Path: "/team",
+        icon: <FaUser />
     }
 ]

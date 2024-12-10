@@ -36,14 +36,24 @@
     height: auto;
   }
 
+  .landing_section_about {
+    width: 100%;
+    flex-direction: column-reverse;
+  }
+  .landing_section_about > section {
+    width: 100%;
+    text-align: center;
+  }
   .landing_section > section {
     width: 100%;
     text-align: center;
   }
+
   .home_banner {
     padding: 0 !important;
     background-position: center;
   }
+
   header {
     width: 100% !important;
     border-radius: 0 !important;
@@ -61,21 +71,47 @@
     display: block;
   }
 
-  .contact_inner{
+  .contact_inner {
     flex-direction: column;
   }
 
-  .contact_inner>div{
+  .contact_inner > div {
     width: 100%;
+  }
+
+  .why_choose_cards {
+    width: 100%;
+    text-align: start;
+  }
+
+  .meet_Founder{
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .meet_Founder > div{
+    width: 99%;
+    margin: 20px 0px;
+    flex-direction: column;
+  }
+
+  .home_banner_2{
+    padding: 0;
   }
 }
 
 @media screen and (max-width: 740px) {
-    .why_choose_cards{
+  .why_choose_cards {
     width: 100%;
     text-align: left;
-    }
   }
+}
+
+@media screen and (max-width: 630px) {
+  .landing_heading {
+    font-weight: bolder;
+  }
+}
 
 @media screen and (max-width: 620px) {
   .landing_heading {
@@ -85,5 +121,26 @@
 
   .landing_subheading {
     font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 529px) {
+  .why_choose_cards {
+    width: 100%;
+    text-align: left;
+    flex-direction: column;
+  }
+
+  .why_choose_cards > div{
+    width: 95%;
+    padding: 24px 0px;
+  }
+
+  .why_choose_cards > div > img{
+    width: 100px;
+  }
+
+  .landing_heading{
+    width: 99%;
   }
 }

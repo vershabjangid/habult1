@@ -61,27 +61,6 @@ exports.viewinvestor = async (req, res) => {
     })
 }
 
-exports.deleteform = async (req, res) => {
-
-    let deleteone = await registermodel.deleteOne({Email : req.body.Email})
-        .then(() => {
-            res.send({
-                Status: 1,
-                Message: "Data Deleted Successfully"
-            })
-            // let fileunlink = fs.unlinkSync(`${dirpath}/${req.files[0].filename}`)
-            // let fileunlink1 = fs.unlinkSync(`${dirpath}/${req.files[1].filename}`)
-            // let fileunlink2 = fs.unlinkSync(`${dirpath}/${req.files[2].filename}`)
-        })
-        .catch((error) => {
-            res.send({
-                Status: 0,
-                Message: "Data Missing"
-            })
-        })
-
-}
-
 exports.deleteinvestorform = async (req, res) => {
     console.log(req.body)
     let fileunlink = fs.unlinkSync(`${dirpath}/${req.body.AadhaarCard}`)

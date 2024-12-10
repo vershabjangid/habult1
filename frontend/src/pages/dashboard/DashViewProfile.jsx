@@ -117,7 +117,7 @@ export function DashViewProfile() {
     console.log(value);
 
     axios.delete(
-      "https://api.hivexv.com/delete-investors",
+      "https://api.hivexv.com/delete-register",
       { data: value },
       {
         headers: {

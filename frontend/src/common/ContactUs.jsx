@@ -53,9 +53,9 @@ export function ContactUs1() {
           <section className=" w-[100%] h-[100%] text-start text-[black] px-5 flex justify-center flex-col mt-2">
             <section className=" flex justify-between flex-wrap">
               <section className=" w-[100%] my-[20px] p-3 py-[50px] bg-[white] rounded-[10px]">
-                <div className="ms-[65px] flex justify-center items-center mb-2">
-                  <div className="icon_section mb-5 w-[400px] me-2 rounded-[10px] bg-[#e02708]">
-                    <h1 className="landing_heading text-[50px] text-center font-[500] ms-3 text-[white]">
+                <div className=" flex justify-center items-center mb-2">
+                  <div className="icon_section mb-5 w-[400px] rounded-[10px] bg-[#e02708]">
+                    <h1 className="landing_heading text-[50px] text-center font-[500] text-[white]">
                       Contact Us
                     </h1>
                   </div>

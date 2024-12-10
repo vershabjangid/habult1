@@ -51,7 +51,7 @@ export function AboutUs() {
               </section>
             </section>
 
-            <section className="landing_section bg-[white ] py-[40px]">
+            <section className="landing_section bg-[white] py-[40px]">
               <section className="landing_section w-[90%] m-auto h-auto flex justify-center items-center">
                 <section className=" w-[90%] text-start text-[black] px-5 flex justify-center flex-col mt-2">
                   <div className="flex justify-center">
@@ -196,14 +196,14 @@ export function AboutUs() {
             </section>
 
             <section className="landing_section ">
-              <section className="landing_section w-[100%] flex">
+              <section className="landing_section bg-[white] w-[100%] flex">
                 <section className=" w-[100%] h-[100%] text-center px-5 flex justify-center flex-col mt-2">
                   <h1 className="landing_heading w-[500px] rounded-[10px] m-auto text-[50px] font-[500] my-5 text-[white] bg-[#e02708]">
                     Meet With Founder
                   </h1>
 
                   <div className="w-[100%]">
-                    <div className="w-[100%] py-5 flex">
+                    <div className="meet_Founder w-[100%] py-5 flex ">
                       <div className="w-[50%] flex justify-center items-center flex-col">
                         <IoPerson className="text-[100px] mb-5 " />
 

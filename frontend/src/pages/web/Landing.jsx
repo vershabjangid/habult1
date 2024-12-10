@@ -55,7 +55,7 @@ export function Landing() {
             </section>
 
             <section className="landing_section bg-[white] py-[40px]">
-              <section className="landing_section w-[90%] m-auto h-auto flex justify-center items-center">
+              <section className="landing_section_about w-[90%] m-auto h-auto flex justify-center items-center">
                 <section className=" w-[50%] text-start text-black px-5 flex justify-center flex-col mt-2">
                   <div className="flex justify-center">
                     <h1 className="landing_heading w-[400px] text-[50px] font-[500] my-5 bg-[#e02708] text-[white] rounded-[10px] text-center">
@@ -100,7 +100,7 @@ export function Landing() {
             <section className="landing_section bg-[white]">
               <section className="landing_section w-[100%] flex">
                 <section className=" w-[100%] text-start text-[black] px-5 flex justify-center flex-col mt-2">
-                  <h1 className="w-[400px] rounded-[10px] m-auto landing_heading text-[50px] text-center font-[500] my-[10px] bg-[#e02708] text-[white]">
+                  <h1 className="landing_heading w-[400px] rounded-[10px] m-auto landing_heading text-[50px] text-center font-[500] my-[10px] bg-[#e02708] text-[white]">
                     Why Choose Us
                   </h1>
 

@@ -30,6 +30,9 @@ import { ViewProfileStartups } from './pages/web/ViewProfileStartups';
 import { ForgotPrivate } from './pages/private/ForgotPrivate';
 import { WebPrivate } from './pages/private/WebPrivate';
 import { DashPrivate } from './pages/private/DashPrivate';
+import { TermsConditions } from './pages/web/TermsConditions';
+import { PrivacyPolicy } from './pages/web/PrivacyPolicy';
+import { Disclaimer } from './pages/web/Disclaimer';
 
 function App() {
   return (
@@ -58,6 +61,10 @@ function App() {
           <Route path='/' element={<Landing />} />
           <Route path='/about' element={<AboutUs />} />
           <Route path='/contact-us' element={<ContactUs />} />
+          <Route path='/terms-condition' element={<TermsConditions />} />
+          <Route path='/privacy-policy' element={<PrivacyPolicy />} />
+          <Route path='/disclaimer' element={<Disclaimer />} />
+
           <Route element={<WebPrivate />}>
             <Route path='/user-panel' element={<ViewStartups />} />
             <Route path='/startup-profile' element={<ViewProfileStartups />} />

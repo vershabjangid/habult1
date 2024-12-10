@@ -42,14 +42,20 @@ export function Footer() {
             <li>
               <Link to={"/contact-us"}>Contact Us</Link>
             </li>
-            <li>Privacy Policy</li>
-            <li>Terms & Conditions</li>
-            <li>Disclaimer</li>
+            <li>
+              <Link to={"/privacy-policy"}>Privacy Policy</Link>
+            </li>
+            <li>
+              <Link to={"/terms-condition"}>Terms & Conditions</Link>
+            </li>
+            <li>
+              <Link to={"/disclaimer"}>Disclaimer</Link>
+            </li>
           </ul>
         </div>
 
         <div className="m-auto  flex justify-center items-center flex-col">
-          <img src={istart} alt="" />
+          <img src={istart} alt="" className=" brightness-200" />
           <p>Registration ID NO :- 5F63239</p>
           <p>
             Approved by Department of IT and Communication Govt of Rajasthan

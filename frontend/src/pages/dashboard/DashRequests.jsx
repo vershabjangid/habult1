@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { Sidebar } from "../../common/Sidebar";
-import axios, { toFormData } from "axios";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export function DashRequests() {
@@ -23,7 +23,7 @@ export function DashRequests() {
             (items) =>
               items.Is_Verified === true &&
               items.All_Fields === true &&
-              items.Status == "false"
+              items.Status === "false"
           )
         );
       })
@@ -52,14 +52,24 @@ export function DashRequests() {
     setrequests(
       data.filter(
         (items) =>
-          (items.Is_Verified === false && items.All_Fields === false) ||
-          (items.Is_Verified === true && items.All_Fields === false)
+          (items.Is_Verified === value && items.All_Fields === value) ||
+          (items.Is_Verified === true && items.All_Fields === value)
       )
     );
   };
 
   let filtertrending = (value) => {
-    setrequests(data.filter((items) => items.Status === value));
+    setrequests(data.filter((items) => items.Is_trending === true));
+  };
+
+  let filternewrequests = (value) => {
+    setrequests(
+      data.filter(
+        (items) =>
+          (items.Is_Verified === true && items.All_Fields === true) ||
+          (items.Is_Verified === true && items.All_Fields === true)
+      )
+    );
   };
 
   let naviget = useNavigate();
@@ -71,9 +81,6 @@ export function DashRequests() {
   let [deletedata, setdeletedata] = useState("");
 
   let deleteinvestor = (value) => {
-    let data = {
-      _id: value._id,
-    };
 
     console.log(value)
 
@@ -134,7 +141,7 @@ export function DashRequests() {
                 <div className="w-[100%]">
                   <button
                     className="bg-[#e02708] py-2 px-3 mx-2 rounded-[10px]"
-                    onClick={() => viewrequests()}
+                    onClick={() => filternewrequests()}
                   >
                     New Requests
                   </button>
