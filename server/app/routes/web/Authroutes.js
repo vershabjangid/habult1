@@ -53,7 +53,7 @@ authroutes.put('/resend-otp', resendotp);
 
 
 authroutes.get('/view-register', verifyadmintoken, viewregister)
-authroutes.get('/delete-register', verifyadmintoken, deleteform)
+authroutes.delete('/delete-register', verifyadmintoken, deleteform)
 
 
 
