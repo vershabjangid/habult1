@@ -97,3 +97,31 @@ exports.viewstartups = async (req, res) => {
         imgurl
     })
 }
+
+
+
+exports.deletestartups = async (req, res) => {
+    console.log(req.body)
+    let fileunlink = fs.unlinkSync(`${dirpath}/${req.body.Company_Pan}`)
+    let fileunlink1 = fs.unlinkSync(`${dirpath}/${req.body.Company_Logo}`)
+    let fileunlink2 = fs.unlinkSync(`${dirpath}/${req.body.Team_Profile}`)
+    let fileunlink3 = fs.unlinkSync(`${dirpath}/${req.body.Team_Profile1}`)
+    let fileunlink4 = fs.unlinkSync(`${dirpath}/${req.body.Backers_Profile}`)
+    let fileunlink5 = fs.unlinkSync(`${dirpath}/${req.body.Backers_Profile1}`)
+    let fileunlink6 = fs.unlinkSync(`${dirpath}/${req.body.Financial_Projection}`)
+    let fileunlink7 = fs.unlinkSync(`${dirpath}/${req.body.Pitch_Deck}`)
+    let fileunlink8 = fs.unlinkSync(`${dirpath}/${req.body.Incorporation_Certificate}`)
+    let deletestartups = await startupformmodel.deleteOne({ _id: req.body._id })
+        .then(() => {
+            res.send({
+                Status: 1,
+                Message: "Data Deleted Successfully"
+            })
+        })
+        .catch((error) => {
+            res.send({
+                Status: 0,
+                Message: "Data Missing"
+            })
+        })
+}

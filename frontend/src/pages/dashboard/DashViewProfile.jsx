@@ -124,7 +124,7 @@ export function DashViewProfile() {
           Authorization: JSON.parse(localStorage.getItem("admintoken")),
         },
       }
-    )
+    );
     axios
       .delete(
         "https://api.hivexv.com/delete-investors-profile",
@@ -137,7 +137,24 @@ export function DashViewProfile() {
       )
       .then((res) => {
         notifysuccess(res.data.Message);
-        naviget('/requests')
+        naviget("/requests");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    axios
+      .delete(
+        "https://api.hivexv.com/delete-startup",
+        { data: value },
+        {
+          headers: {
+            Authorization: JSON.parse(localStorage.getItem("admintoken")),
+          },
+        }
+      )
+      .then((res) => {
+        notifysuccess(res.data.Message);
+        naviget("/requests");
       })
       .catch((error) => {
         console.log(error);
@@ -616,7 +633,7 @@ export function DashViewProfile() {
                                 </button>
                               </a>
                             </div>
-                            <div className="my-5 w-[100%] text-start flex justify-end border-[1px] text-[white] text-[20px]">
+                            <div className="my-5 w-[100%] text-start flex justify-end text-[white] text-[20px]">
                               <button
                                 className="bg-[green] w-[150px] p-2 py-4 rounded-[10px]  items-center"
                                 onClick={() => updatestatus(items)}
@@ -624,8 +641,17 @@ export function DashViewProfile() {
                                 Accept
                               </button>
 
-                              <button className="bg-[red] w-[150px] p-2 py-4 rounded-[10px] ms-2 items-center">
+                              <button className="bg-[navy] w-[150px] p-2 py-4 rounded-[10px] ms-2 items-center">
                                 Trending
+                              </button>
+
+                              <button
+                                className="bg-[red] w-[150px] p-2 py-4 rounded-[10px] ms-2 items-center"
+                                onClick={() =>
+                                  setdeletedata(items) || setdeletemodal(true)
+                                }
+                              >
+                                Delete
                               </button>
                             </div>
                           </>

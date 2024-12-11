@@ -4,7 +4,7 @@ const multer = require('multer')
 let path = require('path')
 let startupsroute = express.Router()
 let jwt = require('jsonwebtoken')
-const { startupform, viewstartups } = require('../../controller/web/startup')
+const { startupform, viewstartups, deletestartups } = require('../../controller/web/startup')
 const { viewadminstartup, updateadminstartups } = require('../../controller/admin/AdminStartups')
 require('dotenv').config()
 let WEBTOKEN = process.env.WEBTOKEN
@@ -72,7 +72,7 @@ startupsroute.get('/view-allstartups', verifytoken, viewstartups);
 
 
 startupsroute.get('/view-adminstartup', verifyadmintoken, viewadminstartup)
-startupsroute.delete('/delete-startup', verifyadmintoken, viewadminstartup)
+startupsroute.delete('/delete-startup', verifyadmintoken, deletestartups)
 startupsroute.put('/update-startup-status', verifyadmintoken, updateadminstartups)
 
 
