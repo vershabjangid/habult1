@@ -125,26 +125,18 @@ export function DashViewProfile() {
         },
       }
     );
+    axios.delete(
+      "https://api.hivexv.com/delete-startup",
+      { data: value },
+      {
+        headers: {
+          Authorization: JSON.parse(localStorage.getItem("admintoken")),
+        },
+      }
+    );
     axios
       .delete(
         "https://api.hivexv.com/delete-investors-profile",
-        { data: value },
-        {
-          headers: {
-            Authorization: JSON.parse(localStorage.getItem("admintoken")),
-          },
-        }
-      )
-      .then((res) => {
-        notifysuccess(res.data.Message);
-        naviget("/requests");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    axios
-      .delete(
-        "https://api.hivexv.com/delete-startup",
         { data: value },
         {
           headers: {
