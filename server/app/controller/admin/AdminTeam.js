@@ -1,18 +1,13 @@
-const investorformmodel = require("../../model/web/Investorformmodel")
+const teammodal = require("../../model/admin/Teammodal")
 let fs = require('fs')
 let path = require('path')
-const registermodel = require("../../model/web/Authmodel")
 let dirpath = path.join(__dirname, '../../../uploads')
-console.log(dirpath)
 
-
-exports.investorform = async (req, res) => {
-    console.log(req.body)
+exports.addteam = async (req, res) => {
     let data = {
         FirstName: req.body.FirstName,
         LastName: req.body.LastName,
         Phone: req.body.Phone,
-        Status: false,
         AadhaarCard: req.files[0].filename,
         Address: req.body.Address,
         Email: req.body.Email,
@@ -21,9 +16,10 @@ exports.investorform = async (req, res) => {
         Account_Number: req.body.Account_Number,
         IFSC_Code: req.body.IFSC_Code,
         Bank_Proof: req.files[2].filename,
+        Profile_Id: Math.floor(1000 + Math.random() * 8000) + "HV",
     }
 
-    let insertdata = await investorformmodel(data)
+    let insertdata = await teammodal(data)
     insertdata.save()
         .then(() => {
             res.send({
@@ -35,7 +31,7 @@ exports.investorform = async (req, res) => {
             if (error.code === 11000) {
                 res.send({
                     Status: 0,
-                    Message: "Data Already Exists"
+                    Message: "Data Already Inserted"
                 })
             }
             else {
@@ -44,28 +40,63 @@ exports.investorform = async (req, res) => {
                     Message: "Data Missing"
                 })
             }
-            let fileunlink = fs.unlinkSync(`${dirpath}/${req.files[0].filename}`)
-            let fileunlink1 = fs.unlinkSync(`${dirpath}/${req.files[1].filename}`)
-            let fileunlink2 = fs.unlinkSync(`${dirpath}/${req.files[2].filename}`)
         })
 }
 
 
-exports.viewinvestor = async (req, res) => {
-    let viewdata = await investorformmodel.find()
+exports.viewteam = async (req, res) => {
     let imgurl = "https://api.hivexv.com/uploads/"
+    let viewteam = await teammodal.find();
     res.send({
-        viewdata,
-        imgurl
+        imgurl,
+        viewteam
     })
 }
 
-exports.deleteinvestorform = async (req, res) => {
+exports.updateteam = async (req, res) => {
+
+    console.log(req.body)
+    let data = {
+        FirstName: req.body.FirstName,
+        LastName: req.body.LastName,
+        Phone: req.body.Phone,
+        Address: req.body.Address,
+        Email: req.body.Email,
+        Bank_Name: req.body.Bank_Name,
+        Account_Number: req.body.Account_Number,
+        IFSC_Code: req.body.IFSC_Code,
+    }
+    let updatedata = await teammodal.updateOne({ _id: req.body._id }, data)
+        .then(() => {
+            res.send({
+                Status: 1,
+                Message: "Data Inserted Successfully"
+            })
+        })
+        .catch((error) => {
+            if (error.code === 11000) {
+                res.send({
+                    Status: 0,
+                    Message: "Data Already Inserted"
+                })
+            }
+            else {
+                res.send({
+                    Status: 0,
+                    Message: "Data Missing"
+                })
+            }
+        })
+}
+
+
+exports.deleteteam = async (req, res) => {
+    console.log(req.body)
     let fileunlink = fs.unlinkSync(`${dirpath}/${req.body.AadhaarCard}`)
     let fileunlink1 = fs.unlinkSync(`${dirpath}/${req.body.PanCard}`)
     let fileunlink2 = fs.unlinkSync(`${dirpath}/${req.body.Bank_Proof}`)
 
-    let deleteone = await investorformmodel.deleteOne({ _id: req.body._id })
+    let deleteone = await teammodal.deleteOne({ _id: req.body._id })
         .then(() => {
             res.send({
                 Status: 1,

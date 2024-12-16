@@ -33,6 +33,9 @@ import { DashPrivate } from './pages/private/DashPrivate';
 import { TermsConditions } from './pages/web/TermsConditions';
 import { PrivacyPolicy } from './pages/web/PrivacyPolicy';
 import { Disclaimer } from './pages/web/Disclaimer';
+import { DashTeam } from './pages/dashboard/DashTeam';
+import { DashViewTeam } from './pages/dashboard/DashViewTeam';
+import { UpdateDashTeam } from './pages/dashboard/UpdateDashTeam';
 
 function App() {
   return (
@@ -80,6 +83,9 @@ function App() {
             <Route path='/update-faq' element={<UpdateDashFaq />} />
             <Route path='/requests' element={<DashRequests />} />
             <Route path='/view-profile' element={<DashViewProfile />} />
+            <Route path='/team' element={<DashTeam />} />
+            <Route path='/view-team-profile' element={<DashViewTeam />} />
+            <Route path='/update-team-profile' element={<UpdateDashTeam />} />
           </Route>
         </Routes>
       </BrowserRouter>

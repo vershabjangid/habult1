@@ -33,6 +33,8 @@ export function DashViewProfile() {
       });
   };
 
+  
+
   let viewstartup = () => {
     axios
       .get("https://api.hivexv.com/view-adminstartup", {
@@ -121,13 +123,7 @@ export function DashViewProfile() {
       headers: {
         Authorization: JSON.parse(localStorage.getItem("admintoken")),
       },
-    });
-    axios.delete("https://api.hivexv.com/delete-startup", {
-      data: value,
-      headers: {
-        Authorization: JSON.parse(localStorage.getItem("admintoken")),
-      },
-    });
+    })
     axios
       .delete("https://api.hivexv.com/delete-investors-profile", {
         data: value,
@@ -135,6 +131,29 @@ export function DashViewProfile() {
           Authorization: JSON.parse(localStorage.getItem("admintoken")),
         },
       })
+      .then((res) => {
+        notifysuccess(res.data.Message);
+        naviget("/requests");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+
+  let deletestartup = (value) => {
+    axios.delete("https://api.hivexv.com/delete-register", {
+      data: value,
+      headers: {
+        Authorization: JSON.parse(localStorage.getItem("admintoken")),
+      },
+    })
+    axios.delete("https://api.hivexv.com/delete-startup", {
+      data: value,
+      headers: {
+        Authorization: JSON.parse(localStorage.getItem("admintoken")),
+      },
+    })
       .then((res) => {
         notifysuccess(res.data.Message);
         naviget("/requests");
@@ -162,7 +181,7 @@ export function DashViewProfile() {
               <button
                 className="bg-[green] w-[47%] text-[20px] py-[10px] rounded text-white"
                 onClick={() =>
-                  deleteinvestor(deletedata) || setdeletemodal(false)
+                  deleteinvestor(deletedata) || deletestartup(deletedata) || setdeletemodal(false)
                 }
               >
                 Delete

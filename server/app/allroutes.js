@@ -6,6 +6,7 @@ const Extrafunctionality = require('./routes/admin/Extrafunctionalityroutes')
 const profileroutes = require('./routes/admin/ProfileRoutes')
 const contactuUsroute = require('./routes/web/ContactUsRoute')
 const adminauth = require('./routes/admin/AdminAuth')
+const AdminTeamroute = require('./routes/admin/AdminTeam')
 let allroutes = express.Router()
 
 allroutes.use(authroutes)
@@ -14,6 +15,7 @@ allroutes.use(startupsroute)
 allroutes.use(profileroutes)
 allroutes.use(contactuUsroute)
 allroutes.use(adminauth)
+allroutes.use(AdminTeamroute)
 
 
 
