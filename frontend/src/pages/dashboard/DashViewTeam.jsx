@@ -19,7 +19,7 @@ export function DashViewTeam() {
 
   let deleteteam = (value) => {
     axios
-      .delete("http://localhost:5000/delete-team", {
+      .delete("https://api.hivexv.com/delete-team", {
         data: value,
         headers: {
           Authorization: JSON.parse(localStorage.getItem("admintoken")),

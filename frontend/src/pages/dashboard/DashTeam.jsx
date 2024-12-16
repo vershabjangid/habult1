@@ -50,7 +50,7 @@ export function DashTeam() {
 
   let insertdata = (value) => {
     axios
-      .post("http://localhost:5000/add-team", toFormData(value), {
+      .post("https://api.hivexv.com/add-team", toFormData(value), {
         headers: {
           Authorization: JSON.parse(localStorage.getItem("admintoken")),
         },
@@ -72,7 +72,7 @@ export function DashTeam() {
   let [imgurl, setimgurl] = useState("");
   let viewdata = () => {
     axios
-      .get("http://localhost:5000/view-team", {
+      .get("https://api.hivexv.com/view-team", {
         headers: {
           Authorization: JSON.parse(localStorage.getItem("admintoken")),
         },
