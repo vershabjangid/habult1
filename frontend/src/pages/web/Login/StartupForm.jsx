@@ -39,8 +39,8 @@ export function StartupForm() {
         .url("Invalid Url")
         .required("Linkedin url is required"),
       Company_Pan: Yup.mixed()
-        .test("fileFormat", "Pdf file format only", (value) =>
-          value.type.includes(file)
+        .test("fileFormat", "Unsupported file format", (value) =>
+          value.type.includes("application/pdf") ||  value.type.includes("image/png") ||  value.type.includes("image/jpg")||  value.type.includes("image/jpeg")
         )
         .required("Company pan is required"),
       Website_Url: Yup.string()

@@ -10,7 +10,7 @@ import axios, { toFormData } from "axios";
 export function StartupLogin2() {
   let location = useLocation();
   let data = location.state;
-console.log(data)
+  console.log(data);
 
   let notifyerror = (error) => toast.error(error);
 
@@ -21,7 +21,7 @@ console.log(data)
     initialValues: {
       FirstName: data.FirstName,
       LastName: data.LastName,
-      Phone: data.Phone,  
+      Phone: data.Phone,
       Company_Name: data.Company_Name,
       Company_Pan: data.Company_Pan,
       Email: data.Email,
@@ -69,8 +69,13 @@ console.log(data)
 
     validationSchema: Yup.object().shape({
       Company_Logo: Yup.mixed()
-        .test("fileFormat", "png file format only", (value) =>
-          value.type.includes(file1)
+        .test(
+          "fileFormat",
+          "Unsupported file format",
+          (value) =>
+            value.type.includes("image/png") ||
+            value.type.includes("image/jpg") ||
+            value.type.includes("image/jpeg")
         )
         .required("Company Logo is required"),
       Company_Description: Yup.string().required(
@@ -80,8 +85,13 @@ console.log(data)
       Highlights1: Yup.string().required("Highlights is required"),
 
       Team_Profile: Yup.mixed()
-        .test("fileFormat", "png file format only", (value) =>
-          value.type.includes(file1)
+        .test(
+          "fileFormat",
+          "Unsupported file format",
+          (value) =>
+            value.type.includes("image/png") ||
+            value.type.includes("image/jpg") ||
+            value.type.includes("image/jpeg")
         )
         .required("Team Profile is required"),
 
@@ -90,8 +100,13 @@ console.log(data)
       Team_Experience: Yup.number().required("Team Experience is required"),
 
       Team_Profile1: Yup.mixed()
-        .test("fileFormat", "png file format only", (value) =>
-          value.type.includes(file1)
+        .test(
+          "fileFormat",
+          "Unsupported file format",
+          (value) =>
+            value.type.includes("image/png") ||
+            value.type.includes("image/jpg") ||
+            value.type.includes("image/jpeg")
         )
         .required("Team Profile is required"),
 
@@ -100,8 +115,13 @@ console.log(data)
       Team_Experience1: Yup.number().required("Team Experience is required"),
 
       Backers_Profile: Yup.mixed()
-        .test("fileFormat", "png file format only", (value) =>
-          value.type.includes(file1)
+        .test(
+          "fileFormat",
+          "Unsupported file format",
+          (value) =>
+            value.type.includes("image/png") ||
+            value.type.includes("image/jpg") ||
+            value.type.includes("image/jpeg")
         )
         .required("Backers Profile is required"),
 
@@ -114,8 +134,13 @@ console.log(data)
       ),
 
       Backers_Profile1: Yup.mixed()
-        .test("fileFormat", "png file format only", (value) =>
-          value.type.includes(file1)
+        .test(
+          "fileFormat",
+          "Unsupported file format",
+          (value) =>
+            value.type.includes("image/png") ||
+            value.type.includes("image/jpg") ||
+            value.type.includes("image/jpeg")
         )
         .required("Backers Profile is required"),
 
@@ -135,18 +160,36 @@ console.log(data)
       Solution: Yup.string().required("Solution is required"),
       Problem_Statement: Yup.string().required("Problem Statement is required"),
       Financial_Projection: Yup.mixed()
-        .test("fileFormat", "Unsupported file format", (value) =>
-          value.type.includes(file)
+        .test(
+          "fileFormat",
+          "Unsupported file format",
+          (value) =>
+            value.type.includes("application/pdf") ||
+            value.type.includes("image/png") ||
+            value.type.includes("image/jpg") ||
+            value.type.includes("image/jpeg")
         )
         .required("Financial Projection is required"),
       Pitch_Deck: Yup.mixed()
-        .test("fileFormat", "Unsupported file format", (value) =>
-          value.type.includes(file)
+        .test(
+          "fileFormat",
+          "Unsupported file format",
+          (value) =>
+            value.type.includes("application/pdf") ||
+            value.type.includes("image/png") ||
+            value.type.includes("image/jpg") ||
+            value.type.includes("image/jpeg")
         )
         .required("Pitch Deck is required"),
       Incorporation_Certificate: Yup.mixed()
-        .test("fileFormat", "Unsupported file format", (value) =>
-          value.type.includes(file)
+        .test(
+          "fileFormat",
+          "Unsupported file format",
+          (value) =>
+            value.type.includes("application/pdf") ||
+            value.type.includes("image/png") ||
+            value.type.includes("image/jpg") ||
+            value.type.includes("image/jpeg")
         )
         .required("IncorporationCertificate is required"),
     }),
@@ -184,10 +227,10 @@ console.log(data)
       All_Fields: true,
     };
     axios
-      .put("https://api.hivexv.com/change-all-field", data,{
-        headers:{
-          Authorization : JSON.parse(localStorage.getItem('webtoken'))
-        }
+      .put("https://api.hivexv.com/change-all-field", data, {
+        headers: {
+          Authorization: JSON.parse(localStorage.getItem("webtoken")),
+        },
       })
       .then((res) => {
         if (res.data.Status === 1) {

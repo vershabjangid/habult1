@@ -31,7 +31,7 @@ export function Dashboard() {
 
               <div className="w-[25%]">
                 <div className="w-[100%] p-3 rounded-[20px] bg-[#e02708] text-white border-[1px] ">
-                  <p className="text-[25px]"> Active Users</p>
+                  <p className="text-[25px]">Team</p>
 
                   <div className=" flex justify-between items-center">
                     <div className="my-4">
@@ -78,25 +78,20 @@ export function UserCharts() {
       .then((res) => {
         setrequests(
           res.data.filter(
-            (items) =>
-              items.Is_Verified === true &&
-              items.All_Fields === true &&
-              setcount(count + 1)
+            (items) => items.Is_Verified === true && items.All_Fields === true
           )
         );
+        console.log(requests);
+        setcount(requests.length);
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
-  value.push(count);
-  console.log(value);
-
   useEffect(() => {
     viewrequests();
   }, []);
-  console.log(count);
 
   return (
     <>
@@ -105,42 +100,27 @@ export function UserCharts() {
   );
 }
 
-
-
-
 export function Teamcharts() {
-  let [requests, setrequests] = useState([]);
-  let [count, setcount] = useState(1);
+  let [count, setcount] = useState(0);
   let value = [];
   let viewrequests = () => {
     axios
-      .get("https://api.hivexv.com/view-register", {
+      .get("https://api.hivexv.com/view-team", {
         headers: {
           Authorization: JSON.parse(localStorage.getItem("admintoken")),
         },
       })
       .then((res) => {
-        setrequests(
-          res.data.filter(
-            (items) =>
-              items.Is_Verified === true &&
-              items.All_Fields === true &&
-              setcount(count + 1)
-          )
-        );
+        setcount(res.data.viewteam.length);
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
-  value.push(count);
-  console.log(value);
-
   useEffect(() => {
     viewrequests();
   }, []);
-  console.log(count);
 
   return (
     <>
@@ -148,4 +128,3 @@ export function Teamcharts() {
     </>
   );
 }
-

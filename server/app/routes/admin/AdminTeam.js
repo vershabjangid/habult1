@@ -46,11 +46,11 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage }).any('Bank_Proof', 'PanCard', 'AadhaarCard')
 
 
-AdminTeamroute.post('/add-team', upload, addteam);
-AdminTeamroute.get('/view-team', viewteam);
-AdminTeamroute.put('/update-team', updateteam);
-AdminTeamroute.delete('/delete-team',upload, deleteteam);
+AdminTeamroute.post('/add-team', upload,verifyadmintoken, addteam);
+AdminTeamroute.get('/view-team',verifyadmintoken, viewteam);
+AdminTeamroute.put('/update-team',verifyadmintoken, updateteam);
+AdminTeamroute.delete('/delete-team',upload,verifyadmintoken, deleteteam);
 
-
+AdminTeamroute.get('/view-web-team',verifyadmintoken, viewteam);
 
 module.exports = AdminTeamroute;

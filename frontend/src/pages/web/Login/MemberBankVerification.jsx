@@ -36,7 +36,7 @@ export function MemberBankVerification() {
       IFSC_Code: Yup.string().required("IFSC Code is required"),
       Bank_Proof: Yup.mixed()
         .test("fileFormat", "Unsupported file format", (value) =>
-          value.type.includes(file)
+          value.type.includes("application/pdf") ||  value.type.includes("image/png") ||  value.type.includes("image/jpg")||  value.type.includes("image/jpeg")
         )
         .required("Bank proof is required"),
     }),

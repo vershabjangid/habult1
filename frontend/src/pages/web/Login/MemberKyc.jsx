@@ -10,8 +10,6 @@ export function MemberKyc() {
   let location = useLocation();
   let data = location.state;
 
-  let file = ["application/pdf"];
-
   let formik = useFormik({
     initialValues: {
       Email: data.Email,
@@ -26,12 +24,12 @@ export function MemberKyc() {
     validationSchema: Yup.object().shape({
       AadhaarCard: Yup.mixed()
         .test("fileFormat", "Unsupported file format", (value) =>
-          value.type.includes(file)
+          value.type.includes("application/pdf") ||  value.type.includes("image/png") ||  value.type.includes("image/jpg")||  value.type.includes("image/jpeg")
         )
         .required("Aadhar card is required"),
       PanCard: Yup.mixed()
         .test("fileFormat", "Unsupported file format", (value) =>
-          value.type.includes(file)
+          value.type.includes("application/pdf") ||  value.type.includes("image/png") ||  value.type.includes("image/jpg")||  value.type.includes("image/jpeg")
         )
         .required("Pan card is required"),
       Address: Yup.string().required("Address is required"),
