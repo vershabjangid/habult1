@@ -22,7 +22,7 @@ export function DashHome() {
   let notifysuccess = (success) => toast.success(success);
 
   let insertdata = (value) => {
-    axios.post("http://localhost:5000/add-admin-home", toFormData(value),{
+    axios.post("https://api.hivexv.com/add-admin-home", toFormData(value),{
       headers : {
         Authorization : JSON.parse(localStorage.getItem('admintoken'))
       }

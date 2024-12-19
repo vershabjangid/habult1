@@ -19,7 +19,6 @@ let homeschema = mongoose.Schema({
     HomeBanner: {
         type: String,
         required: true,
-        unique: true
     }
 })
 
