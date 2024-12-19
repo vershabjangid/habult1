@@ -27,10 +27,10 @@ export function UpdateDashFaq() {
   let naviget = useNavigate();
   let updatedata = (value) => {
     axios
-      .put("https://api.hivexv.com/update-faq", value, {
-        headers: {
-          Authorization: JSON.parse(localStorage.getItem("webtoken")),
-        },
+      .put("https://api.hivexv.com/update-faq", value,{
+        headers:{
+          Authorization : JSON.parse(localStorage.getItem('webtoken'))
+        }
       })
       .then((res) => {
         if (res.data.Status === 1) {
