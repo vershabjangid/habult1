@@ -7,15 +7,10 @@ import { toast, ToastContainer } from "react-toastify";
 export function DashHome() {
   let formik = useFormik({
     initialValues: {
-      Heading: "",
-      SubHeading: "",
-      Paragraph: "",
-      BannerImage: "",
-      About_Heading:"",
-      About_SubHeading:"",
-      About_Paragraph:"",
-      About_Paragraph1:"",
-      About_BannerImage:""
+      HomeHeading:"",
+      HomeSubHeading:"",
+      HomeParagraph:"",
+      HomeBanner:"",
     },
 
     onSubmit: () => {
@@ -27,8 +22,11 @@ export function DashHome() {
   let notifysuccess = (success) => toast.success(success);
 
   let insertdata = (value) => {
-    axios.post("http://localhost:5000/add-homebanner", toFormData(value))
-    axios.post('http://localhost:5000/add-homeabout',toFormData(value))
+    axios.post("http://localhost:5000/add-admin-home", toFormData(value),{
+      headers : {
+        Authorization : JSON.parse(localStorage.getItem('admintoken'))
+      }
+    })
       .then((res) => {
         if (res.data.Status === 1) {
           notifysuccess(res.data.Message);
@@ -63,7 +61,7 @@ export function DashHome() {
                       type="text"
                       className=" border-[1px] border-[black] w-[100%] my-2 p-1 rounded"
                       onChange={(e) =>
-                        formik.setFieldValue("Heading", e.target.value)
+                        formik.setFieldValue("HomeHeading", e.target.value)
                       }
                     />
                   </div>
@@ -74,7 +72,7 @@ export function DashHome() {
                       type="text"
                       className=" border-[1px] border-[black] w-[100%] my-2 p-1 rounded"
                       onChange={(e) =>
-                        formik.setFieldValue("SubHeading", e.target.value)
+                        formik.setFieldValue("HomeSubHeading", e.target.value)
                       }
                     />
                   </div>
@@ -85,7 +83,7 @@ export function DashHome() {
                       type="text"
                       className=" border-[1px] border-[black] w-[100%] my-2 p-1 rounded"
                       onChange={(e) =>
-                        formik.setFieldValue("Paragraph", e.target.value)
+                        formik.setFieldValue("HomeParagraph", e.target.value)
                       }
                     />
                   </div>
@@ -96,7 +94,7 @@ export function DashHome() {
                       type="file"
                       className=" border-[1px] border-[black] w-[100%] my-2 p-1 rounded"
                       onChange={(e) =>
-                        formik.setFieldValue("BannerImage", e.target.files[0])
+                        formik.setFieldValue("HomeBanner", e.target.files[0])
                       }
                     />
                   </div>

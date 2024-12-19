@@ -11,7 +11,24 @@ exports.AdminHomeController = async (req, res) => {
 
     let insertdata = await adminhomemodel(data)
     insertdata.save()
-    .then((res)=>{
-        
-    })
+        .then((res) => {
+            res.send({
+                Status: 1,
+                Message: "Data Inserted Successfully"
+            })
+        })
+        .catch((error) => {
+            if (error.code === 11000) {
+                res.send({
+                    Status: 1,
+                    Message: "Data Already Inserted"
+                })
+            }
+            else {
+                res.send({
+                    Status: 0,
+                    Message: "Data Missing"
+                })
+            }
+        })
 }
