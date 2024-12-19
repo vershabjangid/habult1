@@ -8,7 +8,6 @@ let SMTP = process.env.SMTP
 let USER = process.env.SENDEREMAIL
 let PASS = process.env.EMAILPASS
 let WEBTOKEN = process.env.WEBTOKEN
-console.log(WEBTOKEN)
 
 
 
@@ -27,7 +26,6 @@ const transporter = nodemailer.createTransport({
 
 
 async function email(value) {
-    console.log(value)
 
     try {
         const info = await transporter.sendMail({
@@ -51,7 +49,6 @@ async function email(value) {
 
 
 exports.conactUs = async (req, res) => {
-    console.log(req.body)
     let data = {
         Name: req.body.Name,
         Phone: req.body.Phone,

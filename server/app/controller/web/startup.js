@@ -3,11 +3,9 @@ let fs = require('fs')
 let path = require('path')
 const startupformmodel = require("../../model/web/Startupformmodel")
 let dirpath = path.join(__dirname, '../../../uploads')
-console.log(dirpath)
 
 
 exports.startupform = async (req, res) => {
-    console.log(req.files)
     let data = {
         FirstName: req.body.FirstName,
         LastName: req.body.LastName,
@@ -52,7 +50,6 @@ exports.startupform = async (req, res) => {
         Incorporation_Certificate: req.files[8].filename,
         Terms_Conditions: req.body.Terms_Conditions,
     }
-    console.log(data)
 
     let insertdata = await startupformmodel(data)
     insertdata.save()
@@ -74,7 +71,6 @@ exports.startupform = async (req, res) => {
                     Status: 0,
                     Message: "Data Missing"
                 })
-                console.log(error._message)
             }
             let fileunlink = fs.unlinkSync(`${dirpath}/${req.files[0].filename}`)
             let fileunlink1 = fs.unlinkSync(`${dirpath}/${req.files[1].filename}`)

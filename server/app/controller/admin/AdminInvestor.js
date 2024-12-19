@@ -12,7 +12,6 @@ exports.viewadmininvestor = async (req, res) => {
 
 
 exports.updateadmininvestors = async (req, res) => {
-    console.log(req.body)
     let data = {
         Email: req.body.Email,
         Status: req.body.Status

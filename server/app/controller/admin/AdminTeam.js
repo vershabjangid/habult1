@@ -55,7 +55,6 @@ exports.viewteam = async (req, res) => {
 
 exports.updateteam = async (req, res) => {
 
-    console.log(req.body)
     let data = {
         FirstName: req.body.FirstName,
         LastName: req.body.LastName,
@@ -91,7 +90,6 @@ exports.updateteam = async (req, res) => {
 
 
 exports.deleteteam = async (req, res) => {
-    console.log(req.body)
     let fileunlink = fs.unlinkSync(`${dirpath}/${req.body.AadhaarCard}`)
     let fileunlink1 = fs.unlinkSync(`${dirpath}/${req.body.PanCard}`)
     let fileunlink2 = fs.unlinkSync(`${dirpath}/${req.body.Bank_Proof}`)

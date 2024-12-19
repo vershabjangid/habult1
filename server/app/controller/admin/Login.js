@@ -6,7 +6,6 @@ let EMAIL1 = process.env.EMAIL1
 let PASSWORD1 = process.env.PASSWORD1
 let EMAIL2 = process.env.EMAIL2
 let PASSWORD2 = process.env.PASSWORD2
-console.log(ADMINTOKEN)
 
 exports.dashlogin = (req, res) => {
     let data = {

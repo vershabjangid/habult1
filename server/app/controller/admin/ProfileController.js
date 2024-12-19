@@ -1,7 +1,6 @@
 const registermodel = require("../../model/web/Authmodel")
 
 exports.updateprofilestatus = async (req, res) => {
-console.log(req.body)
     let data = {
         Email: req.body.Email,
         Status: req.body.Status

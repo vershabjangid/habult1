@@ -7,7 +7,6 @@ console.log(dirpath)
 
 
 exports.investorform = async (req, res) => {
-    console.log(req.body)
     let data = {
         FirstName: req.body.FirstName,
         LastName: req.body.LastName,

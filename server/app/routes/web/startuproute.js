@@ -12,7 +12,6 @@ let ADMINTOKEN = process.env.ADMINTOKEN
 
 
 let verifytoken = (req, res, next) => {
-    console.log(req.body)
     let token = req.headers['authorization']
     if (token) {
         jwt.verify(token, WEBTOKEN, (err, valid) => {

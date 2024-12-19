@@ -81,7 +81,6 @@ export function UserCharts() {
             (items) => items.Is_Verified === true && items.All_Fields === true
           )
         );
-        console.log(requests);
         setcount(requests.length);
       })
       .catch((error) => {

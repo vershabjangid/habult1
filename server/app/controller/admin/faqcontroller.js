@@ -66,7 +66,6 @@ exports.updatefaq = async (req, res) => {
 
 
 exports.deletefaq = async (req, res) => {
-    console.log(req.body)
 
     let deleteone = await faqmodals.deleteOne({ _id: req.body._id })
         .then(() => {
