@@ -1,0 +1,146 @@
+@media screen and (min-width: 2500px) {
+  .main {
+    width: 2500px;
+    height: auto;
+    margin: auto;
+  }
+
+  .home_banner {
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 1310px) {
+  .landing_heading {
+    font-size: 40px;
+  }
+
+  .landing_subheading {
+    font-size: 25px;
+  }
+
+  .landing_btn {
+    width: 100%;
+    margin: 10px 0;
+    padding: 0px 10px;
+  }
+}
+
+@media screen and (max-width: 1105px) {
+  .home_banner {
+    height: auto;
+  }
+
+  .landing_section {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .landing_section_about {
+    width: 100%;
+    flex-direction: column-reverse;
+  }
+  .landing_section_about > section {
+    width: 100%;
+    text-align: center;
+  }
+  .landing_section > section {
+    width: 100%;
+    text-align: center;
+  }
+
+  .home_banner {
+    padding: 0 !important;
+    background-position: center;
+  }
+
+  header {
+    width: 100% !important;
+    border-radius: 0 !important;
+  }
+
+  .options_section {
+    display: none;
+  }
+
+  .buttons_sections {
+    display: none;
+  }
+
+  .menubar {
+    display: block;
+  }
+
+  .contact_inner {
+    flex-direction: column;
+  }
+
+  .contact_inner > div {
+    width: 100%;
+  }
+
+  .why_choose_cards {
+    width: 100%;
+    text-align: start;
+  }
+
+  .meet_Founder{
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .meet_Founder > div{
+    width: 99%;
+    margin: 20px 0px;
+    flex-direction: column;
+  }
+
+  .home_banner_2{
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .why_choose_cards {
+    width: 100%;
+    text-align: left;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .landing_heading {
+    font-weight: bolder;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .landing_heading {
+    font-size: 30px;
+    font-weight: bolder;
+  }
+
+  .landing_subheading {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 529px) {
+  .why_choose_cards {
+    width: 100%;
+    text-align: left;
+    flex-direction: column;
+  }
+
+  .why_choose_cards > div{
+    width: 95%;
+    padding: 24px 0px;
+  }
+
+  .why_choose_cards > div > img{
+    width: 100px;
+  }
+
+  .landing_heading{
+    width: 99%;
+  }
+}
