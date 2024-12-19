@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Header } from "../../common/Header";
 import right_banner from "../../images/banners.png";
 import about_Baner from "../../images/About-removebg-preview.png";
@@ -9,7 +9,28 @@ import icon3 from "../../images/mmmm,.png";
 import icon4 from "../../images/mmmmmmm.png";
 import { Link } from "react-router-dom";
 import { ContactUs1 } from "../../common/ContactUs";
+import axios from "axios";
 export function Landing() {
+
+  let [homebanner,sethomebanner]=useState([])
+  let viewbanner= ()=>{
+    axios.get('https://api.hivexv.com/view-home-banner',{
+      headers : {
+        Authorization : JSON.parse(localStorage.getItem('admintoken'))
+      }
+    })
+    .then((res)=>{
+      sethomebanner(res.data.viewdata)
+    })
+    .catch((error)=>{
+      console.log(error)
+    })
+  }
+
+
+  useEffect(()=>{
+    viewbanner();
+  })
   return (
     <>
       <section className="main w-[100%] bg-[#292828b4]">

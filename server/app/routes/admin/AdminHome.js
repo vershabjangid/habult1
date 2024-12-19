@@ -1,5 +1,5 @@
 let express = require('express');
-const { AdminHomeController } = require('../../controller/admin/AdminHome');
+const { AdminHomeController, viewHomeBanner } = require('../../controller/admin/AdminHome');
 let AdminHome = express.Router();
 let path = require('path')
 let jwt = require('jsonwebtoken');
@@ -46,6 +46,7 @@ const upload = multer({ storage: storage }).any('HomeBanner')
 
 
 AdminHome.post('/add-admin-home',upload,verifyadmintoken,AdminHomeController)
+AdminHome.get('/view-home-banner',upload,verifyadmintoken,viewHomeBanner)
 
 
 module.exports = AdminHome;

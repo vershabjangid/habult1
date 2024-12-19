@@ -51,3 +51,12 @@ exports.AdminHomeController = async (req, res) => {
     }
 
 }
+
+exports.viewHomeBanner=async (req,res)=>{
+    let viewdata = await adminhomemodel.find()
+    let imgurl =  "https://api.hivexv.com/uploads/"
+    res.send({
+        imgurl,
+        viewdata
+    })
+}
