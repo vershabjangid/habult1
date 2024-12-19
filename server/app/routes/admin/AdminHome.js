@@ -1,5 +1,5 @@
 let express = require('express');
-const { AdminHomeController, viewHomeBanner } = require('../../controller/admin/AdminHome');
+const { AdminHomeController, viewHomeBanner, AdminHomeAboutController } = require('../../controller/admin/AdminHome');
 let AdminHome = express.Router();
 let path = require('path')
 let jwt = require('jsonwebtoken');
@@ -49,4 +49,7 @@ AdminHome.post('/add-admin-home',upload,verifyadmintoken,AdminHomeController)
 AdminHome.get('/view-home-banner',upload,verifyadmintoken,viewHomeBanner)
 
 
+
+
+AdminHome.post('/add-admin-home-about',upload,verifyadmintoken,AdminHomeAboutController)
 module.exports = AdminHome;

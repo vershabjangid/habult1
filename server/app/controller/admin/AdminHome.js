@@ -1,6 +1,7 @@
 const adminhomemodel = require("../../model/admin/AdminHomeModel")
 let fs = require('fs')
 let path = require('path')
+const AdminHomeAboutModel = require("../../model/admin/AdminHomeAbout")
 let dirpath = path.join(__dirname, '../../../uploads')
 
 
@@ -52,6 +53,8 @@ exports.AdminHomeController = async (req, res) => {
 
 }
 
+
+
 exports.viewHomeBanner=async (req,res)=>{
     let viewdata = await adminhomemodel.find()
     let imgurl =  "https://api.hivexv.com/uploads/"
@@ -59,4 +62,65 @@ exports.viewHomeBanner=async (req,res)=>{
         imgurl,
         viewdata
     })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+exports.AdminHomeAboutController = async (req, res) => {
+    let data = {
+        HomeAboutHeading: req.body.HomeAboutHeading,
+        HomeAboutSubHeading: req.body.HomeAboutSubHeading,
+        HomeAboutParagraph: req.body.HomeAboutParagraph,
+        HomeAboutBanner: req.files[0].filename,
+    }
+
+
+    let viewdata = await AdminHomeAboutModel.find();
+    console.log(viewdata)
+
+    if (viewdata.length == 0) {
+        let insertdata = await AdminHomeAboutModel(data)
+        insertdata.save()
+            .then(() => {
+                res.send({
+                    Status: 1,
+                    Message: "Data Inserted Successfully"
+                })
+            })
+            .catch((error) => {
+                if (error.code === 11000) {
+                    res.send({
+                        Status: 0,
+                        Message: "Data Already Inserted"
+                    })
+                }
+                else {
+                    res.send({
+                        Status: 0,
+                        Message: "Data Missing"
+                    })
+                }
+                let fileunlink = fs.unlinkSync(`${dirpath}/${req.files[0].filename}`)
+            })
+
+    }
+    else {
+        res.send({
+            Status: 0,
+            Message: "Data Already Inserted"
+        })
+        let fileunlink = fs.unlinkSync(`${dirpath}/${req.files[0].filename}`)
+    }
+
 }
