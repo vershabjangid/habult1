@@ -29,7 +29,7 @@ export function UpdateDashFaq() {
     axios
       .put("https://api.hivexv.com/update-faq", value,{
         headers:{
-          Authorization : JSON.parse(localStorage.getItem('webtoken'))
+          Authorization : JSON.parse(localStorage.getItem('admintoken'))
         }
       })
       .then((res) => {
