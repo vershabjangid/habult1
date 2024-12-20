@@ -30,6 +30,7 @@ export function AboutUs() {
     axios
       .get("https://api.hivexv.com/view-about-content")
       .then((res) => {
+        console.log(res.data)
         setadmincontent(res.data.viewdata);
       })
       .catch((error) => {
