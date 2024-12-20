@@ -9,6 +9,7 @@ const adminauth = require('./routes/admin/AdminAuth')
 const AdminTeamroute = require('./routes/admin/AdminTeam')
 const AdminHome = require('./routes/admin/AdminHome')
 const adminaboutroutes = require('./routes/admin/AdminAbout')
+const AdminContact = require('./routes/admin/AdminContact')
 let allroutes = express.Router()
 
 allroutes.use(authroutes)
@@ -20,6 +21,7 @@ allroutes.use(adminauth)
 allroutes.use(AdminHome)
 allroutes.use(AdminTeamroute)
 allroutes.use(adminaboutroutes)
+allroutes.use(AdminContact)
 
 
 

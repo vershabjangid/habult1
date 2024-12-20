@@ -213,6 +213,7 @@ export function AboutUs() {
                               <img
                                 src={imgurl + items.MeetFounderIcon}
                                 alt=""
+                                className="w-[200px]"
                               />
 
                               <h4 className="text-[25px] font-[600] mt-[5px]">
