@@ -80,10 +80,11 @@ exports.viewHomeBanner=async (req,res)=>{
 exports.AdminHomeAboutController = async (req, res) => {
     let data = {
         HomeAboutHeading: req.body.HomeAboutHeading,
-        HomeAboutSubHeading: req.body.HomeAboutSubHeading,
         HomeAboutParagraph: req.body.HomeAboutParagraph,
         HomeAboutBanner: req.files[0].filename,
     }
+
+    console.log(req.body)
 
 
     let viewdata = await AdminHomeAboutModel.find();
@@ -123,4 +124,14 @@ exports.AdminHomeAboutController = async (req, res) => {
         let fileunlink = fs.unlinkSync(`${dirpath}/${req.files[0].filename}`)
     }
 
+}
+
+
+exports.viewHomeAbout=async (req,res)=>{
+    let viewdata = await AdminHomeAboutModel.find()
+    let imgurl =  "https://api.hivexv.com/uploads/"
+    res.send({
+        imgurl,
+        viewdata
+    })
 }

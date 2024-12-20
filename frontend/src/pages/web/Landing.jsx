@@ -28,10 +28,28 @@ export function Landing() {
         console.log(error);
       });
   };
+
+  let [homeabout, sethomeabout] = useState([]);
+  let viewhomeabout = () => {
+    axios
+      .get("https://api.hivexv.com/view-admin-home-about", {
+        headers: {
+          Authorization: JSON.parse(localStorage.getItem("admintoken")),
+        },
+      })
+      .then((res) => {
+        sethomeabout(res.data.viewdata);
+        setimgurl(res.data.imgurl);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   console.log(imgurl);
 
   useEffect(() => {
     viewbanner();
+    viewhomeabout();
   }, []);
   return (
     <>
@@ -81,46 +99,34 @@ export function Landing() {
             })}
 
             <section className="landing_section bg-[white] py-[40px]">
-              <section className="landing_section_about w-[90%] m-auto h-auto flex justify-center items-center">
-                <section className=" w-[50%] text-start text-black px-5 flex justify-center flex-col mt-2">
-                  <div className="flex justify-center">
-                    <h1 className="landing_heading w-[400px] text-[50px] font-[500] my-5 bg-[#e02708] text-[white] rounded-[10px] text-center">
-                      About Us
-                    </h1>
-                  </div>
+              {homeabout.map((items, index) => {
+                console.log(items)
+                return (
+                  <>
+                    <section className="landing_section_about w-[90%] m-auto h-auto flex justify-center items-center">
+                      <section className=" w-[50%] text-start text-black px-5 flex justify-center flex-col mt-2">
+                        <div className="flex justify-center">
+                          <h1 className="landing_heading w-[400px] text-[50px] font-[500] my-5 bg-[#e02708] text-[white] rounded-[10px] text-center">
+                            About Us
+                          </h1>
+                        </div>
 
-                  <h2 className=" text-[35px] leading-[50px] font-[500] my-5  rounded-[10px]">
-                    Connecting Innovators with Investors for a Better Future
-                  </h2>
+                        <h2 className=" text-[35px] leading-[50px] font-[500] my-5  rounded-[10px]">
+                          {items.HomeAboutHeading}
+                        </h2>
 
-                  <p className="text-[18px] my-3">
-                    At Hivexv.com, we believe that the right partnerships can
-                    drive incredible change. Our platform was created to bridge
-                    the gap between innovative startups looking for growth
-                    opportunities and investors seeking impactful ventures. By
-                    simplifying the connection process, we aim to foster a
-                    community where both entrepreneurs and investors can thrive.
-                  </p>
+                        <p className="text-[18px] my-3">
+                        {items.HomeAboutParagraph}
+                        </p>
+                      </section>
 
-                  <p className="text-[18px] my-3">
-                    Our mission is to empower startups with the resources,
-                    guidance, and exposure they need to bring their ideas to
-                    life. For investors, we offer access to promising
-                    opportunities that align with their goals, enabling them to
-                    make informed, impactful investments.
-                  </p>
-
-                  <p className="text-[18px] my-3">
-                    Whether you're a startup with a vision or an investor
-                    seeking the next big thing, Hivexv.com is the space where
-                    ideas grow, and opportunities flourish.
-                  </p>
-                </section>
-
-                <section className="w-[50%] flex justify-center items-center">
-                  <img src={about_Baner} alt="" />
-                </section>
-              </section>
+                      <section className="w-[50%] flex justify-center items-center">
+                        <img src={imgurl + `${items.HomeAboutBanner}`} alt="" />
+                      </section>
+                    </section>
+                  </>
+                );
+              })}
             </section>
 
             <section className="landing_section bg-[white]">

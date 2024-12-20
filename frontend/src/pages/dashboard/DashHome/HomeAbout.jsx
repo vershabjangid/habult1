@@ -51,18 +51,7 @@ export function HomeAbout() {
                 type="text"
                 className=" border-[1px] border-[black] w-[100%] my-2 p-1 rounded"
                 onChange={(e) =>
-                  formik.setFieldValue("About_Heading", e.target.value)
-                }
-              />
-            </div>
-
-            <div className="w-[100%] my-2 text-[18px] font-[500] my-5">
-              <label>Sub - Heading</label>
-              <input
-                type="text"
-                className=" border-[1px] border-[black] w-[100%] my-2 p-1 rounded"
-                onChange={(e) =>
-                  formik.setFieldValue("About_SubHeading", e.target.value)
+                  formik.setFieldValue("HomeAboutHeading", e.target.value)
                 }
               />
             </div>
@@ -73,7 +62,7 @@ export function HomeAbout() {
                 type="text"
                 className=" border-[1px] border-[black] w-[100%] my-2 p-1 rounded"
                 onChange={(e) =>
-                  formik.setFieldValue("About_Paragraph", e.target.value)
+                  formik.setFieldValue("HomeAboutParagraph", e.target.value)
                 }
               />
             </div>
@@ -84,7 +73,7 @@ export function HomeAbout() {
                 type="file"
                 className=" border-[1px] border-[black] w-[100%] my-2 p-1 rounded"
                 onChange={(e) =>
-                  formik.setFieldValue("About_BannerImage", e.target.files[0])
+                  formik.setFieldValue("HomeAboutBanner", e.target.files[0])
                 }
               />
             </div>

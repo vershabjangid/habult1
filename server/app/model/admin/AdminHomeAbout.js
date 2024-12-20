@@ -6,11 +6,6 @@ let AdminHomeAboutschema = mongoose.Schema({
         required: true,
         unique: true
     },
-    HomeAboutSubHeading: {
-        type: String,
-        required: true,
-        unique: true
-    },
     HomeAboutParagraph: {
         type: String,
         required: true,

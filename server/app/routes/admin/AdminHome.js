@@ -1,5 +1,5 @@
 let express = require('express');
-const { AdminHomeController, viewHomeBanner, AdminHomeAboutController } = require('../../controller/admin/AdminHome');
+const { AdminHomeController, viewHomeBanner, AdminHomeAboutController, viewHomeAbout } = require('../../controller/admin/AdminHome');
 let AdminHome = express.Router();
 let path = require('path')
 let jwt = require('jsonwebtoken');
@@ -42,7 +42,7 @@ const storage = multer.diskStorage({
 
 
 
-const upload = multer({ storage: storage }).any('HomeBanner')
+const upload = multer({ storage: storage }).any('HomeBanner','HomeAboutBanner')
 
 
 AdminHome.post('/add-admin-home',upload,verifyadmintoken,AdminHomeController)
@@ -51,5 +51,6 @@ AdminHome.get('/view-home-banner',upload,verifyadmintoken,viewHomeBanner)
 
 
 
-AdminHome.post('/add-admin-home-about',upload,verifyadmintoken,AdminHomeAboutController)
+AdminHome.post('/add-admin-home-about',upload,AdminHomeAboutController)
+AdminHome.get('/view-admin-home-about',upload,viewHomeAbout)
 module.exports = AdminHome;
