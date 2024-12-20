@@ -36,6 +36,10 @@ import { Disclaimer } from './pages/web/Disclaimer';
 import { DashTeam } from './pages/dashboard/DashTeam';
 import { DashViewTeam } from './pages/dashboard/DashViewTeam';
 import { UpdateDashTeam } from './pages/dashboard/UpdateDashTeam';
+import { DashAbout } from './pages/dashboard/Dashabout';
+import { Dashcontact } from './pages/dashboard/Dashcontact';
+import { Dashterms } from './pages/dashboard/Dashterms';
+import { DashPrivacyPolicy } from './pages/dashboard/DashPrivacyPolicy';
 
 function App() {
   return (
@@ -86,6 +90,10 @@ function App() {
             <Route path='/team' element={<DashTeam />} />
             <Route path='/view-team-profile' element={<DashViewTeam />} />
             <Route path='/update-team-profile' element={<UpdateDashTeam />} />
+            <Route path='/dash-about' element={<DashAbout/>} />
+            <Route path='/dash-contact' element={<Dashcontact/>} />
+            <Route path='/dash-terms' element={<Dashterms/>} />
+            <Route path='/dash-policy' element={<DashPrivacyPolicy/>} />
           </Route>
         </Routes>
       </BrowserRouter>
