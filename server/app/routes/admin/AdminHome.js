@@ -46,7 +46,7 @@ const upload = multer({ storage: storage }).any('HomeBanner','HomeAboutBanner')
 
 
 AdminHome.post('/add-admin-home',upload,verifyadmintoken,AdminHomeController)
-AdminHome.get('/view-home-banner',upload,verifyadmintoken,viewHomeBanner)
+AdminHome.get('/view-home-banner',upload,viewHomeBanner)
 
 
 
