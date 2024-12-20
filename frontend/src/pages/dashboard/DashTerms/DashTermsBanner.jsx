@@ -22,7 +22,7 @@ export function DashTermsBanner() {
 
   let insertdata = (value) => {
     axios
-      .post("http://localhost:5000/add-terms-banner", toFormData(value), {
+      .post("https://api.hivexv.com/add-terms-banner", toFormData(value), {
         headers: {
           Authorization: JSON.parse(localStorage.getItem("admintoken")),
         },

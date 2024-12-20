@@ -9,7 +9,7 @@ export function TermsConditions() {
 
   let viewcontactbanner = () => {
     axios
-      .get("http://localhost:5000/view-terms-banner")
+      .get("https://api.hivexv.com/view-terms-banner")
       .then((res) => {
         setTermsbanner(res.data.viewdata);
         setimgurl(res.data.imgurl);

@@ -45,7 +45,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage }).any('TermsBanner')
 
-AdminTerms.post('/add-terms-banner',upload, AddTermsBanner);
+AdminTerms.post('/add-terms-banner',upload,verifyadmintoken, AddTermsBanner);
 AdminTerms.get('/view-terms-banner', ViewTermsBanner);
 
 
