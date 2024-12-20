@@ -145,54 +145,57 @@ export function Landing() {
               })}
             </section>
 
-            <section className="landing_section bg-[white]">
-              <section className="landing_section w-[100%] flex">
-                <section className=" w-[100%] text-start text-[black] px-5 flex justify-center flex-col mt-2">
-                  <h1 className="landing_heading w-[400px] rounded-[10px] m-auto landing_heading text-[50px] text-center font-[500] my-[10px] bg-[#e02708] text-[white]">
-                    Why Choose Us
-                  </h1>
+            {homewhychoose.length === 0 ? null : (
+              <section className="landing_section bg-[white]">
+                <section className="landing_section w-[100%] flex">
+                  <section className=" w-[100%] text-start text-[black] px-5 flex justify-center flex-col mt-2">
+                    <h1 className="landing_heading w-[400px] rounded-[10px] m-auto landing_heading text-[50px] text-center font-[500] my-[10px] bg-[#e02708] text-[white]">
+                      Why Choose Us
+                    </h1>
 
-                  <h2 className=" text-[40px] font-[500] my-5  rounded-[10px] text-center">
-                    Why Hivexv.com Stands Out
-                  </h2>
+                    <h2 className=" text-[40px] font-[500] my-5  rounded-[10px] text-center">
+                      Why Hivexv.com Stands Out
+                    </h2>
 
-                  <section className="w-[90%] m-auto flex justify-between flex-wrap">
-                    {homewhychoose.map((items, index) => {
-                      if (items.length === 0) {
-                        return null;
-                      } else {
-                        return (
-                          <>
-                            <section className="why_choose_cards w-[48%] my-3 p-3 rounded-[10px] text-[black] flex justify-between">
-                              <div className="icon_section w-[100px] h-[100px] text-[25px] me-2 my-2 rounded-[50%] flex justify-center items-center">
-                                <img
-                                  src={
-                                    imgurl + `${items.HomeWhyChooseAboutBanner}`
-                                  }
-                                  alt=""
-                                />
-                              </div>
-
-                              <div className=" mb-2 w-[calc(100%-110px)]">
-                                <div className="">
-                                  <p className="text-[30px] font-[600]">
-                                    {items.HomeWhyChooseHeading}
-                                  </p>
+                    <section className="w-[90%] m-auto flex justify-between flex-wrap">
+                      {homewhychoose.map((items, index) => {
+                        if (items.length === 0) {
+                          return null;
+                        } else {
+                          return (
+                            <>
+                              <section className="why_choose_cards w-[48%] my-3 p-3 rounded-[10px] text-[black] flex justify-between">
+                                <div className="icon_section w-[100px] h-[100px] text-[25px] me-2 my-2 rounded-[50%] flex justify-center items-center">
+                                  <img
+                                    src={
+                                      imgurl +
+                                      `${items.HomeWhyChooseAboutBanner}`
+                                    }
+                                    alt=""
+                                  />
                                 </div>
-                                <div className=" text-justify">
-                                  <p>{items.HomeWhyChooseAboutParagraph}</p>
-                                  {/* <p className="my-3 underline">View More</p> */}
+
+                                <div className=" mb-2 w-[calc(100%-110px)]">
+                                  <div className="">
+                                    <p className="text-[30px] font-[600]">
+                                      {items.HomeWhyChooseHeading}
+                                    </p>
+                                  </div>
+                                  <div className=" text-justify">
+                                    <p>{items.HomeWhyChooseAboutParagraph}</p>
+                                    {/* <p className="my-3 underline">View More</p> */}
+                                  </div>
                                 </div>
-                              </div>
-                            </section>
-                          </>
-                        );
-                      }
-                    })}
+                              </section>
+                            </>
+                          );
+                        }
+                      })}
+                    </section>
                   </section>
                 </section>
               </section>
-            </section>
+            )}
 
             <section className="landing_section bg-[white]">
               {/* <section className="landing_section w-[100%] flex">
