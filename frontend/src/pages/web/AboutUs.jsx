@@ -56,7 +56,7 @@ export function AboutUs() {
   let [ourvision, setourvision] = useState([]);
   let viewourvision = () => {
     axios
-      .get("https://aapi.hivexv.com/view-about-ourvision")
+      .get("https://api.hivexv.com/view-about-ourvision")
       .then((res) => {
         setourvision(res.data.viewdata);
         setimgurl(res.data.imgurl);
@@ -66,6 +66,7 @@ export function AboutUs() {
       });
   };
 
+  console.log(ourmission)
   useEffect(() => {
     viewaboutbanner();
     viewaboutcontent();

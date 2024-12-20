@@ -189,7 +189,7 @@ exports.viewadboutourmissioncontroller = async (req, res) => {
 
 
 
-exports.AdminaboutOurVision = async (req, res) => {
+exports.AdminaboutOurVisioncontroller = async (req, res) => {
     console.log(req.body)
     let data = {
         OurVisionParagraph: req.body.OurVisionParagraph,
