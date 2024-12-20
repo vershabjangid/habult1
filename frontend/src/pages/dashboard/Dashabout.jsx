@@ -5,6 +5,7 @@ import { useFormik } from 'formik'
 import { DashAboutBanner } from './DashAbout/DashAboutBanner'
 import { DashAboutContent } from './DashAbout/DashAboutContent'
 import { DashAboutOurMission } from './DashAbout/DashAboutOurMission'
+import { DashAboutOurVision } from './DashAbout/DashAboutOurVision'
 
 export function DashAbout() {
 
@@ -25,42 +26,9 @@ export function DashAbout() {
                <DashAboutBanner/>
                <DashAboutContent/>
                <DashAboutOurMission/>
+               <DashAboutOurVision/>
                <form className="w-[90%]" onSubmit={formik.handleSubmit}>
-                 <section className="page_label w-[100%] mt-[50px] rounded-[10px] p-2 text-[#e02708] font-[600] text-[20px]">
-                   <p>Our Vision</p>
-   
-                   <div className="text-[black]">
-                     <div className="w-[100%] my-2 text-[18px] font-[500] my-5">
-                       <label>Heading</label>
-                       <input
-                         type="text"
-                         className=" border-[1px] border-[black] w-[100%] my-2 p-1 rounded"
-                       />
-                     </div>
-   
-                     <div className="w-[100%] my-2 text-[18px] font-[500] my-5">
-                       <label>Paragraph</label>
-                       <input
-                         type="text"
-                         className=" border-[1px] border-[black] w-[100%] my-2 p-1 rounded"
-                       />
-                     </div>
-   
-                     <div className="w-[100%] my-2 text-[18px] font-[500] my-5">
-                       <label>Section Image</label>
-                       <input
-                         type="file"
-                         className=" border-[1px] border-[black] w-[100%] my-2 p-1 rounded"
-                       />
-                     </div>
-   
-                     <div className="w-[100%] my-2 text-[18px] font-[500] my-5">
-                       <button className="w-[200px] my-2 bg-[#e02708] text-[white] py-3 rounded">
-                         Save
-                       </button>
-                     </div>
-                   </div>
-                 </section>
+               
                 
    
                  <section className="page_label w-[100%] my-[50px] rounded-[10px] p-2 text-[#e02708] font-[600] text-[20px]">

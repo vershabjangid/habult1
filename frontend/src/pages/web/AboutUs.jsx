@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Header } from "../../common/Header";
-import right_banner from "../../images/a-black-background-with-the-text-about-us-written--58EEDF77TFuu6SSpNM1RMA-3NIl9TxiQOiqKYegQxu4ww (1).png";
-import ourmission from "../../images/an-illustration-of-a-lightbulb-with-the-word-missi-k1wfpXxwSfyTxmkd4GBK4Q-7j6IHlP4QOOXs3RnxhEQXQ-removebg-preview (1).png";
-import ourvision from "../../images/an-illustration-of-a-light-bulb-with-the-word-visi-qC1h6cYlSY-mQUFbI_0xuQ-Aj5tVA1xQXSaJPqJNc6bZA (1).png";
+// import right_banner from "../../images/a-black-background-with-the-text-about-us-written--58EEDF77TFuu6SSpNM1RMA-3NIl9TxiQOiqKYegQxu4ww (1).png";
+// import ourmission from "../../images/an-illustration-of-a-lightbulb-with-the-word-missi-k1wfpXxwSfyTxmkd4GBK4Q-7j6IHlP4QOOXs3RnxhEQXQ-removebg-preview (1).png";
+// import ourvision from "../../images/an-illustration-of-a-light-bulb-with-the-word-visi-qC1h6cYlSY-mQUFbI_0xuQ-Aj5tVA1xQXSaJPqJNc6bZA (1).png";
 import hiring from "../../images/a-minimalistic-illustration-of-a-large-orange-rect-o8DWmbQrRH2K014EHAZuLg-nmofR7YrROStZTK9FymyDw-removebg-preview.png";
 import { FaLinkedin } from "react-icons/fa";
 import { Footer } from "../../common/Footer";
@@ -51,10 +51,26 @@ export function AboutUs() {
       });
   };
 
+  console.log(ourmission);
+
+  let [ourvision, setourvision] = useState([]);
+  let viewourvision = () => {
+    axios
+      .get("https://aapi.hivexv.com/view-about-ourvision")
+      .then((res) => {
+        setourvision(res.data.viewdata);
+        setimgurl(res.data.imgurl);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   useEffect(() => {
     viewaboutbanner();
     viewaboutcontent();
     viewourmission();
+    viewourvision();
   }, []);
   return (
     <>
@@ -148,36 +164,28 @@ export function AboutUs() {
             </section>
 
             <section className="landing_section bg-[white] py-[40px]">
-              <section className="landing_section w-[90%] m-auto h-auto flex justify-center items-center">
-                <section className=" w-[50%] text-start text-black px-5 flex justify-center flex-col mt-2">
-                  <div className="flex justify-center">
-                    <h1 className="landing_heading w-[400px] text-[50px] text-[white] font-[500] my-5 bg-[#e02708] rounded-[10px] text-center">
-                      Our Vision
-                    </h1>
-                  </div>
+              {ourvision.map((items, index) => {
+                return (
+                  <>
+                    <section className="landing_section w-[90%] m-auto h-auto flex justify-center items-center">
+                      <section className=" w-[50%] text-start text-black px-5 flex justify-center flex-col mt-2">
+                        <div className="flex justify-center">
+                          <h1 className="landing_heading w-[400px] text-[50px] text-[white] font-[500] my-5 bg-[#e02708] rounded-[10px] text-center">
+                            Our Vision
+                          </h1>
+                        </div>
 
-                  <p className="text-[18px] my-3">
-                    At Hivexv.com, we envision a world where startups and
-                    investors collaborate effortlessly to create impactful
-                    ventures. Our goal is to build a platform that connects
-                    innovative entrepreneurs with visionary investors, fostering
-                    a thriving ecosystem where both can grow and succeed
-                    together. By bridging the gap between these two worlds, we
-                    aim to empower startups with the resources they need to
-                    scale and provide investors with curated opportunities that
-                    align with their goals.
-                  </p>
-
-                  <p className="text-[18px] my-3">
-                    We strive to create lasting relationships that drive
-                    meaningful progress, shaping the future of industries and
-                    transforming ideas into reality.
-                  </p>
-                </section>
-                <section className="w-[50%] flex justify-center items-center">
-                  <img src={ourvision} alt="" />
-                </section>
-              </section>
+                        <p className="text-[18px] my-3">
+                         {items.OurVisionParagraph}
+                        </p>
+                      </section>
+                      <section className="w-[50%] flex justify-center items-center">
+                        <img src={imgurl+items.OurVisionBanner} alt="" />
+                      </section>
+                    </section>
+                  </>
+                );
+              })}
             </section>
 
             <section className="landing_section ">

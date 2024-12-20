@@ -3,6 +3,7 @@ let fs = require('fs')
 let path = require('path')
 const aboutcontentmodel = require("../../model/admin/AdminAboutContent")
 const adminaboutourmissionmodel = require("../../model/admin/AdminAboutWhyChoose")
+const adminourvisionsmodel = require("../../model/admin/AdminOurVision")
 let dirpath = path.join(__dirname, '../../../uploads')
 
 exports.Addaboutbannercontroller = async (req, res) => {
@@ -167,6 +168,75 @@ exports.AdminaboutOurMission = async (req, res) => {
 
 exports.viewadboutourmissioncontroller = async (req, res) => {
     let viewdata = await adminaboutourmissionmodel.find()
+    res.send({
+        viewdata
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+exports.AdminaboutOurVision = async (req, res) => {
+    console.log(req.body)
+    let data = {
+        OurVisionParagraph: req.body.OurVisionParagraph,
+        OurVisionBanner: req.files[0].filename
+    }
+
+
+    let viewdata = await adminaboutourmissionmodel.find()
+
+    if (viewdata.length == 0) {
+
+        let insertdata = await adminourvisionsmodel(data)
+        insertdata.save()
+            .then(() => {
+                res.send({
+                    Status: 1,
+                    Message: "Data Inserted Successfully"
+                })
+            })
+            .catch((error) => {
+                if (error.code === 11000) {
+                    res.send({
+                        Status: 0,
+                        Message: "Data Already Inserted"
+                    })
+                }
+                else {
+                    res.send({
+                        Status: 0,
+                        Message: "Data Missing"
+                    })
+                }
+                let fileunlink = fs.unlinkSync(`${dirpath}/${req.files[0].filename}`)
+            })
+    }
+    else {
+        res.send({
+            Status: 0,
+            Message: "Data Already Inserted"
+        })
+        let fileunlink = fs.unlinkSync(`${dirpath}/${req.files[0].filename}`)
+    }
+}
+
+
+exports.viewadboutourvisioncontroller = async (req, res) => {
+    let viewdata = await adminourvisionsmodel.find()
     res.send({
         viewdata
     })
