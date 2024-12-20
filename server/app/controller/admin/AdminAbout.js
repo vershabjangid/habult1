@@ -1,6 +1,7 @@
 const aboutbannermodel = require("../../model/admin/AdminAboutBanner")
 let fs = require('fs')
 let path = require('path')
+const aboutcontentmodel = require("../../model/admin/AdminAboutContent")
 let dirpath = path.join(__dirname, '../../../uploads')
 
 exports.Addaboutbannercontroller = async (req, res) => {
@@ -55,5 +56,57 @@ exports.viewadboutbannercontroller = async (req, res) => {
     res.send({
         viewdata,
         imgurl
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+exports.Addaboutcontentcontroller = async (req, res) => {
+    console.log(req.body)
+    let data = {
+        About_Content: req.body.About_Content,
+    }
+
+    let insertdata = await aboutcontentmodel(data)
+    insertdata.save()
+        .then(() => {
+            res.send({
+                Status: 1,
+                Message: "Data Inserted Successfully"
+            })
+        })
+        .catch((error) => {
+            if (error.code === 11000) {
+                res.send({
+                    Status: 0,
+                    Message: "Data Already Inserted"
+                })
+            }
+            else {
+                res.send({
+                    Status: 0,
+                    Message: "Data Missing"
+                })
+            }
+        })
+}
+
+
+
+exports.viewadboutcontentcontroller = async (req, res) => {
+    let viewdata = await aboutcontentmodel.find()
+    res.send({
+        viewdata
     })
 }

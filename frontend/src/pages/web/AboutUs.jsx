@@ -25,8 +25,21 @@ export function AboutUs() {
       });
   };
 
+  let [admincontent, setadmincontent] = useState([]);
+  let viewaboutcontent = () => {
+    axios
+      .get("https://api.hivexv.com/view-about-content")
+      .then((res) => {
+        setadmincontent(res.data.viewdata);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   useEffect(() => {
     viewaboutbanner();
+    viewaboutcontent();
   }, []);
   return (
     <>
@@ -40,7 +53,7 @@ export function AboutUs() {
                 <>
                   <section className="landing_section w-[100%] h-[calc(100vh-110px)] flex mt-2">
                     <section className="w-[50%] h-[100%] flex justify-center items-center">
-                      <img src={imgurl+`${items.AboutBanner}`} alt="" />
+                      <img src={imgurl + `${items.AboutBanner}`} alt="" />
                     </section>
 
                     <section className=" w-[50%] h-[100%] text-end text-white px-5 flex justify-center flex-col mt-2">
@@ -52,9 +65,7 @@ export function AboutUs() {
                         {items.AboutHeading}
                       </h3>
 
-                      <p className="text-[18px] my-3">
-                    {items.AboutParagraph}
-                      </p>
+                      <p className="text-[18px] my-3">{items.AboutParagraph}</p>
 
                       <div className="my-3">
                         <Link to={"/login"}>
@@ -83,78 +94,15 @@ export function AboutUs() {
                     </h1>
                   </div>
 
-                  <p className="text-[18px] my-3">
-                    At Hivexv.com, we’re transforming the way startups and
-                    investors connect. Our platform serves as a bridge between
-                    innovative entrepreneurs and forward-thinking investors,
-                    creating opportunities for growth, collaboration, and
-                    success. We understand that building a startup requires more
-                    than just a great idea – it requires the right partners and
-                    resources to bring that vision to life. That’s where we come
-                    in.
-                  </p>
-
-                  <p className="text-[18px] my-3">
-                    At Hivexv.com, we’re transforming the way startups and
-                    investors connect. Our platform serves as a bridge between
-                    innovative entrepreneurs and forward-thinking investors,
-                    creating opportunities for growth, collaboration, and
-                    success. We understand that building a startup requires more
-                    than just a great idea – it requires the right partners and
-                    resources to bring that vision to life. That’s where we come
-                    in.
-                  </p>
-
-                  <p className="text-[18px] my-3">
-                    For investors, we offer a curated selection of
-                    high-potential startups that match their investment
-                    preferences. Our platform allows investors to explore a wide
-                    range of business opportunities, ensuring they can find the
-                    ventures that align with their goals. With a simple and
-                    secure platform, investors can easily discover startups,
-                    connect with founders, and evaluate investment opportunities
-                    in a streamlined and efficient way.
-                  </p>
-
-                  <p className="text-[18px] my-3">
-                    At Hivexv.com, we prioritize transparency, trust, and
-                    collaboration. We understand that successful partnerships
-                    are built on open communication and shared objectives.
-                    That’s why we’ve created an environment where both startups
-                    and investors can engage in meaningful conversations,
-                    clarify expectations, and work together to create mutual
-                    value. Our goal is to make the process of connecting with
-                    investors or finding the right startup opportunity simple,
-                    transparent, and effective.
-                  </p>
-
-                  <p className="text-[18px] my-3">
-                    What makes Hivexv.com unique is the personalized approach we
-                    bring to both startups and investors. We offer more than
-                    just a marketplace – we provide a space where both sides can
-                    thrive through thoughtful connections and lasting
-                    relationships. Startups benefit from investor exposure,
-                    while investors have access to a carefully selected pool of
-                    innovative businesses, giving them the best opportunities to
-                    generate returns and support groundbreaking ideas.
-                  </p>
-
-                  <p className="text-[18px] my-3">
-                    Our platform is built with ease of use in mind, offering
-                    startups the ability to create detailed profiles, pitch
-                    their ideas, and showcase their potential. Investors, on the
-                    other hand, can filter opportunities based on their specific
-                    criteria and find startups that align with their investment
-                    strategies.
-                  </p>
-
-                  <p className="text-[18px] my-3">
-                    Hivexv.com is not just a platform, but a community where the
-                    entrepreneurial spirit meets investment expertise. Whether
-                    you’re launching your first startup or seeking to invest in
-                    the next big thing, Hivexv.com is the place where your
-                    journey begins
-                  </p>
+                  {admincontent.map((items, index) => {
+                    return (
+                      <>
+                        <p className="text-[18px] text-[black] my-3">
+                          {items.About_Content}
+                        </p>
+                      </>
+                    );
+                  })}
                 </section>
               </section>
             </section>

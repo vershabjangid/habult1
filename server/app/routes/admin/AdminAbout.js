@@ -1,5 +1,5 @@
 let express = require('express');
-const { Addaboutbannercontroller, viewadboutbannercontroller } = require('../../controller/admin/AdminAbout');
+const { Addaboutbannercontroller, viewadboutbannercontroller, Addaboutcontentcontroller } = require('../../controller/admin/AdminAbout');
 let adminaboutroutes = express.Router();
 
 
@@ -48,6 +48,12 @@ const upload = multer({ storage: storage }).any('AboutBanner')
 
 adminaboutroutes.post('/add-about-banner', upload, verifyadmintoken, Addaboutbannercontroller)
 adminaboutroutes.get('/view-about-banner', upload, viewadboutbannercontroller)
+
+
+
+
+adminaboutroutes.post('/add-about-content',upload, Addaboutcontentcontroller)
+adminaboutroutes.get('/view-about-content', viewadboutbannercontroller)
 
 
 

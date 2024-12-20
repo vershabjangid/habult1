@@ -3,6 +3,7 @@ import { ToastContainer } from 'react-toastify'
 import { Sidebar } from '../../common/Sidebar'
 import { useFormik } from 'formik'
 import { DashAboutBanner } from './DashAbout/DashAboutBanner'
+import { DashAboutContent } from './DashAbout/DashAboutContent'
 
 export function DashAbout() {
 
@@ -21,6 +22,7 @@ export function DashAbout() {
                </section>
 
                <DashAboutBanner/>
+               <DashAboutContent/>
                <form className="w-[90%]" onSubmit={formik.handleSubmit}>
                  
                
