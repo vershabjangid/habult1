@@ -12,7 +12,7 @@ export function ContactUs() {
 
   let viewcontactbanner = () => {
     axios
-      .get("http://localhost:5000/view-contact-banner")
+      .get("https://api.hivexv.com/view-contact-banner")
       .then((res) => {
         setContactbanner(res.data.viewdata);
         setimgurl(res.data.imgurl);

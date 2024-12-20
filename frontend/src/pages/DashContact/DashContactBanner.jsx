@@ -20,7 +20,7 @@ export function DashContactBanner() {
 
   let insertdata = (value) => {
     axios
-      .post("http://localhost:5000/add-contact-banner", toFormData(value), {
+      .post("https://api.hivexv.com/add-contact-banner", toFormData(value), {
         headers: {
           Authorization: JSON.parse(localStorage.getItem("admintoken")),
         },

@@ -46,7 +46,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage }).any('AdminContactBanner')
 
 
-AdminContact.post('/add-contact-banner', upload, AddAdminContactBanner)
+AdminContact.post('/add-contact-banner', upload, verifyadmintoken, AddAdminContactBanner)
 AdminContact.get('/view-contact-banner', upload, ViewAdminContactBanner)
 
 
