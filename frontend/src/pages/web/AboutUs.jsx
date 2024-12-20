@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Header } from "../../common/Header";
 import right_banner from "../../images/a-black-background-with-the-text-about-us-written--58EEDF77TFuu6SSpNM1RMA-3NIl9TxiQOiqKYegQxu4ww (1).png";
 import ourmission from "../../images/an-illustration-of-a-lightbulb-with-the-word-missi-k1wfpXxwSfyTxmkd4GBK4Q-7j6IHlP4QOOXs3RnxhEQXQ-removebg-preview (1).png";
@@ -9,7 +9,25 @@ import { Footer } from "../../common/Footer";
 import { IoPerson } from "react-icons/io5";
 import { GetInTouch } from "../../common/GetInTouch";
 import { Link } from "react-router-dom";
+import axios from "axios";
 export function AboutUs() {
+  let [aboutbanner, setaboutbanner] = useState([]);
+  let [imgurl, setimgurl] = useState("");
+  let viewaboutbanner = () => {
+    axios
+      .get("https://api.hivexv.com/view-about-banner")
+      .then((res) => {
+        setaboutbanner(res.data.viewdata);
+        setimgurl(res.data.imgurl);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    viewaboutbanner();
+  }, []);
   return (
     <>
       <section className="main w-[100%] bg-[#292828b4]">
@@ -17,39 +35,44 @@ export function AboutUs() {
           <section className="home_banner h-[100vh] bg-[#00000065] pt-3">
             <Header />
 
-            <section className="landing_section w-[100%] h-[calc(100vh-110px)] flex mt-2">
-              <section className="w-[50%] h-[100%] flex justify-center items-center">
-                <img src={right_banner} alt="" />
-              </section>
+            {aboutbanner.map((items, index) => {
+              return (
+                <>
+                  <section className="landing_section w-[100%] h-[calc(100vh-110px)] flex mt-2">
+                    <section className="w-[50%] h-[100%] flex justify-center items-center">
+                      <img src={imgurl+`${items.AboutBanner}`} alt="" />
+                    </section>
 
-              <section className=" w-[50%] h-[100%] text-end text-white px-5 flex justify-center flex-col mt-2">
-                <h1 className="landing_heading text-[50px] font-[500] my-5">
-                  About Us
-                </h1>
+                    <section className=" w-[50%] h-[100%] text-end text-white px-5 flex justify-center flex-col mt-2">
+                      <h1 className="landing_heading text-[50px] font-[500] my-5">
+                        About Us
+                      </h1>
 
-                <p className="text-[18px] my-3">
-                  Hivexv.com is a dedicated platform that connects innovative
-                  startups with forward-thinking investors. We aim to create an
-                  ecosystem where bold ideas meet the resources they need to
-                  flourish and investors discover opportunities that align with
-                  their vision. By fostering collaboration, we pave the way for
-                  growth, success, and mutual achievement.
-                </p>
+                      <h3 className="landing_heading text-[50px] font-[500] my-5">
+                        {items.AboutHeading}
+                      </h3>
 
-                <div className="my-3">
-                  <Link to={"/login"}>
-                    <button className="landing_btn w-[300px] h-[50px] bg-[#e02708] rounded-[10px]">
-                      Become an investor
-                    </button>
-                  </Link>
-                  <Link to={"/login"}>
-                    <button className="landing_btn w-[300px] h-[50px] bg-[white] text-black rounded-[10px] ms-2">
-                      Submit Pitch Deck
-                    </button>
-                  </Link>
-                </div>
-              </section>
-            </section>
+                      <p className="text-[18px] my-3">
+                    {items.AboutParagraph}
+                      </p>
+
+                      <div className="my-3">
+                        <Link to={"/login"}>
+                          <button className="landing_btn w-[300px] h-[50px] bg-[#e02708] rounded-[10px]">
+                            Become an investor
+                          </button>
+                        </Link>
+                        <Link to={"/login"}>
+                          <button className="landing_btn w-[300px] h-[50px] bg-[white] text-black rounded-[10px] ms-2">
+                            Submit Pitch Deck
+                          </button>
+                        </Link>
+                      </div>
+                    </section>
+                  </section>
+                </>
+              );
+            })}
 
             <section className="landing_section bg-[white] py-[40px]">
               <section className="landing_section w-[90%] m-auto h-auto flex justify-center items-center">

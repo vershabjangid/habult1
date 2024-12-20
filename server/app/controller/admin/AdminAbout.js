@@ -1,4 +1,7 @@
 const aboutbannermodel = require("../../model/admin/AdminAboutBanner")
+let fs = require('fs')
+let path = require('path')
+let dirpath = path.join(__dirname, '../../../uploads')
 
 exports.Addaboutbannercontroller = async (req, res) => {
     let data = {
@@ -32,6 +35,7 @@ exports.Addaboutbannercontroller = async (req, res) => {
                         Message: "Data Missing"
                     })
                 }
+                let fileunlink = fs.unlinkSync(`${dirpath}/${req.files[0].filename}`)
             })
     }
     else {
@@ -39,5 +43,17 @@ exports.Addaboutbannercontroller = async (req, res) => {
             Status: 0,
             Message: "Data Already Inserted"
         })
+        let fileunlink = fs.unlinkSync(`${dirpath}/${req.files[0].filename}`)
     }
+}
+
+
+
+exports.viewadboutbannercontroller = async (req, res) => {
+    let viewdata = await aboutbannermodel.find()
+    let imgurl = "https://api.hivexv.com/uploads/"
+    res.send({
+        viewdata,
+        imgurl
+    })
 }
