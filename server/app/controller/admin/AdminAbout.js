@@ -197,7 +197,7 @@ exports.AdminaboutOurVision = async (req, res) => {
     }
 
 
-    let viewdata = await adminaboutourmissionmodel.find()
+    let viewdata = await adminourvisionsmodel.find()
 
     if (viewdata.length == 0) {
 
