@@ -1,5 +1,5 @@
 let express = require('express');
-const { AdminHomeController, viewHomeBanner, AdminHomeAboutController, viewHomeAbout } = require('../../controller/admin/AdminHome');
+const { AdminHomeController, viewHomeBanner, AdminHomeAboutController, viewHomeAbout, AdminHomeWhyChooseController, ViewAdminHomeWhyChoose } = require('../../controller/admin/AdminHome');
 let AdminHome = express.Router();
 let path = require('path')
 let jwt = require('jsonwebtoken');
@@ -51,6 +51,11 @@ AdminHome.get('/view-home-banner',upload,verifyadmintoken,viewHomeBanner)
 
 
 
-AdminHome.post('/add-admin-home-about',upload,AdminHomeAboutController)
+AdminHome.post('/add-admin-home-about',upload,verifyadmintoken,AdminHomeAboutController)
 AdminHome.get('/view-admin-home-about',upload,viewHomeAbout)
+
+
+
+AdminHome.post('/add-admin-home-whychoose',upload,AdminHomeWhyChooseController)
+AdminHome.get('/view-admin-home-whychoose',upload,ViewAdminHomeWhyChoose)
 module.exports = AdminHome;

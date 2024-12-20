@@ -5,6 +5,7 @@ import axios, { toFormData } from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { HomeBanner } from "./DashHome/HomeBanner";
 import { HomeAbout } from "./DashHome/HomeAbout";
+import { HomeWhyChoose } from "./DashHome/HomeWhyChoose";
 
 export function DashHome() {
   let formik = useFormik({
@@ -53,43 +54,8 @@ export function DashHome() {
             </section>
 
             <HomeBanner />
-           <HomeAbout/>
-
-            <section className="page_label w-[100%] mt-[50px] rounded-[10px] p-2 text-[#e02708] font-[600] text-[20px]">
-              <p>Why Choose Us</p>
-
-              <div className="text-[black]">
-                <div className="w-[100%] my-2 text-[18px] font-[500] my-5">
-                  <label>Heading</label>
-                  <input
-                    type="text"
-                    className=" border-[1px] border-[black] w-[100%] my-2 p-1 rounded"
-                  />
-                </div>
-
-                <div className="w-[100%] my-2 text-[18px] font-[500] my-5">
-                  <label>Paragraph</label>
-                  <input
-                    type="text"
-                    className=" border-[1px] border-[black] w-[100%] my-2 p-1 rounded"
-                  />
-                </div>
-
-                <div className="w-[100%] my-2 text-[18px] font-[500] my-5">
-                  <label>Icon Image</label>
-                  <input
-                    type="file"
-                    className=" border-[1px] border-[black] w-[100%] my-2 p-1 rounded"
-                  />
-                </div>
-
-                <div className="w-[100%] my-2 text-[18px] font-[500] my-5">
-                  <button className="w-[200px] my-2 bg-[#e02708] text-[white] py-3 rounded">
-                    Save
-                  </button>
-                </div>
-              </div>
-            </section>
+            <HomeAbout />
+            <HomeWhyChoose />
 
             <section className="page_label w-[100%] mt-[50px] rounded-[10px] p-2 text-[#e02708] font-[600] text-[20px]">
               <p>Faq ( Frequently Asked Questions )</p>

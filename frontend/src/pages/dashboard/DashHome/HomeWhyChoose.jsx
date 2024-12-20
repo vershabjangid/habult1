@@ -3,13 +3,12 @@ import { useFormik } from "formik";
 import React from "react";
 import { toast } from "react-toastify";
 
-export function HomeAbout() {
+export function HomeWhyChoose() {
   let formik = useFormik({
     initialValues: {
-      HomeAboutHeading: "",
-      HomeAboutSubHeading: "",
-      HomeAboutParagraph: "",
-      HomeAboutBanner: "",
+      HomeWhyChooseHeading: "",
+      HomeWhyChooseAboutParagraph: "",
+      HomeWhyChooseAboutBanner: "",
     },
 
     onSubmit: () => {
@@ -22,7 +21,7 @@ export function HomeAbout() {
 
   let insertdata = (value) => {
     axios
-      .post("https://api.hivexv.com/add-admin-home-about", toFormData(value), {
+      .post("https://api.hivexv.com/add-admin-home-whychoose", toFormData(value), {
         headers: {
           Authorization: JSON.parse(localStorage.getItem("admintoken")),
         },
@@ -42,7 +41,7 @@ export function HomeAbout() {
     <>
       <form className="w-[90%]" onSubmit={formik.handleSubmit}>
         <section className="page_label w-[100%] mt-[50px] rounded-[10px] p-2 text-[#e02708] font-[600] text-[20px]">
-          <p>About Us</p>
+          <p>Why Choose Us</p>
 
           <div className="text-[black]">
             <div className="w-[100%] my-2 text-[18px] font-[500] my-5">
@@ -51,7 +50,7 @@ export function HomeAbout() {
                 type="text"
                 className=" border-[1px] border-[black] w-[100%] my-2 p-1 rounded"
                 onChange={(e) =>
-                  formik.setFieldValue("HomeAboutHeading", e.target.value)
+                  formik.setFieldValue("HomeWhyChooseHeading", e.target.value)
                 }
               />
             </div>
@@ -62,24 +61,30 @@ export function HomeAbout() {
                 type="text"
                 className=" border-[1px] border-[black] w-[100%] my-2 p-1 rounded"
                 onChange={(e) =>
-                  formik.setFieldValue("HomeAboutParagraph", e.target.value)
+                  formik.setFieldValue(
+                    "HomeWhyChooseAboutParagraph",
+                    e.target.value
+                  )
                 }
               />
             </div>
 
             <div className="w-[100%] my-2 text-[18px] font-[500] my-5">
-              <label>Banner Image</label>
+              <label>Icon Image</label>
               <input
                 type="file"
                 className=" border-[1px] border-[black] w-[100%] my-2 p-1 rounded"
                 onChange={(e) =>
-                  formik.setFieldValue("HomeAboutBanner", e.target.files[0])
+                  formik.setFieldValue(
+                    "HomeWhyChooseAboutBanner",
+                    e.target.files[0]
+                  )
                 }
               />
             </div>
 
             <div className="w-[100%] my-2 text-[18px] font-[500] my-5">
-              <button className="w-[200px] my-2 bg-[#e02708] text-[white] py-3 rounded">
+              <button type="submit" className="w-[200px] my-2 bg-[#e02708] text-[white] py-3 rounded">
                 Save
               </button>
             </div>

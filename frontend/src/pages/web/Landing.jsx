@@ -45,11 +45,28 @@ export function Landing() {
         console.log(error);
       });
   };
-  console.log(imgurl);
+
+  let [homewhychoose, sethomewhychoose] = useState([]);
+  let viewhomewhychoose = () => {
+    axios
+      .get("https://api.hivexv.com/view-admin-home-whychoose", {
+        headers: {
+          Authorization: JSON.parse(localStorage.getItem("admintoken")),
+        },
+      })
+      .then((res) => {
+        sethomewhychoose(res.data.viewdata);
+        setimgurl(res.data.imgurl);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   useEffect(() => {
     viewbanner();
     viewhomeabout();
+    viewhomewhychoose();
   }, []);
   return (
     <>
@@ -100,7 +117,6 @@ export function Landing() {
 
             <section className="landing_section bg-[white] py-[40px]">
               {homeabout.map((items, index) => {
-                console.log(items)
                 return (
                   <>
                     <section className="landing_section_about w-[90%] m-auto h-auto flex justify-center items-center">
@@ -116,7 +132,7 @@ export function Landing() {
                         </h2>
 
                         <p className="text-[18px] my-3">
-                        {items.HomeAboutParagraph}
+                          {items.HomeAboutParagraph}
                         </p>
                       </section>
 
@@ -141,100 +157,38 @@ export function Landing() {
                   </h2>
 
                   <section className="w-[90%] m-auto flex justify-between flex-wrap">
-                    <section className="why_choose_cards w-[48%] my-3 p-3 rounded-[10px] text-[black] flex justify-between">
-                      <div className="icon_section w-[100px] h-[100px] text-[25px] me-2 my-2 rounded-[50%] flex justify-center items-center">
-                        <img src={icon1} alt="" />
-                      </div>
+                    {homewhychoose.map((items, index) => {
+                      if (items.length === 0) {
+                        return null;
+                      } else {
+                        return (
+                          <>
+                            <section className="why_choose_cards w-[48%] my-3 p-3 rounded-[10px] text-[black] flex justify-between">
+                              <div className="icon_section w-[100px] h-[100px] text-[25px] me-2 my-2 rounded-[50%] flex justify-center items-center">
+                                <img
+                                  src={
+                                    imgurl + `${items.HomeWhyChooseAboutBanner}`
+                                  }
+                                  alt=""
+                                />
+                              </div>
 
-                      <div className=" mb-2 w-[calc(100%-110px)]">
-                        <div className="">
-                          <p className="text-[30px] font-[600]">
-                            Tailored Matches
-                          </p>
-                        </div>
-                        <div className=" text-justify">
-                          <p>
-                            Our advanced matching algorithm ensures that
-                            startups connect with the right investors, based on
-                            industry, growth stage, and goals. This personalized
-                            approach saves time and maximizes the potential for
-                            successful partnerships.
-                          </p>
-                          {/* <p className="my-3 underline">View More</p> */}
-                        </div>
-                      </div>
-                    </section>
-
-                    <section className="why_choose_cards w-[48%] my-3 p-3 rounded-[10px] text-[black] flex justify-between">
-                      <div className="icon_section w-[100px] h-[100px] text-[25px] me-2 my-2 rounded-[50%] flex justify-center items-center">
-                        <img src={icon2} className="w-[70%]" alt="" />
-                      </div>
-
-                      <div className=" mb-2 w-[calc(100%-110px)]">
-                        <div className="">
-                          <p className="text-[30px] font-[600]">
-                            User-Friendly Experience
-                          </p>
-                        </div>
-                        <div className=" text-justify">
-                          <p>
-                            Hivexv.com is designed to be simple and intuitive,
-                            allowing both startups and investors to navigate and
-                            interact easily. Whether you're new to the platform
-                            or an experienced user, our seamless interface makes
-                            collaboration effortless.
-                          </p>
-                          {/* <p className="my-3 underline">View More</p> */}
-                        </div>
-                      </div>
-                    </section>
-
-                    <section className="why_choose_cards w-[48%] my-3 p-3 rounded-[10px] text-[black] flex justify-between">
-                      <div className="icon_section w-[100px] h-[100px] text-[25px] me-2 my-2 rounded-[50%] flex justify-center items-center">
-                        <img src={icon3} alt="" />
-                      </div>
-
-                      <div className=" mb-2 w-[calc(100%-110px)]">
-                        <div className="">
-                          <p className="text-[30px] font-[600]">
-                            Transparent Communication
-                          </p>
-                        </div>
-                        <div className=" text-justify">
-                          <p>
-                            We believe in building trust through transparency.
-                            Our platform enables clear communication between
-                            startups and investors, ensuring both sides
-                            understand expectations and goals before moving
-                            forward.
-                          </p>
-                          {/* <p className="my-3 underline">View More</p> */}
-                        </div>
-                      </div>
-                    </section>
-
-                    <section className="why_choose_cards w-[48%] my-3 p-3 rounded-[10px] text-[black] flex justify-between">
-                      <div className="icon_section w-[100px] h-[100px] text-[25px] me-2 my-2 rounded-[50%] flex justify-center items-center">
-                        <img src={icon4} alt="" />
-                      </div>
-
-                      <div className=" mb-2 w-[calc(100%-110px)]">
-                        <div className="">
-                          <p className="text-[30px] font-[600]">
-                            Expert Support & Resources
-                          </p>
-                        </div>
-                        <div className=" text-justify">
-                          <p>
-                            Beyond connections, we offer startups and investors
-                            access to valuable resources, including industry
-                            insights and expert advice, empowering users to make
-                            informed decisions and drive success.
-                          </p>
-                          {/* <p className="my-3 underline">View More</p> */}
-                        </div>
-                      </div>
-                    </section>
+                              <div className=" mb-2 w-[calc(100%-110px)]">
+                                <div className="">
+                                  <p className="text-[30px] font-[600]">
+                                    {items.HomeWhyChooseHeading}
+                                  </p>
+                                </div>
+                                <div className=" text-justify">
+                                  <p>{items.HomeWhyChooseAboutParagraph}</p>
+                                  {/* <p className="my-3 underline">View More</p> */}
+                                </div>
+                              </div>
+                            </section>
+                          </>
+                        );
+                      }
+                    })}
                   </section>
                 </section>
               </section>
