@@ -1,8 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Header } from "../../common/Header";
 import { Footer } from "../../common/Footer";
 import right_banner from "../../images/Hive XV (1080 x 1350 px) (1).png";
+import axios from "axios";
 export function TermsConditions() {
+  let [Termsbanner, setTermsbanner] = useState([]);
+  let [imgurl, setimgurl] = useState("");
+
+  let viewcontactbanner = () => {
+    axios
+      .get("http://localhost:5000/view-terms-banner")
+      .then((res) => {
+        setTermsbanner(res.data.viewdata);
+        setimgurl(res.data.imgurl);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  console.log(Termsbanner);
+  useEffect(() => {
+    viewcontactbanner();
+  }, []);
   return (
     <>
       <section className="main w-[100%]">
@@ -10,27 +30,30 @@ export function TermsConditions() {
           <section className="home_banner_2 h-[100vh] pt-3">
             <Header />
 
-            <section className="landing_section bg-[#0000008b] w-[100%] h-[calc(100vh-110px)] flex mt-2">
-              <section className=" w-[50%] h-[100%] text-start text-white px-5 flex justify-center flex-col mt-2">
-                <h1 className="landing_heading text-[50px] font-[500] my-2">
-                  Bridging Vision and Opportunity
-                </h1>
-                <h2 className="landing_subheading text-[30px] font-[500] my-2">
-                  Empowering startups to rise and investors to
-                </h2>
-                <p className="text-[18px] my-3">
-                  Hivexv.com is a dedicated platform that connects innovative
-                  startups with forward-thinking investors. We aim to create an
-                  ecosystem where bold ideas meet the resources they need to
-                  flourish and investors discover opportunities that align with
-                  their vision. By fostering collaboration, we pave the way for
-                  growth, success, and mutual achievement.
-                </p>
-              </section>
-              <section className="w-[50%] h-[100%] flex justify-center items-center">
-                <img src={right_banner} alt="" className="w-[50%] logo" />
-              </section>
-            </section>
+            {Termsbanner.map((items, index) => {
+              return (
+                <>
+                  <section className="landing_section bg-[#0000008b] w-[100%] h-[calc(100vh-110px)] flex mt-2">
+                    <section className=" w-[50%] h-[100%] text-start text-white px-5 flex justify-center flex-col mt-2">
+                      <h1 className="landing_heading text-[50px] font-[500] my-2">
+                        {items.TermsHeading}
+                      </h1>
+                      <h2 className="landing_subheading text-[30px] font-[500] my-2">
+                        {items.TermsSubHeading}
+                      </h2>
+                      <p className="text-[18px] my-3">{items.TermsParagraph}</p>
+                    </section>
+                    <section className="w-[50%] h-[100%] flex justify-center items-center">
+                      <img
+                        src={imgurl + `${items.TermsBanner}`}
+                        alt=""
+                        className="w-[50%] logo"
+                      />
+                    </section>
+                  </section>
+                </>
+              );
+            })}
 
             <section className="landing_section text-black w-[100%] flex mt-2">
               <section className=" w-[100%] text-start px-5 flex justify-center flex-col mt-2">

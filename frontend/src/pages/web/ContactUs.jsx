@@ -21,7 +21,6 @@ export function ContactUs() {
         console.log(error);
       });
   };
-  console.log(Contactbanner);
 
   useEffect(() => {
     viewcontactbanner();

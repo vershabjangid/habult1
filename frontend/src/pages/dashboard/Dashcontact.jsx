@@ -2,7 +2,7 @@ import React from 'react'
 import { ToastContainer } from 'react-toastify'
 import { Sidebar } from '../../common/Sidebar'
 import { useFormik } from 'formik'
-import { DashContactBanner } from '../DashContact/DashContactBanner'
+import { DashContactBanner } from './DashContact/DashContactBanner'
 export function Dashcontact() {
 
   return (
