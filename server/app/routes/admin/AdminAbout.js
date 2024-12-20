@@ -1,5 +1,5 @@
 let express = require('express');
-const { Addaboutbannercontroller, viewadboutbannercontroller, Addaboutcontentcontroller, viewadboutcontentcontroller } = require('../../controller/admin/AdminAbout');
+const { Addaboutbannercontroller, viewadboutbannercontroller, Addaboutcontentcontroller, viewadboutcontentcontroller, AdminaboutOurMission, viewadboutourmissioncontroller } = require('../../controller/admin/AdminAbout');
 let adminaboutroutes = express.Router();
 
 
@@ -52,8 +52,13 @@ adminaboutroutes.get('/view-about-banner', upload, viewadboutbannercontroller)
 
 
 
-adminaboutroutes.post('/add-about-content',upload,verifyadmintoken, Addaboutcontentcontroller)
+adminaboutroutes.post('/add-about-content', upload, verifyadmintoken, Addaboutcontentcontroller)
 adminaboutroutes.get('/view-about-content', viewadboutcontentcontroller)
+
+
+
+adminaboutroutes.post('/add-about-ourmission', upload, verifyadmintoken, AdminaboutOurMission)
+adminaboutroutes.get('/view-about-ourmission', upload, viewadboutourmissioncontroller)
 
 
 

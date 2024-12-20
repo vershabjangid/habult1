@@ -30,8 +30,21 @@ export function AboutUs() {
     axios
       .get("https://api.hivexv.com/view-about-content")
       .then((res) => {
-        console.log(res.data)
+        console.log(res.data);
         setadmincontent(res.data.viewdata);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  let [ourmission, setourmission] = useState([]);
+  let viewourmission = () => {
+    axios
+      .get("https://api.hivexv.com/view-about-ourmission")
+      .then((res) => {
+        setourmission(res.data.viewdata);
+        setimgurl(res.data.imgurl);
       })
       .catch((error) => {
         console.log(error);
@@ -41,6 +54,7 @@ export function AboutUs() {
   useEffect(() => {
     viewaboutbanner();
     viewaboutcontent();
+    viewourmission();
   }, []);
   return (
     <>
@@ -109,29 +123,28 @@ export function AboutUs() {
             </section>
 
             <section className="landing_section bg-[white] py-[40px]">
-              <section className="landing_section w-[90%] m-auto h-auto flex justify-center items-center">
-                <section className="w-[50%] flex justify-center items-center">
-                  <img src={ourmission} alt="" />
-                </section>
-                <section className=" w-[50%] text-start text-black px-5 flex justify-center flex-col mt-2">
-                  <div className="flex justify-center">
-                    <h1 className="landing_heading w-[400px] text-[50px] text-[white] font-[500] my-5 bg-[#e02708] rounded-[10px] text-center">
-                      Our Mission
-                    </h1>
-                  </div>
+              {ourmission.map((items, index) => {
+                return (
+                  <>
+                    <section className="landing_section w-[90%] m-auto h-auto flex justify-center items-center">
+                      <section className="w-[50%] flex justify-center items-center">
+                        <img src={imgurl + `${items.WhyChooseBanner}`} alt="" />
+                      </section>
+                      <section className=" w-[50%] text-start text-black px-5 flex justify-center flex-col mt-2">
+                        <div className="flex justify-center">
+                          <h1 className="landing_heading w-[400px] text-[50px] text-[white] font-[500] my-5 bg-[#e02708] rounded-[10px] text-center">
+                            Our Mission
+                          </h1>
+                        </div>
 
-                  <p className="text-[18px] my-3">
-                    At Hivexv.com, our mission is to connect startups with the
-                    right investors, enabling innovation to thrive. We aim to
-                    provide a seamless platform where entrepreneurs can access
-                    the funding and support they need to grow, while investors
-                    can discover high-potential opportunities that align with
-                    their goals. By fostering meaningful connections and
-                    transparent collaborations, we empower both startups and
-                    investors to succeed and create lasting impact.
-                  </p>
-                </section>
-              </section>
+                        <p className="text-[18px] my-3">
+                          {items.WhyChooseParagraph}
+                        </p>
+                      </section>
+                    </section>
+                  </>
+                );
+              })}
             </section>
 
             <section className="landing_section bg-[white] py-[40px]">
