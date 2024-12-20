@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Header } from "../../common/Header";
-// import right_banner from "../../images/a-black-background-with-the-text-about-us-written--58EEDF77TFuu6SSpNM1RMA-3NIl9TxiQOiqKYegQxu4ww (1).png";
-// import ourmission from "../../images/an-illustration-of-a-lightbulb-with-the-word-missi-k1wfpXxwSfyTxmkd4GBK4Q-7j6IHlP4QOOXs3RnxhEQXQ-removebg-preview (1).png";
-// import ourvision from "../../images/an-illustration-of-a-light-bulb-with-the-word-visi-qC1h6cYlSY-mQUFbI_0xuQ-Aj5tVA1xQXSaJPqJNc6bZA (1).png";
 import hiring from "../../images/a-minimalistic-illustration-of-a-large-orange-rect-o8DWmbQrRH2K014EHAZuLg-nmofR7YrROStZTK9FymyDw-removebg-preview.png";
 import { FaLinkedin } from "react-icons/fa";
 import { Footer } from "../../common/Footer";
@@ -30,7 +27,6 @@ export function AboutUs() {
     axios
       .get("https://api.hivexv.com/view-about-content")
       .then((res) => {
-        console.log(res.data);
         setadmincontent(res.data.viewdata);
       })
       .catch((error) => {
@@ -44,14 +40,12 @@ export function AboutUs() {
       .get("https://api.hivexv.com/view-about-ourmission")
       .then((res) => {
         setourmission(res.data.viewdata);
-        setimgurl(res.data.imgurl);
+        // setimgurl(res.data.imgurl);
       })
       .catch((error) => {
         console.log(error);
       });
   };
-
-  console.log(ourmission);
 
   let [ourvision, setourvision] = useState([]);
   let viewourvision = () => {
@@ -59,19 +53,32 @@ export function AboutUs() {
       .get("https://api.hivexv.com/view-about-ourvision")
       .then((res) => {
         setourvision(res.data.viewdata);
-        setimgurl(res.data.imgurl);
+        // setimgurl(res.data.imgurl);
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
-  console.log(ourmission)
+  let [meetfounder, setmeetfounder] = useState([]);
+  let viewmeetfounder = () => {
+    axios
+      .get("https://api.hivexv.com/view-about-meetfounder")
+      .then((res) => {
+        setmeetfounder(res.data.viewdata);
+        // setimgurl(res.data.imgurl);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   useEffect(() => {
     viewaboutbanner();
     viewaboutcontent();
     viewourmission();
     viewourvision();
+    viewmeetfounder();
   }, []);
   return (
     <>
@@ -177,11 +184,11 @@ export function AboutUs() {
                         </div>
 
                         <p className="text-[18px] my-3">
-                         {items.OurVisionParagraph}
+                          {items.OurVisionParagraph}
                         </p>
                       </section>
                       <section className="w-[50%] flex justify-center items-center">
-                        <img src={imgurl+items.OurVisionBanner} alt="" />
+                        <img src={imgurl + items.OurVisionBanner} alt="" />
                       </section>
                     </section>
                   </>
@@ -191,59 +198,44 @@ export function AboutUs() {
 
             <section className="landing_section ">
               <section className="landing_section bg-[white] w-[100%] flex">
-                <section className=" w-[100%] h-[100%] text-center px-5 flex justify-center flex-col mt-2">
-                  <h1 className="landing_heading w-[500px] rounded-[10px] m-auto text-[50px] font-[500] my-5 text-[white] bg-[#e02708]">
-                    Meet With Founder
-                  </h1>
+                {meetfounder.map((items, index) => {
+                  console.log(items);
+                  return (
+                    <>
+                      <section className=" w-[100%] h-[100%] text-center px-5 flex justify-center flex-col mt-2">
+                        <h1 className="landing_heading w-[500px] rounded-[10px] m-auto text-[50px] font-[500] my-5 text-[white] bg-[#e02708]">
+                          Meet With Founder
+                        </h1>
 
-                  <div className="w-[100%]">
-                    <div className="meet_Founder w-[100%] py-5 flex ">
-                      <div className="w-[50%] flex justify-center items-center flex-col">
-                        <IoPerson className="text-[100px] mb-5 " />
+                        <div className="w-[100%]">
+                          <div className="meet_Founder w-[100%] py-5 flex ">
+                            <div className="w-[50%] flex justify-center items-center flex-col">
+                              <img
+                                src={imgurl + items.MeetFounderIcon}
+                                alt=""
+                              />
 
-                        <h4 className="text-[25px] font-[600] mt-[5px]">
-                          Prakash Sharma
-                        </h4>
-                        <p className="text-[20px] mt-[5px]">
-                          Founder & Chief Executive Officer
-                        </p>
+                              <h4 className="text-[25px] font-[600] mt-[5px]">
+                                {items.MeetFounderName}
+                              </h4>
+                              <p className="text-[20px] mt-[5px]">
+                                {items.MeetFounderDesignation}
+                              </p>
 
-                        <FaLinkedin className="text-[30px] mt-[10px]" />
-                      </div>
+                              {/* <FaLinkedin className="text-[30px] mt-[10px]" /> */}
+                            </div>
 
-                      <div className="w-[46%] text-justify flex justify-center items-center flex-col">
-                        <p className="my-2">
-                          Prakash sharma, the visionary behind Hivexv.com, is a
-                          passionate entrepreneur with a deep understanding of
-                          both the startup ecosystem and the investment world.
-                          With years of experience in fostering growth and
-                          innovation, Prakash Sharma set out to create a
-                          platform that bridges the gap between startups and
-                          investors, empowering businesses to thrive and
-                          investors to discover the next big opportunity.
-                        </p>
-
-                        <p className="my-2">
-                          Driven by a mission to support entrepreneurs and bring
-                          their ideas to life, Prakash Sharma saw the need for a
-                          space that not only connects, but nurtures
-                          relationships built on trust and transparency. Through
-                          Hivexv.com, Prakash Sharma is dedicated to helping
-                          startups gain the funding and mentorship they need
-                          while providing investors with a curated selection of
-                          high-potential ventures.
-                        </p>
-
-                        <p className="my-2">
-                          Under Prakash Sharma's leadership, Hivexv.com is more
-                          than just a platform—it's a thriving community where
-                          innovation, growth, and collaboration come together to
-                          shape the future.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </section>
+                            <div className="w-[46%] text-justify flex justify-center items-center flex-col">
+                              <p className="my-2">
+                                {items.MeetFounderParagraph}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                    </>
+                  );
+                })}
               </section>
             </section>
 

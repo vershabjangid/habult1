@@ -4,6 +4,7 @@ let path = require('path')
 const aboutcontentmodel = require("../../model/admin/AdminAboutContent")
 const adminaboutourmissionmodel = require("../../model/admin/AdminAboutWhyChoose")
 const adminourvisionsmodel = require("../../model/admin/AdminOurVision")
+const adminMeetFounderModel = require("../../model/admin/AboutMeetFoundermodel")
 let dirpath = path.join(__dirname, '../../../uploads')
 
 exports.Addaboutbannercontroller = async (req, res) => {
@@ -168,8 +169,10 @@ exports.AdminaboutOurMission = async (req, res) => {
 
 exports.viewadboutourmissioncontroller = async (req, res) => {
     let viewdata = await adminaboutourmissionmodel.find()
+    let imgurl = "https://api.hivexv.com/uploads/"
     res.send({
-        viewdata
+        viewdata,
+        imgurl
     })
 }
 
@@ -237,7 +240,81 @@ exports.AdminaboutOurVisioncontroller = async (req, res) => {
 
 exports.viewadboutourvisioncontroller = async (req, res) => {
     let viewdata = await adminourvisionsmodel.find()
+    let imgurl = "https://api.hivexv.com/uploads/"
     res.send({
-        viewdata
+        viewdata,
+        imgurl
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+exports.AddMeettheFoundercontroller = async (req, res) => {
+    console.log(req.body)
+    let data = {
+        MeetFounderIcon: req.files[0].filename,
+        MeetFounderName: req.body.MeetFounderName,
+        MeetFounderDesignation: req.body.MeetFounderDesignation,
+        MeetFounderParagraph: req.body.MeetFounderParagraph,
+    }
+
+
+    let viewdata = await adminMeetFounderModel.find()
+
+    if (viewdata.length == 0) {
+
+        let insertdata = await adminMeetFounderModel(data)
+        insertdata.save()
+            .then(() => {
+                res.send({
+                    Status: 1,
+                    Message: "Data Inserted Successfully"
+                })
+            })
+            .catch((error) => {
+                if (error.code === 11000) {
+                    res.send({
+                        Status: 0,
+                        Message: "Data Already Inserted"
+                    })
+                }
+                else {
+                    res.send({
+                        Status: 0,
+                        Message: "Data Missing"
+                    })
+                }
+                let fileunlink = fs.unlinkSync(`${dirpath}/${req.files[0].filename}`)
+            })
+    }
+    else {
+        res.send({
+            Status: 0,
+            Message: "Data Already Inserted"
+        })
+        let fileunlink = fs.unlinkSync(`${dirpath}/${req.files[0].filename}`)
+    }
+}
+
+
+exports.viewMeettheFoundercontroller = async (req, res) => {
+    let viewdata = await adminMeetFounderModel.find()
+    let imgurl = "https://api.hivexv.com/uploads/"
+    res.send({
+        viewdata,
+        imgurl
     })
 }

@@ -1,5 +1,5 @@
 let express = require('express');
-const { Addaboutbannercontroller, viewadboutbannercontroller, Addaboutcontentcontroller, viewadboutcontentcontroller, AdminaboutOurMission, viewadboutourmissioncontroller, viewadboutourvisioncontroller, AdminaboutOurVisioncontroller } = require('../../controller/admin/AdminAbout');
+const { Addaboutbannercontroller, viewadboutbannercontroller, Addaboutcontentcontroller, viewadboutcontentcontroller, AdminaboutOurMission, viewadboutourmissioncontroller, viewadboutourvisioncontroller, AdminaboutOurVisioncontroller, AddMeettheFoundercontroller, viewMeettheFoundercontroller } = require('../../controller/admin/AdminAbout');
 let adminaboutroutes = express.Router();
 
 
@@ -44,7 +44,7 @@ const storage = multer.diskStorage({
 
 
 
-const upload = multer({ storage: storage }).any('AboutBanner')
+const upload = multer({ storage: storage }).any('AboutBanner', 'MeetFounderIcon')
 
 adminaboutroutes.post('/add-about-banner', upload, verifyadmintoken, Addaboutbannercontroller)
 adminaboutroutes.get('/view-about-banner', upload, viewadboutbannercontroller)
@@ -64,6 +64,12 @@ adminaboutroutes.get('/view-about-ourmission', upload, viewadboutourmissioncontr
 
 adminaboutroutes.post('/add-about-ourvision', upload, verifyadmintoken, AdminaboutOurVisioncontroller)
 adminaboutroutes.get('/view-about-ourvision', upload, viewadboutourvisioncontroller)
+
+
+
+
+adminaboutroutes.post('/add-about-meetfounder', upload, AddMeettheFoundercontroller)
+adminaboutroutes.get('/view-about-meetfounder', upload, viewMeettheFoundercontroller)
 
 
 
